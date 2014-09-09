@@ -19,6 +19,9 @@
 
 @property (strong, nonatomic) NSDictionary *monsterMetadata;
 
+@property (strong, nonatomic) NSString *monsterName;
+@property (strong, nonatomic) NSString *monsterDescription;
+
 @property (weak, nonatomic) IBOutlet UIView *botLayerOneColor;
 @property (weak, nonatomic) IBOutlet UIImageView *botLayerTwoBody;
 @property (weak, nonatomic) IBOutlet UIImageView *botLayerThreeFace;
@@ -38,7 +41,7 @@
 
 @implementation BotViewerViewController
 
-static CGFloat MONSTER_HEIGHT = 0.4f;
+static CGFloat MONSTER_HEIGHT = 0.35f;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -49,22 +52,27 @@ static CGFloat MONSTER_HEIGHT = 0.4f;
     [self.view bringSubviewToFront:self.botLayerTwoBody];
     [self.view bringSubviewToFront:self.botLayerThreeFace];
     
-    [self.txtName setText:[RobotPreferences getRobotName]];
-    [self.txtDescription setText:[RobotPreferences getRobotDescription]];
+    self.monsterName = [RobotPreferences getRobotName];
+    self.monsterDescription = [RobotPreferences getRobotDescription];
+    
+    [self.txtName setText:self.monsterName];
+    [self.txtDescription setText:self.monsterDescription];
     
     [self.etxtUrl setTextColor:[UIColor blackColor]];
     
     self.monsterMetadata = [[NSDictionary alloc]
                             initWithObjects:@[
-                                              [NSNumber numberWithInt:[RobotPreferences getColorIndex]],
-                                              [NSNumber numberWithInt:[RobotPreferences getBodyIndex]],
-                                              [NSNumber numberWithInt:[RobotPreferences getFaceIndex]],
-                                              [RobotPreferences getRobotName]]
+                                              [NSNumber numberWithInteger:[RobotPreferences getColorIndex]],
+                                              [NSNumber numberWithInteger:[RobotPreferences getBodyIndex]],
+                                              [NSNumber numberWithInteger:[RobotPreferences getFaceIndex]],
+                                              self.monsterName]
                             forKeys:@[
                                       @"color_index",
                                       @"body_index",
                                       @"face_index",
                                       @"monster_name"]];
+    
+    [self.cmdChange.layer setCornerRadius:3.0];
     
     self.progressBar = [[NetworkProgressBar alloc] initWithFrame:self.view.frame andMessage:@"preparing your Branchster.."];
     [self.progressBar show];
@@ -85,14 +93,14 @@ static CGFloat MONSTER_HEIGHT = 0.4f;
 
 - (NSDictionary *)prepareBranchDict {
     return [[NSDictionary alloc] initWithObjects:@[
-                                                  [NSNumber numberWithInt:[RobotPreferences getColorIndex]],
-                                                  [NSNumber numberWithInt:[RobotPreferences getBodyIndex]],
-                                                  [NSNumber numberWithInt:[RobotPreferences getFaceIndex]],
-                                                  [RobotPreferences getRobotName],
+                                                  [NSNumber numberWithInteger:[RobotPreferences getColorIndex]],
+                                                  [NSNumber numberWithInteger:[RobotPreferences getBodyIndex]],
+                                                  [NSNumber numberWithInteger:[RobotPreferences getFaceIndex]],
+                                                  self.monsterName,
                                                   @"true",
-                                                  [NSString stringWithFormat:@"My Branchster: %@", [RobotPreferences getRobotName]],
-                                                  [RobotPreferences getRobotDescription],
-                                                  [NSString stringWithFormat:@"https://s3-us-west-1.amazonaws.com/branchmonsterfactory/%d%d%d.png", [RobotPreferences getColorIndex], [RobotPreferences getBodyIndex], [RobotPreferences getFaceIndex]]]
+                                                  [NSString stringWithFormat:@"My Branchster: %@", self.monsterName],
+                                                  self.monsterDescription,
+                                                  [NSString stringWithFormat:@"https://s3-us-west-1.amazonaws.com/branchmonsterfactory/%hd%hd%hd.png", (short)[RobotPreferences getColorIndex], (short)[RobotPreferences getBodyIndex], (short)[RobotPreferences getFaceIndex]]]
                                         forKeys:@[
                                                   @"color_index",
                                                   @"body_index",
@@ -118,6 +126,14 @@ static CGFloat MONSTER_HEIGHT = 0.4f;
     self.botLayerOneColor.frame = newFrame;
     self.botLayerTwoBody.frame = newFrame;
     self.botLayerThreeFace.frame = newFrame;
+    
+    CGRect textFrame = self.txtDescription.frame;
+    textFrame.origin.y  = newFrame.origin.y + newFrame.size.height + 8;
+    self.txtDescription.frame = textFrame;
+    
+    CGRect cmdFrame = self.cmdChange.frame;
+    cmdFrame.origin.x = newFrame.origin.x + newFrame.size.width;
+    self.cmdChange.frame = cmdFrame;
 }
 
 - (IBAction)cmdMessageClick:(id)sender {
@@ -132,7 +148,7 @@ static CGFloat MONSTER_HEIGHT = 0.4f;
         
         [[Branch getInstance] getContentUrlWithParams:[self prepareBranchDict]  andChannel:@"message_share" andCallback:^(NSString *url) {
             [self.progressBar hide];
-            smsViewController.body = [NSString stringWithFormat:@"Check out my Branchster named %@ at %@", [RobotPreferences getRobotName], url];
+            smsViewController.body = [NSString stringWithFormat:@"Check out my Branchster named %@ at %@", self.monsterName, url];
             [self presentViewController:smsViewController animated:YES completion:nil];
         }];
     } else {
@@ -151,12 +167,12 @@ static CGFloat MONSTER_HEIGHT = 0.4f;
         
         MFMailComposeViewController *mailer = [[MFMailComposeViewController alloc] init];
         mailer.mailComposeDelegate = self;
-        [mailer setSubject:[NSString stringWithFormat:@"Check out my Branchster named %@", [RobotPreferences getRobotName]]];
+        [mailer setSubject:[NSString stringWithFormat:@"Check out my Branchster named %@", self.monsterName]];
         NSArray *toRecipients = nil;
         [mailer setToRecipients:toRecipients];
         [[Branch getInstance] getContentUrlWithParams:[self prepareBranchDict]  andChannel:@"mail_share" andCallback:^(NSString *url) {
             [self.progressBar hide];
-            NSString *emailBody = [NSString stringWithFormat:@"I just created this Branchster named %@ in the Branch Monster Factory.\n\nSee it here:\n%@", [RobotPreferences getRobotName], url];
+            NSString *emailBody = [NSString stringWithFormat:@"I just created this Branchster named %@ in the Branch Monster Factory.\n\nSee it here:\n%@", self.monsterName, url];
             [mailer setMessageBody:emailBody isHTML:NO];
             [self presentViewController:mailer animated:YES completion:nil];
         }];
@@ -190,7 +206,7 @@ static CGFloat MONSTER_HEIGHT = 0.4f;
         [self.progressBar show];
         [[Branch getInstance] getContentUrlWithParams:[self prepareBranchDict]  andChannel:@"twitter_share" andCallback:^(NSString *url) {
             [self.progressBar hide];
-            [twitterController setInitialText:[NSString stringWithFormat:@"Check out my Branchster named %@", [RobotPreferences getRobotName]]];
+            [twitterController setInitialText:[NSString stringWithFormat:@"Check out my Branchster named %@", self.monsterName]];
             [twitterController addURL:[NSURL URLWithString:url]];
             [twitterController setCompletionHandler:completionHandler];
             [self presentViewController:twitterController animated:YES completion:nil];
@@ -225,7 +241,7 @@ static CGFloat MONSTER_HEIGHT = 0.4f;
         [self.progressBar show];
         [[Branch getInstance] getContentUrlWithParams:[self prepareBranchDict]  andChannel:@"facebook_share" andCallback:^(NSString *url) {
             [self.progressBar hide];
-            [fbController setInitialText:[NSString stringWithFormat:@"Check out my Branchster named %@", [RobotPreferences getRobotName]]];
+            [fbController setInitialText:[NSString stringWithFormat:@"Check out my Branchster named %@", self.monsterName]];
             [fbController addURL:[NSURL URLWithString:url]];
             [fbController setCompletionHandler:completionHandler];
             [self presentViewController:fbController animated:YES completion:nil];

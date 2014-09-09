@@ -19,8 +19,7 @@
 }
 
 + (NSString *)getRobotDescription {
-    NSString *description = [RobotPartsFactory descriptionForIndex:[self getFaceIndex]];
-    return [NSString stringWithFormat:description, [RobotPreferences getRobotName]];
+    return [NSString stringWithFormat:[RobotPartsFactory descriptionForIndex:[self getFaceIndex]], [self getRobotName]];
 }
 
 + (void)setFaceIndex:(NSInteger)index {

@@ -10,6 +10,7 @@
 #import "RobotPreferences.h"
 #import "RobotPartsFactory.h"
 #import "ImageCollectionViewCell.h"
+#import "Branch.h"
 
 @interface BotMakerViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 
@@ -23,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *cmdRightArrow;
 @property (weak, nonatomic) IBOutlet UIButton *cmdLeftArrow;
 @property (weak, nonatomic) IBOutlet UIButton *cmdDownArrow;
+@property (weak, nonatomic) IBOutlet UIButton *cmdDone;
 
 @property (nonatomic) NSInteger bodyIndex;
 @property (nonatomic) NSInteger faceIndex;
@@ -40,9 +42,16 @@ static CGFloat SIDE_SPACE = 7.0;
     for (int i = 0; i < [self.colorViews count]; i++) {
         UIView *currView = [self.colorViews objectAtIndex:i];
         [currView setBackgroundColor:[RobotPartsFactory colorForIndex:i]];
-        [currView.layer setBorderWidth:0.0f];
-        [currView.layer setBorderColor:[UIColor colorWithWhite:0.7 alpha:1.0].CGColor];
+        if (i == [RobotPreferences getColorIndex])
+            [currView.layer setBorderWidth:2.0f];
+        else
+            [currView.layer setBorderWidth:0.0f];
+        [currView.layer setBorderColor:[UIColor colorWithWhite:0.3 alpha:1.0].CGColor];
+        [currView.layer setCornerRadius:currView.frame.size.width/2];
     }
+    
+    [self.cmdDone.layer setCornerRadius:3.0f];
+    
     [self.botViewLayerOne setBackgroundColor:[RobotPartsFactory colorForIndex:[RobotPreferences getColorIndex]]];
     
     self.botViewLayerTwo.delegate = self;
@@ -56,6 +65,8 @@ static CGFloat SIDE_SPACE = 7.0;
     UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self.etxtName action:@selector(resignFirstResponder)];
     UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
     toolbar.items = [NSArray arrayWithObject:barButton];
+    
+    [[Branch getInstance] userCompletedAction:@"monster_edit"];
     
     self.etxtName.inputAccessoryView = toolbar;
 }
@@ -96,25 +107,33 @@ static CGFloat SIDE_SPACE = 7.0;
 }
 
 - (IBAction)cmdLeftClick:(id)sender {
-    self.bodyIndex = MAX(0, self.bodyIndex-1);
+    self.bodyIndex = self.bodyIndex + 1;
+    if (self.bodyIndex == [RobotPartsFactory sizeOfBodyArray])
+        self.bodyIndex = 0;
     [RobotPreferences setBodyIndex:self.bodyIndex];
     [self.botViewLayerTwo scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:self.bodyIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
 }
 - (IBAction)cmdRightClick:(id)sender {
-    self.bodyIndex = MIN([RobotPartsFactory sizeOfBodyArray]-1, self.bodyIndex+1);
+    self.bodyIndex = self.bodyIndex - 1;
+    if (self.bodyIndex == -1)
+        self.bodyIndex = [RobotPartsFactory sizeOfBodyArray] - 1;
     [RobotPreferences setBodyIndex:self.bodyIndex];
     [self.botViewLayerTwo scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:self.bodyIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
 }
 - (IBAction)cmdUpClick:(id)sender {
-    self.faceIndex = MAX(0, self.faceIndex-1);
+    self.faceIndex = self.faceIndex + 1;
+    if (self.faceIndex == [RobotPartsFactory sizeOfFaceArray])
+        self.faceIndex = 0;
     [RobotPreferences setFaceIndex:self.faceIndex];
     [self.botViewLayerThree scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:self.faceIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredVertically animated:YES];
 }
 - (IBAction)cmdDownClick:(id)sender {
-    self.faceIndex = MIN([RobotPartsFactory sizeOfFaceArray]-1, self.faceIndex+1);
+    self.faceIndex = self.faceIndex - 1;
+    if (self.faceIndex == -1)
+        self.faceIndex = [RobotPartsFactory sizeOfFaceArray] - 1;
     [RobotPreferences setFaceIndex:self.faceIndex];
     [self.botViewLayerThree scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:self.faceIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredVertically animated:YES];
-}
+ }
 - (IBAction)cmdColorClick:(id)sender {
     UIButton *currColorButton = (UIButton *)sender;
     
@@ -135,7 +154,7 @@ static CGFloat SIDE_SPACE = 7.0;
 
 - (IBAction)cmdFinishedClick:(id)sender {
     if ([self.etxtName.text length]) {
-        [RobotPreferences setRobotName:self.etxtName.text];
+        [RobotPreferences setRobotName:[self.etxtName text]];
     } else {
         [RobotPreferences setRobotName:@"Bingles Jingleheimer"];
     }
