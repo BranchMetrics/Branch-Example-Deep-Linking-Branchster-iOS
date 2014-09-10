@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6206.8" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="aDv-gc-D2h">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="aDv-gc-D2h">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7026.1"/>
-        <capability name="Constraints with attributes relative to the layout margin" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -158,15 +158,6 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Pick a name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ldY-ju-0lT">
-                                <rect key="frame" x="16" y="50" width="197" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="197" id="KyT-MW-V5S"/>
-                                    <constraint firstAttribute="height" constant="30" id="XGI-fW-yi2"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
-                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sj0-zB-me7">
                                 <rect key="frame" x="157" y="491" width="35" height="35"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -323,49 +314,58 @@
                                     <action selector="cmdLeftClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XsA-Cr-nDv"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Let's create your Branchster" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kZe-1l-CcW">
-                                <rect key="frame" x="16" y="20" width="236" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Let's create your Branchster" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kZe-1l-CcW">
+                                <rect key="frame" x="182" y="12" width="236" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="OVe-Uv-RZM"/>
-                                    <constraint firstAttribute="width" constant="236" id="V2G-1Q-9eK"/>
+                                    <constraint firstAttribute="width" constant="236" id="B04-YQ-jBb"/>
+                                    <constraint firstAttribute="height" constant="30" id="laG-lm-fQG"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Pick a name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ldY-ju-0lT">
+                                <rect key="frame" x="202" y="50" width="197" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="IaA-vB-oBP"/>
+                                    <constraint firstAttribute="width" constant="197" id="wxS-nX-bwj"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="lBe-Zv-pcf" firstAttribute="top" secondItem="6n3-I8-TmT" secondAttribute="bottom" constant="7" id="3pg-dy-Ojj"/>
                             <constraint firstAttribute="centerX" secondItem="6n3-I8-TmT" secondAttribute="centerX" id="9Nc-q6-hkZ"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Sj0-zB-me7" secondAttribute="bottom" constant="74" id="AJn-kw-r9w"/>
+                            <constraint firstItem="ldY-ju-0lT" firstAttribute="top" secondItem="kZe-1l-CcW" secondAttribute="bottom" constant="8" id="AZf-0G-hHo"/>
                             <constraint firstAttribute="centerX" secondItem="8DL-SM-gmd" secondAttribute="centerX" constant="-90.5" id="AqF-34-1Pw"/>
+                            <constraint firstAttribute="centerX" secondItem="kZe-1l-CcW" secondAttribute="centerX" id="BGd-Za-pUD"/>
                             <constraint firstItem="JkT-EN-ost" firstAttribute="top" secondItem="6n3-I8-TmT" secondAttribute="bottom" constant="7" id="GW0-Ef-hx2"/>
                             <constraint firstAttribute="centerX" secondItem="f7J-Qe-0HN" secondAttribute="centerX" constant="17.5" id="GzA-tE-npW"/>
                             <constraint firstAttribute="centerX" secondItem="lBe-Zv-pcf" secondAttribute="centerX" id="J0r-mw-lrF"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="8DL-SM-gmd" secondAttribute="bottom" constant="74" id="M03-e3-gsr"/>
+                            <constraint firstItem="kZe-1l-CcW" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="12" id="OgD-Gk-obc"/>
                             <constraint firstAttribute="centerX" secondItem="qZb-XI-oyU" secondAttribute="centerX" id="QOg-An-udq"/>
                             <constraint firstItem="U3k-Jn-YZd" firstAttribute="top" secondItem="Wjp-RJ-WmD" secondAttribute="bottom" constant="14" id="QQM-gX-l2u"/>
                             <constraint firstItem="qZb-XI-oyU" firstAttribute="top" secondItem="6n3-I8-TmT" secondAttribute="bottom" constant="7" id="RlB-ff-aPe"/>
                             <constraint firstItem="U3k-Jn-YZd" firstAttribute="top" secondItem="DXd-ea-XGh" secondAttribute="bottom" constant="14" id="VNr-l9-eCU"/>
                             <constraint firstAttribute="centerX" secondItem="y0d-eU-0rI" secondAttribute="centerX" constant="-126.5" id="Wjh-3E-OoJ"/>
-                            <constraint firstItem="ldY-ju-0lT" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="XU6-km-kdN"/>
                             <constraint firstAttribute="centerX" secondItem="U3k-Jn-YZd" secondAttribute="centerX" id="YeB-V3-2fc"/>
                             <constraint firstAttribute="centerX" secondItem="Sj0-zB-me7" secondAttribute="centerX" constant="125.5" id="ZbP-34-l9W"/>
-                            <constraint firstItem="ldY-ju-0lT" firstAttribute="top" secondItem="kZe-1l-CcW" secondAttribute="bottom" id="aCT-Hx-koY"/>
                             <constraint firstItem="U3k-Jn-YZd" firstAttribute="top" secondItem="f7J-Qe-0HN" secondAttribute="bottom" constant="14" id="cHK-PI-hEt"/>
+                            <constraint firstAttribute="centerX" secondItem="ldY-ju-0lT" secondAttribute="centerX" id="dAo-62-CBl"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="y0d-eU-0rI" secondAttribute="bottom" constant="74" id="drT-aa-p5e"/>
                             <constraint firstAttribute="centerX" secondItem="AS9-wh-233" secondAttribute="centerX" constant="-54.5" id="f2q-km-ECY"/>
                             <constraint firstItem="6n3-I8-TmT" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="76" id="fsU-rC-lqB"/>
                             <constraint firstAttribute="centerX" secondItem="Wjp-RJ-WmD" secondAttribute="centerX" constant="-18.5" id="ny6-k6-Dzv"/>
-                            <constraint firstItem="kZe-1l-CcW" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="odY-Ao-c2R"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="U3k-Jn-YZd" secondAttribute="bottom" constant="20" id="p9o-rP-zNo"/>
                             <constraint firstAttribute="centerX" secondItem="Oub-ML-3r1" secondAttribute="centerX" constant="89.5" id="sgR-OT-mlw"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Oub-ML-3r1" secondAttribute="bottom" constant="74" id="tXj-ln-YLl"/>
                             <constraint firstItem="U3k-Jn-YZd" firstAttribute="top" secondItem="AS9-wh-233" secondAttribute="bottom" constant="14" id="teb-Ub-Z3M"/>
                             <constraint firstAttribute="centerX" secondItem="DXd-ea-XGh" secondAttribute="centerX" constant="53.5" id="unt-rs-uNN"/>
                             <constraint firstAttribute="centerX" secondItem="JkT-EN-ost" secondAttribute="centerX" id="ymQ-SV-SsV"/>
-                            <constraint firstItem="kZe-1l-CcW" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="zKr-AK-p2y"/>
                         </constraints>
                     </view>
                     <connections>
@@ -502,9 +502,9 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="560" translatesAutoresizingMaskIntoConstraints="NO" id="DSd-1x-l1J">
-                                <rect key="frame" x="20" y="342" width="560" height="121"/>
+                                <rect key="frame" x="20" y="342" width="560" height="76"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="121" id="Uv4-fN-812"/>
+                                    <constraint firstAttribute="height" constant="76" id="Uv4-fN-812"/>
                                 </constraints>
                                 <attributedString key="attributedText">
                                     <fragment>
@@ -582,7 +582,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gCf-1k-uEg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1325" y="285"/>
+            <point key="canvasLocation" x="931" y="136"/>
         </scene>
     </scenes>
     <resources>

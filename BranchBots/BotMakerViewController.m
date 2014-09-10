@@ -34,6 +34,7 @@
 @implementation BotMakerViewController
 
 static CGFloat MONSTER_HEIGHT = 0.35f;
+static CGFloat MONSTER_HEIGHT_FIVE = 0.45f;
 static CGFloat SIDE_SPACE = 7.0;
 
 - (void)viewDidLoad {
@@ -69,6 +70,9 @@ static CGFloat SIDE_SPACE = 7.0;
     [[Branch getInstance] userCompletedAction:@"monster_edit"];
     
     self.etxtName.inputAccessoryView = toolbar;
+    [self.etxtName addTarget:self.etxtName
+                      action:@selector(resignFirstResponder)
+            forControlEvents:UIControlEventEditingDidEndOnExit];
 }
 
 - (void)viewDidLayoutSubviews {
@@ -83,7 +87,11 @@ static CGFloat SIDE_SPACE = 7.0;
 - (void)adjustMonsterPicturesForScreenSize {
     CGRect screenSize = [[UIScreen mainScreen] bounds];
     CGFloat widthRatio = self.botViewLayerOne.frame.size.width/self.botViewLayerOne.frame.size.height;
-    CGFloat newHeight = screenSize.size.height * MONSTER_HEIGHT;
+    CGFloat newHeight = screenSize.size.height;
+    if (IS_IPHONE_5)
+        newHeight = newHeight * MONSTER_HEIGHT_FIVE;
+    else
+        newHeight = newHeight * MONSTER_HEIGHT;
     CGFloat newWidth = widthRatio * newHeight;
     CGRect newFrame = CGRectMake((screenSize.size.width-newWidth)/2, self.botViewLayerOne.frame.origin.y, newWidth, newHeight);
     
@@ -107,33 +115,33 @@ static CGFloat SIDE_SPACE = 7.0;
 }
 
 - (IBAction)cmdLeftClick:(id)sender {
-    self.bodyIndex = self.bodyIndex + 1;
-    if (self.bodyIndex == [RobotPartsFactory sizeOfBodyArray])
-        self.bodyIndex = 0;
-    [RobotPreferences setBodyIndex:self.bodyIndex];
-    [self.botViewLayerTwo scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:self.bodyIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
-}
-- (IBAction)cmdRightClick:(id)sender {
     self.bodyIndex = self.bodyIndex - 1;
     if (self.bodyIndex == -1)
         self.bodyIndex = [RobotPartsFactory sizeOfBodyArray] - 1;
     [RobotPreferences setBodyIndex:self.bodyIndex];
     [self.botViewLayerTwo scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:self.bodyIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
 }
+- (IBAction)cmdRightClick:(id)sender {
+    self.bodyIndex = self.bodyIndex + 1;
+    if (self.bodyIndex == [RobotPartsFactory sizeOfBodyArray])
+        self.bodyIndex = 0;
+    [RobotPreferences setBodyIndex:self.bodyIndex];
+    [self.botViewLayerTwo scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:self.bodyIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+}
 - (IBAction)cmdUpClick:(id)sender {
+    self.faceIndex = self.faceIndex - 1;
+    if (self.faceIndex == -1)
+        self.faceIndex = [RobotPartsFactory sizeOfFaceArray] - 1;
+    [RobotPreferences setFaceIndex:self.faceIndex];
+    [self.botViewLayerThree scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:self.faceIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredVertically animated:YES];
+}
+- (IBAction)cmdDownClick:(id)sender {
     self.faceIndex = self.faceIndex + 1;
     if (self.faceIndex == [RobotPartsFactory sizeOfFaceArray])
         self.faceIndex = 0;
     [RobotPreferences setFaceIndex:self.faceIndex];
     [self.botViewLayerThree scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:self.faceIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredVertically animated:YES];
 }
-- (IBAction)cmdDownClick:(id)sender {
-    self.faceIndex = self.faceIndex - 1;
-    if (self.faceIndex == -1)
-        self.faceIndex = [RobotPartsFactory sizeOfFaceArray] - 1;
-    [RobotPreferences setFaceIndex:self.faceIndex];
-    [self.botViewLayerThree scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:self.faceIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredVertically animated:YES];
- }
 - (IBAction)cmdColorClick:(id)sender {
     UIButton *currColorButton = (UIButton *)sender;
     

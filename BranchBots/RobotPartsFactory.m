@@ -52,11 +52,11 @@ static NSArray *descriptionArray;
 + (NSArray *)descriptionArray {
     if (!descriptionArray)
         descriptionArray = @[
-                             @"%@ is a social butterfly. He’s a cheerleader and supporter of all types of people. He hates the mean monsters and much prefers to greet you with a face lick and wiggle.  He’s active, spontaneous, and fun, and he loves to have people around him, even he doesn’t always know what’s going. He’s a loyal friend, ready to give you a piggyback ride at a moments notice.",
-                             @"Creative and contagiously happy, %@ has boundless energy and an appetite for learning about new things and meeting new people. He brings joy to others and is keenly perceptive to the needs of those around them. He is vivacious and popular, and is always ready for the next adventure or a new friend.",
-                             @"%@ is very busy and very hungry.  He prefers to work alone and is impatient with hierarchies and politics.  Although he’s not particularly social, he has a razor sharp wit (and claws), and is actually very fun to be around. But hide your food. Those donuts you were saving for tomorrow? Gone. Those leftovers from the picnic? Done. An unstoppable force, he gets hungry often, so watch out.",
-                             @"Independent and ferocious, %@ experiences life at 100 mph. Not interested in maintaining order, he is a fierce individual who is highly effective, successful, and incredibly powerful. Always bossing others around, he’s the big toe of the group.",
-                             @"Peaceful, shy, and easygoing, %@ takes things at his own pace and lives moment to moment. He is considerate, pleasant, caring, and introspective. His values are important to him, but doesn’t particularly care about defending or debating his views publicly. He’s a bit nerdy and quiet -- but that’s why everyone loves him."
+                             @"%@ is a social butterfly. She’s a loyal friend, ready to give you a piggyback ride at a moments notice or greet you with a face lick and wiggle.",
+                             @"Creative and contagiously happy, %@ has boundless energy and an appetite for learning about new things. He is vivacious and popular, and is always ready for the next adventure.",
+                             @"%@ prefers to work alone and is impatient with hierarchies and politics.  Although he’s not particularly social, he has a razor sharp wit (and claws), and is actually very fun to be around.",
+                             @"Independent and ferocious, %@ experiences life at 100 mph. Not interested in maintaining order, he is a fierce individual who is highly effective, successful, and incredibly powerful.",
+                             @"Peaceful, shy, and easygoing, %@ takes things at his own pace and lives moment to moment. She is considerate, pleasant, caring, and introspective. She’s a bit nerdy and quiet -- but that’s why everyone loves him."
                              ];
     
     return descriptionArray;

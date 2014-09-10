@@ -41,7 +41,8 @@
 }
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
-    return [[Branch getInstance] handleDeepLink:url];
+    [[Branch getInstance] handleDeepLink:url];
+    return YES;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

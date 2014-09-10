@@ -18,6 +18,7 @@
 
 @property (nonatomic) BOOL isInit;
 
+@property (strong, nonatomic) NSTimer *sessionTimer;
 @property (strong, nonatomic) NSMutableArray *uploadQueue;
 @property (nonatomic) dispatch_semaphore_t processing_sema;
 @property (nonatomic) dispatch_queue_t asyncQueue;
@@ -99,6 +100,7 @@ static Branch *currInstance;
 }
 
 - (void)initUserSessionWithCallback:(callbackWithParams)callback withLaunchOptions:(NSDictionary *)options {
+    self.sessionparamLoadCallback = callback;
     if (![SystemObserver getUpdateState] && ![self hasUser])
         [PreferenceHelper setIsReferrable];
     else
@@ -140,10 +142,15 @@ static Branch *currInstance;
     if (!self.isInit) {
         self.isInit = YES;
         [self initSession];
-    } else if (![self installOrOpenInQueue]) {
+    } else if ([self hasUser] && [self hasSession] && ![self installOrOpenInQueue]) {
         if (self.sessionparamLoadCallback) self.sessionparamLoadCallback([self getReferringParams]);
+    } else {
+        if ((![self hasUser] || ![self hasSession]) && ![self installOrOpenInQueue]) {
+            [self initSession];
+        } else {
+            [self processNextQueueItem];
+        }
     }
-
 }
 
 - (BOOL)handleDeepLink:(NSURL *)url {
@@ -386,13 +393,22 @@ static Branch *currInstance;
     });
 }
 - (void)applicationWillResignActive {
-     dispatch_async(self.asyncQueue, ^{
-         self.isInit = NO;
-         ServerRequest *req = [[ServerRequest alloc] init];
-         req.tag = REQ_TAG_REGISTER_CLOSE;
-         [self.uploadQueue addObject:req];
-         [self processNextQueueItem];
-     });
+    [self clearTimer];
+    self.sessionTimer = [NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(callClose) userInfo:nil repeats:NO];
+}
+
+- (void)clearTimer {
+    [self.sessionTimer invalidate];
+}
+
+- (void)callClose {
+    dispatch_async(self.asyncQueue, ^{
+        self.isInit = NO;
+        ServerRequest *req = [[ServerRequest alloc] init];
+        req.tag = REQ_TAG_REGISTER_CLOSE;
+        [self.uploadQueue addObject:req];
+        [self processNextQueueItem];
+    });
 }
 
 - (NSDictionary *)convertParamsStringToDictionary:(NSString *)paramsString {
@@ -447,6 +463,10 @@ static Branch *currInstance;
         dispatch_semaphore_signal(self.processing_sema);
         
         ServerRequest *req = [self.uploadQueue objectAtIndex:0];
+
+        if (![req.tag isEqualToString:REQ_TAG_REGISTER_CLOSE]) {
+            [self clearTimer];
+        }
         
         if ([req.tag isEqualToString:REQ_TAG_REGISTER_INSTALL]) {
             if (LOG) NSLog(@"calling register install");
@@ -482,6 +502,7 @@ static Branch *currInstance;
             if (![self hasAppKey] && [self hasSession]) {
                 NSLog(@"Branch Warning: User session not init yet. Please call initUserSession");
             } else {
+                self.networkCount = 0;
                 [self initUserSession];
             }
         }
@@ -666,17 +687,14 @@ static Branch *currInstance;
         
         BOOL retry = NO;
         self.networkCount = 0;
-        if (status >= 500) {
+        if (status >= 400 && status < 500) {
+            NSLog(@"Branch API Error: %@", [returnedData objectForKey:@"message"]);
+            [self.uploadQueue removeObjectAtIndex:0];
+        } else if (status != 200) {
             retry = YES;
             dispatch_async(self.asyncQueue, ^{
                 [self retryLastRequest];
             });
-        } else if (status >= 400 && status < 500) {
-            NSLog(@"Branch API Error: %@", [returnedData objectForKey:@"message"]);
-            [self.uploadQueue removeObjectAtIndex:0];
-        } else if (status != 200) {
-            NSLog(@"Branch API Error: %@", [returnedData objectForKey:@"message"]);
-            [self.uploadQueue removeObjectAtIndex:0];
         } else if ([requestTag isEqualToString:REQ_TAG_REGISTER_INSTALL]) {
             [PreferenceHelper setIdentityID:[returnedData objectForKey:@"identity_id"]];
             [PreferenceHelper setDeviceFingerprintID:[returnedData objectForKey:@"device_fingerprint_id"]];
@@ -732,6 +750,7 @@ static Branch *currInstance;
                 [PreferenceHelper setSessionParams:NO_STRING_VALUE];
             }
             if (self.sessionparamLoadCallback) {
+                if (LOG) NSLog(@"session callback is present, about to callback");
                 dispatch_async(dispatch_get_main_queue(), ^{
                     if (self.sessionparamLoadCallback) self.sessionparamLoadCallback([self getReferringParams]);
                 });

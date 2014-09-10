@@ -13,6 +13,7 @@
 #import "Branch.h"
 #import <MessageUI/MessageUI.h>
 #import <Social/Social.h>
+#import <FacebookSDK/FacebookSDK.h>
 
 @interface BotViewerViewController () <MFMailComposeViewControllerDelegate, MFMessageComposeViewControllerDelegate>
 @property (strong, nonatomic) NetworkProgressBar *progressBar;
@@ -41,16 +42,14 @@
 
 @implementation BotViewerViewController
 
-static CGFloat MONSTER_HEIGHT = 0.35f;
+static CGFloat MONSTER_HEIGHT = 0.4f;
+static CGFloat MONSTER_HEIGHT_FIVE = 0.55f;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.botLayerOneColor setBackgroundColor:[RobotPartsFactory colorForIndex:[RobotPreferences getColorIndex]]];
     [self.botLayerTwoBody setImage:[RobotPartsFactory imageForBody:[RobotPreferences getBodyIndex]]];
     [self.botLayerThreeFace setImage:[RobotPartsFactory imageForFace:[RobotPreferences getFaceIndex]]];
-    
-    [self.view bringSubviewToFront:self.botLayerTwoBody];
-    [self.view bringSubviewToFront:self.botLayerThreeFace];
     
     self.monsterName = [RobotPreferences getRobotName];
     self.monsterDescription = [RobotPreferences getRobotDescription];
@@ -87,7 +86,26 @@ static CGFloat MONSTER_HEIGHT = 0.35f;
 }
 
 - (IBAction)cmdChangeClick:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
+    if ([[self.navigationController viewControllers] count] > 1)
+        [self.navigationController popViewControllerAnimated:YES];
+    else
+        [self.navigationController setViewControllers:@[[[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"BotMakerViewController"]] animated:YES];
+}
+
+
+- (NSDictionary *)prepareFBDict:(NSString *)url {
+    return [[NSDictionary alloc] initWithObjects:@[
+                                                   [NSString stringWithFormat:@"My Branchster: %@", self.monsterName],
+                                                   self.monsterDescription,
+                                                   self.monsterDescription,
+                                                   url,
+                                                   [NSString stringWithFormat:@"https://s3-us-west-1.amazonaws.com/branchmonsterfactory/%hd%hd%hd.png", (short)[RobotPreferences getColorIndex], (short)[RobotPreferences getBodyIndex], (short)[RobotPreferences getFaceIndex]]]
+                                         forKeys:@[
+                                                   @"name",
+                                                   @"caption",
+                                                   @"description",
+                                                   @"link",
+                                                   @"picture"]];
 }
 
 
@@ -117,9 +135,19 @@ static CGFloat MONSTER_HEIGHT = 0.35f;
 }
 
 - (void)adjustMonsterPicturesForScreenSize {
+    [self.botLayerOneColor setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.botLayerTwoBody setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.botLayerThreeFace setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.txtDescription setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.cmdChange setTranslatesAutoresizingMaskIntoConstraints:NO];
+
     CGRect screenSize = [[UIScreen mainScreen] bounds];
     CGFloat widthRatio = self.botLayerOneColor.frame.size.width/self.botLayerOneColor.frame.size.height;
-    CGFloat newHeight = screenSize.size.height * MONSTER_HEIGHT;
+    CGFloat newHeight = screenSize.size.height;
+    if (IS_IPHONE_5)
+        newHeight = newHeight * MONSTER_HEIGHT_FIVE;
+    else
+        newHeight = newHeight * MONSTER_HEIGHT;
     CGFloat newWidth = widthRatio * newHeight;
     CGRect newFrame = CGRectMake((screenSize.size.width-newWidth)/2, self.botLayerOneColor.frame.origin.y, newWidth, newHeight);
     
@@ -132,8 +160,12 @@ static CGFloat MONSTER_HEIGHT = 0.35f;
     self.txtDescription.frame = textFrame;
     
     CGRect cmdFrame = self.cmdChange.frame;
-    cmdFrame.origin.x = newFrame.origin.x + newFrame.size.width;
+    if (IS_IPHONE_5)
+        cmdFrame.origin.x = newFrame.origin.x + newFrame.size.width - cmdFrame.size.width/2;
+    else
+        cmdFrame.origin.x = newFrame.origin.x + newFrame.size.width;
     self.cmdChange.frame = cmdFrame;
+    [self.view layoutSubviews];
 }
 
 - (IBAction)cmdMessageClick:(id)sender {
@@ -221,36 +253,74 @@ static CGFloat MONSTER_HEIGHT = 0.35f;
 - (IBAction)cmdFacebookClick:(id)sender {
     [[Branch getInstance] userCompletedAction:@"share_facebook_click" withState:self.monsterMetadata];
     
-    SLComposeViewController *fbController= [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
     
-    if([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook]) {
-        SLComposeViewControllerCompletionHandler completionHandler = ^(SLComposeViewControllerResult result) {
-            [fbController dismissViewControllerAnimated:YES completion:nil];
-            
-            switch(result){
-                case SLComposeViewControllerResultDone:
-                    [[Branch getInstance] userCompletedAction:@"share_facebook_success"];
-                    break;
-                case SLComposeViewControllerResultCancelled:
-                default:
-                    break;
-            }
-        };
+    [self.progressBar changeMessageTo:@"preparing post.."];
+    [self.progressBar show];
+    [[Branch getInstance] getContentUrlWithParams:[self prepareBranchDict]  andChannel:@"facebook_share" andCallback:^(NSString *url) {
+        [self.progressBar hide];
+    
+        id<FBGraphObject> object =
+        [FBGraphObject openGraphObjectForPostWithType:@"branchmetrics:branchster"
+                                                title:self.monsterName
+                                                image:[[self prepareBranchDict] objectForKey:@"$og_image_url"]
+                                                  url:url
+                                          description:[[self prepareBranchDict] objectForKey:@"$og_description"]];
         
-        [self.progressBar changeMessageTo:@"preparing post.."];
-        [self.progressBar show];
-        [[Branch getInstance] getContentUrlWithParams:[self prepareBranchDict]  andChannel:@"facebook_share" andCallback:^(NSString *url) {
-            [self.progressBar hide];
-            [fbController setInitialText:[NSString stringWithFormat:@"Check out my Branchster named %@", self.monsterName]];
-            [fbController addURL:[NSURL URLWithString:url]];
-            [fbController setCompletionHandler:completionHandler];
-            [self presentViewController:fbController animated:YES completion:nil];
-        }];
-    } else {
-        UIAlertView *alert_Dialog = [[UIAlertView alloc] initWithTitle:@"No Facebook Account" message:@"You do not seem to have Facebook on this device" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert_Dialog show];
-        alert_Dialog = nil;
+        // Create an action
+        id<FBOpenGraphAction> action = (id<FBOpenGraphAction>)[FBGraphObject graphObject];
+        
+        // Link the object to the action
+        [action setObject:object forKey:@"branchster"];
+        [action setObject:@"true" forKey:@"fb:explicitly_shared"];
+        
+        FBOpenGraphActionParams *params = [[FBOpenGraphActionParams alloc] init];
+        params.action = action;
+        params.actionType = @"branchmetrics:create";
+        
+        // If the Facebook app is installed and we can present the share dialog
+        if([FBDialogs canPresentShareDialogWithOpenGraphActionParams:params]) {
+            // Show the share dialog
+            [FBDialogs presentShareDialogWithOpenGraphAction:action
+                                                  actionType:@"branchmetrics:create"
+                                         previewPropertyName:@"branchster"
+                                                     handler:^(FBAppCall *call, NSDictionary *results, NSError *error) {
+                                                         if (!error) {
+                                                             // Success
+                                                             [[Branch getInstance] userCompletedAction:@"share_facebook_success"];
+                                                         }
+                                                     }];
+        } else {
+            [FBWebDialogs presentFeedDialogModallyWithSession:nil
+                                                   parameters:[self prepareFBDict:url]
+                                                      handler:^(FBWebDialogResult result, NSURL *resultURL, NSError *error) {
+                                                          if (!error) {
+                                                              if (result == FBWebDialogResultDialogCompleted) {
+                                                                  // Handle the publish feed callback
+                                                                  NSDictionary *urlParams = [self parseURLParams:[resultURL query]];
+                                                                  
+                                                                  if ([urlParams valueForKey:@"post_id"]) {
+                                                                      // User clicked the Share button
+                                                                      [[Branch getInstance] userCompletedAction:@"share_facebook_success"];
+                                                                  }
+                                                              }
+                                                          }
+                                                      }];
+        }
+        
+    }];
+}
+
+// A function for parsing URL parameters returned by the Feed Dialog.
+- (NSDictionary*)parseURLParams:(NSString *)query {
+    NSArray *pairs = [query componentsSeparatedByString:@"&"];
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    for (NSString *pair in pairs) {
+        NSArray *kv = [pair componentsSeparatedByString:@"="];
+        NSString *val =
+        [kv[1] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        params[kv[0]] = val;
     }
+    return params;
 }
 
 - (void)messageComposeViewController:(MFMessageComposeViewController *)controller
