@@ -365,6 +365,7 @@
 				TargetAttributes = {
 					670591E819BBAC630039DAE1 = {
 						CreatedOnToolsVersion = 6.0;
+						DevelopmentTeam = T5TQ36Q2SQ;
 					};
 				};
 			};
@@ -564,6 +565,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/BranchBots",
@@ -571,7 +574,7 @@
 				INFOPLIST_FILE = BranchBots/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = Branchsters;
-				PROVISIONING_PROFILE = "4304882d-94a3-4381-87b7-d4fdb18ad83a";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -580,6 +583,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/BranchBots",
@@ -587,7 +592,7 @@
 				INFOPLIST_FILE = BranchBots/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = Branchsters;
-				PROVISIONING_PROFILE = "4304882d-94a3-4381-87b7-d4fdb18ad83a";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
