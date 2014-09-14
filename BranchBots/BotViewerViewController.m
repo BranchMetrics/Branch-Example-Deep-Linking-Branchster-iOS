@@ -253,12 +253,46 @@ static CGFloat MONSTER_HEIGHT_FIVE = 0.55f;
 - (IBAction)cmdFacebookClick:(id)sender {
     [[Branch getInstance] userCompletedAction:@"share_facebook_click" withState:self.monsterMetadata];
     
-    
     [self.progressBar changeMessageTo:@"preparing post.."];
     [self.progressBar show];
+    
+    // If the session state is any of the two "open" states when the button is clicked
+    if (FBSession.activeSession.isOpen && [FBSession.activeSession.permissions indexOfObject:@"publish_actions"] != NSNotFound) {
+        [self initiateFacebookShare];
+    } else {
+        NSArray *permissions = [[NSArray alloc] initWithObjects:
+                                @"publish_actions",
+                                nil];
+        [FBSession openActiveSessionWithPublishPermissions:permissions defaultAudience:FBSessionDefaultAudienceFriends allowLoginUI:YES completionHandler:^(FBSession *session, FBSessionState state, NSError *error) {
+            [self sessionStateChanged:session state:state error:error];
+        }];
+    }
+    
+}
+
+- (void)sessionStateChanged:(FBSession *)session state:(FBSessionState) state error:(NSError *)error {
+    switch (state)
+    {   case FBSessionStateOpen:
+            [self initiateFacebookShare];
+            break;
+        case FBSessionStateClosed:
+            [self.progressBar hide];
+            break;
+        case FBSessionStateClosedLoginFailed:
+            [self.progressBar hide];
+            [FBSession.activeSession closeAndClearTokenInformation];
+            break;
+        default:
+            [self.progressBar hide];
+            break;
+    }
+}
+
+
+- (void)initiateFacebookShare {
     [[Branch getInstance] getContentUrlWithParams:[self prepareBranchDict]  andChannel:@"facebook_share" andCallback:^(NSString *url) {
         [self.progressBar hide];
-    
+        
         id<FBGraphObject> object =
         [FBGraphObject openGraphObjectForPostWithType:@"branchmetrics:branchster"
                                                 title:self.monsterName
@@ -308,6 +342,7 @@ static CGFloat MONSTER_HEIGHT_FIVE = 0.55f;
         }
         
     }];
+
 }
 
 // A function for parsing URL parameters returned by the Feed Dialog.

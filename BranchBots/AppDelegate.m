@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "Branch.h"
 #import "RobotPreferences.h"
+#import <FacebookSDK/FacebookSDK.h>
 
 @interface AppDelegate ()
 
@@ -30,9 +31,12 @@
             [RobotPreferences setColorIndex:[[params objectForKey:@"color_index"] intValue]];
             nextVC = [storyboard instantiateViewControllerWithIdentifier:@"BotViewerViewController"];
         } else {
-            if (![RobotPreferences getRobotName])
+            if (![RobotPreferences getRobotName]) {
                 [RobotPreferences setRobotName:@""];
-            nextVC = [storyboard instantiateViewControllerWithIdentifier:@"BotMakerViewController"];
+                nextVC = [storyboard instantiateViewControllerWithIdentifier:@"BotMakerViewController"];
+            } else {
+                nextVC = [storyboard instantiateViewControllerWithIdentifier:@"BotViewerViewController"];
+            }
         }
         [navController setViewControllers:@[nextVC] animated:YES];
     } withLaunchOptions:launchOptions];
@@ -41,7 +45,10 @@
 }
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
-    [[Branch getInstance] handleDeepLink:url];
+    BOOL wasHandled = [FBAppCall handleOpenURL:url sourceApplication:sourceApplication];
+    if (!wasHandled)
+        [[Branch getInstance] handleDeepLink:url];
+    
     return YES;
 }
 

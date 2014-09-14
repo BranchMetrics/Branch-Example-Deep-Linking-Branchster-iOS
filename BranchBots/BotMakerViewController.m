@@ -63,6 +63,8 @@ static CGFloat SIDE_SPACE = 7.0;
     self.botViewLayerThree.dataSource = self;
     [self.botViewLayerThree registerClass:[ImageCollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
     
+    [self.etxtName setText:[RobotPreferences getRobotName]];
+    
     UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self.etxtName action:@selector(resignFirstResponder)];
     UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
     toolbar.items = [NSArray arrayWithObject:barButton];

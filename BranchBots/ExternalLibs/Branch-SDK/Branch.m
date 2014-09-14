@@ -394,7 +394,7 @@ static Branch *currInstance;
 }
 - (void)applicationWillResignActive {
     [self clearTimer];
-    self.sessionTimer = [NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(callClose) userInfo:nil repeats:NO];
+    self.sessionTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(callClose) userInfo:nil repeats:NO];
 }
 
 - (void)clearTimer {
