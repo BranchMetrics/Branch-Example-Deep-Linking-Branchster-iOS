@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		46FD92CE1A9AD0A70028A385 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67FD945E1A4D250C00D6BFA8 /* Main.storyboard */; };
 		6705921019BBB7430039DAE1 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6705920F19BBB7430039DAE1 /* AdSupport.framework */; };
 		6705923B19BBD0060039DAE1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6705923A19BBD0060039DAE1 /* UIKit.framework */; };
 		6705923E19BBE22D0039DAE1 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6705923D19BBE22D0039DAE1 /* MessageUI.framework */; };
@@ -467,6 +468,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46FD92CE1A9AD0A70028A385 /* Main.storyboard in Resources */,
 				67FD94EB1A4D250C00D6BFA8 /* up.png in Resources */,
 				67FD94F91A4D250C00D6BFA8 /* Icon@2x.png in Resources */,
 				67FD95031A4D250C00D6BFA8 /* Images.xcassets in Resources */,
