@@ -9,7 +9,7 @@
 #ifndef Branch_SDK_Config_h
 #define Branch_SDK_Config_h
 
-#define SDK_VERSION             @"0.3.94"
+#define SDK_VERSION             @"0.4.8"
 
 #define BNC_PROD_ENV
 //#define BNC_STAGE_ENV
@@ -24,7 +24,7 @@
 #endif
 
 #ifdef BNC_DEV_ENV
-#define BNC_API_BASE_URL        @"http://localhost:3000"
+#define BNC_API_BASE_URL        @"http://localhost:3001"
 #endif
 
 #define BNC_API_VERSION         @"v1"

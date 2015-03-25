@@ -9,20 +9,19 @@
 #include <sys/utsname.h>
 #import "BNCPreferenceHelper.h"
 #import "BNCSystemObserver.h"
+#import "BranchServerInterface.h"
 #import <UIKit/UIDevice.h>
 #import <UIKit/UIScreen.h>
-#import <CoreTelephony/CTCarrier.h>
-#import <CoreTelephony/CTTelephonyNetworkInfo.h>
 #import <SystemConfiguration/SystemConfiguration.h>
 
 @implementation BNCSystemObserver
 
-+ (NSString *)getUniqueHardwareId:(BOOL *)isReal {
++ (NSString *)getUniqueHardwareId:(BOOL *)isReal andIsDebug:(BOOL)debug {
     NSString *uid = nil;
     *isReal = YES;
     
     Class ASIdentifierManagerClass = NSClassFromString(@"ASIdentifierManager");
-    if (ASIdentifierManagerClass) {
+    if (ASIdentifierManagerClass && !debug) {
         SEL sharedManagerSelector = NSSelectorFromString(@"sharedManager");
         id sharedManager = ((id (*)(id, SEL))[ASIdentifierManagerClass methodForSelector:sharedManagerSelector])(ASIdentifierManagerClass, sharedManagerSelector);
         SEL advertisingIdentifierSelector = NSSelectorFromString(@"advertisingIdentifier");
@@ -40,6 +39,18 @@
     }
     
     return uid;
+}
+
++ (BOOL)adTrackingSafe {
+    Class ASIdentifierManagerClass = NSClassFromString(@"ASIdentifierManager");
+    if (ASIdentifierManagerClass) {
+        SEL sharedManagerSelector = NSSelectorFromString(@"sharedManager");
+        id sharedManager = ((id (*)(id, SEL))[ASIdentifierManagerClass methodForSelector:sharedManagerSelector])(ASIdentifierManagerClass, sharedManagerSelector);
+        SEL advertisingEnabledSelector = NSSelectorFromString(@"isAdvertisingTrackingEnabled");
+        BOOL enabled = ((BOOL (*)(id, SEL))[sharedManager methodForSelector:advertisingEnabledSelector])(sharedManager, advertisingEnabledSelector);
+        return enabled;
+    }
+    return YES;
 }
 
 + (NSString *)getURIScheme {
@@ -66,9 +77,21 @@
 }
 
 + (NSString *)getCarrier {
-    CTTelephonyNetworkInfo *networkInfo = [[CTTelephonyNetworkInfo alloc] init];
-    CTCarrier *carrier = [networkInfo subscriberCellularProvider];
-    return carrier.carrierName;
+    NSString *carrierName = nil;
+    
+    Class CTTelephonyNetworkInfoClass = NSClassFromString(@"CTTelephonyNetworkInfo");
+    if (CTTelephonyNetworkInfoClass) {
+        id networkInfo = [[CTTelephonyNetworkInfoClass alloc] init];
+        SEL subscriberCellularProviderSelector = NSSelectorFromString(@"subscriberCellularProvider");
+        
+        id carrier = ((id (*)(id, SEL))[networkInfo methodForSelector:subscriberCellularProviderSelector])(networkInfo, subscriberCellularProviderSelector);
+        if (carrier) {
+            SEL carrierNameSelector = NSSelectorFromString(@"carrierName");
+            carrierName = ((NSString* (*)(id, SEL))[carrier methodForSelector:carrierNameSelector])(carrier, carrierNameSelector);
+        }
+    }
+    
+    return carrierName;
 }
 
 + (NSString *)getBrand {
@@ -129,5 +152,36 @@
     CGFloat height = mainScreen.bounds.size.height * scaleFactor;
     return [NSNumber numberWithInteger:(NSInteger)height];
 }
+
++ (NSDictionary *)getListOfApps {
+    NSMutableArray *appsPresent = [[NSMutableArray alloc] init];
+    NSMutableArray *appsNotPresent = [[NSMutableArray alloc] init];
+    NSDictionary *appsData = [NSDictionary dictionaryWithObjects:@[appsPresent, appsNotPresent] forKeys:@[@"canOpen", @"notOpen"]];
+    
+    BNCServerResponse *serverResponse = [[[BranchServerInterface alloc] init] retrieveAppsToCheck];
+    [BNCPreferenceHelper log:FILE_NAME line:LINE_NUM message:@"returned from app check with %@", serverResponse.data];
+    if (serverResponse && serverResponse.data) {
+        NSInteger status = [serverResponse.statusCode integerValue];
+        NSArray *apps = [serverResponse.data objectForKey:@"potential_apps"];
+        UIApplication *application = [UIApplication sharedApplication];
+        if (status == 200 && apps && application) {
+            for (NSString *app in apps) {
+                NSString *uriScheme = app;
+                if ([uriScheme rangeOfString:@"://"].location != NSNotFound) {  // if (![uriScheme containsString:@"://"]) {
+                    uriScheme = [uriScheme stringByAppendingString:@"://"];
+                }
+                NSURL *url = [NSURL URLWithString:uriScheme];
+                if ([application canOpenURL:url]) {
+                    [appsPresent addObject:app];
+                } else {
+                    [appsNotPresent addObject:app];
+                }
+            }
+        }
+    }
+    
+    return appsData;
+}
+
 
 @end
