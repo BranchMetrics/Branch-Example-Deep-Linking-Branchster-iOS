@@ -22,7 +22,8 @@
     
     // Initalize Branch and register the deep link handler
     // The deep link handler is called on every install/open to tell you if the user had just clicked a deep link
-    [[Branch getInstance:@"36930236817866882"] initSessionWithLaunchOptions:launchOptions andRegisterDeepLinkHandler:^(NSDictionary *params, NSError *error) {
+    Branch *branch = [Branch getInstance];
+    [branch initSessionWithLaunchOptions:launchOptions andRegisterDeepLinkHandler:^(NSDictionary *params, NSError *error){
         
         UINavigationController *navController = (UINavigationController *)self.window.rootViewController;
         NSString * storyboardName = @"Main";
