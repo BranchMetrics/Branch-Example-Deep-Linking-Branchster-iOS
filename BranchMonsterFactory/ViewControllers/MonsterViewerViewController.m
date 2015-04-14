@@ -10,7 +10,7 @@
 #import "MonsterViewerViewController.h"
 #import "MonsterPartsFactory.h"
 #import "MonsterPreferences.h"
-#import "Branch.h"
+//#import "Branch.h"
 #import <MessageUI/MessageUI.h>
 #import <Social/Social.h>
 #import <FacebookSDK/FacebookSDK.h>
@@ -78,13 +78,13 @@ static CGFloat MONSTER_HEIGHT_FIVE = 0.55f;
     [self.view addSubview:self.progressBar];
     
     // track that the user viewed the monster view page
-    [[Branch getInstance] userCompletedAction:@"monster_view" withState:self.monsterMetadata];
+    //[[Branch getInstance] userCompletedAction:@"monster_view" withState:self.monsterMetadata];
     
     // load a URL just for display on the viewer page
-    [[Branch getInstance] getContentUrlWithParams:[self prepareBranchDict] andChannel:@"viewer" andCallback:^(NSString *url, NSError *error) {
+    /*[[Branch getInstance] getContentUrlWithParams:[self prepareBranchDict] andChannel:@"viewer" andCallback:^(NSString *url, NSError *error) {
         [self.etxtUrl setText:url];
         [self.progressBar hide];
-    }];
+    }];*/
 }
 
 - (IBAction)cmdChangeClick:(id)sender {
@@ -174,7 +174,7 @@ static CGFloat MONSTER_HEIGHT_FIVE = 0.55f;
 
 - (IBAction)cmdMessageClick:(id)sender {
     // track that the user clicked the share via sms button and pass in the monster meta data
-    [[Branch getInstance] userCompletedAction:@"share_sms_click" withState:self.monsterMetadata];
+    //[[Branch getInstance] userCompletedAction:@"share_sms_click" withState:self.monsterMetadata];
     
     if([MFMessageComposeViewController canSendText]){
         [self.progressBar changeMessageTo:@"preparing message.."];
@@ -186,7 +186,7 @@ static CGFloat MONSTER_HEIGHT_FIVE = 0.55f;
         // Create Branch link as soon as the user clicks
         // Pass in the special Branch dictionary of keys/values you want to receive in the AppDelegate on initSession
         // Specify the channel to be 'sms' for tracking on the Branch dashboard
-        [[Branch getInstance] getContentUrlWithParams:[self prepareBranchDict]  andChannel:@"sms" andCallback:^(NSString *url, NSError *error) {
+        /*[[Branch getInstance] getContentUrlWithParams:[self prepareBranchDict]  andChannel:@"sms" andCallback:^(NSString *url, NSError *error) {
             [self.progressBar hide];
             
             // if there was no error, show the SMS View Controller with the Branch deep link
@@ -194,7 +194,7 @@ static CGFloat MONSTER_HEIGHT_FIVE = 0.55f;
                 smsViewController.body = [NSString stringWithFormat:@"Check out my Branchster named %@ at %@", self.monsterName, url];
                 [self presentViewController:smsViewController animated:YES completion:nil];
             }
-        }];
+        }];*/
     } else {
         UIAlertView *alert_Dialog = [[UIAlertView alloc] initWithTitle:@"No Message Support" message:@"This device does not support messaging" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert_Dialog show];
@@ -205,7 +205,7 @@ static CGFloat MONSTER_HEIGHT_FIVE = 0.55f;
 
 - (IBAction)cmdMailClick:(id)sender {
     // track that the user clicked the share via email button and pass in the monster details
-    [[Branch getInstance] userCompletedAction:@"share_email_click" withState:self.monsterMetadata];
+    //[[Branch getInstance] userCompletedAction:@"share_email_click" withState:self.monsterMetadata];
     
     if ([MFMailComposeViewController canSendMail]) {
         [self.progressBar changeMessageTo:@"preparing mail.."];
@@ -221,16 +221,6 @@ static CGFloat MONSTER_HEIGHT_FIVE = 0.55f;
         // Create Branch link as soon as the user clicks
         // Pass in the special Branch dictionary of keys/values you want to receive in the AppDelegate on initSession
         // Specify the channel to be 'email' for tracking on the Branch dashboard
-        [[Branch getInstance] getContentUrlWithParams:[self prepareBranchDict]  andChannel:@"email" andCallback:^(NSString *url, NSError *error) {
-            [self.progressBar hide];
-            
-            // if there was no error, show the Email View Controller with the Branch deep link
-            if (!error) {
-                NSString *emailBody = [NSString stringWithFormat:@"I just created this Branchster named %@ in the Branch Monster Factory.\n\nSee it here:\n%@", self.monsterName, url];
-                [mailer setMessageBody:emailBody isHTML:NO];
-                [self presentViewController:mailer animated:YES completion:nil];
-            }
-        }];
         
     } else {
         UIAlertView *alert_Dialog = [[UIAlertView alloc] initWithTitle:@"No Mail Support" message:@"Your default mail client is not configured" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
@@ -241,7 +231,7 @@ static CGFloat MONSTER_HEIGHT_FIVE = 0.55f;
 
 - (IBAction)cmdTwitterClick:(id)sender {
     // track that user clicked the share on Twitter button and pass in the monster metadata
-    [[Branch getInstance] userCompletedAction:@"share_twitter_click" withState:self.monsterMetadata];
+    //[[Branch getInstance] userCompletedAction:@"share_twitter_click" withState:self.monsterMetadata];
     
     SLComposeViewController *twitterController= [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
     
@@ -250,7 +240,7 @@ static CGFloat MONSTER_HEIGHT_FIVE = 0.55f;
             [twitterController dismissViewControllerAnimated:YES completion:nil];
             switch(result){
                 case SLComposeViewControllerResultDone:
-                    [[Branch getInstance] userCompletedAction:@"share_twitter_success"];
+                    //[[Branch getInstance] userCompletedAction:@"share_twitter_success"];
                     break;
                 case SLComposeViewControllerResultCancelled:
                 default:
@@ -264,7 +254,7 @@ static CGFloat MONSTER_HEIGHT_FIVE = 0.55f;
         // Create Branch link as soon as the user clicks
         // Pass in the special Branch dictionary of keys/values you want to receive in the AppDelegate on initSession
         // Specify the channel to be 'twitter' for tracking on the Branch dashboard
-        [[Branch getInstance] getContentUrlWithParams:[self prepareBranchDict]  andChannel:@"twitter" andCallback:^(NSString *url, NSError *error) {
+        /*[[Branch getInstance] getContentUrlWithParams:[self prepareBranchDict]  andChannel:@"twitter" andCallback:^(NSString *url, NSError *error) {
             [self.progressBar hide];
             
             // if there was no error, show the Twitter Share View Controller with the Branch deep link
@@ -274,7 +264,7 @@ static CGFloat MONSTER_HEIGHT_FIVE = 0.55f;
                 [twitterController setCompletionHandler:completionHandler];
                 [self presentViewController:twitterController animated:YES completion:nil];
             }
-        }];
+        }];*/
     } else {
         UIAlertView *alert_Dialog = [[UIAlertView alloc] initWithTitle:@"No Twitter Account" message:@"You do not seem to have Facebook on this device" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert_Dialog show];
@@ -284,7 +274,7 @@ static CGFloat MONSTER_HEIGHT_FIVE = 0.55f;
 
 - (IBAction)cmdFacebookClick:(id)sender {
     // track that user clicked the share button on facebook and pass in the monster metadata
-    [[Branch getInstance] userCompletedAction:@"share_facebook_click" withState:self.monsterMetadata];
+    //[[Branch getInstance] userCompletedAction:@"share_facebook_click" withState:self.monsterMetadata];
     
     [self.progressBar changeMessageTo:@"preparing post.."];
     [self.progressBar show];
@@ -327,7 +317,7 @@ static CGFloat MONSTER_HEIGHT_FIVE = 0.55f;
     // Create Branch link as soon as we know there is a valid Facebook session
     // Pass in the special Branch dictionary of keys/values you want to receive in the AppDelegate on initSession
     // Specify the channel to be 'facebook' for tracking on the Branch dashboard
-    [[Branch getInstance] getContentUrlWithParams:[self prepareBranchDict]  andChannel:@"facebook" andCallback:^(NSString *url, NSError *error) {
+    /*[[Branch getInstance] getContentUrlWithParams:[self prepareBranchDict]  andChannel:@"facebook" andCallback:^(NSString *url, NSError *error) {
         [self.progressBar hide];
         
         // If there is no error, do all the fancy foot work to initiate a share on Facebook
@@ -382,7 +372,7 @@ static CGFloat MONSTER_HEIGHT_FIVE = 0.55f;
             }
         }
         
-    }];
+    }];*/
 
 }
 
@@ -404,7 +394,7 @@ static CGFloat MONSTER_HEIGHT_FIVE = 0.55f;
     if (MessageComposeResultSent == result) {
         
         // track successful share event via sms
-        [[Branch getInstance] userCompletedAction:@"share_sms_success"];
+        //[[Branch getInstance] userCompletedAction:@"share_sms_success"];
     }
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -413,7 +403,7 @@ static CGFloat MONSTER_HEIGHT_FIVE = 0.55f;
     if (MFMailComposeResultSent == result) {
         
         // track successful share event via email
-        [[Branch getInstance] userCompletedAction:@"share_email_success"];
+        //[[Branch getInstance] userCompletedAction:@"share_email_success"];
     }
     [self dismissViewControllerAnimated:YES completion:nil];
 }
