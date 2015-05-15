@@ -10,6 +10,7 @@
 		1596C1D61AC23CFD00336DD2 /* BNCLinkCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 1596C1D31AC23CFD00336DD2 /* BNCLinkCache.m */; };
 		1596C1D71AC23CFD00336DD2 /* BNCLinkData.m in Sources */ = {isa = PBXBuildFile; fileRef = 1596C1D51AC23CFD00336DD2 /* BNCLinkData.m */; };
 		1596C1DA1AC23D1F00336DD2 /* BranchActivityItemProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 1596C1D91AC23D1F00336DD2 /* BranchActivityItemProvider.m */; };
+		464197261B0683AF00869460 /* BNCEncodingUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 464197251B0683AF00869460 /* BNCEncodingUtils.m */; };
 		46FD92CE1A9AD0A70028A385 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67FD945E1A4D250C00D6BFA8 /* Main.storyboard */; };
 		6705921019BBB7430039DAE1 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6705920F19BBB7430039DAE1 /* AdSupport.framework */; };
 		6705923B19BBD0060039DAE1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6705923A19BBD0060039DAE1 /* UIKit.framework */; };
@@ -91,6 +92,8 @@
 		1596C1D51AC23CFD00336DD2 /* BNCLinkData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNCLinkData.m; sourceTree = "<group>"; };
 		1596C1D81AC23D1F00336DD2 /* BranchActivityItemProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BranchActivityItemProvider.h; sourceTree = "<group>"; };
 		1596C1D91AC23D1F00336DD2 /* BranchActivityItemProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BranchActivityItemProvider.m; sourceTree = "<group>"; };
+		464197241B0683AF00869460 /* BNCEncodingUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNCEncodingUtils.h; sourceTree = "<group>"; };
+		464197251B0683AF00869460 /* BNCEncodingUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNCEncodingUtils.m; sourceTree = "<group>"; };
 		670591E919BBAC630039DAE1 /* Branchsters.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Branchsters.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6705920F19BBB7430039DAE1 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		6705923A19BBD0060039DAE1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -265,6 +268,8 @@
 		67FD94661A4D250C00D6BFA8 /* Branch-SDK */ = {
 			isa = PBXGroup;
 			children = (
+				464197241B0683AF00869460 /* BNCEncodingUtils.h */,
+				464197251B0683AF00869460 /* BNCEncodingUtils.m */,
 				1596C1D81AC23D1F00336DD2 /* BranchActivityItemProvider.h */,
 				1596C1D91AC23D1F00336DD2 /* BranchActivityItemProvider.m */,
 				1596C1D21AC23CFD00336DD2 /* BNCLinkCache.h */,
@@ -554,6 +559,7 @@
 				1596C1D61AC23CFD00336DD2 /* BNCLinkCache.m in Sources */,
 				67FD95081A4D250C00D6BFA8 /* SplashViewController.m in Sources */,
 				67FD94CE1A4D250C00D6BFA8 /* Branch.m in Sources */,
+				464197261B0683AF00869460 /* BNCEncodingUtils.m in Sources */,
 				67FD94CA1A4D250C00D6BFA8 /* BNCServerRequest.m in Sources */,
 				67FD94C31A4D250C00D6BFA8 /* AppDelegate.m in Sources */,
 				67FD94D31A4D250C00D6BFA8 /* MonsterPreferences.m in Sources */,

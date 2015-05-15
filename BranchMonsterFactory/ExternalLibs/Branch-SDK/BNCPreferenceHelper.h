@@ -11,6 +11,7 @@
 #define FILE_NAME   [[NSString stringWithUTF8String:__FILE__] lastPathComponent]
 #define LINE_NUM    __LINE__
 
+static NSString *KEY_BRANCH_KEY = @"branch_key";
 static NSString *NO_STRING_VALUE = @"bnc_no_value";
 
 @protocol BNCDebugConnectionDelegate <NSObject>
@@ -27,6 +28,10 @@ static NSString *NO_STRING_VALUE = @"bnc_no_value";
 
 @interface BNCPreferenceHelper : NSObject
 
+@property (assign, nonatomic) NSInteger retryCount;
+@property (assign, nonatomic) NSInteger retryInterval;
+@property (assign, nonatomic) NSInteger timeout;
+
 + (NSString *)getAPIBaseURL;
 + (NSString *)getAPIURL:(NSString *) endpoint;
 
@@ -41,6 +46,13 @@ static NSString *NO_STRING_VALUE = @"bnc_no_value";
 
 + (NSString *)getAppKey;
 + (void)setAppKey:(NSString *)appKey;
+
++ (NSString *)getBranchKey;
++ (NSString *)getBranchKey:(BOOL)isLive;
++ (void)setBranchKey:(NSString *)branchKey;
+
++ (NSString *)getAppVersion;
++ (void)setAppVersion:(NSString *)appVersion;
 
 + (void)setDeviceFingerprintID:(NSString *)deviceID;
 + (NSString *)getDeviceFingerprintID;
@@ -72,7 +84,7 @@ static NSString *NO_STRING_VALUE = @"bnc_no_value";
 + (void)setAppListCheckDone;
 + (BOOL)getNeedAppListCheck;
 
-+ (NSInteger)getIsReferrable;
++ (BOOL)getIsReferrable;
 + (void)setIsReferrable;
 + (void)clearIsReferrable;
 
@@ -87,9 +99,6 @@ static NSString *NO_STRING_VALUE = @"bnc_no_value";
 + (void)setActionUniqueCount:(NSString *)action withCount:(NSInteger)count;
 + (NSInteger)getActionTotalCount:(NSString *)action;
 + (NSInteger)getActionUniqueCount:(NSString *)action;
-
-+ (NSString *)base64EncodeStringToString:(NSString *)strData;
-+ (NSString *)base64DecodeStringToString:(NSString *)strData;
 
 + (void)setDevDebug;
 + (BOOL)getDevDebug;

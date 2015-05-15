@@ -10,45 +10,43 @@
 #import "Branch.h"
 #import "BNCSystemObserver.h"
 
+@interface BranchActivityItemProvider ()
+
+@property (strong, nonatomic) NSDictionary *params;
+@property (strong, nonatomic) NSArray *tags;
+@property (strong, nonatomic) NSString *feature;
+@property (strong, nonatomic) NSString *stage;
+@property (strong, nonatomic) NSString *alias;
+@property (strong, nonatomic) NSString *userAgentString;
+
+@end
+
 @implementation BranchActivityItemProvider
 
-- (id)initWithDefaultURL:(NSString *)url
-               andParams:(NSDictionary *)params
-                 andTags:(NSArray *)tags
-              andFeature:(NSString *)feature
-                andStage:(NSString *)stage
-                andAlias:(NSString *)alias {
-    self = [super initWithPlaceholderItem:url];
-    if (self) {
-        self.branchURL = url;
+- (id)initWithParams:(NSDictionary *)params andTags:(NSArray *)tags andFeature:(NSString *)feature andStage:(NSString *)stage andAlias:(NSString *)alias {
+    NSString *url = [[Branch getInstance] getLongURLWithParams:params andChannel:nil andTags:tags andFeature:feature andStage:stage andAlias:alias];
+    
+    if (self = [super initWithPlaceholderItem:[NSURL URLWithString:url]]) {
         self.params = params;
         self.tags = tags;
         self.feature = feature;
         self.stage = stage;
         self.alias = alias;
-        self.semaphore = dispatch_semaphore_create(0);
+        self.userAgentString = [[[UIWebView alloc] init] stringByEvaluatingJavaScriptFromString:@"navigator.userAgent"];
     }
+    
     return self;
 }
 
-- (id) item {
-    // Set's channel string automatically based on what share
-    // channel the user selected in UIActivityViewController
-    NSString *channel = [BranchActivityItemProvider
-                         humanReadableChannelWithActivityType:self.activityType];
+- (id)item {
+    NSString *channel = [BranchActivityItemProvider humanReadableChannelWithActivityType:self.activityType];
     
-    if ([self.placeholderItem isKindOfClass:[NSString class]]) {
-        __weak BranchActivityItemProvider *weakSelf = self;
-        [[Branch getInstance] getShortURLWithParams:self.params andTags:self.tags andChannel:channel andFeature:self.feature andStage:self.stage andAlias:self.alias andCallback:^(NSString *url, NSError *err) {
-            if (!err) {
-                self.branchURL = url;
-            }
-            dispatch_semaphore_signal(weakSelf.semaphore);
-        }];
-        dispatch_semaphore_wait(self.semaphore, DISPATCH_TIME_FOREVER);
-        return self.branchURL;
+    // Because Facebook immediately scrapes URLs, we add an additional parameter to the existing list, telling the backend to ignore the first click
+    if ([channel isEqualToString:@"facebook"] || [channel isEqualToString:@"twitter"]) {
+        return [NSURL URLWithString:[[Branch getInstance] getShortURLWithParams:self.params andTags:self.tags andChannel:channel andFeature:self.feature andStage:self.stage andAlias:self.alias ignoreUAString:self.userAgentString]];
     }
-    return self.placeholderItem;
+    
+    return [NSURL URLWithString:[[Branch getInstance] getShortURLWithParams:self.params andTags:self.tags andChannel:channel andFeature:self.feature andStage:self.stage andAlias:self.alias]];
 }
 
 // Human readable activity type string

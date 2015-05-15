@@ -11,7 +11,6 @@
 
 #define TAG         @"TAG"
 #define DATA        @"POSTDATA"
-#define LINK_DATA   @"LINKDATA"
 
 @interface BNCServerRequest() <NSCoding>
 
@@ -27,16 +26,12 @@
     if (self.postData) {
         [coder encodeObject:self.postData forKey:DATA];
     }
-    if (self.linkData) {
-        [coder encodeObject:self.linkData forKey:LINK_DATA];
-    }
 }
 
 - (id)initWithCoder:(NSCoder *)coder {
     if (self = [super init]) {
         self.tag = [coder decodeObjectForKey:TAG];
         self.postData = [coder decodeObjectForKey:DATA];
-        self.linkData = [coder decodeObjectForKey:LINK_DATA];
     }
     return self;
 }
@@ -45,9 +40,8 @@
     return [self initWithTag:tag andData:nil];
 }
 
-- (id)initWithTag:(NSString *)tag andData:(NSDictionary *)postData {
+- (id)initWithTag:(NSString *)tag andData:(NSMutableDictionary *)postData {
     if (!tag) {
-        
         [BNCPreferenceHelper log:FILE_NAME line:LINE_NUM message:@"Invalid: server request missing tag!"];
         return nil;
     }
@@ -55,7 +49,6 @@
     if (self = [super init]) {
         self.tag = tag;
         self.postData = postData;
-        self.linkData = nil;
     }
     
     return self;
@@ -64,6 +57,5 @@
 - (NSString *)description {
     return [NSString stringWithFormat:@"Tag: %@; Data: %@", self.tag, self.postData];
 }
-
 
 @end
