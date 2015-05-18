@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="aDv-gc-D2h">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="aDv-gc-D2h">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -52,7 +53,7 @@
                                 <attributedString key="attributedText">
                                     <fragment content="Loading Branchster parts...">
                                         <attributes>
-                                            <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <font key="NSFont" size="15" name="HelveticaNeue"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                         </attributes>
@@ -320,7 +321,7 @@
                                     <constraint firstAttribute="height" constant="30" id="laG-lm-fQG"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Pick a name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ldY-ju-0lT">
@@ -408,7 +409,7 @@
                                     <constraint firstAttribute="height" constant="28" id="eOL-nL-YsD"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="20"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZdT-mO-Fss">
@@ -536,6 +537,15 @@
                                     <action selector="cmdChangeClick:" destination="1x1-sb-jCq" eventType="touchUpInside" id="Cta-2e-w2x"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kFv-5U-Ulu">
+                                <rect key="frame" x="423" y="312" width="22" height="22"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="cmdInfoClick:" destination="1x1-sb-jCq" eventType="touchUpInside" id="jqN-hx-dT9"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -544,11 +554,13 @@
                             <constraint firstAttribute="centerX" secondItem="sM7-rR-ScU" secondAttribute="centerX" id="2Ku-RF-MQ1"/>
                             <constraint firstAttribute="centerX" secondItem="pFU-6t-zHG" secondAttribute="centerX" constant="-40" id="5XO-Rg-CKE"/>
                             <constraint firstAttribute="centerX" secondItem="zRi-R7-p36" secondAttribute="centerX" constant="120" id="8H0-76-O0N"/>
+                            <constraint firstItem="kFv-5U-Ulu" firstAttribute="trailing" secondItem="rmb-VE-D3J" secondAttribute="trailing" id="ApD-Xb-cvJ"/>
                             <constraint firstAttribute="centerX" secondItem="dfd-jm-1Lc" secondAttribute="centerX" constant="40" id="DMt-04-WDz"/>
                             <constraint firstItem="L2x-mo-f3Z" firstAttribute="top" secondItem="pFU-6t-zHG" secondAttribute="bottom" constant="20" id="KMz-42-Zvu"/>
                             <constraint firstAttribute="centerX" secondItem="M7Q-bZ-GzO" secondAttribute="centerX" id="KoY-au-f0S"/>
                             <constraint firstItem="rmb-VE-D3J" firstAttribute="top" secondItem="sM7-rR-ScU" secondAttribute="bottom" constant="8" id="Mx7-OG-Ta5"/>
                             <constraint firstAttribute="centerX" secondItem="ZdT-mO-Fss" secondAttribute="centerX" id="NVf-xu-zdo"/>
+                            <constraint firstItem="kFv-5U-Ulu" firstAttribute="bottom" secondItem="7Ot-ph-Uoi" secondAttribute="bottom" constant="242" id="Of7-og-LM7"/>
                             <constraint firstItem="DSd-1x-l1J" firstAttribute="leading" secondItem="KqM-cE-ia0" secondAttribute="leadingMargin" constant="4" id="OlD-xb-Gvn"/>
                             <constraint firstItem="7Ot-ph-Uoi" firstAttribute="leading" secondItem="KqM-cE-ia0" secondAttribute="leadingMargin" constant="379" id="P7E-Af-xgn"/>
                             <constraint firstAttribute="centerX" secondItem="uNq-Rr-FUR" secondAttribute="centerX" id="Y95-q2-4Va"/>
@@ -560,10 +572,16 @@
                             <constraint firstItem="ZdT-mO-Fss" firstAttribute="top" secondItem="M7Q-bZ-GzO" secondAttribute="bottom" constant="8" id="hNa-o9-AXc"/>
                             <constraint firstAttribute="centerX" secondItem="uNq-Rr-FUR" secondAttribute="centerX" id="ijH-LY-o55"/>
                             <constraint firstItem="M7Q-bZ-GzO" firstAttribute="top" secondItem="MHJ-ds-fta" secondAttribute="bottom" constant="8" id="mB0-MR-D7q"/>
+                            <constraint firstItem="kFv-5U-Ulu" firstAttribute="leading" secondItem="zRi-R7-p36" secondAttribute="leading" constant="268" id="qCU-In-RNA"/>
                             <constraint firstItem="23p-l3-8O0" firstAttribute="top" secondItem="M7Q-bZ-GzO" secondAttribute="bottom" constant="8" id="qY1-Mi-t2V"/>
                             <constraint firstItem="DSd-1x-l1J" firstAttribute="top" secondItem="23p-l3-8O0" secondAttribute="bottom" constant="8" id="rda-Py-nFt"/>
                             <constraint firstAttribute="centerX" secondItem="23p-l3-8O0" secondAttribute="centerX" id="tfT-RM-i3E"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="ApD-Xb-cvJ"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="botLayerOneColor" destination="ZdT-mO-Fss" id="3wb-CY-Ayq"/>
@@ -571,6 +589,7 @@
                         <outlet property="botLayerTwoBody" destination="uNq-Rr-FUR" id="okb-2D-fXW"/>
                         <outlet property="cmdChange" destination="7Ot-ph-Uoi" id="Owi-OU-9tD"/>
                         <outlet property="cmdFacebook" destination="rmb-VE-D3J" id="ARY-kw-4fM"/>
+                        <outlet property="cmdInfoButton" destination="kFv-5U-Ulu" id="fmG-VP-06t"/>
                         <outlet property="cmdMail" destination="dfd-jm-1Lc" id="MoN-Xp-edi"/>
                         <outlet property="cmdMessage" destination="zRi-R7-p36" id="vv8-1W-tLu"/>
                         <outlet property="cmdTwitter" destination="pFU-6t-zHG" id="WIv-Cg-QpL"/>

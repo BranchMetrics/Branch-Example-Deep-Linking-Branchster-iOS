@@ -33,6 +33,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *cmdMail;
 @property (weak, nonatomic) IBOutlet UIButton *cmdTwitter;
 @property (weak, nonatomic) IBOutlet UIButton *cmdFacebook;
+@property (weak, nonatomic) IBOutlet UIButton *cmdInfoButton;
 
 @property (weak, nonatomic) IBOutlet UITextView *etxtUrl;
 
@@ -172,6 +173,8 @@ static CGFloat MONSTER_HEIGHT_FIVE = 0.55f;
     [self.view layoutSubviews];
 }
 
+#pragma mark - Button Actions
+
 - (IBAction)cmdMessageClick:(id)sender {
     // track that the user clicked the share via sms button and pass in the monster meta data
     [[Branch getInstance] userCompletedAction:@"share_sms_click" withState:self.monsterMetadata];
@@ -303,6 +306,12 @@ static CGFloat MONSTER_HEIGHT_FIVE = 0.55f;
     
 }
 
+- (IBAction)cmdInfoClick:(id)sender {
+
+}
+
+#pragma mark - Facebook
+
 - (void)sessionStateChanged:(FBSession *)session state:(FBSessionState) state error:(NSError *)error {
     switch (state)
     {   case FBSessionStateOpen:
@@ -386,6 +395,8 @@ static CGFloat MONSTER_HEIGHT_FIVE = 0.55f;
 
 }
 
+#pragma mark - Helper methods
+
 // A function for parsing URL parameters returned by the Feed Dialog.
 - (NSDictionary*)parseURLParams:(NSString *)query {
     NSArray *pairs = [query componentsSeparatedByString:@"&"];
@@ -398,6 +409,8 @@ static CGFloat MONSTER_HEIGHT_FIVE = 0.55f;
     }
     return params;
 }
+
+#pragma mark - MFMessageComposeViewControllerProtocol
 
 - (void)messageComposeViewController:(MFMessageComposeViewController *)controller
                  didFinishWithResult:(MessageComposeResult)result {
