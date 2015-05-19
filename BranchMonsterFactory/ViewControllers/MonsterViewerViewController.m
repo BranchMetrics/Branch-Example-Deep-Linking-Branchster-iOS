@@ -34,7 +34,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *cmdMail;
 @property (weak, nonatomic) IBOutlet UIButton *cmdTwitter;
 @property (weak, nonatomic) IBOutlet UIButton *cmdFacebook;
-@property (weak, nonatomic) IBOutlet UIButton *cmdInfoButton;
 
 @property (weak, nonatomic) IBOutlet UITextView *etxtUrl;
 
