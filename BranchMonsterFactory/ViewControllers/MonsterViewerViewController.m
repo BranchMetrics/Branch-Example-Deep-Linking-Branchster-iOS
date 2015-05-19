@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Branch, Inc All rights reserved.
 //
 
+#import "BranchInfoViewController.h"
 #import "NetworkProgressBar.h"
 #import "MonsterViewerViewController.h"
 #import "MonsterPartsFactory.h"
@@ -306,9 +307,10 @@ static CGFloat MONSTER_HEIGHT_FIVE = 0.55f;
     
 }
 
-- (IBAction)cmdInfoClick:(id)sender {
-
-}
+/*- (IBAction)cmdInfoClick:(id)sender {
+    BranchInfoViewController *vc = [[BranchInfoViewController alloc] init];
+    [self performSegueWithIdentifier:<#(NSString *)#> sender:vc];
+}*/
 
 #pragma mark - Facebook
 
