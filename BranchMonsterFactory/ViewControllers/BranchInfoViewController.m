@@ -31,4 +31,8 @@
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
+-(IBAction)goToWebTapped:(id)sender {
+    NSURL *url = [NSURL URLWithString:@"https://branch.io"];
+    [[UIApplication sharedApplication]openURL:url];
+}
 @end

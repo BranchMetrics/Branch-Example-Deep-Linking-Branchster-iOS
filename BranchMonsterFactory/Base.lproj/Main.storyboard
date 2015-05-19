@@ -630,12 +630,71 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pzz-hW-P62">
+                                <rect key="frame" x="16" y="75" width="568" height="150"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="J2r-6Z-KLj"/>
+                                </constraints>
+                                <attributedString key="attributedText">
+                                    <fragment>
+                                        <string key="content">This app showcases one feature of Branch links: content sharing. Branch content sharing drives conversions by taking users to the right page with every link click - even users who have to download your app are automatically taken to that page inside the app after install. </string>
+                                        <attributes>
+                                            <font key="NSFont" size="14" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VGL-MZ-yf0">
+                                <rect key="frame" x="16" y="245" width="568" height="175"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="175" id="2uh-4x-TQH"/>
+                                </constraints>
+                                <attributedString key="attributedText">
+                                    <fragment>
+                                        <string key="content">Branch link technology is the foundation of our free, powerful linking and tracking platform that offers install attribution, user referral programs, content sharing, download banners and more to drive app engagement and growth. Sign up and see what you can build!</string>
+                                        <attributes>
+                                            <font key="NSFont" size="14" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DSG-V1-U2u">
+                                <rect key="frame" x="16" y="465" width="563" height="30"/>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Check us out on the web!">
+                                            <attributes>
+                                                <font key="NSFont" size="15" name="HelveticaNeue"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                                <connections>
+                                    <action selector="goToWebTapped:" destination="rab-AQ-UbK" eventType="touchUpInside" id="1SD-Kr-Yor"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="pzz-hW-P62" firstAttribute="centerX" secondItem="hGD-u8-B4m" secondAttribute="centerX" id="3YY-e6-7BA"/>
+                            <constraint firstItem="Ghe-JY-K6h" firstAttribute="top" secondItem="DSG-V1-U2u" secondAttribute="bottom" constant="61" id="4ME-w0-5XU"/>
+                            <constraint firstItem="DSG-V1-U2u" firstAttribute="top" secondItem="VGL-MZ-yf0" secondAttribute="bottom" constant="45" id="8cA-YZ-fAl"/>
                             <constraint firstItem="hGD-u8-B4m" firstAttribute="leading" secondItem="1yI-dp-i8k" secondAttribute="leading" id="DnB-iA-AF4"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="DSG-V1-U2u" secondAttribute="trailing" constant="5" id="Fkn-zr-zur"/>
                             <constraint firstAttribute="centerX" secondItem="hGD-u8-B4m" secondAttribute="centerX" id="LyN-vf-2G2"/>
+                            <constraint firstItem="VGL-MZ-yf0" firstAttribute="leading" secondItem="pzz-hW-P62" secondAttribute="leading" id="Wtt-m8-n4g"/>
                             <constraint firstItem="hGD-u8-B4m" firstAttribute="top" secondItem="QKa-Ku-2jo" secondAttribute="bottom" id="ZCB-QF-LAY"/>
+                            <constraint firstItem="pzz-hW-P62" firstAttribute="top" secondItem="hGD-u8-B4m" secondAttribute="bottom" constant="11" id="ajv-9m-0wx"/>
+                            <constraint firstItem="VGL-MZ-yf0" firstAttribute="trailing" secondItem="pzz-hW-P62" secondAttribute="trailing" id="b7J-Jg-hmj"/>
+                            <constraint firstItem="VGL-MZ-yf0" firstAttribute="top" secondItem="1yI-dp-i8k" secondAttribute="top" constant="245" id="viO-Np-LgE"/>
+                            <constraint firstItem="DSG-V1-U2u" firstAttribute="leading" secondItem="VGL-MZ-yf0" secondAttribute="leading" id="w2C-hQ-trd"/>
+                            <constraint firstItem="pzz-hW-P62" firstAttribute="leading" secondItem="1yI-dp-i8k" secondAttribute="leadingMargin" id="zSu-Nu-o8V"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
