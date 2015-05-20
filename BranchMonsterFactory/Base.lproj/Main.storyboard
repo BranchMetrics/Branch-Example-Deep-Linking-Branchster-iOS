@@ -593,7 +593,6 @@
                         <outlet property="botLayerTwoBody" destination="uNq-Rr-FUR" id="okb-2D-fXW"/>
                         <outlet property="cmdChange" destination="7Ot-ph-Uoi" id="Owi-OU-9tD"/>
                         <outlet property="cmdFacebook" destination="rmb-VE-D3J" id="ARY-kw-4fM"/>
-                        <outlet property="cmdInfoButton" destination="kFv-5U-Ulu" id="fmG-VP-06t"/>
                         <outlet property="cmdMail" destination="dfd-jm-1Lc" id="MoN-Xp-edi"/>
                         <outlet property="cmdMessage" destination="zRi-R7-p36" id="vv8-1W-tLu"/>
                         <outlet property="cmdTwitter" destination="pFU-6t-zHG" id="WIv-Cg-QpL"/>
