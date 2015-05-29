@@ -38,6 +38,7 @@
 @property (weak, nonatomic) IBOutlet UITextView *etxtUrl;
 
 @property (weak, nonatomic) IBOutlet UIButton *cmdChange;
+@property (weak, nonatomic) IBOutlet UIButton *cmdInfo;
 
 @end
 
@@ -73,6 +74,7 @@ static CGFloat MONSTER_HEIGHT_FIVE = 0.55f;
                                       @"monster_name"]];
     
     [self.cmdChange.layer setCornerRadius:3.0];
+    [self.cmdInfo.layer setCornerRadius:3.0];
     
     self.progressBar = [[NetworkProgressBar alloc] initWithFrame:self.view.frame andMessage:@"preparing your Branchster.."];
     [self.progressBar show];
