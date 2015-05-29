@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Branch, Inc All rights reserved.
 //
 
+#import "BranchInfoViewController.h"
 #import "NetworkProgressBar.h"
 #import "MonsterViewerViewController.h"
 #import "MonsterPartsFactory.h"
@@ -37,6 +38,7 @@
 @property (weak, nonatomic) IBOutlet UITextView *etxtUrl;
 
 @property (weak, nonatomic) IBOutlet UIButton *cmdChange;
+@property (weak, nonatomic) IBOutlet UIButton *cmdInfo;
 
 @end
 
@@ -72,6 +74,7 @@ static CGFloat MONSTER_HEIGHT_FIVE = 0.55f;
                                       @"monster_name"]];
     
     [self.cmdChange.layer setCornerRadius:3.0];
+    [self.cmdInfo.layer setCornerRadius:3.0];
     
     self.progressBar = [[NetworkProgressBar alloc] initWithFrame:self.view.frame andMessage:@"preparing your Branchster.."];
     [self.progressBar show];
@@ -171,6 +174,8 @@ static CGFloat MONSTER_HEIGHT_FIVE = 0.55f;
     self.cmdChange.frame = cmdFrame;
     [self.view layoutSubviews];
 }
+
+#pragma mark - Button Actions
 
 - (IBAction)cmdMessageClick:(id)sender {
     // track that the user clicked the share via sms button and pass in the monster meta data
@@ -303,6 +308,8 @@ static CGFloat MONSTER_HEIGHT_FIVE = 0.55f;
     
 }
 
+#pragma mark - Facebook
+
 - (void)sessionStateChanged:(FBSession *)session state:(FBSessionState) state error:(NSError *)error {
     switch (state)
     {   case FBSessionStateOpen:
@@ -386,6 +393,8 @@ static CGFloat MONSTER_HEIGHT_FIVE = 0.55f;
 
 }
 
+#pragma mark - Helper methods
+
 // A function for parsing URL parameters returned by the Feed Dialog.
 - (NSDictionary*)parseURLParams:(NSString *)query {
     NSArray *pairs = [query componentsSeparatedByString:@"&"];
@@ -398,6 +407,8 @@ static CGFloat MONSTER_HEIGHT_FIVE = 0.55f;
     }
     return params;
 }
+
+#pragma mark - MFMessageComposeViewControllerProtocol
 
 - (void)messageComposeViewController:(MFMessageComposeViewController *)controller
                  didFinishWithResult:(MessageComposeResult)result {
