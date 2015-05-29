@@ -306,11 +306,6 @@ static CGFloat MONSTER_HEIGHT_FIVE = 0.55f;
     
 }
 
-/*- (IBAction)cmdInfoClick:(id)sender {
-    BranchInfoViewController *vc = [[BranchInfoViewController alloc] init];
-    [self performSegueWithIdentifier:<#(NSString *)#> sender:vc];
-}*/
-
 #pragma mark - Facebook
 
 - (void)sessionStateChanged:(FBSession *)session state:(FBSessionState) state error:(NSError *)error {
