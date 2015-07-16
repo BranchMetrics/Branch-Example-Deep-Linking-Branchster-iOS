@@ -11,6 +11,7 @@
 		1596C1D71AC23CFD00336DD2 /* BNCLinkData.m in Sources */ = {isa = PBXBuildFile; fileRef = 1596C1D51AC23CFD00336DD2 /* BNCLinkData.m */; };
 		1596C1DA1AC23D1F00336DD2 /* BranchActivityItemProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 1596C1D91AC23D1F00336DD2 /* BranchActivityItemProvider.m */; };
 		15B4B8141B0AB016002AA93E /* BranchInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15B4B8131B0AB016002AA93E /* BranchInfoViewController.m */; };
+		15FDC79C1B586E7400A2F61F /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15FDC79B1B586E7400A2F61F /* FacebookSDK.framework */; };
 		464197261B0683AF00869460 /* BNCEncodingUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 464197251B0683AF00869460 /* BNCEncodingUtils.m */; };
 		46FD92CE1A9AD0A70028A385 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67FD945E1A4D250C00D6BFA8 /* Main.storyboard */; };
 		6705921019BBB7430039DAE1 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6705920F19BBB7430039DAE1 /* AdSupport.framework */; };
@@ -29,7 +30,6 @@
 		67FD94CD1A4D250C00D6BFA8 /* BNCSystemObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 67FD94751A4D250C00D6BFA8 /* BNCSystemObserver.m */; };
 		67FD94CE1A4D250C00D6BFA8 /* Branch.m in Sources */ = {isa = PBXBuildFile; fileRef = 67FD94781A4D250C00D6BFA8 /* Branch.m */; };
 		67FD94CF1A4D250C00D6BFA8 /* BranchServerInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 67FD947A1A4D250C00D6BFA8 /* BranchServerInterface.m */; };
-		67FD94D11A4D250C00D6BFA8 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67FD947D1A4D250C00D6BFA8 /* FacebookSDK.framework */; };
 		67FD94D21A4D250C00D6BFA8 /* MonsterPartsFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 67FD94801A4D250C00D6BFA8 /* MonsterPartsFactory.m */; };
 		67FD94D31A4D250C00D6BFA8 /* MonsterPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 67FD94821A4D250C00D6BFA8 /* MonsterPreferences.m */; };
 		67FD94D51A4D250C00D6BFA8 /* 250.png in Resources */ = {isa = PBXBuildFile; fileRef = 67FD94851A4D250C00D6BFA8 /* 250.png */; };
@@ -95,6 +95,7 @@
 		1596C1D91AC23D1F00336DD2 /* BranchActivityItemProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BranchActivityItemProvider.m; sourceTree = "<group>"; };
 		15B4B8121B0AB016002AA93E /* BranchInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BranchInfoViewController.h; sourceTree = "<group>"; };
 		15B4B8131B0AB016002AA93E /* BranchInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BranchInfoViewController.m; sourceTree = "<group>"; };
+		15FDC79B1B586E7400A2F61F /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = BranchMonsterFactory/ExternalLibs/FacebookSDK.framework; sourceTree = SOURCE_ROOT; };
 		464197241B0683AF00869460 /* BNCEncodingUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNCEncodingUtils.h; sourceTree = "<group>"; };
 		464197251B0683AF00869460 /* BNCEncodingUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNCEncodingUtils.m; sourceTree = "<group>"; };
 		670591E919BBAC630039DAE1 /* Branchsters.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Branchsters.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -129,7 +130,6 @@
 		67FD94781A4D250C00D6BFA8 /* Branch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Branch.m; sourceTree = "<group>"; };
 		67FD94791A4D250C00D6BFA8 /* BranchServerInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BranchServerInterface.h; sourceTree = "<group>"; };
 		67FD947A1A4D250C00D6BFA8 /* BranchServerInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BranchServerInterface.m; sourceTree = "<group>"; };
-		67FD947D1A4D250C00D6BFA8 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		67FD947F1A4D250C00D6BFA8 /* MonsterPartsFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonsterPartsFactory.h; sourceTree = "<group>"; };
 		67FD94801A4D250C00D6BFA8 /* MonsterPartsFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonsterPartsFactory.m; sourceTree = "<group>"; };
 		67FD94811A4D250C00D6BFA8 /* MonsterPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonsterPreferences.h; sourceTree = "<group>"; };
@@ -199,10 +199,10 @@
 			files = (
 				67FD950A1A4D25D100D6BFA8 /* CoreTelephony.framework in Frameworks */,
 				6705924019BBEBC40039DAE1 /* Social.framework in Frameworks */,
-				67FD94D11A4D250C00D6BFA8 /* FacebookSDK.framework in Frameworks */,
 				6705923E19BBE22D0039DAE1 /* MessageUI.framework in Frameworks */,
 				6705923B19BBD0060039DAE1 /* UIKit.framework in Frameworks */,
 				6705921019BBB7430039DAE1 /* AdSupport.framework in Frameworks */,
+				15FDC79C1B586E7400A2F61F /* FacebookSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,7 +263,6 @@
 			isa = PBXGroup;
 			children = (
 				67FD94661A4D250C00D6BFA8 /* Branch-SDK */,
-				67FD947D1A4D250C00D6BFA8 /* FacebookSDK.framework */,
 			);
 			path = ExternalLibs;
 			sourceTree = "<group>";
@@ -299,6 +298,7 @@
 				67FD94781A4D250C00D6BFA8 /* Branch.m */,
 				67FD94791A4D250C00D6BFA8 /* BranchServerInterface.h */,
 				67FD947A1A4D250C00D6BFA8 /* BranchServerInterface.m */,
+				15FDC79B1B586E7400A2F61F /* FacebookSDK.framework */,
 			);
 			path = "Branch-SDK";
 			sourceTree = "<group>";
@@ -461,7 +461,7 @@
 				TargetAttributes = {
 					670591E819BBAC630039DAE1 = {
 						CreatedOnToolsVersion = 6.0;
-						DevelopmentTeam = 6B2DFWM843;
+						DevelopmentTeam = T5TQ36Q2SQ;
 					};
 				};
 			};
