@@ -40,6 +40,8 @@
 	<string>Branch Monster Factory</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>ApptimizeAppKey</key>
+	<string>BXCjusygmpczu5gsDTBwvFhwfWHhW2c</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -58,6 +60,6 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>branch_key</key>
-	<string>key_live_gchnKkd3l3m9YBPP2d73jmfejkcgVjgM</string>
+	<string>key_live_adlzAy7wQ23JFNs2SttZXbmhcdnFxqOk</string>
 </dict>
 </plist>

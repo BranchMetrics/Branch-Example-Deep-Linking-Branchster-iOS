@@ -7,12 +7,19 @@
 //
 
 #import "BranchInfoViewController.h"
+#import <Apptimize/Apptimize.h>
 
 @interface BranchInfoViewController ()
 
 @end
 
 @implementation BranchInfoViewController
+
+-(void)viewDidLoad{
+    [super viewDidLoad];
+    [Apptimize track:@"viewed_branch_info"];
+
+}
 
 #pragma mark - Buttons
 

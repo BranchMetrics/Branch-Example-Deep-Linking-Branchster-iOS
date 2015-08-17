@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "Branch.h"
+#import <Apptimize/Apptimize.h>
 #import "MonsterPreferences.h"
 #import <FacebookSDK/FacebookSDK.h>
 
@@ -24,7 +25,22 @@
     // The deep link handler is called on every install/open to tell you if the user had just clicked a deep link
     Branch *branch = [Branch getInstance];
     [branch initSessionWithLaunchOptions:launchOptions andRegisterDeepLinkHandler:^(NSDictionary *params, NSError *error){
-        
+        NSLog(@"params= %@", params);
+        NSLog(@"error= %@", error);
+        // set Attribute inside callback
+        //if ([params objectForKey:@"channel"] != nil) {
+        [Apptimize setUserAttributeString:@"facebook" forKey:@"channel"];
+        //}
+
+        [Apptimize runTest:@"Facebook vs Twitter #1" withBaseline:^{
+            // baseline
+            NSLog(@"baseline targeting");
+            [MonsterPreferences setMonsterName:@"not exciting monster!"];
+        } andVariations:@{@"variation1": ^{
+            NSLog(@"variant 1 targeting");
+            [MonsterPreferences setMonsterName:@"exciting monster!"];
+        }}];
+
         UINavigationController *navController = (UINavigationController *)self.window.rootViewController;
         NSString * storyboardName = @"Main";
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];

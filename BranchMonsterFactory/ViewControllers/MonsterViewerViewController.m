@@ -12,6 +12,7 @@
 #import "MonsterPartsFactory.h"
 #import "MonsterPreferences.h"
 #import "Branch.h"
+#import <Apptimize/Apptimize.h>
 #import <MessageUI/MessageUI.h>
 #import <Social/Social.h>
 #import <FacebookSDK/FacebookSDK.h>
@@ -82,6 +83,8 @@ static CGFloat MONSTER_HEIGHT_FIVE = 0.55f;
     
     // track that the user viewed the monster view page
     [[Branch getInstance] userCompletedAction:@"monster_view" withState:self.monsterMetadata];
+    // Apptimize portion to track the same event
+    [Apptimize track:@"monster_view"];
     
     // load a URL just for display on the viewer page
     [[Branch getInstance] getContentUrlWithParams:[self prepareBranchDict] andChannel:@"viewer" andCallback:^(NSString *url, NSError *error) {

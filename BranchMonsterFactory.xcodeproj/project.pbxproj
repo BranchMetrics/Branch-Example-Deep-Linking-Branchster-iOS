@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		158600F51B7D3CCB00B0AEF5 /* Apptimize.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 158600F41B7D3CCB00B0AEF5 /* Apptimize.framework */; };
+		158600F71B7D405700B0AEF5 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 158600F61B7D405700B0AEF5 /* Security.framework */; };
+		158600F91B7D405D00B0AEF5 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 158600F81B7D405D00B0AEF5 /* CFNetwork.framework */; };
 		1596C1D61AC23CFD00336DD2 /* BNCLinkCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 1596C1D31AC23CFD00336DD2 /* BNCLinkCache.m */; };
 		1596C1D71AC23CFD00336DD2 /* BNCLinkData.m in Sources */ = {isa = PBXBuildFile; fileRef = 1596C1D51AC23CFD00336DD2 /* BNCLinkData.m */; };
 		1596C1DA1AC23D1F00336DD2 /* BranchActivityItemProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 1596C1D91AC23D1F00336DD2 /* BranchActivityItemProvider.m */; };
@@ -87,6 +90,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		158600F41B7D3CCB00B0AEF5 /* Apptimize.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Apptimize.framework; sourceTree = "<group>"; };
+		158600F61B7D405700B0AEF5 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		158600F81B7D405D00B0AEF5 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		1596C1D21AC23CFD00336DD2 /* BNCLinkCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNCLinkCache.h; sourceTree = "<group>"; };
 		1596C1D31AC23CFD00336DD2 /* BNCLinkCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNCLinkCache.m; sourceTree = "<group>"; };
 		1596C1D41AC23CFD00336DD2 /* BNCLinkData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNCLinkData.h; sourceTree = "<group>"; };
@@ -197,11 +203,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				158600F91B7D405D00B0AEF5 /* CFNetwork.framework in Frameworks */,
+				158600F71B7D405700B0AEF5 /* Security.framework in Frameworks */,
 				67FD950A1A4D25D100D6BFA8 /* CoreTelephony.framework in Frameworks */,
 				6705924019BBEBC40039DAE1 /* Social.framework in Frameworks */,
 				6705923E19BBE22D0039DAE1 /* MessageUI.framework in Frameworks */,
 				6705923B19BBD0060039DAE1 /* UIKit.framework in Frameworks */,
 				6705921019BBB7430039DAE1 /* AdSupport.framework in Frameworks */,
+				158600F51B7D3CCB00B0AEF5 /* Apptimize.framework in Frameworks */,
 				15FDC79C1B586E7400A2F61F /* FacebookSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -212,7 +221,10 @@
 		670591E019BBAC630039DAE1 = {
 			isa = PBXGroup;
 			children = (
+				158600F81B7D405D00B0AEF5 /* CFNetwork.framework */,
+				158600F61B7D405700B0AEF5 /* Security.framework */,
 				67FD945B1A4D250C00D6BFA8 /* BranchMonsterFactory */,
+				158600F41B7D3CCB00B0AEF5 /* Apptimize.framework */,
 				67FD95091A4D25D100D6BFA8 /* CoreTelephony.framework */,
 				6705923F19BBEBC40039DAE1 /* Social.framework */,
 				6705923D19BBE22D0039DAE1 /* MessageUI.framework */,
@@ -675,9 +687,11 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/BranchMonsterFactory",
 					"$(PROJECT_DIR)/BranchMonsterFactory/ExternalLibs",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/BranchMonsterFactory/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = Branchsters;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -695,9 +709,11 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/BranchMonsterFactory",
 					"$(PROJECT_DIR)/BranchMonsterFactory/ExternalLibs",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/BranchMonsterFactory/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = Branchsters;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
