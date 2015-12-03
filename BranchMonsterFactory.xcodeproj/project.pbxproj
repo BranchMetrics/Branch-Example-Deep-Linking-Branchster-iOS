@@ -7,12 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1596C1D61AC23CFD00336DD2 /* BNCLinkCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 1596C1D31AC23CFD00336DD2 /* BNCLinkCache.m */; };
-		1596C1D71AC23CFD00336DD2 /* BNCLinkData.m in Sources */ = {isa = PBXBuildFile; fileRef = 1596C1D51AC23CFD00336DD2 /* BNCLinkData.m */; };
-		1596C1DA1AC23D1F00336DD2 /* BranchActivityItemProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 1596C1D91AC23D1F00336DD2 /* BranchActivityItemProvider.m */; };
 		15B4B8141B0AB016002AA93E /* BranchInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15B4B8131B0AB016002AA93E /* BranchInfoViewController.m */; };
 		15FDC79C1B586E7400A2F61F /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15FDC79B1B586E7400A2F61F /* FacebookSDK.framework */; };
-		464197261B0683AF00869460 /* BNCEncodingUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 464197251B0683AF00869460 /* BNCEncodingUtils.m */; };
 		46FD92CE1A9AD0A70028A385 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67FD945E1A4D250C00D6BFA8 /* Main.storyboard */; };
 		6705921019BBB7430039DAE1 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6705920F19BBB7430039DAE1 /* AdSupport.framework */; };
 		6705923B19BBD0060039DAE1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6705923A19BBD0060039DAE1 /* UIKit.framework */; };
@@ -21,15 +17,6 @@
 		67FD94C31A4D250C00D6BFA8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 67FD945D1A4D250C00D6BFA8 /* AppDelegate.m */; };
 		67FD94C51A4D250C00D6BFA8 /* ImageCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 67FD94621A4D250C00D6BFA8 /* ImageCollectionViewCell.m */; };
 		67FD94C61A4D250C00D6BFA8 /* NetworkProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 67FD94641A4D250C00D6BFA8 /* NetworkProgressBar.m */; };
-		67FD94C71A4D250C00D6BFA8 /* BNCError.m in Sources */ = {isa = PBXBuildFile; fileRef = 67FD94691A4D250C00D6BFA8 /* BNCError.m */; };
-		67FD94C81A4D250C00D6BFA8 /* BNCPreferenceHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 67FD946B1A4D250C00D6BFA8 /* BNCPreferenceHelper.m */; };
-		67FD94C91A4D250C00D6BFA8 /* BNCServerInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 67FD946D1A4D250C00D6BFA8 /* BNCServerInterface.m */; };
-		67FD94CA1A4D250C00D6BFA8 /* BNCServerRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 67FD946F1A4D250C00D6BFA8 /* BNCServerRequest.m */; };
-		67FD94CB1A4D250C00D6BFA8 /* BNCServerRequestQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 67FD94711A4D250C00D6BFA8 /* BNCServerRequestQueue.m */; };
-		67FD94CC1A4D250C00D6BFA8 /* BNCServerResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 67FD94731A4D250C00D6BFA8 /* BNCServerResponse.m */; };
-		67FD94CD1A4D250C00D6BFA8 /* BNCSystemObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 67FD94751A4D250C00D6BFA8 /* BNCSystemObserver.m */; };
-		67FD94CE1A4D250C00D6BFA8 /* Branch.m in Sources */ = {isa = PBXBuildFile; fileRef = 67FD94781A4D250C00D6BFA8 /* Branch.m */; };
-		67FD94CF1A4D250C00D6BFA8 /* BranchServerInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 67FD947A1A4D250C00D6BFA8 /* BranchServerInterface.m */; };
 		67FD94D21A4D250C00D6BFA8 /* MonsterPartsFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 67FD94801A4D250C00D6BFA8 /* MonsterPartsFactory.m */; };
 		67FD94D31A4D250C00D6BFA8 /* MonsterPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 67FD94821A4D250C00D6BFA8 /* MonsterPreferences.m */; };
 		67FD94D51A4D250C00D6BFA8 /* 250.png in Resources */ = {isa = PBXBuildFile; fileRef = 67FD94851A4D250C00D6BFA8 /* 250.png */; };
@@ -84,20 +71,14 @@
 		67FD95071A4D250C00D6BFA8 /* MonsterViewerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67FD94C01A4D250C00D6BFA8 /* MonsterViewerViewController.m */; };
 		67FD95081A4D250C00D6BFA8 /* SplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67FD94C21A4D250C00D6BFA8 /* SplashViewController.m */; };
 		67FD950A1A4D25D100D6BFA8 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67FD95091A4D25D100D6BFA8 /* CoreTelephony.framework */; };
+		DE39AB29749601CBEF9BABEC /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CAE1A88AD1D19736F206464 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1596C1D21AC23CFD00336DD2 /* BNCLinkCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNCLinkCache.h; sourceTree = "<group>"; };
-		1596C1D31AC23CFD00336DD2 /* BNCLinkCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNCLinkCache.m; sourceTree = "<group>"; };
-		1596C1D41AC23CFD00336DD2 /* BNCLinkData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNCLinkData.h; sourceTree = "<group>"; };
-		1596C1D51AC23CFD00336DD2 /* BNCLinkData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNCLinkData.m; sourceTree = "<group>"; };
-		1596C1D81AC23D1F00336DD2 /* BranchActivityItemProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BranchActivityItemProvider.h; sourceTree = "<group>"; };
-		1596C1D91AC23D1F00336DD2 /* BranchActivityItemProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BranchActivityItemProvider.m; sourceTree = "<group>"; };
+		0CAE1A88AD1D19736F206464 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		15B4B8121B0AB016002AA93E /* BranchInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BranchInfoViewController.h; sourceTree = "<group>"; };
 		15B4B8131B0AB016002AA93E /* BranchInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BranchInfoViewController.m; sourceTree = "<group>"; };
 		15FDC79B1B586E7400A2F61F /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = BranchMonsterFactory/ExternalLibs/FacebookSDK.framework; sourceTree = SOURCE_ROOT; };
-		464197241B0683AF00869460 /* BNCEncodingUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNCEncodingUtils.h; sourceTree = "<group>"; };
-		464197251B0683AF00869460 /* BNCEncodingUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNCEncodingUtils.m; sourceTree = "<group>"; };
 		670591E919BBAC630039DAE1 /* Branchsters.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Branchsters.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6705920F19BBB7430039DAE1 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		6705923A19BBD0060039DAE1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -110,26 +91,6 @@
 		67FD94621A4D250C00D6BFA8 /* ImageCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageCollectionViewCell.m; sourceTree = "<group>"; };
 		67FD94631A4D250C00D6BFA8 /* NetworkProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkProgressBar.h; sourceTree = "<group>"; };
 		67FD94641A4D250C00D6BFA8 /* NetworkProgressBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkProgressBar.m; sourceTree = "<group>"; };
-		67FD94671A4D250C00D6BFA8 /* BNCConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNCConfig.h; sourceTree = "<group>"; };
-		67FD94681A4D250C00D6BFA8 /* BNCError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNCError.h; sourceTree = "<group>"; };
-		67FD94691A4D250C00D6BFA8 /* BNCError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNCError.m; sourceTree = "<group>"; };
-		67FD946A1A4D250C00D6BFA8 /* BNCPreferenceHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNCPreferenceHelper.h; sourceTree = "<group>"; };
-		67FD946B1A4D250C00D6BFA8 /* BNCPreferenceHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNCPreferenceHelper.m; sourceTree = "<group>"; };
-		67FD946C1A4D250C00D6BFA8 /* BNCServerInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNCServerInterface.h; sourceTree = "<group>"; };
-		67FD946D1A4D250C00D6BFA8 /* BNCServerInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNCServerInterface.m; sourceTree = "<group>"; };
-		67FD946E1A4D250C00D6BFA8 /* BNCServerRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNCServerRequest.h; sourceTree = "<group>"; };
-		67FD946F1A4D250C00D6BFA8 /* BNCServerRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNCServerRequest.m; sourceTree = "<group>"; };
-		67FD94701A4D250C00D6BFA8 /* BNCServerRequestQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNCServerRequestQueue.h; sourceTree = "<group>"; };
-		67FD94711A4D250C00D6BFA8 /* BNCServerRequestQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNCServerRequestQueue.m; sourceTree = "<group>"; };
-		67FD94721A4D250C00D6BFA8 /* BNCServerResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNCServerResponse.h; sourceTree = "<group>"; };
-		67FD94731A4D250C00D6BFA8 /* BNCServerResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNCServerResponse.m; sourceTree = "<group>"; };
-		67FD94741A4D250C00D6BFA8 /* BNCSystemObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNCSystemObserver.h; sourceTree = "<group>"; };
-		67FD94751A4D250C00D6BFA8 /* BNCSystemObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNCSystemObserver.m; sourceTree = "<group>"; };
-		67FD94761A4D250C00D6BFA8 /* Branch-SDK-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Branch-SDK-Prefix.pch"; sourceTree = "<group>"; };
-		67FD94771A4D250C00D6BFA8 /* Branch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Branch.h; sourceTree = "<group>"; };
-		67FD94781A4D250C00D6BFA8 /* Branch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Branch.m; sourceTree = "<group>"; };
-		67FD94791A4D250C00D6BFA8 /* BranchServerInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BranchServerInterface.h; sourceTree = "<group>"; };
-		67FD947A1A4D250C00D6BFA8 /* BranchServerInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BranchServerInterface.m; sourceTree = "<group>"; };
 		67FD947F1A4D250C00D6BFA8 /* MonsterPartsFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonsterPartsFactory.h; sourceTree = "<group>"; };
 		67FD94801A4D250C00D6BFA8 /* MonsterPartsFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonsterPartsFactory.m; sourceTree = "<group>"; };
 		67FD94811A4D250C00D6BFA8 /* MonsterPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonsterPreferences.h; sourceTree = "<group>"; };
@@ -190,6 +151,8 @@
 		67FD94C11A4D250C00D6BFA8 /* SplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashViewController.h; sourceTree = "<group>"; };
 		67FD94C21A4D250C00D6BFA8 /* SplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashViewController.m; sourceTree = "<group>"; };
 		67FD95091A4D25D100D6BFA8 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		91620A97EAA606823E8B4D87 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		C0526AD7DCC012AB5EE53EDD /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,12 +166,21 @@
 				6705923B19BBD0060039DAE1 /* UIKit.framework in Frameworks */,
 				6705921019BBB7430039DAE1 /* AdSupport.framework in Frameworks */,
 				15FDC79C1B586E7400A2F61F /* FacebookSDK.framework in Frameworks */,
+				DE39AB29749601CBEF9BABEC /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		30AFEC2F630DF1B7571FF9D4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0CAE1A88AD1D19736F206464 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		670591E019BBAC630039DAE1 = {
 			isa = PBXGroup;
 			children = (
@@ -218,7 +190,10 @@
 				6705923D19BBE22D0039DAE1 /* MessageUI.framework */,
 				6705923A19BBD0060039DAE1 /* UIKit.framework */,
 				6705920F19BBB7430039DAE1 /* AdSupport.framework */,
+				15FDC79B1B586E7400A2F61F /* FacebookSDK.framework */,
 				670591EA19BBAC630039DAE1 /* Products */,
+				E1B8163819D31FC774E4F73E /* Pods */,
+				30AFEC2F630DF1B7571FF9D4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -238,7 +213,6 @@
 				67FD945E1A4D250C00D6BFA8 /* Main.storyboard */,
 				67FD94BC1A4D250C00D6BFA8 /* ViewControllers */,
 				67FD94601A4D250C00D6BFA8 /* CustomViews */,
-				67FD94651A4D250C00D6BFA8 /* ExternalLibs */,
 				67FD947E1A4D250C00D6BFA8 /* Helpers */,
 				67FD94841A4D250C00D6BFA8 /* Images */,
 				67FD94B91A4D250C00D6BFA8 /* Images.xcassets */,
@@ -257,50 +231,6 @@
 				67FD94641A4D250C00D6BFA8 /* NetworkProgressBar.m */,
 			);
 			path = CustomViews;
-			sourceTree = "<group>";
-		};
-		67FD94651A4D250C00D6BFA8 /* ExternalLibs */ = {
-			isa = PBXGroup;
-			children = (
-				67FD94661A4D250C00D6BFA8 /* Branch-SDK */,
-			);
-			path = ExternalLibs;
-			sourceTree = "<group>";
-		};
-		67FD94661A4D250C00D6BFA8 /* Branch-SDK */ = {
-			isa = PBXGroup;
-			children = (
-				464197241B0683AF00869460 /* BNCEncodingUtils.h */,
-				464197251B0683AF00869460 /* BNCEncodingUtils.m */,
-				1596C1D81AC23D1F00336DD2 /* BranchActivityItemProvider.h */,
-				1596C1D91AC23D1F00336DD2 /* BranchActivityItemProvider.m */,
-				1596C1D21AC23CFD00336DD2 /* BNCLinkCache.h */,
-				1596C1D31AC23CFD00336DD2 /* BNCLinkCache.m */,
-				1596C1D41AC23CFD00336DD2 /* BNCLinkData.h */,
-				1596C1D51AC23CFD00336DD2 /* BNCLinkData.m */,
-				67FD94671A4D250C00D6BFA8 /* BNCConfig.h */,
-				67FD94681A4D250C00D6BFA8 /* BNCError.h */,
-				67FD94691A4D250C00D6BFA8 /* BNCError.m */,
-				67FD946A1A4D250C00D6BFA8 /* BNCPreferenceHelper.h */,
-				67FD946B1A4D250C00D6BFA8 /* BNCPreferenceHelper.m */,
-				67FD946C1A4D250C00D6BFA8 /* BNCServerInterface.h */,
-				67FD946D1A4D250C00D6BFA8 /* BNCServerInterface.m */,
-				67FD946E1A4D250C00D6BFA8 /* BNCServerRequest.h */,
-				67FD946F1A4D250C00D6BFA8 /* BNCServerRequest.m */,
-				67FD94701A4D250C00D6BFA8 /* BNCServerRequestQueue.h */,
-				67FD94711A4D250C00D6BFA8 /* BNCServerRequestQueue.m */,
-				67FD94721A4D250C00D6BFA8 /* BNCServerResponse.h */,
-				67FD94731A4D250C00D6BFA8 /* BNCServerResponse.m */,
-				67FD94741A4D250C00D6BFA8 /* BNCSystemObserver.h */,
-				67FD94751A4D250C00D6BFA8 /* BNCSystemObserver.m */,
-				67FD94761A4D250C00D6BFA8 /* Branch-SDK-Prefix.pch */,
-				67FD94771A4D250C00D6BFA8 /* Branch.h */,
-				67FD94781A4D250C00D6BFA8 /* Branch.m */,
-				67FD94791A4D250C00D6BFA8 /* BranchServerInterface.h */,
-				67FD947A1A4D250C00D6BFA8 /* BranchServerInterface.m */,
-				15FDC79B1B586E7400A2F61F /* FacebookSDK.framework */,
-			);
-			path = "Branch-SDK";
 			sourceTree = "<group>";
 		};
 		67FD947E1A4D250C00D6BFA8 /* Helpers */ = {
@@ -430,6 +360,15 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
+		E1B8163819D31FC774E4F73E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C0526AD7DCC012AB5EE53EDD /* Pods.debug.xcconfig */,
+				91620A97EAA606823E8B4D87 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -437,9 +376,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6705920919BBAC630039DAE1 /* Build configuration list for PBXNativeTarget "BranchMonsterFactory" */;
 			buildPhases = (
+				ABF04C820C4246DC4F6F14F4 /* Check Pods Manifest.lock */,
 				670591E519BBAC630039DAE1 /* Sources */,
 				670591E619BBAC630039DAE1 /* Frameworks */,
 				670591E719BBAC630039DAE1 /* Resources */,
+				79E47CF5AE1C308A9376316A /* Embed Pods Frameworks */,
+				C11D427B77427D1D7C9C3EC6 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -456,7 +398,7 @@
 		670591E119BBAC630039DAE1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0600;
+				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = Branch;
 				TargetAttributes = {
 					670591E819BBAC630039DAE1 = {
@@ -541,32 +483,67 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		79E47CF5AE1C308A9376316A /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ABF04C820C4246DC4F6F14F4 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C11D427B77427D1D7C9C3EC6 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		670591E519BBAC630039DAE1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				67FD94CD1A4D250C00D6BFA8 /* BNCSystemObserver.m in Sources */,
-				67FD94C91A4D250C00D6BFA8 /* BNCServerInterface.m in Sources */,
 				67FD94C51A4D250C00D6BFA8 /* ImageCollectionViewCell.m in Sources */,
 				67FD95071A4D250C00D6BFA8 /* MonsterViewerViewController.m in Sources */,
-				67FD94CB1A4D250C00D6BFA8 /* BNCServerRequestQueue.m in Sources */,
 				67FD95061A4D250C00D6BFA8 /* MonsterCreatorViewController.m in Sources */,
-				1596C1DA1AC23D1F00336DD2 /* BranchActivityItemProvider.m in Sources */,
-				67FD94CF1A4D250C00D6BFA8 /* BranchServerInterface.m in Sources */,
 				67FD94C61A4D250C00D6BFA8 /* NetworkProgressBar.m in Sources */,
 				67FD95051A4D250C00D6BFA8 /* main.m in Sources */,
-				67FD94CC1A4D250C00D6BFA8 /* BNCServerResponse.m in Sources */,
-				67FD94C81A4D250C00D6BFA8 /* BNCPreferenceHelper.m in Sources */,
-				1596C1D71AC23CFD00336DD2 /* BNCLinkData.m in Sources */,
-				67FD94C71A4D250C00D6BFA8 /* BNCError.m in Sources */,
 				15B4B8141B0AB016002AA93E /* BranchInfoViewController.m in Sources */,
 				67FD94D21A4D250C00D6BFA8 /* MonsterPartsFactory.m in Sources */,
-				1596C1D61AC23CFD00336DD2 /* BNCLinkCache.m in Sources */,
 				67FD95081A4D250C00D6BFA8 /* SplashViewController.m in Sources */,
-				67FD94CE1A4D250C00D6BFA8 /* Branch.m in Sources */,
-				464197261B0683AF00869460 /* BNCEncodingUtils.m in Sources */,
-				67FD94CA1A4D250C00D6BFA8 /* BNCServerRequest.m in Sources */,
 				67FD94C31A4D250C00D6BFA8 /* AppDelegate.m in Sources */,
 				67FD94D31A4D250C00D6BFA8 /* MonsterPreferences.m in Sources */,
 			);
@@ -606,6 +583,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -666,6 +644,7 @@
 		};
 		6705920A19BBAC630039DAE1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C0526AD7DCC012AB5EE53EDD /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -678,6 +657,7 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/BranchMonsterFactory/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "io.branch.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Branchsters;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -686,6 +666,7 @@
 		};
 		6705920B19BBAC630039DAE1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 91620A97EAA606823E8B4D87 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -698,6 +679,7 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/BranchMonsterFactory/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "io.branch.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Branchsters;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;

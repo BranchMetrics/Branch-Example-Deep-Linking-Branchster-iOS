@@ -9,7 +9,9 @@
 #import "AppDelegate.h"
 #import "Branch.h"
 #import "MonsterPreferences.h"
+#import "BranchUniversalObject.h"
 #import <FacebookSDK/FacebookSDK.h>
+
 
 @interface AppDelegate ()
 
@@ -23,7 +25,9 @@
     // Initalize Branch and register the deep link handler
     // The deep link handler is called on every install/open to tell you if the user had just clicked a deep link
     Branch *branch = [Branch getInstance];
-    [branch initSessionWithLaunchOptions:launchOptions andRegisterDeepLinkHandler:^(NSDictionary *params, NSError *error){
+    
+    //callback format: BranchUniversalObject *universalObject, BranchLinkProperties *linkProperties, NSError *error){
+    [branch initSessionWithLaunchOptions:launchOptions andRegisterDeepLinkHandlerUsingBranchUniversalObject:^(BranchUniversalObject *monster, BranchLinkProperties *linkProperties, NSError * error) {
         
         UINavigationController *navController = (UINavigationController *)self.window.rootViewController;
         NSString * storyboardName = @"Main";
@@ -32,11 +36,14 @@
         
         // If the key 'monster' is present in the deep link dictionary
         // then load the monster viewer with the appropriate monster parameters
-        if ([params objectForKey:@"monster"]) {
-            [MonsterPreferences setMonsterName:[params objectForKey:@"monster_name"]];
-            [MonsterPreferences setFaceIndex:[[params objectForKey:@"face_index"] intValue]];
-            [MonsterPreferences setBodyIndex:[[params objectForKey:@"body_index"] intValue]];
-            [MonsterPreferences setColorIndex:[[params objectForKey:@"color_index"] intValue]];
+        
+        NSDictionary *metadata = monster.metadata;
+        
+        if (metadata) {
+            [MonsterPreferences setMonsterName:[metadata objectForKey:@"monster_name"]];
+            [MonsterPreferences setFaceIndex:[[metadata objectForKey:@"face_index"] intValue]];
+            [MonsterPreferences setBodyIndex:[[metadata objectForKey:@"body_index"] intValue]];
+            [MonsterPreferences setColorIndex:[[metadata objectForKey:@"color_index"] intValue]];
             
             // Choose the monster viewer as the next view controller
             nextVC = [storyboard instantiateViewControllerWithIdentifier:@"MonsterViewerViewController"];
@@ -66,6 +73,9 @@
     
     return YES;
 }
+
+
+
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
     BOOL wasHandled = [FBAppCall handleOpenURL:url sourceApplication:sourceApplication];
