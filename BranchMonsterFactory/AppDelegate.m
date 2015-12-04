@@ -34,10 +34,19 @@
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];
         UIViewController *nextVC;
         
-        //If a BUO has been received, load its data into the userDefaults, which is not awesome
+        
+        //FIX FIX: we are receiving a BUO from the network, dumping all it's parts out, then putting them all in
+        //  nsuserdefaults, then getting them all out again, reassembling them back into a BUO, and sending it out when we share it.
+        //  we should really just be passing the BUO around from controller to controller in segues, and only be saving out the
+        //  current monster when we get sent to the background.
+
+        //the three options, in order are:
+        // 1. we get a BUO (containing a branchster) from someone sharing it to us OR ELSE
+        // 2. we find a previous one stored to disk OR ELSE
+        // 3. we make a new one
+        
+        
         if (receivedMonster) {
-            
-            
             [MonsterPreferences setMonsterName:[receivedMonster.metadata objectForKey:@"monster_name"]];
             [MonsterPreferences setFaceIndex:[[receivedMonster.metadata objectForKey:@"face_index"] intValue]];
             [MonsterPreferences setBodyIndex:[[receivedMonster.metadata objectForKey:@"body_index"] intValue]];

@@ -50,7 +50,10 @@ static CGFloat MONSTER_HEIGHT_FIVE = 0.55f;
 
 
 
-//FIX FIX: 
+//FIX FIX: we are receiving a BUO from the network, dumping all it's parts out, then putting them all in
+//  nsuserdefaults, then getting them all out again, reassembling them back into a BUO, and sending it out when we share it.
+//  we should really just be passing the BUO around from controller to controller in segues, and only be saving out the
+//  current monster when we get sent to the background.
 - (void)viewDidLoad {
     [super viewDidLoad];
     
