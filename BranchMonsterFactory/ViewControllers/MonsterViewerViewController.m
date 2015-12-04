@@ -12,6 +12,7 @@
 #import "MonsterPartsFactory.h"
 #import "MonsterPreferences.h"
 #import "Branch.h"
+#import "BranchUniversalObject.h"
 #import <MessageUI/MessageUI.h>
 #import <Social/Social.h>
 #import <FacebookSDK/FacebookSDK.h>
@@ -35,11 +36,11 @@
 @property (weak, nonatomic) IBOutlet UIButton *cmdTwitter;
 @property (weak, nonatomic) IBOutlet UIButton *cmdFacebook;
 
-@property (weak, nonatomic) IBOutlet UITextView *etxtUrl;
 
 @property (weak, nonatomic) IBOutlet UIButton *cmdChange;
 @property (weak, nonatomic) IBOutlet UIButton *cmdInfo;
 
+@property (strong, nonatomic) BranchUniversalObject *outgoingMonster;
 @end
 
 @implementation MonsterViewerViewController
@@ -47,8 +48,21 @@
 static CGFloat MONSTER_HEIGHT = 0.4f;
 static CGFloat MONSTER_HEIGHT_FIVE = 0.55f;
 
+
+
+//FIX FIX: 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.outgoingMonster = [[BranchUniversalObject alloc] initWithCanonicalIdentifier: [NSString stringWithFormat:@"MONSTER.ID.%u", arc4random_uniform(99999999)]];
+    //fill it in with values from nsuserdefaults
+    
+//    [MonsterPreferences setMonsterName:[receivedMonster.metadata objectForKey:@"monster_name"]];
+//    [MonsterPreferences setFaceIndex:[[receivedMonster.metadata objectForKey:@"face_index"] intValue]];
+//    [MonsterPreferences setBodyIndex:[[receivedMonster.metadata objectForKey:@"body_index"] intValue]];
+//    [MonsterPreferences setColorIndex:[[receivedMonster.metadata objectForKey:@"color_index"] intValue]];
+
+    
     [self.botLayerOneColor setBackgroundColor:[MonsterPartsFactory colorForIndex:[MonsterPreferences getColorIndex]]];
     [self.botLayerTwoBody setImage:[MonsterPartsFactory imageForBody:[MonsterPreferences getBodyIndex]]];
     [self.botLayerThreeFace setImage:[MonsterPartsFactory imageForFace:[MonsterPreferences getFaceIndex]]];
@@ -59,7 +73,6 @@ static CGFloat MONSTER_HEIGHT_FIVE = 0.55f;
     [self.txtName setText:self.monsterName];
     [self.txtDescription setText:self.monsterDescription];
     
-    [self.etxtUrl setTextColor:[UIColor blackColor]];
     
     self.monsterMetadata = [[NSDictionary alloc]
                             initWithObjects:@[
@@ -83,12 +96,22 @@ static CGFloat MONSTER_HEIGHT_FIVE = 0.55f;
     // track that the user viewed the monster view page
     [[Branch getInstance] userCompletedAction:@"monster_view" withState:self.monsterMetadata];
     
+    [self.progressBar hide];
+
+}
+
+
+-(IBAction)copyShareURL:(id)sender {
+    
     // load a URL just for display on the viewer page
     [[Branch getInstance] getContentUrlWithParams:[self prepareBranchDict] andChannel:@"viewer" andCallback:^(NSString *url, NSError *error) {
-        [self.etxtUrl setText:url];
-        [self.progressBar hide];
+        UIPasteboard *pb = [UIPasteboard generalPasteboard];
+        [pb setString:url];
     }];
+
 }
+
+
 
 - (IBAction)cmdChangeClick:(id)sender {
     if ([[self.navigationController viewControllers] count] > 1)

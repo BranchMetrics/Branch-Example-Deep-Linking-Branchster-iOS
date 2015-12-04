@@ -26,30 +26,28 @@
     // The deep link handler is called on every install/open to tell you if the user had just clicked a deep link
     Branch *branch = [Branch getInstance];
     
-    //callback format: BranchUniversalObject *universalObject, BranchLinkProperties *linkProperties, NSError *error){
-    [branch initSessionWithLaunchOptions:launchOptions andRegisterDeepLinkHandlerUsingBranchUniversalObject:^(BranchUniversalObject *monster, BranchLinkProperties *linkProperties, NSError * error) {
+    //callback format: BranchUniversalObject *universalObject, BranchLinkProperties *linkProperties, NSError *error)
+    [branch initSessionWithLaunchOptions:launchOptions andRegisterDeepLinkHandlerUsingBranchUniversalObject:^(BranchUniversalObject *receivedMonster, BranchLinkProperties *linkProperties, NSError * error) {
         
         UINavigationController *navController = (UINavigationController *)self.window.rootViewController;
         NSString * storyboardName = @"Main";
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];
         UIViewController *nextVC;
         
-        // If the key 'monster' is present in the deep link dictionary
-        // then load the monster viewer with the appropriate monster parameters
-        
-        NSDictionary *metadata = monster.metadata;
-        
-        if (metadata) {
-            [MonsterPreferences setMonsterName:[metadata objectForKey:@"monster_name"]];
-            [MonsterPreferences setFaceIndex:[[metadata objectForKey:@"face_index"] intValue]];
-            [MonsterPreferences setBodyIndex:[[metadata objectForKey:@"body_index"] intValue]];
-            [MonsterPreferences setColorIndex:[[metadata objectForKey:@"color_index"] intValue]];
+        //If a BUO has been received, load its data into the userDefaults, which is not awesome
+        if (receivedMonster) {
+            
+            
+            [MonsterPreferences setMonsterName:[receivedMonster.metadata objectForKey:@"monster_name"]];
+            [MonsterPreferences setFaceIndex:[[receivedMonster.metadata objectForKey:@"face_index"] intValue]];
+            [MonsterPreferences setBodyIndex:[[receivedMonster.metadata objectForKey:@"body_index"] intValue]];
+            [MonsterPreferences setColorIndex:[[receivedMonster.metadata objectForKey:@"color_index"] intValue]];
             
             // Choose the monster viewer as the next view controller
             nextVC = [storyboard instantiateViewControllerWithIdentifier:@"MonsterViewerViewController"];
             
             
-        // Else, the app is being opened up from the home screen or from the app store
+        // Otherwise, the app is being opened up from the home screen or from the app store
         // Load the next logical view controller
         } else {
             
