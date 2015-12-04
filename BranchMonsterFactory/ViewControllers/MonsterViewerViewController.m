@@ -10,9 +10,9 @@
 #import "NetworkProgressBar.h"
 #import "MonsterViewerViewController.h"
 #import "MonsterPartsFactory.h"
-#import "MonsterPreferences.h"
 #import "Branch.h"
 #import "BranchUniversalObject.h"
+#import "BranchUniversalObject+MonsterHelpers.h"
 #import <MessageUI/MessageUI.h>
 #import <Social/Social.h>
 #import <FacebookSDK/FacebookSDK.h>
@@ -43,38 +43,25 @@
 @property (weak, nonatomic) IBOutlet UIButton *cmdChange;
 @property (weak, nonatomic) IBOutlet UIButton *cmdInfo;
 
-@property (strong, nonatomic) BranchUniversalObject *outgoingMonster;
 @end
 
 @implementation MonsterViewerViewController
 
 static CGFloat MONSTER_HEIGHT = 0.4f;
-static CGFloat MONSTER_HEIGHT_FIVE = 0.55f;
+//static CGFloat MONSTER_HEIGHT_FIVE = 0.55f;
 
 
 
-//FIX FIX: we are receiving a BUO from the network, dumping all it's parts out, then putting them all in
-//  nsuserdefaults, then getting them all out again, reassembling them back into a BUO, and sending it out when we share it.
-//  we should really just be passing the BUO around from controller to controller in segues, and only be saving out the
-//  current monster when we get sent to the background.
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.outgoingMonster = [[BranchUniversalObject alloc] initWithCanonicalIdentifier: [NSString stringWithFormat:@"MONSTER.ID.%u", arc4random_uniform(99999999)]];
-    //fill it in with values from nsuserdefaults
-    
-//    [MonsterPreferences setMonsterName:[receivedMonster.metadata objectForKey:@"monster_name"]];
-//    [MonsterPreferences setFaceIndex:[[receivedMonster.metadata objectForKey:@"face_index"] intValue]];
-//    [MonsterPreferences setBodyIndex:[[receivedMonster.metadata objectForKey:@"body_index"] intValue]];
-//    [MonsterPreferences setColorIndex:[[receivedMonster.metadata objectForKey:@"color_index"] intValue]];
 
     
-    [self.botLayerOneColor setBackgroundColor:[MonsterPartsFactory colorForIndex:[MonsterPreferences getColorIndex]]];
-    [self.botLayerTwoBody setImage:[MonsterPartsFactory imageForBody:[MonsterPreferences getBodyIndex]]];
-    [self.botLayerThreeFace setImage:[MonsterPartsFactory imageForFace:[MonsterPreferences getFaceIndex]]];
+    [self.botLayerOneColor setBackgroundColor:[MonsterPartsFactory colorForIndex:[self.viewingMonster getColorIndex]]];
+    [self.botLayerTwoBody setImage:[MonsterPartsFactory imageForBody:[self.viewingMonster getBodyIndex]]];
+    [self.botLayerThreeFace setImage:[MonsterPartsFactory imageForFace:[self.viewingMonster getFaceIndex]]];
     
-    self.monsterName = [MonsterPreferences getMonsterName];
-    self.monsterDescription = [MonsterPreferences getMonsterDescription];
+    self.monsterName = [self.viewingMonster getMonsterName];
+    self.monsterDescription = [self.viewingMonster getMonsterDescription];
     
     [self.txtName setText:self.monsterName];
     [self.txtDescription setText:self.monsterDescription];
@@ -82,9 +69,9 @@ static CGFloat MONSTER_HEIGHT_FIVE = 0.55f;
     
     self.monsterMetadata = [[NSDictionary alloc]
                             initWithObjects:@[
-                                              [NSNumber numberWithInteger:[MonsterPreferences getColorIndex]],
-                                              [NSNumber numberWithInteger:[MonsterPreferences getBodyIndex]],
-                                              [NSNumber numberWithInteger:[MonsterPreferences getFaceIndex]],
+                                              [NSNumber numberWithInteger:[self.viewingMonster getColorIndex]],
+                                              [NSNumber numberWithInteger:[self.viewingMonster getBodyIndex]],
+                                              [NSNumber numberWithInteger:[self.viewingMonster getFaceIndex]],
                                               self.monsterName]
                             forKeys:@[
                                       @"color_index",
@@ -133,7 +120,7 @@ static CGFloat MONSTER_HEIGHT_FIVE = 0.55f;
                                                    self.monsterDescription,
                                                    self.monsterDescription,
                                                    url,
-                                                   [NSString stringWithFormat:@"https://s3-us-west-1.amazonaws.com/branchmonsterfactory/%hd%hd%hd.png", (short)[MonsterPreferences getColorIndex], (short)[MonsterPreferences getBodyIndex], (short)[MonsterPreferences getFaceIndex]]]
+                                                   [NSString stringWithFormat:@"https://s3-us-west-1.amazonaws.com/branchmonsterfactory/%hd%hd%hd.png", (short)[self.viewingMonster getColorIndex], (short)[self.viewingMonster getBodyIndex], (short)[self.viewingMonster getFaceIndex]]]
                                          forKeys:@[
                                                    @"name",
                                                    @"caption",
@@ -147,14 +134,14 @@ static CGFloat MONSTER_HEIGHT_FIVE = 0.55f;
 // a user clicked the link and was deep linked
 - (NSDictionary *)prepareBranchDict {
     return [[NSDictionary alloc] initWithObjects:@[
-                                                  [NSNumber numberWithInteger:[MonsterPreferences getColorIndex]],
-                                                  [NSNumber numberWithInteger:[MonsterPreferences getBodyIndex]],
-                                                  [NSNumber numberWithInteger:[MonsterPreferences getFaceIndex]],
+                                                  [NSNumber numberWithInteger:[self.viewingMonster getColorIndex]],
+                                                  [NSNumber numberWithInteger:[self.viewingMonster getBodyIndex]],
+                                                  [NSNumber numberWithInteger:[self.viewingMonster getFaceIndex]],
                                                   self.monsterName,
                                                   @"true",
                                                   [NSString stringWithFormat:@"My Branchster: %@", self.monsterName],
                                                   self.monsterDescription,
-                                                  [NSString stringWithFormat:@"https://s3-us-west-1.amazonaws.com/branchmonsterfactory/%hd%hd%hd.png", (short)[MonsterPreferences getColorIndex], (short)[MonsterPreferences getBodyIndex], (short)[MonsterPreferences getFaceIndex]]]
+                                                  [NSString stringWithFormat:@"https://s3-us-west-1.amazonaws.com/branchmonsterfactory/%hd%hd%hd.png", (short)[self.viewingMonster getColorIndex], (short)[self.viewingMonster getBodyIndex], (short)[self.viewingMonster getFaceIndex]]]
                                         forKeys:@[
                                                   @"color_index",
                                                   @"body_index",
@@ -180,9 +167,9 @@ static CGFloat MONSTER_HEIGHT_FIVE = 0.55f;
     CGRect screenSize = [[UIScreen mainScreen] bounds];
     CGFloat widthRatio = self.botLayerOneColor.frame.size.width/self.botLayerOneColor.frame.size.height;
     CGFloat newHeight = screenSize.size.height;
-    if (IS_IPHONE_5)
-        newHeight = newHeight * MONSTER_HEIGHT_FIVE;
-    else
+//    if (IS_IPHONE_5)
+//        newHeight = newHeight * MONSTER_HEIGHT_FIVE;
+//    else
         newHeight = newHeight * MONSTER_HEIGHT;
     CGFloat newWidth = widthRatio * newHeight;
     CGRect newFrame = CGRectMake((screenSize.size.width-newWidth)/2, self.botLayerOneColor.frame.origin.y, newWidth, newHeight);
@@ -196,9 +183,9 @@ static CGFloat MONSTER_HEIGHT_FIVE = 0.55f;
     self.txtDescription.frame = textFrame;
     
     CGRect cmdFrame = self.cmdChange.frame;
-    if (IS_IPHONE_5)
-        cmdFrame.origin.x = newFrame.origin.x + newFrame.size.width - cmdFrame.size.width/2;
-    else
+//    if (IS_IPHONE_5)
+//        cmdFrame.origin.x = newFrame.origin.x + newFrame.size.width - cmdFrame.size.width/2;
+//    else
         cmdFrame.origin.x = newFrame.origin.x + newFrame.size.width;
     self.cmdChange.frame = cmdFrame;
     [self.view layoutSubviews];

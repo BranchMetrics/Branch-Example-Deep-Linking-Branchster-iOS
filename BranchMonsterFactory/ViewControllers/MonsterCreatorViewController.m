@@ -7,9 +7,10 @@
 //
 
 #import "MonsterCreatorViewController.h"
-#import "MonsterPreferences.h"
 #import "MonsterPartsFactory.h"
 #import "ImageCollectionViewCell.h"
+#import "MonsterViewerViewController.h"
+#import "BranchUniversalObject+MonsterHelpers.h"
 #import "Branch.h"
 
 @interface MonsterCreatorViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
@@ -35,7 +36,7 @@
 @implementation MonsterCreatorViewController
 
 static CGFloat MONSTER_HEIGHT = 0.35f;
-static CGFloat MONSTER_HEIGHT_FIVE = 0.45f;
+//static CGFloat MONSTER_HEIGHT_FIVE = 0.45f;
 static CGFloat SIDE_SPACE = 7.0;
 
 - (void)viewDidLoad {
@@ -44,7 +45,7 @@ static CGFloat SIDE_SPACE = 7.0;
     for (int i = 0; i < [self.colorViews count]; i++) {
         UIView *currView = [self.colorViews objectAtIndex:i];
         [currView setBackgroundColor:[MonsterPartsFactory colorForIndex:i]];
-        if (i == [MonsterPreferences getColorIndex])
+        if (i == [self.editingMonster getColorIndex])
             [currView.layer setBorderWidth:2.0f];
         else
             [currView.layer setBorderWidth:0.0f];
@@ -52,9 +53,18 @@ static CGFloat SIDE_SPACE = 7.0;
         [currView.layer setCornerRadius:currView.frame.size.width/2];
     }
     
+    //if it's null, create a new default monster
+    if (!self.editingMonster) {
+        self.editingMonster = [[BranchUniversalObject alloc] initWithCanonicalIdentifier:[NSString stringWithFormat:@"MONSTER_%u", arc4random_uniform(10000)]];
+        [self.editingMonster setFaceIndex:0];
+        [self.editingMonster setBodyIndex:0];
+        [self.editingMonster setColorIndex:0];
+        [self.editingMonster setMonsterName:@""];
+    }
+    
     [self.cmdDone.layer setCornerRadius:3.0f];
     
-    [self.botViewLayerOne setBackgroundColor:[MonsterPartsFactory colorForIndex:[MonsterPreferences getColorIndex]]];
+    [self.botViewLayerOne setBackgroundColor:[MonsterPartsFactory colorForIndex:[self.editingMonster getColorIndex]]];
     
     self.botViewLayerTwo.delegate = self;
     self.botViewLayerTwo.dataSource = self;
@@ -64,16 +74,16 @@ static CGFloat SIDE_SPACE = 7.0;
     self.botViewLayerThree.dataSource = self;
     [self.botViewLayerThree registerClass:[ImageCollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
     
-    [self.etxtName setText:[MonsterPreferences getMonsterName]];
+    [self.etxtName setText:[self.editingMonster getMonsterName]];
     
-    UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self.etxtName action:@selector(resignFirstResponder)];
-    UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
-    toolbar.items = [NSArray arrayWithObject:barButton];
+//    UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self.etxtName action:@selector(resignFirstResponder)];
+//    UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+//    toolbar.items = [NSArray arrayWithObject:barButton];
     
     // track that the user viewed the monster edit page
     [[Branch getInstance] userCompletedAction:@"monster_edit"];
     
-    self.etxtName.inputAccessoryView = toolbar;
+    //self.etxtName.inputAccessoryView = toolbar;
     [self.etxtName addTarget:self.etxtName
                       action:@selector(resignFirstResponder)
             forControlEvents:UIControlEventEditingDidEndOnExit];
@@ -82,8 +92,8 @@ static CGFloat SIDE_SPACE = 7.0;
 - (void)viewDidLayoutSubviews {
     [self adjustMonsterPicturesForScreenSize];
     
-    self.bodyIndex = [MonsterPreferences getBodyIndex];
-    self.faceIndex = [MonsterPreferences getFaceIndex];
+    self.bodyIndex = [self.editingMonster getBodyIndex];
+    self.faceIndex = [self.editingMonster getFaceIndex];
     [self.botViewLayerTwo scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:self.bodyIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
     [self.botViewLayerThree scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:self.faceIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredVertically animated:NO];
 }
@@ -92,9 +102,9 @@ static CGFloat SIDE_SPACE = 7.0;
     CGRect screenSize = [[UIScreen mainScreen] bounds];
     CGFloat widthRatio = self.botViewLayerOne.frame.size.width/self.botViewLayerOne.frame.size.height;
     CGFloat newHeight = screenSize.size.height;
-    if (IS_IPHONE_5)
-        newHeight = newHeight * MONSTER_HEIGHT_FIVE;
-    else
+//    if (IS_IPHONE_5)
+//        newHeight = newHeight * MONSTER_HEIGHT_FIVE;
+//    else
         newHeight = newHeight * MONSTER_HEIGHT;
     CGFloat newWidth = widthRatio * newHeight;
     CGRect newFrame = CGRectMake((screenSize.size.width-newWidth)/2, self.botViewLayerOne.frame.origin.y, newWidth, newHeight);
@@ -122,28 +132,28 @@ static CGFloat SIDE_SPACE = 7.0;
     self.bodyIndex = self.bodyIndex - 1;
     if (self.bodyIndex == -1)
         self.bodyIndex = [MonsterPartsFactory sizeOfBodyArray] - 1;
-    [MonsterPreferences setBodyIndex:self.bodyIndex];
+    [self.editingMonster setBodyIndex:self.bodyIndex];
     [self.botViewLayerTwo scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:self.bodyIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
 }
 - (IBAction)cmdRightClick:(id)sender {
     self.bodyIndex = self.bodyIndex + 1;
     if (self.bodyIndex == [MonsterPartsFactory sizeOfBodyArray])
         self.bodyIndex = 0;
-    [MonsterPreferences setBodyIndex:self.bodyIndex];
+    [self.editingMonster setBodyIndex:self.bodyIndex];
     [self.botViewLayerTwo scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:self.bodyIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
 }
 - (IBAction)cmdUpClick:(id)sender {
     self.faceIndex = self.faceIndex - 1;
     if (self.faceIndex == -1)
         self.faceIndex = [MonsterPartsFactory sizeOfFaceArray] - 1;
-    [MonsterPreferences setFaceIndex:self.faceIndex];
+    [self.editingMonster setFaceIndex:self.faceIndex];
     [self.botViewLayerThree scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:self.faceIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredVertically animated:YES];
 }
 - (IBAction)cmdDownClick:(id)sender {
     self.faceIndex = self.faceIndex + 1;
     if (self.faceIndex == [MonsterPartsFactory sizeOfFaceArray])
         self.faceIndex = 0;
-    [MonsterPreferences setFaceIndex:self.faceIndex];
+    [self.editingMonster setFaceIndex:self.faceIndex];
     [self.botViewLayerThree scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:self.faceIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredVertically animated:YES];
 }
 - (IBAction)cmdColorClick:(id)sender {
@@ -158,7 +168,7 @@ static CGFloat SIDE_SPACE = 7.0;
         }
     }
     
-    [MonsterPreferences setColorIndex:selected];
+    [self.editingMonster setColorIndex:selected];
     [self.botViewLayerOne setBackgroundColor:[MonsterPartsFactory colorForIndex:selected]];
     [currColorButton setSelected:YES];
     [currColorButton.layer setBorderWidth:2.0f];
@@ -166,9 +176,9 @@ static CGFloat SIDE_SPACE = 7.0;
 
 - (IBAction)cmdFinishedClick:(id)sender {
     if ([self.etxtName.text length]) {
-        [MonsterPreferences setMonsterName:[self.etxtName text]];
+        [self.editingMonster setMonsterName:[self.etxtName text]];
     } else {
-        [MonsterPreferences setMonsterName:@"Bingles Jingleheimer"];
+        [self.editingMonster setMonsterName:@"Bingles Jingleheimer"];
     }
     
 }
@@ -201,5 +211,14 @@ static CGFloat SIDE_SPACE = 7.0;
 
     return cell;
 }
+
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+    MonsterViewerViewController *receiver = (MonsterViewerViewController *)[segue destinationViewController];
+    receiver.viewingMonster = self.editingMonster;
+}
+
 
 @end
