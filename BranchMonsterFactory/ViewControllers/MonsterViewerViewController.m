@@ -20,7 +20,6 @@
 @interface MonsterViewerViewController () <MFMailComposeViewControllerDelegate, MFMessageComposeViewControllerDelegate>
 
 
-@property BranchUniversalObject *viewingMonster;
 
 @property (strong, nonatomic) NetworkProgressBar *progressBar;
 

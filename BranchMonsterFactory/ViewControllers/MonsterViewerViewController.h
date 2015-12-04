@@ -11,6 +11,7 @@
 
 @interface MonsterViewerViewController : UIViewController
 
+@property BranchUniversalObject *viewingMonster;
 
 @end
 

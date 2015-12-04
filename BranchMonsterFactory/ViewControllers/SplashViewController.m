@@ -9,6 +9,8 @@
 #import "NetworkProgressBar.h"
 #import "SplashViewController.h"
 #import "MonsterCreatorViewController.h"
+#import "MonsterViewerViewController.h"
+
 #import "BranchUniversalObject.h"
 #import "AppDelegate.h"
 
@@ -33,7 +35,6 @@
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     self.startingMonster = appDelegate.initialMonsterOrNULL;
     
-    [self performSegueWithIdentifier: @"editMonster" sender: self];
     
     CABasicAnimation* animation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
     animation.fromValue = @0.0f;
@@ -52,6 +53,25 @@
                                    selector:@selector(updateMessageIndex)
                                    userInfo:nil
                                     repeats:YES];
+    
+    
+    //if we don't have a monster, then segue to the edit screen and stop there
+    if (self.startingMonster == NULL) {
+        [self performSegueWithIdentifier: @"editMonster" sender: self];
+    } else {
+        //this is trickier.  we need to load the edit screen, pass it the existing monster, then invisibly push it
+        // on the nav controller stack
+        MonsterCreatorViewController  *creator = [self.storyboard instantiateViewControllerWithIdentifier:@"MonsterCreatorViewController"];
+        creator.editingMonster = self.startingMonster;
+        [self.navigationController pushViewController:creator animated:NO];
+        
+        //now do the same with the monsterviewercontroller
+        MonsterViewerViewController  *viewer = [self.storyboard instantiateViewControllerWithIdentifier:@"MonsterViewerViewController"];
+        viewer.viewingMonster = self.startingMonster;
+        [self.navigationController pushViewController:viewer animated:YES];
+
+    }
+
 }
 
 - (void)viewDidLayoutSubviews {
@@ -71,6 +91,7 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     MonsterCreatorViewController *receiver = (MonsterCreatorViewController *)[segue destinationViewController];
+    receiver.editingMonster = self.startingMonster;
 }
 
 

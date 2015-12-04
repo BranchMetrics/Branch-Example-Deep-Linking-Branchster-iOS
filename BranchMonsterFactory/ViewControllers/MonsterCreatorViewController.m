@@ -14,7 +14,6 @@
 
 @interface MonsterCreatorViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 
-@property BranchUniversalObject *editingMonster;
 
 @property (weak, nonatomic) IBOutlet UITextField *etxtName;
 
@@ -172,9 +171,6 @@ static CGFloat SIDE_SPACE = 7.0;
         [MonsterPreferences setMonsterName:@"Bingles Jingleheimer"];
     }
     
-    NSString *storyboardName = @"Main";
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
-    [self.navigationController pushViewController:[storyboard instantiateViewControllerWithIdentifier:@"MonsterViewerViewController"] animated:YES];
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
