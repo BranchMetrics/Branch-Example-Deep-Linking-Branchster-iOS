@@ -8,8 +8,13 @@
 
 #import "NetworkProgressBar.h"
 #import "SplashViewController.h"
+#import "MonsterCreatorViewController.h"
+#import "BranchUniversalObject.h"
+#import "AppDelegate.h"
 
 @interface SplashViewController ()
+
+@property BranchUniversalObject *startingMonster;
 
 @property (weak, nonatomic) IBOutlet UIImageView *imgLoading;
 @property (weak, nonatomic) IBOutlet UILabel *txtNote;
@@ -22,6 +27,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    //get the initial monster, if there is one
+
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    self.startingMonster = appDelegate.initialMonsterOrNULL;
+    
+    [self performSegueWithIdentifier: @"editMonster" sender: self];
     
     CABasicAnimation* animation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
     animation.fromValue = @0.0f;
@@ -51,14 +63,15 @@
     [self.txtNote setText:[self.loadingMessages objectAtIndex:self.messageIndex]];
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    MonsterCreatorViewController *receiver = (MonsterCreatorViewController *)[segue destinationViewController];
 }
-*/
+
 
 @end

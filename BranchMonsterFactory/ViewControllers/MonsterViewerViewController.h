@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BranchUniversalObject.h"
 
 @interface MonsterViewerViewController : UIViewController
 

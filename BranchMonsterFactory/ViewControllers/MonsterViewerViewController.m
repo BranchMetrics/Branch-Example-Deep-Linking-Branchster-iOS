@@ -18,6 +18,10 @@
 #import <FacebookSDK/FacebookSDK.h>
 
 @interface MonsterViewerViewController () <MFMailComposeViewControllerDelegate, MFMessageComposeViewControllerDelegate>
+
+
+@property BranchUniversalObject *viewingMonster;
+
 @property (strong, nonatomic) NetworkProgressBar *progressBar;
 
 @property (strong, nonatomic) NSDictionary *monsterMetadata;

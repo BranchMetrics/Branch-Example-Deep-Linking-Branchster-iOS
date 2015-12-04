@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BranchUniversalObject.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+
+@property BranchUniversalObject *initialMonsterOrNULL;
 
 
 @end

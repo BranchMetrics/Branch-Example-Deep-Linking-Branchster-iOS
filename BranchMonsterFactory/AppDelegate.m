@@ -9,11 +9,11 @@
 #import "AppDelegate.h"
 #import "Branch.h"
 #import "MonsterPreferences.h"
-#import "BranchUniversalObject.h"
 #import <FacebookSDK/FacebookSDK.h>
 
 
 @interface AppDelegate ()
+
 
 @end
 
@@ -29,11 +29,11 @@
     //callback format: BranchUniversalObject *universalObject, BranchLinkProperties *linkProperties, NSError *error)
     [branch initSessionWithLaunchOptions:launchOptions andRegisterDeepLinkHandlerUsingBranchUniversalObject:^(BranchUniversalObject *receivedMonster, BranchLinkProperties *linkProperties, NSError * error) {
         
-        UINavigationController *navController = (UINavigationController *)self.window.rootViewController;
-        NSString * storyboardName = @"Main";
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];
-        UIViewController *nextVC;
-        
+//        UINavigationController *navController = (UINavigationController *)self.window.rootViewController;
+//        NSString * storyboardName = @"Main";
+//        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];
+//        UIViewController *nextVC;
+//        
         
         //FIX FIX: we are receiving a BUO from the network, dumping all it's parts out, then putting them all in
         //  nsuserdefaults, then getting them all out again, reassembling them back into a BUO, and sending it out when we share it.
@@ -47,35 +47,38 @@
         
         
         if (receivedMonster) {
-            [MonsterPreferences setMonsterName:[receivedMonster.metadata objectForKey:@"monster_name"]];
-            [MonsterPreferences setFaceIndex:[[receivedMonster.metadata objectForKey:@"face_index"] intValue]];
-            [MonsterPreferences setBodyIndex:[[receivedMonster.metadata objectForKey:@"body_index"] intValue]];
-            [MonsterPreferences setColorIndex:[[receivedMonster.metadata objectForKey:@"color_index"] intValue]];
-            
-            // Choose the monster viewer as the next view controller
-            nextVC = [storyboard instantiateViewControllerWithIdentifier:@"MonsterViewerViewController"];
-            
-            
-        // Otherwise, the app is being opened up from the home screen or from the app store
-        // Load the next logical view controller
-        } else {
-            
-            // If a name has been saved in preferences, then this user has already created a monster
-            // Load the viewer
-            if (![MonsterPreferences getMonsterName]) {
-                [MonsterPreferences setMonsterName:@""];
-                
-                // Choose the monster viewer as the next view controller
-                nextVC = [storyboard instantiateViewControllerWithIdentifier:@"MonsterCreatorViewController"];
-                
-            // If no name has been saved, this user is new, so load the monster maker screen
-            } else {
-                nextVC = [storyboard instantiateViewControllerWithIdentifier:@"MonsterViewerViewController"];
-            }
-        }
+            self.initialMonsterOrNULL = receivedMonster;
+        } else self.initialMonsterOrNULL = NULL;
         
-        // launch the next view controller
-        [navController setViewControllers:@[nextVC] animated:YES];
+//            [MonsterPreferences setMonsterName:[receivedMonster.metadata objectForKey:@"monster_name"]];
+//            [MonsterPreferences setFaceIndex:[[receivedMonster.metadata objectForKey:@"face_index"] intValue]];
+//            [MonsterPreferences setBodyIndex:[[receivedMonster.metadata objectForKey:@"body_index"] intValue]];
+//            [MonsterPreferences setColorIndex:[[receivedMonster.metadata objectForKey:@"color_index"] intValue]];
+//            
+//            // Choose the monster viewer as the next view controller
+//            nextVC = [storyboard instantiateViewControllerWithIdentifier:@"MonsterViewerViewController"];
+            
+            
+//        // Otherwise, the app is being opened up from the home screen or from the app store
+//        // Load the next logical view controller
+//        } else {
+//            
+//            // If a name has been saved in preferences, then this user has already created a monster
+//            // Load the viewer
+//            if (![MonsterPreferences getMonsterName]) {
+//                [MonsterPreferences setMonsterName:@""];
+//                
+//                // Choose the monster viewer as the next view controller
+//                nextVC = [storyboard instantiateViewControllerWithIdentifier:@"MonsterCreatorViewController"];
+//                
+//            // If no name has been saved, this user is new, so load the monster maker screen
+//            } else {
+//                nextVC = [storyboard instantiateViewControllerWithIdentifier:@"MonsterViewerViewController"];
+//            }
+//        }
+//        
+//        // launch the next view controller
+//        [navController setViewControllers:@[nextVC] animated:YES];
     }];
     
     return YES;

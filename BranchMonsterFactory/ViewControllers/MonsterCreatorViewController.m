@@ -14,6 +14,8 @@
 
 @interface MonsterCreatorViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 
+@property BranchUniversalObject *editingMonster;
+
 @property (weak, nonatomic) IBOutlet UITextField *etxtName;
 
 @property (weak, nonatomic) IBOutlet UIView *botViewLayerOne;

@@ -93,6 +93,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="txtNote" destination="K45-C3-Kzw" id="LMN-wN-P13"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="editMonster" id="UVS-vH-cqq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ptc-il-5VN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -125,6 +126,7 @@
                                 </state>
                                 <connections>
                                     <action selector="cmdFinishedClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SRy-Sa-0b0"/>
+                                    <segue destination="1x1-sb-jCq" kind="show" identifier="viewMonster" id="Kys-zF-F0G"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lBe-Zv-pcf">
