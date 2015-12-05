@@ -65,7 +65,7 @@
         creator.editingMonster = self.startingMonster;
         [self.navigationController pushViewController:creator animated:NO];
         
-        //now do the same with the monsterviewercontroller
+        //now do the same with the monsterviewercontroller, so they are on the stack in the correct order
         MonsterViewerViewController  *viewer = [self.storyboard instantiateViewControllerWithIdentifier:@"MonsterViewerViewController"];
         viewer.viewingMonster = self.startingMonster;
         [self.navigationController pushViewController:viewer animated:YES];

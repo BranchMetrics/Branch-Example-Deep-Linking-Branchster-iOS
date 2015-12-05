@@ -107,10 +107,7 @@ static CGFloat MONSTER_HEIGHT = 0.4f;
 
 
 - (IBAction)cmdChangeClick:(id)sender {
-    if ([[self.navigationController viewControllers] count] > 1)
         [self.navigationController popViewControllerAnimated:YES];
-    else
-        [self.navigationController setViewControllers:@[[[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"MonsterCreatorViewController"]] animated:YES];
 }
 
 
