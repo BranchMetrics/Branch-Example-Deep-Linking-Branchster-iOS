@@ -87,7 +87,14 @@ static CGFloat MONSTER_HEIGHT = 0.4f;
     [self.view addSubview:self.progressBar];
     
     // track that the user viewed the monster view page
-    [[Branch getInstance] userCompletedAction:@"monster_view" withState:self.monsterMetadata];
+    //[[Branch getInstance] userCompletedAction:@"monster_view" withState:self.monsterMetadata];
+    
+    //<#^(NSDictionary *params, NSError *error)callback#>
+    
+    [self.viewingMonster registerViewWithCallback:^(NSDictionary *params, NSError *error) {
+        NSLog(@"Monster %@ was viewed.  params: %@", self.viewingMonster.getMonsterName, params);
+    }];
+    
     
     [self.progressBar hide];
 
@@ -96,8 +103,13 @@ static CGFloat MONSTER_HEIGHT = 0.4f;
 
 -(IBAction)copyShareURL:(id)sender {
     
+    BranchLinkProperties *linkProperties = [[BranchLinkProperties alloc] init];
+    linkProperties.feature = @"monster_sharing";
+    linkProperties.channel = @"twitter";
+    
+    
     // load a URL just for display on the viewer page
-    [[Branch getInstance] getContentUrlWithParams:[self prepareBranchDict] andChannel:@"viewer" andCallback:^(NSString *url, NSError *error) {
+    [[Branch getInstance] getContentUrlWithParams:[self prepareBranchDict] andChannel:@"" andCallback:^(NSString *url, NSError *error) {
         UIPasteboard *pb = [UIPasteboard generalPasteboard];
         [pb setString:url];
     }];

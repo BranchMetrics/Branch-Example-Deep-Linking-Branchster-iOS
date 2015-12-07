@@ -26,6 +26,7 @@
     Branch *branch = [Branch getInstance];
     
     //callback format: BranchUniversalObject *universalObject, BranchLinkProperties *linkProperties, NSError *error)
+    
     [branch initSessionWithLaunchOptions:launchOptions andRegisterDeepLinkHandlerUsingBranchUniversalObject:^(BranchUniversalObject *receivedMonster, BranchLinkProperties *linkProperties, NSError * error) {
         if (receivedMonster) {
             self.initialMonsterOrNULL = receivedMonster;
@@ -48,6 +49,16 @@
     
     return YES;
 }
+
+
+- (BOOL)application:(UIApplication *)application
+    continueUserActivity:(NSUserActivity *)userActivity
+    restorationHandler:(void (^)(NSArray *restorableObjects))restorationHandler {
+    BOOL handledByBranch = [[Branch getInstance] continueUserActivity:userActivity];
+    
+    return handledByBranch;
+}
+
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     
