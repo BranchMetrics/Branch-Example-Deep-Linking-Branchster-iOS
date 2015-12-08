@@ -30,10 +30,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //get the initial monster, if there is one
-
+    
+    
+    //check first if we have a monster, and use it if so
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    self.startingMonster = appDelegate.initialMonsterOrNULL;
+    if(appDelegate.initialMonster) {
+        self.startingMonster = appDelegate.initialMonster;
+        [self prepareNavigationControllerStack];
+    }
     
     
     CABasicAnimation* animation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
@@ -55,24 +59,47 @@
                                     repeats:YES];
     
     
+    //handle incoming monsters
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(prepareNavigationControllerStack)
+                                                 name:@"monster_received"
+                                               object:nil];
+    
+}
+
+
+
+
+
+
+-(void) prepareNavigationControllerStack {
+    
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    self.startingMonster = appDelegate.initialMonster;
+    //first remove all the currently pushed views down to the root, to start at a known state
+    [[self navigationController] popToRootViewControllerAnimated:NO];
+    
     //if we don't have a monster, then segue to the edit screen and stop there
     if (self.startingMonster == NULL) {
         [self performSegueWithIdentifier: @"editMonster" sender: self];
     } else {
-        //this is trickier.  we need to load the edit screen, pass it the existing monster, then invisibly push it
+        //load the edit view, pass it the existing monster, then push it with no animation
         // on the nav controller stack
         MonsterCreatorViewController  *creator = [self.storyboard instantiateViewControllerWithIdentifier:@"MonsterCreatorViewController"];
         creator.editingMonster = self.startingMonster;
         [self.navigationController pushViewController:creator animated:NO];
         
-        //now do the same with the monsterviewercontroller, so they are on the stack in the correct order
+        //now do the same with the monsterviewercontroller, but with animation, so they are on the stack in the correct order
         MonsterViewerViewController  *viewer = [self.storyboard instantiateViewControllerWithIdentifier:@"MonsterViewerViewController"];
         viewer.viewingMonster = self.startingMonster;
         [self.navigationController pushViewController:viewer animated:YES];
-
+        
     }
-
+    
 }
+
+
 
 - (void)viewDidLayoutSubviews {
     [self.navigationController.navigationBar setHidden:YES];
@@ -81,6 +108,12 @@
 - (void) updateMessageIndex {
     self.messageIndex = (self.messageIndex + 1)%[self.loadingMessages count];
     [self.txtNote setText:[self.loadingMessages objectAtIndex:self.messageIndex]];
+}
+
+- (void) viewWillDisappear:(BOOL)animated {
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:UIApplicationDidBecomeActiveNotification
+                                                  object:nil];
 }
 
 
@@ -92,6 +125,13 @@
     // Pass the selected object to the new view controller.
     MonsterCreatorViewController *receiver = (MonsterCreatorViewController *)[segue destinationViewController];
     receiver.editingMonster = self.startingMonster;
+}
+
+
+- (void) dealloc
+{
+    // will continue to send notification objects to the deallocate object.
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 

@@ -350,12 +350,12 @@
 		67FD94BC1A4D250C00D6BFA8 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				67FD94C11A4D250C00D6BFA8 /* SplashViewController.h */,
+				67FD94C21A4D250C00D6BFA8 /* SplashViewController.m */,
 				67FD94BD1A4D250C00D6BFA8 /* MonsterCreatorViewController.h */,
 				67FD94BE1A4D250C00D6BFA8 /* MonsterCreatorViewController.m */,
 				67FD94BF1A4D250C00D6BFA8 /* MonsterViewerViewController.h */,
 				67FD94C01A4D250C00D6BFA8 /* MonsterViewerViewController.m */,
-				67FD94C11A4D250C00D6BFA8 /* SplashViewController.h */,
-				67FD94C21A4D250C00D6BFA8 /* SplashViewController.m */,
 				15B4B8121B0AB016002AA93E /* BranchInfoViewController.h */,
 				15B4B8131B0AB016002AA93E /* BranchInfoViewController.m */,
 			);

@@ -41,7 +41,7 @@ static CGFloat SIDE_SPACE = 7.0;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
     for (int i = 0; i < [self.colorViews count]; i++) {
         UIView *currView = [self.colorViews objectAtIndex:i];
         [currView setBackgroundColor:[MonsterPartsFactory colorForIndex:i]];
@@ -76,14 +76,7 @@ static CGFloat SIDE_SPACE = 7.0;
     
     [self.etxtName setText:[self.editingMonster getMonsterName]];
     
-//    UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self.etxtName action:@selector(resignFirstResponder)];
-//    UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
-//    toolbar.items = [NSArray arrayWithObject:barButton];
     
-    // track that the user viewed the monster edit page
-    [[Branch getInstance] userCompletedAction:@"monster_edit"];
-    
-    //self.etxtName.inputAccessoryView = toolbar;
     [self.etxtName addTarget:self.etxtName
                       action:@selector(resignFirstResponder)
             forControlEvents:UIControlEventEditingDidEndOnExit];
@@ -102,10 +95,10 @@ static CGFloat SIDE_SPACE = 7.0;
     CGRect screenSize = [[UIScreen mainScreen] bounds];
     CGFloat widthRatio = self.botViewLayerOne.frame.size.width/self.botViewLayerOne.frame.size.height;
     CGFloat newHeight = screenSize.size.height;
-//    if (IS_IPHONE_5)
-//        newHeight = newHeight * MONSTER_HEIGHT_FIVE;
-//    else
-        newHeight = newHeight * MONSTER_HEIGHT;
+    //    if (IS_IPHONE_5)
+    //        newHeight = newHeight * MONSTER_HEIGHT_FIVE;
+    //    else
+    newHeight = newHeight * MONSTER_HEIGHT;
     CGFloat newWidth = widthRatio * newHeight;
     CGRect newFrame = CGRectMake((screenSize.size.width-newWidth)/2, self.botViewLayerOne.frame.origin.y, newWidth, newHeight);
     
@@ -208,7 +201,7 @@ static CGFloat SIDE_SPACE = 7.0;
         [cell.imageView setImage:faceImage];
         [cell bringSubviewToFront:cell.imageView];
     }
-
+    
     return cell;
 }
 

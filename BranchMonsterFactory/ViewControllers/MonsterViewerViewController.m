@@ -43,6 +43,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *cmdChange;
 @property (weak, nonatomic) IBOutlet UIButton *cmdInfo;
 
+
 @end
 
 @implementation MonsterViewerViewController
@@ -86,10 +87,6 @@ static CGFloat MONSTER_HEIGHT = 0.4f;
     [self.progressBar show];
     [self.view addSubview:self.progressBar];
     
-    // track that the user viewed the monster view page
-    //[[Branch getInstance] userCompletedAction:@"monster_view" withState:self.monsterMetadata];
-    
-    //<#^(NSDictionary *params, NSError *error)callback#>
     
     [self.viewingMonster registerViewWithCallback:^(NSDictionary *params, NSError *error) {
         NSLog(@"Monster %@ was viewed.  params: %@", self.viewingMonster.getMonsterName, params);
@@ -105,13 +102,13 @@ static CGFloat MONSTER_HEIGHT = 0.4f;
     
     BranchLinkProperties *linkProperties = [[BranchLinkProperties alloc] init];
     linkProperties.feature = @"monster_sharing";
-    linkProperties.channel = @"twitter";
+    //linkProperties.channel = @"twitter";
     
     
-    // load a URL just for display on the viewer page
-    [[Branch getInstance] getContentUrlWithParams:[self prepareBranchDict] andChannel:@"" andCallback:^(NSString *url, NSError *error) {
-        UIPasteboard *pb = [UIPasteboard generalPasteboard];
-        [pb setString:url];
+    [self.viewingMonster getShortUrlWithLinkProperties:linkProperties andCallback:^(NSString *url, NSError *error) {
+        if (!error) {
+            NSLog(@"success creating monster viewing url for \"%@\"  : %@", [self.viewingMonster getMonsterName], url);
+        }
     }];
 
 }
