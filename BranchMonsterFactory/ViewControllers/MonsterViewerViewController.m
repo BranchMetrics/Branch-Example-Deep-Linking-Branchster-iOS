@@ -108,6 +108,8 @@ static CGFloat MONSTER_HEIGHT = 0.4f;
     [self.viewingMonster getShortUrlWithLinkProperties:linkProperties andCallback:^(NSString *url, NSError *error) {
         if (!error) {
             NSLog(@"success creating monster viewing url for \"%@\"  : %@", [self.viewingMonster getMonsterName], url);
+            UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+            pasteboard.string = url; //kUTTypeURL
         }
     }];
 

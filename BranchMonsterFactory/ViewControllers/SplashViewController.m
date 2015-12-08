@@ -31,13 +31,13 @@
     [super viewDidLoad];
     
     
-    
+
     //check first if we have a monster, and use it if so
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    if(appDelegate.initialMonster) {
-        self.startingMonster = appDelegate.initialMonster;
-        [self prepareNavigationControllerStack];
-    }
+//    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+//    if(appDelegate.initialMonster) {
+//        self.startingMonster = appDelegate.initialMonster;
+//        [self prepareNavigationControllerStack];
+//    }
     
     
     CABasicAnimation* animation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
@@ -64,7 +64,7 @@
                                              selector:@selector(prepareNavigationControllerStack)
                                                  name:@"monster_received"
                                                object:nil];
-    
+
 }
 
 
@@ -75,7 +75,7 @@
 -(void) prepareNavigationControllerStack {
     
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    
+
     self.startingMonster = appDelegate.initialMonster;
     //first remove all the currently pushed views down to the root, to start at a known state
     [[self navigationController] popToRootViewControllerAnimated:NO];
@@ -96,7 +96,7 @@
         [self.navigationController pushViewController:viewer animated:YES];
         
     }
-    
+
 }
 
 

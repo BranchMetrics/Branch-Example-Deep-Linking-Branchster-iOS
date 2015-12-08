@@ -54,13 +54,13 @@ static CGFloat SIDE_SPACE = 7.0;
     }
     
     //if it's null, create a new default monster
-    if (!self.editingMonster) {
-        self.editingMonster = [[BranchUniversalObject alloc] initWithCanonicalIdentifier:[NSString stringWithFormat:@"MONSTER_%u", arc4random_uniform(10000)]];
-        [self.editingMonster setFaceIndex:0];
-        [self.editingMonster setBodyIndex:0];
-        [self.editingMonster setColorIndex:0];
-        [self.editingMonster setMonsterName:@""];
-    }
+//    if (!self.editingMonster) {
+//        self.editingMonster = [[BranchUniversalObject alloc] initWithCanonicalIdentifier:[NSString stringWithFormat:@"MONSTER_%u", arc4random_uniform(10000)]];
+//        [self.editingMonster setFaceIndex:0];
+//        [self.editingMonster setBodyIndex:0];
+//        [self.editingMonster setColorIndex:0];
+//        [self.editingMonster setMonsterName:@""];
+//    }
     
     [self.cmdDone.layer setCornerRadius:3.0f];
     
