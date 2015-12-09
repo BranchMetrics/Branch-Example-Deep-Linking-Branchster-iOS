@@ -20,6 +20,7 @@
 @interface MonsterViewerViewController () <MFMailComposeViewControllerDelegate, MFMessageComposeViewControllerDelegate>
 
 
+@property (strong, nonatomic)BranchUniversalObject *viewingMonster;
 
 @property (strong, nonatomic) NetworkProgressBar *progressBar;
 
@@ -44,12 +45,14 @@
 @property (weak, nonatomic) IBOutlet UIButton *cmdInfo;
 
 
+
+@property (weak, nonatomic) IBOutlet UITextView *shareTextView;
+@property NSString* shareURL;
 @end
 
 @implementation MonsterViewerViewController
 
 static CGFloat MONSTER_HEIGHT = 0.4f;
-//static CGFloat MONSTER_HEIGHT_FIVE = 0.55f;
 
 
 
@@ -66,6 +69,7 @@ static CGFloat MONSTER_HEIGHT = 0.4f;
     
     [self.txtName setText:self.monsterName];
     [self.txtDescription setText:self.monsterDescription];
+    
     
     
     self.monsterMetadata = [[NSDictionary alloc]
@@ -98,23 +102,28 @@ static CGFloat MONSTER_HEIGHT = 0.4f;
 }
 
 
--(IBAction)copyShareURL:(id)sender {
+
+-(void) setViewingMonster: (BranchUniversalObject*) monster {
+    _viewingMonster = monster;
     
+    //and every time it gets set, I need to create a new url
     BranchLinkProperties *linkProperties = [[BranchLinkProperties alloc] init];
     linkProperties.feature = @"monster_sharing";
-    //linkProperties.channel = @"twitter";
-    
-    
+    linkProperties.channel = @"twitter";
+
     [self.viewingMonster getShortUrlWithLinkProperties:linkProperties andCallback:^(NSString *url, NSError *error) {
         if (!error) {
-            NSLog(@"success creating monster viewing url for \"%@\"  : %@", [self.viewingMonster getMonsterName], url);
-            UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
-            pasteboard.string = url; //kUTTypeURL
+            self.shareURL = url;
+            NSLog(@"new monster url created:  %@", self.shareURL);
+            self.shareTextView.text = url;
         }
     }];
-
 }
 
+-(IBAction)copyShareURL:(id)sender {
+    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+    pasteboard.string = self.shareTextView.text;
+}
 
 
 - (IBAction)cmdChangeClick:(id)sender {
@@ -175,9 +184,6 @@ static CGFloat MONSTER_HEIGHT = 0.4f;
     CGRect screenSize = [[UIScreen mainScreen] bounds];
     CGFloat widthRatio = self.botLayerOneColor.frame.size.width/self.botLayerOneColor.frame.size.height;
     CGFloat newHeight = screenSize.size.height;
-//    if (IS_IPHONE_5)
-//        newHeight = newHeight * MONSTER_HEIGHT_FIVE;
-//    else
         newHeight = newHeight * MONSTER_HEIGHT;
     CGFloat newWidth = widthRatio * newHeight;
     CGRect newFrame = CGRectMake((screenSize.size.width-newWidth)/2, self.botLayerOneColor.frame.origin.y, newWidth, newHeight);
@@ -191,9 +197,6 @@ static CGFloat MONSTER_HEIGHT = 0.4f;
     self.txtDescription.frame = textFrame;
     
     CGRect cmdFrame = self.cmdChange.frame;
-//    if (IS_IPHONE_5)
-//        cmdFrame.origin.x = newFrame.origin.x + newFrame.size.width - cmdFrame.size.width/2;
-//    else
         cmdFrame.origin.x = newFrame.origin.x + newFrame.size.width;
     self.cmdChange.frame = cmdFrame;
     [self.view layoutSubviews];

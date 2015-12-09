@@ -76,11 +76,6 @@
     [self.txtNote setText:[self.loadingMessages objectAtIndex:self.messageIndex]];
 }
 
-- (void) viewWillDisappear:(BOOL)animated {
-    [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                    name:UIApplicationDidBecomeActiveNotification
-                                                  object:nil];
-}
 
 
 #pragma mark - Navigation
@@ -114,15 +109,6 @@
     [self.navigationController pushViewController:viewer animated:YES];
 
 }
-
-
-
-
-
-
-
-
-
 
 
 

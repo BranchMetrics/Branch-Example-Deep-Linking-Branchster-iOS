@@ -201,7 +201,7 @@ static CGFloat SIDE_SPACE = 7.0;
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     MonsterViewerViewController *receiver = (MonsterViewerViewController *)[segue destinationViewController];
-    receiver.viewingMonster = self.editingMonster;
+    [receiver setViewingMonster:self.editingMonster];
 }
 
 
