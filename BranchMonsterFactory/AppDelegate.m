@@ -15,16 +15,28 @@
 
 
 @interface AppDelegate ()
-@property BOOL firstTime;
+
+//create a new, random monster if there isn't one at launch
+
+
+@property BOOL launched;
+@property BOOL foregrounded;
+
+@property BOOL gotMonster;
+
+@property NSArray* firstNames;
+@property NSArray* lastNames;
 @end
 
 @implementation AppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    self.firstTime = YES;
-
-    self.initialMonster = nil;
+    self.launched = YES;
+    self.foregrounded = NO;
+    
+    self.firstNames = @[@"Francine", @"Darren", @"Blanche", @"Wendell", @"Fresia", @"Bart"];
+    self.lastNames = @[@"Adirondack", @"Peabody", @"Newsome", @"Wallaby", @"French", @"Brentwood"];
     
     // Initalize Branch and register the deep link handler
     // The deep link handler is called on every install/open to tell you if the user had just clicked a deep link
@@ -35,21 +47,23 @@
         
         NSLog(@"\n\nJust retrieved data from server: %@\n\n", receivedMonster);
         
-        if (receivedMonster) {
-            //one was delivered
-            self.initialMonster = receivedMonster;
-        } else if(self.firstTime) {
-            //make a new one
-            self.initialMonster = [[BranchUniversalObject alloc] initWithCanonicalIdentifier:[NSString stringWithFormat:@"MONSTER_%u", arc4random_uniform(10000)]];
-            [self.initialMonster setFaceIndex:0];
-            [self.initialMonster setBodyIndex:0];
-            [self.initialMonster setColorIndex:0];
-            [self.initialMonster setMonsterName:@"Bingles Jingleheimer"];
-            self.firstTime = NO;
-        }
-        
-        if(self.initialMonster) {
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"monster_received" object:nil];
+        if (self.launched) {
+            
+            if (receivedMonster) {
+                self.initialMonster = receivedMonster;
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"pushEditAndViewerViews" object:nil];
+            } else if(self.launched) {
+                self.initialMonster = [self createRandomMonster];
+                self.launched = NO;
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"pushEditView" object:nil];
+            }
+        } else if(self.foregrounded) {
+            
+            if (receivedMonster) {
+                self.initialMonster = receivedMonster;
+                self.foregrounded = NO;
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"pushEditAndViewerViews" object:nil];
+            }
         }
 
     }];
@@ -57,7 +71,14 @@
     return YES;
 }
 
-
+- (BranchUniversalObject *) createRandomMonster {
+    BranchUniversalObject*  random = [[BranchUniversalObject alloc] initWithCanonicalIdentifier:[NSString stringWithFormat:@"MONSTER_%u", arc4random_uniform(10000000)]];
+    [random setFaceIndex:arc4random_uniform(5)];
+    [random setBodyIndex:arc4random_uniform(5)];
+    [random setColorIndex:arc4random_uniform(8)];
+    [random setMonsterName:[NSString stringWithFormat:@"%@ %@", self.firstNames[arc4random_uniform(6)], self.lastNames[arc4random_uniform(6)] ]];
+    return random;
+}
 
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
@@ -68,8 +89,7 @@
     
     //other possible code blocks that might want to do something, facebook, etc.
     //BOOL wasHandled = [FBAppCall handleOpenURL:url sourceApplication:sourceApplication];
-    //if (!wasHandled)
-    //twitter, etc.
+    //if (!wasHandled)...
     
     return YES;
 }
@@ -93,7 +113,7 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     NSLog(@"foreground");
-    
+    self.foregrounded = YES;
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {

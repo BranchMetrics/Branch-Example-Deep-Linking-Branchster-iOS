@@ -22,6 +22,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *txtNote;
 @property (strong, nonatomic) NSArray *loadingMessages;
 @property (nonatomic) NSInteger messageIndex;
+
+@property BOOL firstTime;
 @end
 
 @implementation SplashViewController
@@ -29,16 +31,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    
+    self.firstTime = YES;
 
-    //check first if we have a monster, and use it if so
-//    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-//    if(appDelegate.initialMonster) {
-//        self.startingMonster = appDelegate.initialMonster;
-//        [self prepareNavigationControllerStack];
-//    }
-    
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(pushEditView)
+                                                     name:@"pushEditView"
+                                                   object:nil];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(pushEditAndViewerViews)
+                                                 name:@"pushEditAndViewerViews"
+                                               object:nil];
+
     
     CABasicAnimation* animation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
     animation.fromValue = @0.0f;
@@ -59,46 +64,7 @@
                                     repeats:YES];
     
     
-    //handle incoming monsters
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(prepareNavigationControllerStack)
-                                                 name:@"monster_received"
-                                               object:nil];
-
 }
-
-
-
-
-
-
--(void) prepareNavigationControllerStack {
-    
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-
-    self.startingMonster = appDelegate.initialMonster;
-    //first remove all the currently pushed views down to the root, to start at a known state
-    [[self navigationController] popToRootViewControllerAnimated:NO];
-    
-    //if we don't have a monster, then segue to the edit screen and stop there
-    if (self.startingMonster == NULL) {
-        [self performSegueWithIdentifier: @"editMonster" sender: self];
-    } else {
-        //load the edit view, pass it the existing monster, then push it with no animation
-        // on the nav controller stack
-        MonsterCreatorViewController  *creator = [self.storyboard instantiateViewControllerWithIdentifier:@"MonsterCreatorViewController"];
-        creator.editingMonster = self.startingMonster;
-        [self.navigationController pushViewController:creator animated:NO];
-        
-        //now do the same with the monsterviewercontroller, but with animation, so they are on the stack in the correct order
-        MonsterViewerViewController  *viewer = [self.storyboard instantiateViewControllerWithIdentifier:@"MonsterViewerViewController"];
-        viewer.viewingMonster = self.startingMonster;
-        [self.navigationController pushViewController:viewer animated:YES];
-        
-    }
-
-}
-
 
 
 - (void)viewDidLayoutSubviews {
@@ -118,6 +84,47 @@
 
 
 #pragma mark - Navigation
+
+
+
+    //used only for initial launch to blank monster
+- (void) pushEditView {
+    
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    self.startingMonster = appDelegate.initialMonster;
+    [[self navigationController] popToRootViewControllerAnimated:NO];
+    [self performSegueWithIdentifier: @"editMonster" sender: self];
+    }
+
+
+//used for
+- (void) pushEditAndViewerViews {
+    
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    self.startingMonster = appDelegate.initialMonster;
+    [[self navigationController] popToRootViewControllerAnimated:NO];
+    
+    MonsterCreatorViewController  *creator = [self.storyboard instantiateViewControllerWithIdentifier:@"MonsterCreatorViewController"];
+    creator.editingMonster = self.startingMonster;
+    [self.navigationController pushViewController:creator animated:NO];
+    
+    //now do the same with the monsterviewercontroller, but with animation, so they are on the stack in the correct order
+    MonsterViewerViewController  *viewer = [self.storyboard instantiateViewControllerWithIdentifier:@"MonsterViewerViewController"];
+    viewer.viewingMonster = self.startingMonster;
+    [self.navigationController pushViewController:viewer animated:YES];
+
+}
+
+
+
+
+
+
+
+
+
+
+
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

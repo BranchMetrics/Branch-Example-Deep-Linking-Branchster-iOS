@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface SplashViewController : UIViewController
--(void) prepareNavigationControllerStack;
+- (void) pushEditView;
+- (void) pushEditAndViewerViews;
+
 
 @end

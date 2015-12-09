@@ -52,16 +52,7 @@ static CGFloat SIDE_SPACE = 7.0;
         [currView.layer setBorderColor:[UIColor colorWithWhite:0.3 alpha:1.0].CGColor];
         [currView.layer setCornerRadius:currView.frame.size.width/2];
     }
-    
-    //if it's null, create a new default monster
-//    if (!self.editingMonster) {
-//        self.editingMonster = [[BranchUniversalObject alloc] initWithCanonicalIdentifier:[NSString stringWithFormat:@"MONSTER_%u", arc4random_uniform(10000)]];
-//        [self.editingMonster setFaceIndex:0];
-//        [self.editingMonster setBodyIndex:0];
-//        [self.editingMonster setColorIndex:0];
-//        [self.editingMonster setMonsterName:@""];
-//    }
-    
+        
     [self.cmdDone.layer setCornerRadius:3.0f];
     
     [self.botViewLayerOne setBackgroundColor:[MonsterPartsFactory colorForIndex:[self.editingMonster getColorIndex]]];
