@@ -41,7 +41,8 @@
     // Initalize Branch and register the deep link handler
     // The deep link handler is called on every install/open to tell you if the user had just clicked a deep link
     Branch *branch = [Branch getInstance];
-    [branch setDebug];
+    
+    //[branch setDebug];
     
     [branch initSessionWithLaunchOptions:launchOptions andRegisterDeepLinkHandlerUsingBranchUniversalObject:^(BranchUniversalObject *receivedMonster, BranchLinkProperties *linkProperties, NSError * error) {
         
