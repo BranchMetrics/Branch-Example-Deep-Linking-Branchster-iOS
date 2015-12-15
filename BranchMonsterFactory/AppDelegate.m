@@ -10,7 +10,7 @@
 #import "Branch.h"
 
 #import "SplashViewController.h"
-
+#import "BranchUniversalObject+MonsterHelpers.h"
 #import <FacebookSDK/FacebookSDK.h>
 
 
@@ -19,7 +19,7 @@
 //create a new, random monster if there isn't one at launch
 
 
-@property BOOL launched;
+@property BOOL  justLaunched;
 @property BOOL foregrounded;
 
 @property BOOL gotMonster;
@@ -32,11 +32,8 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    self.launched = YES;
+    self.justLaunched = YES;
     self.foregrounded = NO;
-    
-    self.firstNames = @[@"Francine", @"Darren", @"Blanche", @"Wendell", @"Fresia", @"Bart"];
-    self.lastNames = @[@"Adirondack", @"Peabody", @"Newsome", @"Wallaby", @"French", @"Brentwood"];
     
     // Initalize Branch and register the deep link handler
     // The deep link handler is called on every install/open to tell you if the user had just clicked a deep link
@@ -44,41 +41,53 @@
     
     //[branch setDebug];
     
-    [branch initSessionWithLaunchOptions:launchOptions andRegisterDeepLinkHandlerUsingBranchUniversalObject:^(BranchUniversalObject *receivedMonster, BranchLinkProperties *linkProperties, NSError * error) {
+    [branch initSessionWithLaunchOptions:launchOptions andRegisterDeepLinkHandlerUsingBranchUniversalObject:^(BranchUniversalObject *BUO, BranchLinkProperties *linkProperties, NSError * error) {
         
-        NSLog(@"\n\nJust retrieved data from server: %@\n\n", receivedMonster);
-        
-        if (self.launched) {
+        if (BUO && [BUO.metadata objectForKey:@"monster"]) {
             
-            if (receivedMonster) {
-                self.initialMonster = receivedMonster;
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"pushEditAndViewerViews" object:nil];
-            } else if(self.launched) {
-                self.initialMonster = [self createRandomMonster];
-                self.launched = NO;
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"pushEditView" object:nil];
-            }
-        } else if(self.foregrounded) {
+            BranchUniversalObject* receivedMonster = BUO;
             
-            if (receivedMonster) {
-                self.initialMonster = receivedMonster;
-                self.foregrounded = NO;
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"pushEditAndViewerViews" object:nil];
+            NSLog(@"\n\nJust retrieved data from server: %@\n\n", receivedMonster);
+            
+            if (self.justLaunched) {
+                
+                self.justLaunched = NO; //turn off
+                
+                if (receivedMonster) {
+                    self.initialMonster = receivedMonster;
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"pushEditAndViewerViews" object:nil];
+                } else {
+                    self.initialMonster = [self emptyMonster];
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"pushEditView" object:nil];
+                }
+            } else if(self.foregrounded) {
+                if (receivedMonster) {
+                    self.initialMonster = receivedMonster;
+                    self.foregrounded = NO;
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"pushEditAndViewerViews" object:nil];
+                }
             }
+            
+        } else {
+            self.initialMonster = [self emptyMonster];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"pushEditView" object:nil];
         }
-
+    
     }];
     
     return YES;
 }
 
-- (BranchUniversalObject *) createRandomMonster {
-    BranchUniversalObject*  random = [[BranchUniversalObject alloc] initWithCanonicalIdentifier:[NSString stringWithFormat:@"MONSTER_%u", arc4random_uniform(10000000)]];
-    [random setFaceIndex:arc4random_uniform(5)];
-    [random setBodyIndex:arc4random_uniform(5)];
-    [random setColorIndex:arc4random_uniform(8)];
-    [random setMonsterName:[NSString stringWithFormat:@"%@ %@", self.firstNames[arc4random_uniform(6)], self.lastNames[arc4random_uniform(6)] ]];
-    return random;
+- (BranchUniversalObject *) emptyMonster {
+    
+    
+    BranchUniversalObject*  empty = [[BranchUniversalObject alloc] initWithTitle:@""];
+    [empty setIsMonster];
+    [empty setFaceIndex:0];
+    [empty setBodyIndex:0];
+    [empty setColorIndex:0];
+    [empty setMonsterName:@""];
+     return empty;
 }
 
 

@@ -12,6 +12,9 @@
 
 @interface BranchUniversalObject (MonsterHelpers)
 
+//need to have this to be recognized as a monster  (just a BOOL)
+- (void) setIsMonster;
+
 - (void)setMonsterName:(NSString *)name;
 
 - (NSString *)getMonsterName;

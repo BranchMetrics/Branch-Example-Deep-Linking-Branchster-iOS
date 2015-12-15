@@ -15,6 +15,10 @@
 
 
 
+- (void)setIsMonster{
+    [self addMetadataKey:@"monster" value: @"true"];
+}
+
 - (void)setMonsterName:(NSString *)name {
     [self addMetadataKey:@"monster_name" value:name];
 }

@@ -75,7 +75,7 @@ static CGFloat SIDE_SPACE = 7.0;
 
 - (void)viewDidLayoutSubviews {
     [self adjustMonsterPicturesForScreenSize];
-    
+ 
     self.bodyIndex = [self.editingMonster getBodyIndex];
     self.faceIndex = [self.editingMonster getFaceIndex];
     [self.botViewLayerTwo scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:self.bodyIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
