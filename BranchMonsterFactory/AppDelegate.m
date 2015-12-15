@@ -113,11 +113,9 @@
 
 
 - (void)applicationWillResignActive:(UIApplication *)application {
-    NSLog(@"resign");
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-    NSLog(@"background");
     
 }
 
@@ -127,12 +125,10 @@
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-    NSLog(@"active");
     
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
-    NSLog(@"terminate");
     
 }
 
