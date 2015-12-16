@@ -15,17 +15,7 @@
 
 
 @interface AppDelegate ()
-
-//create a new, random monster if there isn't one at launch
-
-
 @property BOOL  justLaunched;
-@property BOOL foregrounded;
-
-@property BOOL gotMonster;
-
-@property NSArray* firstNames;
-@property NSArray* lastNames;
 @end
 
 @implementation AppDelegate
@@ -33,7 +23,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.justLaunched = YES;
-    self.foregrounded = NO;
     
     // Initalize Branch and register the deep link handler
     // The deep link handler is called on every install/open to tell you if the user had just clicked a deep link
@@ -49,45 +38,35 @@
             
             NSLog(@"\n\nJust retrieved data from server: %@\n\n", receivedMonster);
             
-            if (self.justLaunched) {
-                
-                self.justLaunched = NO; //turn off
-                
-                if (receivedMonster) {
-                    self.initialMonster = receivedMonster;
-                    [[NSNotificationCenter defaultCenter] postNotificationName:@"pushEditAndViewerViews" object:nil];
-                } else {
-                    self.initialMonster = [self emptyMonster];
-                    [[NSNotificationCenter defaultCenter] postNotificationName:@"pushEditView" object:nil];
-                }
-            } else if(self.foregrounded) {
-                if (receivedMonster) {
-                    self.initialMonster = receivedMonster;
-                    self.foregrounded = NO;
-                    [[NSNotificationCenter defaultCenter] postNotificationName:@"pushEditAndViewerViews" object:nil];
-                }
+            
+            if (receivedMonster) {
+                //always show a new monster, if we received one
+                self.initialMonster = receivedMonster;
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"pushEditAndViewerViews" object:nil];
             }
             
         } else {
-            self.initialMonster = [self emptyMonster];
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"pushEditView" object:nil];
+            //didn't get a monster
+            if (self.justLaunched) {
+                self.initialMonster = [self emptyMonster];
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"pushEditView" object:nil];
+                self.justLaunched = NO;
+            }
         }
-    
     }];
     
     return YES;
 }
 
+
 - (BranchUniversalObject *) emptyMonster {
-    
-    
-    BranchUniversalObject*  empty = [[BranchUniversalObject alloc] initWithTitle:@""];
+    BranchUniversalObject*  empty = [[BranchUniversalObject alloc] initWithTitle:@"Jingles Bingleheimer"];
     [empty setIsMonster];
     [empty setFaceIndex:0];
     [empty setBodyIndex:0];
     [empty setColorIndex:0];
     [empty setMonsterName:@""];
-     return empty;
+    return empty;
 }
 
 
@@ -120,8 +99,6 @@
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
-    NSLog(@"foreground");
-    self.foregrounded = YES;
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {

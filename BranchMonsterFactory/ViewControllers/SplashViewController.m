@@ -88,7 +88,11 @@
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     self.startingMonster = appDelegate.initialMonster;
     [[self navigationController] popToRootViewControllerAnimated:NO];
-    [self performSegueWithIdentifier: @"editMonster" sender: self];
+
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self performSegueWithIdentifier: @"editMonster" sender: self];
+
+    });
     }
 
 
@@ -99,14 +103,19 @@
     self.startingMonster = appDelegate.initialMonster;
     [[self navigationController] popToRootViewControllerAnimated:NO];
     
-    MonsterCreatorViewController  *creator = [self.storyboard instantiateViewControllerWithIdentifier:@"MonsterCreatorViewController"];
-    creator.editingMonster = self.startingMonster;
-    [self.navigationController pushViewController:creator animated:NO];
-    
-    //now do the same with the monsterviewercontroller, but with animation, so they are on the stack in the correct order
-    MonsterViewerViewController  *viewer = [self.storyboard instantiateViewControllerWithIdentifier:@"MonsterViewerViewController"];
-    viewer.viewingMonster = self.startingMonster;
-    [self.navigationController pushViewController:viewer animated:YES];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        MonsterCreatorViewController  *creator = [self.storyboard instantiateViewControllerWithIdentifier:@"MonsterCreatorViewController"];
+        creator.editingMonster = self.startingMonster;
+        [self.navigationController pushViewController:creator animated:NO];
+
+    });
+
+    dispatch_async(dispatch_get_main_queue(), ^{
+        MonsterViewerViewController  *viewer = [self.storyboard instantiateViewControllerWithIdentifier:@"MonsterViewerViewController"];
+        viewer.viewingMonster = self.startingMonster;
+        [self.navigationController pushViewController:viewer animated:YES];        
+    });
+
 
 }
 
@@ -114,8 +123,6 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
     MonsterCreatorViewController *receiver = (MonsterCreatorViewController *)[segue destinationViewController];
     receiver.editingMonster = self.startingMonster;
 }
