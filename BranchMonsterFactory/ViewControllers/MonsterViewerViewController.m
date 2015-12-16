@@ -17,7 +17,7 @@
 #import <Social/Social.h>
 #import <FacebookSDK/FacebookSDK.h>
 
-@interface MonsterViewerViewController () <MFMailComposeViewControllerDelegate, MFMessageComposeViewControllerDelegate>
+@interface MonsterViewerViewController () /*<UITextViewDelegate>*/
 
 
 @property (strong, nonatomic)BranchUniversalObject *viewingMonster;
@@ -34,11 +34,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *botLayerThreeFace;
 @property (weak, nonatomic) IBOutlet UILabel *txtName;
 @property (weak, nonatomic) IBOutlet UILabel *txtDescription;
-
-@property (weak, nonatomic) IBOutlet UIButton *cmdMessage;
-@property (weak, nonatomic) IBOutlet UIButton *cmdMail;
-@property (weak, nonatomic) IBOutlet UIButton *cmdTwitter;
-@property (weak, nonatomic) IBOutlet UIButton *cmdFacebook;
 
 
 @property (weak, nonatomic) IBOutlet UIButton *cmdChange;
@@ -98,7 +93,7 @@ static CGFloat MONSTER_HEIGHT = 0.4f;
     
     
     [self.progressBar hide];
-
+    [self setViewingMonster:self.viewingMonster];  //yuvk
 }
 
 
@@ -119,6 +114,14 @@ static CGFloat MONSTER_HEIGHT = 0.4f;
         }
     }];
 }
+
+-(IBAction)shareSheet:(id)sender {
+    [self.viewingMonster
+     showShareSheetWithShareText:@"Share Your Monster!"
+     andCallback:nil];[UIMenuController sharedMenuController].menuVisible = NO;
+    [self.shareTextView resignFirstResponder];
+}
+
 
 -(IBAction)copyShareURL:(id)sender {
     UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
@@ -202,258 +205,8 @@ static CGFloat MONSTER_HEIGHT = 0.4f;
     [self.view layoutSubviews];
 }
 
-#pragma mark - Button Actions
-
-- (IBAction)cmdMessageClick:(id)sender {
-    // track that the user clicked the share via sms button and pass in the monster meta data
-    [[Branch getInstance] userCompletedAction:@"share_sms_click" withState:self.monsterMetadata];
-    
-    if([MFMessageComposeViewController canSendText]){
-        [self.progressBar changeMessageTo:@"preparing message.."];
-        [self.progressBar show];
-        
-        MFMessageComposeViewController *smsViewController = [[MFMessageComposeViewController alloc] init];
-        smsViewController.messageComposeDelegate = self;
-        
-        // Create Branch link as soon as the user clicks
-        // Pass in the special Branch dictionary of keys/values you want to receive in the AppDelegate on initSession
-        // Specify the channel to be 'sms' for tracking on the Branch dashboard
-        [[Branch getInstance] getContentUrlWithParams:[self prepareBranchDict]  andChannel:@"sms" andCallback:^(NSString *url, NSError *error) {
-            [self.progressBar hide];
-            
-            // if there was no error, show the SMS View Controller with the Branch deep link
-            if (!error) {
-                smsViewController.body = [NSString stringWithFormat:@"Check out my Branchster named %@ at %@", self.monsterName, url];
-                [self presentViewController:smsViewController animated:YES completion:nil];
-            }
-        }];
-    } else {
-        UIAlertView *alert_Dialog = [[UIAlertView alloc] initWithTitle:@"No Message Support" message:@"This device does not support messaging" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert_Dialog show];
-        alert_Dialog = nil;
-    }
-
-}
-
-- (IBAction)cmdMailClick:(id)sender {
-    // track that the user clicked the share via email button and pass in the monster details
-    [[Branch getInstance] userCompletedAction:@"share_email_click" withState:self.monsterMetadata];
-    
-    if ([MFMailComposeViewController canSendMail]) {
-        [self.progressBar changeMessageTo:@"preparing mail.."];
-        [self.progressBar show];
-        
-        MFMailComposeViewController *mailer = [[MFMailComposeViewController alloc] init];
-        mailer.mailComposeDelegate = self;
-        [mailer setSubject:[NSString stringWithFormat:@"Check out my Branchster named %@", self.monsterName]];
-        NSArray *toRecipients = nil;
-        [mailer setToRecipients:toRecipients];
-        
-        
-        // Create Branch link as soon as the user clicks
-        // Pass in the special Branch dictionary of keys/values you want to receive in the AppDelegate on initSession
-        // Specify the channel to be 'email' for tracking on the Branch dashboard
-        [[Branch getInstance] getContentUrlWithParams:[self prepareBranchDict]  andChannel:@"email" andCallback:^(NSString *url, NSError *error) {
-            [self.progressBar hide];
-            
-            // if there was no error, show the Email View Controller with the Branch deep link
-            if (!error) {
-                NSString *emailBody = [NSString stringWithFormat:@"I just created this Branchster named %@ in the Branch Monster Factory.\n\nSee it here:\n%@", self.monsterName, url];
-                [mailer setMessageBody:emailBody isHTML:NO];
-                [self presentViewController:mailer animated:YES completion:nil];
-            }
-        }];
-        
-    } else {
-        UIAlertView *alert_Dialog = [[UIAlertView alloc] initWithTitle:@"No Mail Support" message:@"Your default mail client is not configured" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert_Dialog show];
-        alert_Dialog = nil;
-    }
-}
-
-- (IBAction)cmdTwitterClick:(id)sender {
-    // track that user clicked the share on Twitter button and pass in the monster metadata
-    [[Branch getInstance] userCompletedAction:@"share_twitter_click" withState:self.monsterMetadata];
-    
-    SLComposeViewController *twitterController= [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
-    
-    if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter]) {
-        SLComposeViewControllerCompletionHandler completionHandler = ^(SLComposeViewControllerResult result) {
-            [twitterController dismissViewControllerAnimated:YES completion:nil];
-            switch(result){
-                case SLComposeViewControllerResultDone:
-                    [[Branch getInstance] userCompletedAction:@"share_twitter_success"];
-                    break;
-                case SLComposeViewControllerResultCancelled:
-                default:
-                    break;
-            }
-        };
-        
-        [self.progressBar changeMessageTo:@"preparing post.."];
-        [self.progressBar show];
-        
-        // Create Branch link as soon as the user clicks
-        // Pass in the special Branch dictionary of keys/values you want to receive in the AppDelegate on initSession
-        // Specify the channel to be 'twitter' for tracking on the Branch dashboard
-        [[Branch getInstance] getContentUrlWithParams:[self prepareBranchDict]  andChannel:@"twitter" andCallback:^(NSString *url, NSError *error) {
-            [self.progressBar hide];
-            
-            // if there was no error, show the Twitter Share View Controller with the Branch deep link
-            if (!error) {
-                [twitterController setInitialText:[NSString stringWithFormat:@"Check out my Branchster named %@", self.monsterName]];
-                [twitterController addURL:[NSURL URLWithString:url]];
-                [twitterController setCompletionHandler:completionHandler];
-                [self presentViewController:twitterController animated:YES completion:nil];
-            }
-        }];
-    } else {
-        UIAlertView *alert_Dialog = [[UIAlertView alloc] initWithTitle:@"No Twitter Account" message:@"You do not seem to have Facebook on this device" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert_Dialog show];
-        alert_Dialog = nil;
-    }
-}
-
-- (IBAction)cmdFacebookClick:(id)sender {
-    // track that user clicked the share button on facebook and pass in the monster metadata
-    [[Branch getInstance] userCompletedAction:@"share_facebook_click" withState:self.monsterMetadata];
-    
-    [self.progressBar changeMessageTo:@"preparing post.."];
-    [self.progressBar show];
-    
-    // If the session state is any of the two "open" states when the button is clicked
-    if (FBSession.activeSession.isOpen && [FBSession.activeSession.permissions indexOfObject:@"publish_actions"] != NSNotFound) {
-        [self initiateFacebookShare];
-    } else {
-        NSArray *permissions = [[NSArray alloc] initWithObjects:
-                                @"publish_actions",
-                                nil];
-        [FBSession openActiveSessionWithPublishPermissions:permissions defaultAudience:FBSessionDefaultAudienceFriends allowLoginUI:YES completionHandler:^(FBSession *session, FBSessionState state, NSError *error) {
-            [self sessionStateChanged:session state:state error:error];
-        }];
-    }
-    
-}
-
-#pragma mark - Facebook
-
-- (void)sessionStateChanged:(FBSession *)session state:(FBSessionState) state error:(NSError *)error {
-    switch (state)
-    {   case FBSessionStateOpen:
-            [self initiateFacebookShare];
-            break;
-        case FBSessionStateClosed:
-            [self.progressBar hide];
-            break;
-        case FBSessionStateClosedLoginFailed:
-            [self.progressBar hide];
-            [FBSession.activeSession closeAndClearTokenInformation];
-            break;
-        default:
-            [self.progressBar hide];
-            break;
-    }
-}
 
 
-- (void)initiateFacebookShare {
-    
-    // Create Branch link as soon as we know there is a valid Facebook session
-    // Pass in the special Branch dictionary of keys/values you want to receive in the AppDelegate on initSession
-    // Specify the channel to be 'facebook' for tracking on the Branch dashboard
-    [[Branch getInstance] getContentUrlWithParams:[self prepareBranchDict]  andChannel:@"facebook" andCallback:^(NSString *url, NSError *error) {
-        [self.progressBar hide];
-        
-        // If there is no error, do all the fancy foot work to initiate a share on Facebook
-        if (!error) {
-            id<FBGraphObject> object = [FBGraphObject openGraphObjectForPostWithType:@"branchmetrics:branchster"
-                                                title:self.monsterName
-                                                image:[[self prepareBranchDict] objectForKey:@"$og_image_url"]
-                                                  url:url
-                                          description:[[self prepareBranchDict] objectForKey:@"$og_description"]];
-        
-            // Create an action
-            id<FBOpenGraphAction> action = (id<FBOpenGraphAction>)[FBGraphObject graphObject];
-        
-            // Link the object to the action
-            [action setObject:object forKey:@"branchster"];
-            [action setObject:@"true" forKey:@"fb:explicitly_shared"];
-        
-            FBOpenGraphActionParams *params = [[FBOpenGraphActionParams alloc] init];
-            params.action = action;
-            params.actionType = @"branchmetrics:create";
-        
-            // If the Facebook app is installed and we can present the share dialog
-            if([FBDialogs canPresentShareDialogWithOpenGraphActionParams:params]) {
-                // Show the share dialog
-                [FBDialogs presentShareDialogWithOpenGraphAction:action
-                                                  actionType:@"branchmetrics:create"
-                                         previewPropertyName:@"branchster"
-                                                     handler:^(FBAppCall *call, NSDictionary *results, NSError *error) {
-                                                         if (!error) {
-                                                             // Success
-                                                             // track a successful share event via Facebook
-                                                             [[Branch getInstance] userCompletedAction:@"share_facebook_success"];
-                                                         }
-                                                     }];
-            } else {
-                [FBWebDialogs presentFeedDialogModallyWithSession:nil
-                                                   parameters:[self prepareFBDict:url]
-                                                      handler:^(FBWebDialogResult result, NSURL *resultURL, NSError *error) {
-                                                          if (!error) {
-                                                              if (result == FBWebDialogResultDialogCompleted) {
-                                                                  // Handle the publish feed callback
-                                                                  NSDictionary *urlParams = [self parseURLParams:[resultURL query]];
-                                                                  
-                                                                  if ([urlParams valueForKey:@"post_id"]) {
-                                                                      // Success
-                                                                      // track a successful share event via Facebook
-                                                                      [[Branch getInstance] userCompletedAction:@"share_facebook_success"];
-                                                                  }
-                                                              }
-                                                          }
-                                                      }];
-            }
-        }
-        
-    }];
 
-}
-
-#pragma mark - Helper methods
-
-// A function for parsing URL parameters returned by the Feed Dialog.
-- (NSDictionary*)parseURLParams:(NSString *)query {
-    NSArray *pairs = [query componentsSeparatedByString:@"&"];
-    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
-    for (NSString *pair in pairs) {
-        NSArray *kv = [pair componentsSeparatedByString:@"="];
-        NSString *val =
-        [kv[1] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        params[kv[0]] = val;
-    }
-    return params;
-}
-
-#pragma mark - MFMessageComposeViewControllerProtocol
-
-- (void)messageComposeViewController:(MFMessageComposeViewController *)controller
-                 didFinishWithResult:(MessageComposeResult)result {
-    if (MessageComposeResultSent == result) {
-        
-        // track successful share event via sms
-        [[Branch getInstance] userCompletedAction:@"share_sms_success"];
-    }
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
-    if (MFMailComposeResultSent == result) {
-        
-        // track successful share event via email
-        [[Branch getInstance] userCompletedAction:@"share_email_success"];
-    }
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
 
 @end

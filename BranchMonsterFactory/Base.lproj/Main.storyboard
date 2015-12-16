@@ -437,66 +437,10 @@
                                     <constraint firstAttribute="height" constant="270" id="jLQ-O8-z2X"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zRi-R7-p36">
-                                <rect key="frame" x="155" y="530" width="50" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="E7t-UO-Csi"/>
-                                    <constraint firstAttribute="width" constant="50" id="Zpv-Kt-rxt"/>
-                                </constraints>
-                                <state key="normal" image="text_share.png">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted" image="text_pressed.png"/>
-                                <connections>
-                                    <action selector="cmdMessageClick:" destination="1x1-sb-jCq" eventType="touchUpInside" id="QaH-Yk-M0z"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dfd-jm-1Lc">
-                                <rect key="frame" x="235" y="530" width="50" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="cV4-7K-5Kw"/>
-                                    <constraint firstAttribute="width" constant="50" id="mPW-7X-SI2"/>
-                                </constraints>
-                                <state key="normal" image="email_share.png">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted" image="email_pressed.png"/>
-                                <connections>
-                                    <action selector="cmdMailClick:" destination="1x1-sb-jCq" eventType="touchUpInside" id="z4M-HC-Z70"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pFU-6t-zHG">
-                                <rect key="frame" x="315" y="530" width="50" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="0Cl-D6-22K"/>
-                                    <constraint firstAttribute="width" constant="50" id="SHg-9x-6hV"/>
-                                </constraints>
-                                <state key="normal" title="Twitter" image="twitter_share.png">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted" image="twitter_pressed.png"/>
-                                <connections>
-                                    <action selector="cmdTwitterClick:" destination="1x1-sb-jCq" eventType="touchUpInside" id="z5z-X5-Y9z"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rmb-VE-D3J">
-                                <rect key="frame" x="395" y="530" width="50" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="66o-rY-zZK"/>
-                                    <constraint firstAttribute="width" constant="50" id="kpi-eS-Pf8"/>
-                                </constraints>
-                                <state key="normal" image="facebook_share.png">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted" image="facebook_pressed.png"/>
-                                <connections>
-                                    <action selector="cmdFacebookClick:" destination="1x1-sb-jCq" eventType="touchUpInside" id="Rpd-cc-KhV"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="560" translatesAutoresizingMaskIntoConstraints="NO" id="DSd-1x-l1J">
-                                <rect key="frame" x="24" y="334" width="552" height="76"/>
+                                <rect key="frame" x="24" y="333" width="552" height="90"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="76" id="Uv4-fN-812"/>
+                                    <constraint firstAttribute="height" constant="90" id="Uv4-fN-812"/>
                                 </constraints>
                                 <attributedString key="attributedText">
                                     <fragment>
@@ -542,20 +486,16 @@
                                     <segue destination="rab-AQ-UbK" kind="presentation" id="Gzn-7g-FUX"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rbb-Mj-St6">
-                                <rect key="frame" x="250" y="491" width="100" height="26"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="26" id="dxP-px-Wb8"/>
-                                    <constraint firstAttribute="width" constant="100" id="u43-eR-3Mp"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <state key="normal" title="tap here to copy"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MUc-9V-p35">
+                                <rect key="frame" x="60" y="546" width="480" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Share Your Monster!"/>
                                 <connections>
-                                    <action selector="copyShareURL:" destination="1x1-sb-jCq" eventType="touchUpInside" id="afw-UB-RHy"/>
+                                    <action selector="shareSheet:" destination="1x1-sb-jCq" eventType="touchUpInside" id="MZR-vO-Q9u"/>
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Nfi-p4-Fs2">
-                                <rect key="frame" x="40" y="451" width="520" height="30"/>
+                                <rect key="frame" x="40" y="496" width="520" height="30"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="YCi-ia-NKy"/>
@@ -566,34 +506,27 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="L2x-mo-f3Z" firstAttribute="top" secondItem="dfd-jm-1Lc" secondAttribute="bottom" constant="20" id="0U1-jZ-KWn"/>
-                            <constraint firstAttribute="centerX" secondItem="pFU-6t-zHG" secondAttribute="centerX" constant="-40" id="5XO-Rg-CKE"/>
-                            <constraint firstAttribute="centerX" secondItem="zRi-R7-p36" secondAttribute="centerX" constant="120" id="8H0-76-O0N"/>
                             <constraint firstAttribute="trailingMargin" secondItem="7Ot-ph-Uoi" secondAttribute="trailing" id="CCi-Tu-cQE"/>
-                            <constraint firstItem="Rbb-Mj-St6" firstAttribute="top" secondItem="Nfi-p4-Fs2" secondAttribute="bottom" constant="10" id="Cq2-6C-gpR"/>
-                            <constraint firstAttribute="centerX" secondItem="dfd-jm-1Lc" secondAttribute="centerX" constant="40" id="DMt-04-WDz"/>
+                            <constraint firstItem="MUc-9V-p35" firstAttribute="leading" secondItem="KqM-cE-ia0" secondAttribute="leadingMargin" constant="40" id="Fl3-jy-kYU"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Nfi-p4-Fs2" secondAttribute="trailing" constant="20" id="IGx-5f-ksz"/>
-                            <constraint firstItem="L2x-mo-f3Z" firstAttribute="top" secondItem="pFU-6t-zHG" secondAttribute="bottom" constant="20" id="KMz-42-Zvu"/>
                             <constraint firstAttribute="centerX" secondItem="M7Q-bZ-GzO" secondAttribute="centerX" id="KoY-au-f0S"/>
                             <constraint firstItem="Nfi-p4-Fs2" firstAttribute="leading" secondItem="KqM-cE-ia0" secondAttribute="leadingMargin" constant="20" id="L6h-lq-2yz"/>
                             <constraint firstAttribute="centerX" secondItem="ZdT-mO-Fss" secondAttribute="centerX" id="NVf-xu-zdo"/>
                             <constraint firstItem="DSd-1x-l1J" firstAttribute="leading" secondItem="KqM-cE-ia0" secondAttribute="leadingMargin" constant="4" id="OlD-xb-Gvn"/>
                             <constraint firstItem="kFv-5U-Ulu" firstAttribute="top" secondItem="MHJ-ds-fta" secondAttribute="bottom" constant="44" id="PjM-Tk-KbQ"/>
-                            <constraint firstItem="Rbb-Mj-St6" firstAttribute="centerX" secondItem="KqM-cE-ia0" secondAttribute="centerX" id="QIi-SD-Scb"/>
+                            <constraint firstItem="MUc-9V-p35" firstAttribute="top" secondItem="Nfi-p4-Fs2" secondAttribute="bottom" constant="20" id="SPN-0R-XD0"/>
                             <constraint firstAttribute="centerX" secondItem="uNq-Rr-FUR" secondAttribute="centerX" id="Y95-q2-4Va"/>
                             <constraint firstItem="7Ot-ph-Uoi" firstAttribute="top" secondItem="MHJ-ds-fta" secondAttribute="bottom" constant="44" id="YDo-5b-Ixs"/>
                             <constraint firstItem="uNq-Rr-FUR" firstAttribute="top" secondItem="M7Q-bZ-GzO" secondAttribute="bottom" constant="8" id="YZx-rn-SpL"/>
-                            <constraint firstItem="L2x-mo-f3Z" firstAttribute="top" secondItem="rmb-VE-D3J" secondAttribute="bottom" constant="20" id="ZU9-kS-gAx"/>
-                            <constraint firstItem="L2x-mo-f3Z" firstAttribute="top" secondItem="zRi-R7-p36" secondAttribute="bottom" constant="20" id="aBZ-zr-nAc"/>
-                            <constraint firstAttribute="centerX" secondItem="rmb-VE-D3J" secondAttribute="centerX" constant="-120" id="c4W-XO-4xP"/>
                             <constraint firstAttribute="trailingMargin" secondItem="DSd-1x-l1J" secondAttribute="trailing" constant="4" id="grF-Yw-Bjo"/>
                             <constraint firstItem="ZdT-mO-Fss" firstAttribute="top" secondItem="M7Q-bZ-GzO" secondAttribute="bottom" constant="8" id="hNa-o9-AXc"/>
                             <constraint firstAttribute="centerX" secondItem="uNq-Rr-FUR" secondAttribute="centerX" id="ijH-LY-o55"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="MUc-9V-p35" secondAttribute="trailing" constant="40" id="kHa-Rf-5J6"/>
                             <constraint firstItem="M7Q-bZ-GzO" firstAttribute="top" secondItem="MHJ-ds-fta" secondAttribute="bottom" constant="8" id="mB0-MR-D7q"/>
                             <constraint firstAttribute="leadingMargin" secondItem="kFv-5U-Ulu" secondAttribute="leading" id="ofe-qm-tCL"/>
+                            <constraint firstItem="L2x-mo-f3Z" firstAttribute="top" secondItem="MUc-9V-p35" secondAttribute="bottom" constant="20" id="p2V-fw-OsA"/>
                             <constraint firstItem="23p-l3-8O0" firstAttribute="top" secondItem="M7Q-bZ-GzO" secondAttribute="bottom" constant="8" id="qY1-Mi-t2V"/>
-                            <constraint firstItem="DSd-1x-l1J" firstAttribute="top" secondItem="23p-l3-8O0" secondAttribute="bottom" id="rda-Py-nFt"/>
-                            <constraint firstItem="L2x-mo-f3Z" firstAttribute="top" secondItem="Nfi-p4-Fs2" secondAttribute="bottom" constant="119" id="rgT-U6-oys"/>
+                            <constraint firstItem="DSd-1x-l1J" firstAttribute="top" secondItem="23p-l3-8O0" secondAttribute="bottom" constant="-1" id="rda-Py-nFt"/>
                             <constraint firstAttribute="centerX" secondItem="23p-l3-8O0" secondAttribute="centerX" id="tfT-RM-i3E"/>
                             <constraint firstItem="Nfi-p4-Fs2" firstAttribute="centerX" secondItem="KqM-cE-ia0" secondAttribute="centerX" id="xlw-a0-xh9"/>
                         </constraints>
@@ -603,11 +536,7 @@
                         <outlet property="botLayerThreeFace" destination="23p-l3-8O0" id="7cI-vs-5Tj"/>
                         <outlet property="botLayerTwoBody" destination="uNq-Rr-FUR" id="okb-2D-fXW"/>
                         <outlet property="cmdChange" destination="7Ot-ph-Uoi" id="Owi-OU-9tD"/>
-                        <outlet property="cmdFacebook" destination="rmb-VE-D3J" id="ARY-kw-4fM"/>
                         <outlet property="cmdInfo" destination="kFv-5U-Ulu" id="A0Z-BK-HXC"/>
-                        <outlet property="cmdMail" destination="dfd-jm-1Lc" id="MoN-Xp-edi"/>
-                        <outlet property="cmdMessage" destination="zRi-R7-p36" id="vv8-1W-tLu"/>
-                        <outlet property="cmdTwitter" destination="pFU-6t-zHG" id="WIv-Cg-QpL"/>
                         <outlet property="shareTextView" destination="Nfi-p4-Fs2" id="oyj-cJ-76u"/>
                         <outlet property="txtDescription" destination="DSd-1x-l1J" id="Se2-tY-oiU"/>
                         <outlet property="txtName" destination="M7Q-bZ-GzO" id="RG8-Rp-VXB"/>
@@ -722,20 +651,12 @@
         <image name="branchster.png" width="322" height="212"/>
         <image name="down.png" width="120" height="120"/>
         <image name="down_pressed.png" width="120" height="120"/>
-        <image name="email_pressed.png" width="120" height="120"/>
-        <image name="email_share.png" width="120" height="120"/>
         <image name="face0.png" width="480" height="650"/>
-        <image name="facebook_pressed.png" width="120" height="120"/>
-        <image name="facebook_share.png" width="120" height="120"/>
         <image name="left.png" width="120" height="120"/>
         <image name="left_pressed.png" width="120" height="120"/>
         <image name="right.png" width="120" height="120"/>
         <image name="right_pressed.png" width="120" height="120"/>
         <image name="splashfactory.png" width="640" height="1088"/>
-        <image name="text_pressed.png" width="120" height="120"/>
-        <image name="text_share.png" width="120" height="120"/>
-        <image name="twitter_pressed.png" width="120" height="120"/>
-        <image name="twitter_share.png" width="120" height="120"/>
         <image name="up.png" width="120" height="120"/>
         <image name="up_pressed.png" width="120" height="120"/>
     </resources>
