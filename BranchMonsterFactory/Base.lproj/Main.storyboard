@@ -326,7 +326,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name Your Branchster" textAlignment="center" minimumFontSize="14" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="ldY-ju-0lT">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name Your Branchster" textAlignment="center" minimumFontSize="14" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="ldY-ju-0lT" userLabel="Monster Name">
                                 <rect key="frame" x="202" y="50" width="197" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="IaA-vB-oBP"/>
@@ -378,7 +378,7 @@
                         <outlet property="cmdDownArrow" destination="loa-H7-hSa" id="xHe-rC-4gG"/>
                         <outlet property="cmdLeftArrow" destination="Wob-tZ-d8n" id="TUA-Sz-MrB"/>
                         <outlet property="cmdRightArrow" destination="OcI-oi-LN1" id="Gh9-tl-r8L"/>
-                        <outlet property="etxtName" destination="ldY-ju-0lT" id="Hqu-eA-IGJ"/>
+                        <outlet property="monsterName" destination="ldY-ju-0lT" id="emx-fU-g1r"/>
                         <outletCollection property="colorViews" destination="Sj0-zB-me7" id="uCA-h0-TCP"/>
                         <outletCollection property="colorViews" destination="Oub-ML-3r1" id="Psh-lG-0Vp"/>
                         <outletCollection property="colorViews" destination="DXd-ea-XGh" id="Fmi-l8-LoX"/>

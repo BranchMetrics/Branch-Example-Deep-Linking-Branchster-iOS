@@ -16,7 +16,7 @@
 @interface MonsterCreatorViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 
 
-@property (weak, nonatomic) IBOutlet UITextField *etxtName;
+@property (weak, nonatomic) IBOutlet UITextField *monsterName;
 
 @property (weak, nonatomic) IBOutlet UIView *botViewLayerOne;
 @property (weak, nonatomic) IBOutlet UICollectionView *botViewLayerTwo;
@@ -65,10 +65,10 @@ static CGFloat SIDE_SPACE = 7.0;
     self.botViewLayerThree.dataSource = self;
     [self.botViewLayerThree registerClass:[ImageCollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
     
-    [self.etxtName setText:[self.editingMonster getMonsterName]];
+    [self.monsterName setText:[self.editingMonster getMonsterName]];
     
     
-    [self.etxtName addTarget:self.etxtName
+    [self.monsterName addTarget:self.monsterName
                       action:@selector(resignFirstResponder)
             forControlEvents:UIControlEventEditingDidEndOnExit];
 }
@@ -159,8 +159,8 @@ static CGFloat SIDE_SPACE = 7.0;
 }
 
 - (IBAction)cmdFinishedClick:(id)sender {
-    if ([self.etxtName.text length]) {
-        [self.editingMonster setMonsterName:[self.etxtName text]];
+    if ([self.monsterName.text length]) {
+        [self.editingMonster setMonsterName:[self.monsterName text]];
     } else {
         [self.editingMonster setMonsterName:@"Bingles Jingleheimer"];
     }

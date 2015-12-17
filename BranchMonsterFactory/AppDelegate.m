@@ -30,11 +30,11 @@
     
     //[branch setDebug];
     
-    [branch initSessionWithLaunchOptions:launchOptions andRegisterDeepLinkHandlerUsingBranchUniversalObject:^(BranchUniversalObject *BUO, BranchLinkProperties *linkProperties, NSError * error) {
+    [branch initSessionWithLaunchOptions:launchOptions andRegisterDeepLinkHandlerUsingBranchUniversalObject:^(BranchUniversalObject *BUO, BranchLinkProperties *linkProperties, NSError *error) {
         
         if (BUO && [BUO.metadata objectForKey:@"monster"]) {
             
-            BranchUniversalObject* receivedMonster = BUO;
+            BranchUniversalObject *receivedMonster = BUO;
             
             NSLog(@"\n\nJust retrieved data from server: %@\n\n", receivedMonster);
             
