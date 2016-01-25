@@ -45,7 +45,7 @@
                                                object:nil];
 
     
-    CABasicAnimation* animation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
+    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
     animation.fromValue = @0.0f;
     animation.toValue = @(2*M_PI);
     animation.duration = 1.9f;             // this might be too fast
@@ -104,14 +104,14 @@
     [[self navigationController] popToRootViewControllerAnimated:NO];
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        MonsterCreatorViewController  *creator = [self.storyboard instantiateViewControllerWithIdentifier:@"MonsterCreatorViewController"];
+        MonsterCreatorViewController *creator = [self.storyboard instantiateViewControllerWithIdentifier:@"MonsterCreatorViewController"];
         creator.editingMonster = self.startingMonster;
         [self.navigationController pushViewController:creator animated:NO];
 
     });
 
     dispatch_async(dispatch_get_main_queue(), ^{
-        MonsterViewerViewController  *viewer = [self.storyboard instantiateViewControllerWithIdentifier:@"MonsterViewerViewController"];
+        MonsterViewerViewController *viewer = [self.storyboard instantiateViewControllerWithIdentifier:@"MonsterViewerViewController"];
         viewer.viewingMonster = self.startingMonster;
         [self.navigationController pushViewController:viewer animated:YES];        
     });

@@ -59,8 +59,8 @@
 }
 
 
-- (BranchUniversalObject *) emptyMonster {
-    BranchUniversalObject*  empty = [[BranchUniversalObject alloc] initWithTitle:@"Jingles Bingleheimer"];
+- (BranchUniversalObject *)emptyMonster {
+    BranchUniversalObject *empty = [[BranchUniversalObject alloc] initWithTitle:@"Jingles Bingleheimer"];
     [empty setIsMonster];
     [empty setFaceIndex:0];
     [empty setBodyIndex:0];
@@ -95,14 +95,12 @@
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-    
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-    
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {

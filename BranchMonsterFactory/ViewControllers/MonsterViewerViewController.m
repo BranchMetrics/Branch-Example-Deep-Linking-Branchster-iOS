@@ -42,7 +42,7 @@
 
 
 @property (weak, nonatomic) IBOutlet UITextView *shareTextView;
-@property NSString* shareURL;
+@property NSString *shareURL;
 @end
 
 @implementation MonsterViewerViewController
@@ -93,12 +93,12 @@ static CGFloat MONSTER_HEIGHT = 0.4f;
     
     
     [self.progressBar hide];
-    [self setViewingMonster:self.viewingMonster];  //yuvk
+    [self setViewingMonster:self.viewingMonster];  //not awesome, but it triggers the setter
 }
 
 
 
--(void) setViewingMonster: (BranchUniversalObject*) monster {
+-(void) setViewingMonster: (BranchUniversalObject *)monster {
     _viewingMonster = monster;
     
     //and every time it gets set, I need to create a new url
