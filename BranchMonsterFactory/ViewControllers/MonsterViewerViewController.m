@@ -15,7 +15,6 @@
 #import "BranchUniversalObject+MonsterHelpers.h"
 #import <MessageUI/MessageUI.h>
 #import <Social/Social.h>
-#import <FacebookSDK/FacebookSDK.h>
 
 @interface MonsterViewerViewController () /*<UITextViewDelegate>*/
 
