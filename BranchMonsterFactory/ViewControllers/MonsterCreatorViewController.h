@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BranchUniversalObject.h"
 
 @interface MonsterCreatorViewController : UIViewController
+@property BranchUniversalObject *editingMonster;
 
 @end
