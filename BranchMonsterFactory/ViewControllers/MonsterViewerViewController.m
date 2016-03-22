@@ -77,7 +77,7 @@ static CGFloat MONSTER_HEIGHT = 0.4f;
                                       @"body_index",
                                       @"face_index",
                                       @"monster_name"]];
-    
+
     [self.cmdChange.layer setCornerRadius:3.0];
     [self.cmdInfo.layer setCornerRadius:3.0];
     
@@ -89,7 +89,6 @@ static CGFloat MONSTER_HEIGHT = 0.4f;
     [self.viewingMonster registerViewWithCallback:^(NSDictionary *params, NSError *error) {
         NSLog(@"Monster %@ was viewed.  params: %@", self.viewingMonster.getMonsterName, params);
     }];
-    
     
     [self.progressBar hide];
     [self setViewingMonster:self.viewingMonster];  //not awesome, but it triggers the setter
@@ -104,6 +103,11 @@ static CGFloat MONSTER_HEIGHT = 0.4f;
     BranchLinkProperties *linkProperties = [[BranchLinkProperties alloc] init];
     linkProperties.feature = @"monster_sharing";
     linkProperties.channel = @"twitter";
+
+    // Add specific link level OG tags.
+    [linkProperties addControlParam:@"$og_title" withValue:[NSString stringWithFormat:@"My Branchster: %@", self.monsterName]];
+    [linkProperties addControlParam:@"$og_description" withValue:self.monsterDescription];
+    [linkProperties addControlParam:@"$og_image_url" withValue:[NSString stringWithFormat:@"https://s3-us-west-1.amazonaws.com/branchmonsterfactory/%hd%hd%hd.png", (short)[self.viewingMonster getColorIndex], (short)[self.viewingMonster getBodyIndex], (short)[self.viewingMonster getFaceIndex]]];
 
     [self.viewingMonster getShortUrlWithLinkProperties:linkProperties andCallback:^(NSString *url, NSError *error) {
         if (!error) {
