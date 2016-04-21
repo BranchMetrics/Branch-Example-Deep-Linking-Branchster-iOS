@@ -104,10 +104,9 @@ static CGFloat MONSTER_HEIGHT = 0.4f;
     linkProperties.feature = @"monster_sharing";
     linkProperties.channel = @"twitter";
 
-    // Add specific link level OG tags.
-    [linkProperties addControlParam:@"$og_title" withValue:[NSString stringWithFormat:@"My Branchster: %@", self.monsterName]];
-    [linkProperties addControlParam:@"$og_description" withValue:self.monsterDescription];
-    [linkProperties addControlParam:@"$og_image_url" withValue:[NSString stringWithFormat:@"https://s3-us-west-1.amazonaws.com/branchmonsterfactory/%hd%hd%hd.png", (short)[self.viewingMonster getColorIndex], (short)[self.viewingMonster getBodyIndex], (short)[self.viewingMonster getFaceIndex]]];
+    monster.title = [NSString stringWithFormat:@"My Branchster: %@", self.monsterName];
+    monster.contentDescription = self.monsterDescription;
+    monster.imageUrl = [NSString stringWithFormat:@"https://s3-us-west-1.amazonaws.com/branchmonsterfactory/%hd%hd%hd.png", (short)[self.viewingMonster getColorIndex], (short)[self.viewingMonster getBodyIndex], (short)[self.viewingMonster getFaceIndex]];
 
     [self.viewingMonster getShortUrlWithLinkProperties:linkProperties andCallback:^(NSString *url, NSError *error) {
         if (!error) {
