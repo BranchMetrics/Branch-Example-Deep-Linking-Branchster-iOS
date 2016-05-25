@@ -1,2 +1,4 @@
 
-pod 'Branch'
+target 'BranchMonsterFactory' do
+	pod 'Branch'
+end
