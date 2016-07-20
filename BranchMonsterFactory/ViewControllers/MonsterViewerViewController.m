@@ -120,7 +120,7 @@ static CGFloat MONSTER_HEIGHT = 0.4f;
 -(IBAction)shareSheet:(id)sender {
     [self.viewingMonster
      showShareSheetWithShareText:@"Share Your Monster!"
-     andCallback:nil];[UIMenuController sharedMenuController].menuVisible = NO;
+     completion:nil];[UIMenuController sharedMenuController].menuVisible = NO;
     [self.shareTextView resignFirstResponder];
 }
 
