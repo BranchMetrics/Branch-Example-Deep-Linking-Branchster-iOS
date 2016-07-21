@@ -4,19 +4,31 @@
 <dict>
 	<key>com.apple.developer.associated-domains</key>
 	<array>
-		<string>applinks:email-exacttarget.givemeulinksorgivemedeath.com</string>
-		<string>applinks:email-exacttarget.branch.rocks</string>
-		<string>applinks:email-exacttarget.givemeulinksorgivemedeath.com</string>
-		<string>applinks:email-responsys.givemeulinksorgivemedeath.com</string>
-		<string>applinks:email-sailthru.givemeulinksorgivemedeath.com</string>
-		<string>applinks:email-exacttarget.branch.rocks</string>
-		<string>applinks:email-responsys.branch.rocks</string>
-		<string>applinks:email-sailthru.branch.rocks
-applinks:email-responsys.branch.rocks
-applinks:email-exacttarget.branch.rocks
-applinks:email-sailthru.givemeulinksorgivemedeath.com
-applinks:email-responsys.givemeulinksorgivemedeath.com
-applinks:email-exacttarget.givemeulinksorgivemedeath.com</string>
+		<string>applinks:email-04.givemeulinksorgivemedeath.com</string>
+<string>applinks:email-04.branch.rocks</string>
+<string>applinks:email-03.givemeulinksorgivemedeath.com</string>
+<string>applinks:email-03.branch.rocks</string>
+<string>applinks:email-02.givemeulinksorgivemedeath.com</string>
+<string>applinks:email-02.branch.rocks</string>
+<string>applinks:email-01.givemeulinksorgivemedeath.com</string>
+<string>applinks:email-01.branch.rocks</string>
+<string>applinks:email-mailchimp.givemeulinksorgivemedeath.com</string>
+<string>applinks:email-mailchimp.branch.rocks</string>
+<string>applinks:email-sendgrid.givemeulinksorgivemedeath.com</string>
+<string>applinks:email-sendgrid.branch.rocks</string>
+<string>applinks:email-exacttarget.givemeulinksorgivemedeath.com</string>
+<string>applinks:email-exacttarget.branch.rocks</string>
+<string>applinks:email-exacttarget.givemeulinksorgivemedeath.com</string>
+<string>applinks:email-responsys.givemeulinksorgivemedeath.com</string>
+<string>applinks:email-sailthru.givemeulinksorgivemedeath.com</string>
+<string>applinks:email-exacttarget.branch.rocks</string>
+<string>applinks:email-responsys.branch.rocks</string>
+<string>applinks:email-sailthru.branch.rocks</string>
+<string>applinks:email-responsys.branch.rocks</string>
+<string>applinks:email-exacttarget.branch.rocks</string>
+<string>applinks:email-sailthru.givemeulinksorgivemedeath.com</string>
+<string>applinks:email-responsys.givemeulinksorgivemedeath.com</string>
+<string>applinks:email-exacttarget.givemeulinksorgivemedeath.com</string>
 		<string>applinks:bnc.lt</string>
 	</array>
 </dict>
