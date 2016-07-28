@@ -1,16 +1,16 @@
 ## Create a personal copy of the Branchsters app for testing!
 
 1. From the command line:
-     - Clone the repo: `git clone https://github.com/BranchMetrics/Branch-Example-Deep-Linking-Branchster-iOS.git`
-     - `cd Branch-Example-Deep-Linking-Branchster-iOS/``
+     - Clone the repo: `git clone git@github.com:BranchMetrics/Branch-Example-Deep-Linking-Branchster-iOS.git`
+     - `cd Branch-Example-Deep-Linking-Branchster-iOS/`
      - `pod install`
-2. In finder open: **BranchMonsterFactory.xcworkspace**
+2. In Finder open: **BranchMonsterFactory.xcworkspace**
 3. In Xcode click on the root node of the project: BranchMonsterFactory
 4. Under Targets select BranchMonsterFactory, then the General tab
 5. Change the Bundle Identifier to something **unique** (for this demo we'll use `io.branch.Objective-C.Branchsters`)
 6. Change the Team to your Team (it must be a *paid* Apple Developer Account) and click **Fix Issue** to generate a new Provisioning Profile
 7. Log in to the [Branch dashboard](https://dashboard.branch.io) and create a new app from the drop-down menu in the top right cornder
-8. On the Settings, screen copy the key
+8. On the Settings, screen copy the Branch key
 9. In the Xcode project's **info.plist** file, change the `branch_key` entry to the value of your new Branch key key
 10. Add a new String key to the **info.plist** file: `branch_app_domain`
 11. Populate the new `branch_app_domain` key with the value of the **Default domain name** field found in the Custom Link Domain section of the dashboard's Link Settings tab
