@@ -10,6 +10,7 @@
 #import "Branch.h"
 #import "SplashViewController.h"
 #import "BranchUniversalObject+MonsterHelpers.h"
+@import Localytics;
 
 @interface AppDelegate ()
 @property (nonatomic) BOOL justLaunched;
@@ -33,7 +34,10 @@
             self.justLaunched = NO;
         }
     }];
-    
+
+//    [Localytics setLoggingEnabled:YES];
+    [Localytics autoIntegrate:@"0d738869f6b0f04eb1341f5-fbdada7a-f4ff-11e4-3279-00f82776ce8b" launchOptions:launchOptions];
+
     return YES;
 }
 

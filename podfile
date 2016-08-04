@@ -1,4 +1,5 @@
 
 target 'BranchMonsterFactory' do
 	pod 'Branch'
+	pod 'LocalyticsStaticFramework', '~> 4.0'
 end
