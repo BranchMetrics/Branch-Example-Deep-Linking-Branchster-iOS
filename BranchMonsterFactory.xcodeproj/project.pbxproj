@@ -72,11 +72,14 @@
 		67FD95071A4D250C00D6BFA8 /* MonsterViewerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67FD94C01A4D250C00D6BFA8 /* MonsterViewerViewController.m */; };
 		67FD95081A4D250C00D6BFA8 /* SplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67FD94C21A4D250C00D6BFA8 /* SplashViewController.m */; };
 		67FD950A1A4D25D100D6BFA8 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67FD95091A4D25D100D6BFA8 /* CoreTelephony.framework */; };
+		CA4BDFEB66D490362206A106 /* libPods-BranchMonsterFactory.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E185BB371AF087FA3DBDDCC /* libPods-BranchMonsterFactory.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		15B4B8121B0AB016002AA93E /* BranchInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BranchInfoViewController.h; sourceTree = "<group>"; };
 		15B4B8131B0AB016002AA93E /* BranchInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BranchInfoViewController.m; sourceTree = "<group>"; };
+		2E185BB371AF087FA3DBDDCC /* libPods-BranchMonsterFactory.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BranchMonsterFactory.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		362EE7B4CBB78C5FFC9B9ECB /* Pods-BranchMonsterFactory.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BranchMonsterFactory.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BranchMonsterFactory/Pods-BranchMonsterFactory.debug.xcconfig"; sourceTree = "<group>"; };
 		374174E81C3C870A0069BA54 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		377C3CE61C121DCC005DF795 /* BranchUniversalObject+MonsterHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BranchUniversalObject+MonsterHelpers.h"; sourceTree = "<group>"; };
 		377C3CE71C121DCC005DF795 /* BranchUniversalObject+MonsterHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BranchUniversalObject+MonsterHelpers.m"; sourceTree = "<group>"; };
@@ -152,6 +155,7 @@
 		67FD94C11A4D250C00D6BFA8 /* SplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashViewController.h; sourceTree = "<group>"; };
 		67FD94C21A4D250C00D6BFA8 /* SplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashViewController.m; sourceTree = "<group>"; };
 		67FD95091A4D25D100D6BFA8 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		BD9AE1348178301ADB0A5AF7 /* Pods-BranchMonsterFactory.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BranchMonsterFactory.release.xcconfig"; path = "Pods/Target Support Files/Pods-BranchMonsterFactory/Pods-BranchMonsterFactory.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,12 +168,30 @@
 				6705923E19BBE22D0039DAE1 /* MessageUI.framework in Frameworks */,
 				6705923B19BBD0060039DAE1 /* UIKit.framework in Frameworks */,
 				6705921019BBB7430039DAE1 /* AdSupport.framework in Frameworks */,
+				CA4BDFEB66D490362206A106 /* libPods-BranchMonsterFactory.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0F97F77282DE44C19BC9C33F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				362EE7B4CBB78C5FFC9B9ECB /* Pods-BranchMonsterFactory.debug.xcconfig */,
+				BD9AE1348178301ADB0A5AF7 /* Pods-BranchMonsterFactory.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		34E62C464254BBF220E149FE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2E185BB371AF087FA3DBDDCC /* libPods-BranchMonsterFactory.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		670591E019BBAC630039DAE1 = {
 			isa = PBXGroup;
 			children = (
@@ -181,6 +203,8 @@
 				6705923A19BBD0060039DAE1 /* UIKit.framework */,
 				6705920F19BBB7430039DAE1 /* AdSupport.framework */,
 				670591EA19BBAC630039DAE1 /* Products */,
+				0F97F77282DE44C19BC9C33F /* Pods */,
+				34E62C464254BBF220E149FE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -356,9 +380,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6705920919BBAC630039DAE1 /* Build configuration list for PBXNativeTarget "BranchMonsterFactory" */;
 			buildPhases = (
+				BFDE1236E89C59EF24A00124 /* [CP] Check Pods Manifest.lock */,
 				670591E519BBAC630039DAE1 /* Sources */,
 				670591E619BBAC630039DAE1 /* Frameworks */,
 				670591E719BBAC630039DAE1 /* Resources */,
+				823FA6B6BAE8DB68FC1716C1 /* [CP] Embed Pods Frameworks */,
+				EF6132270E97CDC0ED574CAA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -469,6 +496,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		823FA6B6BAE8DB68FC1716C1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BranchMonsterFactory/Pods-BranchMonsterFactory-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BFDE1236E89C59EF24A00124 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		EF6132270E97CDC0ED574CAA /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BranchMonsterFactory/Pods-BranchMonsterFactory-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		670591E519BBAC630039DAE1 /* Sources */ = {
@@ -583,6 +658,7 @@
 		};
 		6705920A19BBAC630039DAE1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 362EE7B4CBB78C5FFC9B9ECB /* Pods-BranchMonsterFactory.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -607,6 +683,7 @@
 		};
 		6705920B19BBAC630039DAE1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BD9AE1348178301ADB0A5AF7 /* Pods-BranchMonsterFactory.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
