@@ -24,6 +24,16 @@
     // Initalize Branch and register the deep link handler
     // The deep link handler is called on every install/open to tell you if the user had just clicked a deep link
     [[Branch getInstance] initSessionWithLaunchOptions:launchOptions andRegisterDeepLinkHandlerUsingBranchUniversalObject:^(BranchUniversalObject *BUO, BranchLinkProperties *linkProperties, NSError *error) {
+        NSDictionary *params = [[Branch getInstance] getLatestReferringParams];
+        if (params[@"+non_branch_link"] && [params[@"+non_branch_link"] rangeOfString:@"open_web_browser=true"].location != NSNotFound) {
+            NSURL *url = [NSURL URLWithString:params[@"+non_branch_link"]];
+            if (url) {
+                [application openURL:url];
+                // check to make sure your existing deep linking logic, if any, is not executed
+                return;
+            }
+        }
+        
         if (BUO && [BUO.metadata objectForKey:@"monster"]) {
             self.initialMonster = BUO;
             [[NSNotificationCenter defaultCenter] postNotificationName:@"pushEditAndViewerViews" object:nil];
