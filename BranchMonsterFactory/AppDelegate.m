@@ -10,6 +10,7 @@
 #import "Branch.h"
 #import "SplashViewController.h"
 #import "BranchUniversalObject+MonsterHelpers.h"
+@import Localytics;
 
 @interface AppDelegate ()
 @property (nonatomic) BOOL justLaunched;
@@ -23,6 +24,16 @@
     // Initalize Branch and register the deep link handler
     // The deep link handler is called on every install/open to tell you if the user had just clicked a deep link
     [[Branch getInstance] initSessionWithLaunchOptions:launchOptions andRegisterDeepLinkHandlerUsingBranchUniversalObject:^(BranchUniversalObject *BUO, BranchLinkProperties *linkProperties, NSError *error) {
+        NSDictionary *params = [[Branch getInstance] getLatestReferringParams];
+        if (params[@"+non_branch_link"] && [params[@"+non_branch_link"] rangeOfString:@"open_web_browser=true"].location != NSNotFound) {
+            NSURL *url = [NSURL URLWithString:params[@"+non_branch_link"]];
+            if (url) {
+                [application openURL:url];
+                // check to make sure your existing deep linking logic, if any, is not executed
+                return;
+            }
+        }
+        
         if (BUO && [BUO.metadata objectForKey:@"monster"]) {
             self.initialMonster = BUO;
             [[NSNotificationCenter defaultCenter] postNotificationName:@"pushEditAndViewerViews" object:nil];
@@ -33,7 +44,10 @@
             self.justLaunched = NO;
         }
     }];
-    
+
+//    [Localytics setLoggingEnabled:YES];
+    [Localytics autoIntegrate:@"0d738869f6b0f04eb1341f5-fbdada7a-f4ff-11e4-3279-00f82776ce8b" launchOptions:launchOptions];
+
     return YES;
 }
 
