@@ -25,7 +25,7 @@
     // The deep link handler is called on every install/open to tell you if the user had just clicked a deep link
     [[Branch getInstance] initSessionWithLaunchOptions:launchOptions andRegisterDeepLinkHandlerUsingBranchUniversalObject:^(BranchUniversalObject *BUO, BranchLinkProperties *linkProperties, NSError *error) {
         NSDictionary *params = [[Branch getInstance] getLatestReferringParams];
-        if (params[@"+non_branch_link"] && [params[@"+non_branch_link"] rangeOfString:@"open_web_browser=true"].location != NSNotFound) {
+        if (params[@"+non_branch_link"] && params[@"+from_email_ctd"]) {
             NSURL *url = [NSURL URLWithString:params[@"+non_branch_link"]];
             if (url) {
                 [application openURL:url];
