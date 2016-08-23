@@ -10,20 +10,15 @@
 #import "NetworkProgressBar.h"
 #import "MonsterViewerViewController.h"
 #import "MonsterPartsFactory.h"
-#import "Branch.h"
-#import "BranchUniversalObject.h"
-#import "BranchUniversalObject+MonsterHelpers.h"
 #import <MessageUI/MessageUI.h>
 #import <Social/Social.h>
 
 @interface MonsterViewerViewController () /*<UITextViewDelegate>*/
 
 
-@property (strong, nonatomic)BranchUniversalObject *viewingMonster;
+@property (strong, nonatomic) NSMutableDictionary *viewingMonster;
 
 @property (strong, nonatomic) NetworkProgressBar *progressBar;
-
-@property (strong, nonatomic) NSDictionary *monsterMetadata;
 
 @property (strong, nonatomic) NSString *monsterName;
 @property (strong, nonatomic) NSString *monsterDescription;
@@ -54,29 +49,15 @@ static CGFloat MONSTER_HEIGHT = 0.4f;
     [super viewDidLoad];
 
     
-    [self.botLayerOneColor setBackgroundColor:[MonsterPartsFactory colorForIndex:[self.viewingMonster getColorIndex]]];
-    [self.botLayerTwoBody setImage:[MonsterPartsFactory imageForBody:[self.viewingMonster getBodyIndex]]];
-    [self.botLayerThreeFace setImage:[MonsterPartsFactory imageForFace:[self.viewingMonster getFaceIndex]]];
+    [self.botLayerOneColor setBackgroundColor:[MonsterPartsFactory colorForIndex:[[self.viewingMonster valueForKey:@"color_index"] integerValue]]];
+    [self.botLayerTwoBody setImage:[MonsterPartsFactory imageForBody:[[self.viewingMonster valueForKey:@"body_index"] integerValue]]];
+    [self.botLayerThreeFace setImage:[MonsterPartsFactory imageForFace:[[self.viewingMonster valueForKey:@"face_index"] integerValue]]];
     
-    self.monsterName = [self.viewingMonster getMonsterName];
-    self.monsterDescription = [self.viewingMonster getMonsterDescription];
+    self.monsterName = [self.viewingMonster valueForKey:@"monster_name"];
+    self.monsterDescription = [self.viewingMonster valueForKey:@"monster_description"];
     
     [self.txtName setText:self.monsterName];
     [self.txtDescription setText:self.monsterDescription];
-    
-    
-    
-    self.monsterMetadata = [[NSDictionary alloc]
-                            initWithObjects:@[
-                                              [NSNumber numberWithInteger:[self.viewingMonster getColorIndex]],
-                                              [NSNumber numberWithInteger:[self.viewingMonster getBodyIndex]],
-                                              [NSNumber numberWithInteger:[self.viewingMonster getFaceIndex]],
-                                              self.monsterName]
-                            forKeys:@[
-                                      @"color_index",
-                                      @"body_index",
-                                      @"face_index",
-                                      @"monster_name"]];
 
     [self.cmdChange.layer setCornerRadius:3.0];
     [self.cmdInfo.layer setCornerRadius:3.0];
@@ -85,42 +66,28 @@ static CGFloat MONSTER_HEIGHT = 0.4f;
     [self.progressBar show];
     [self.view addSubview:self.progressBar];
     
-    
-    [self.viewingMonster registerViewWithCallback:^(NSDictionary *params, NSError *error) {
-        NSLog(@"Monster %@ was viewed.  params: %@", self.viewingMonster.getMonsterName, params);
-    }];
-    
     [self.progressBar hide];
     [self setViewingMonster:self.viewingMonster];  //not awesome, but it triggers the setter
 }
 
 
 
--(void) setViewingMonster: (BranchUniversalObject *)monster {
+-(void) setViewingMonster: (NSMutableDictionary *)monster {
     _viewingMonster = monster;
     
-    //and every time it gets set, I need to create a new url
-    BranchLinkProperties *linkProperties = [[BranchLinkProperties alloc] init];
-    linkProperties.feature = @"monster_sharing";
-    linkProperties.channel = @"twitter";
-
-    monster.title = [NSString stringWithFormat:@"My Branchster: %@", self.monsterName];
-    monster.contentDescription = self.monsterDescription;
-    monster.imageUrl = [NSString stringWithFormat:@"https://s3-us-west-1.amazonaws.com/branchmonsterfactory/%hd%hd%hd.png", (short)[self.viewingMonster getColorIndex], (short)[self.viewingMonster getBodyIndex], (short)[self.viewingMonster getFaceIndex]];
-
-    [self.viewingMonster getShortUrlWithLinkProperties:linkProperties andCallback:^(NSString *url, NSError *error) {
-        if (!error) {
-            self.shareURL = url;
-            NSLog(@"new monster url created:  %@", self.shareURL);
-            self.shareTextView.text = url;
-        }
-    }];
+    [monster setValue:[NSString stringWithFormat:@"My Branchster: %@", self.monsterName] forKey:@"$og_title"];
+    [monster setValue:self.monsterDescription forKey:@"$og_description"];
+    [monster setValue:[NSString stringWithFormat:@"https://s3-us-west-1.amazonaws.com/branchmonsterfactory/%hd%hd%hd.png",
+                       (short)[[self.viewingMonster valueForKey:@"color_index"] integerValue],
+                       (short)[[self.viewingMonster valueForKey:@"body_index"] integerValue],
+                       (short)[[self.viewingMonster valueForKey:@"face_index"] integerValue]]
+               forKey:@"$og_image_url"];
 }
 
 -(IBAction)shareSheet:(id)sender {
-    [self.viewingMonster
-     showShareSheetWithShareText:@"Share Your Monster!"
-     andCallback:nil];[UIMenuController sharedMenuController].menuVisible = NO;
+//    [self.viewingMonster
+//     showShareSheetWithShareText:@"Share Your Monster!"
+//     andCallback:nil];[UIMenuController sharedMenuController].menuVisible = NO;
     [self.shareTextView resignFirstResponder];
 }
 
@@ -133,46 +100,6 @@ static CGFloat MONSTER_HEIGHT = 0.4f;
 
 - (IBAction)cmdChangeClick:(id)sender {
         [self.navigationController popViewControllerAnimated:YES];
-}
-
-
-- (NSDictionary *)prepareFBDict:(NSString *)url {
-    return [[NSDictionary alloc] initWithObjects:@[
-                                                   [NSString stringWithFormat:@"My Branchster: %@", self.monsterName],
-                                                   self.monsterDescription,
-                                                   self.monsterDescription,
-                                                   url,
-                                                   [NSString stringWithFormat:@"https://s3-us-west-1.amazonaws.com/branchmonsterfactory/%hd%hd%hd.png", (short)[self.viewingMonster getColorIndex], (short)[self.viewingMonster getBodyIndex], (short)[self.viewingMonster getFaceIndex]]]
-                                         forKeys:@[
-                                                   @"name",
-                                                   @"caption",
-                                                   @"description",
-                                                   @"link",
-                                                   @"picture"]];
-}
-
-// This function serves to dynamically generate the dictionary parameters to embed in the Branch link
-// These are the parameters that will be available in the callback of init user session if
-// a user clicked the link and was deep linked
-- (NSDictionary *)prepareBranchDict {
-    return [[NSDictionary alloc] initWithObjects:@[
-                                                  [NSNumber numberWithInteger:[self.viewingMonster getColorIndex]],
-                                                  [NSNumber numberWithInteger:[self.viewingMonster getBodyIndex]],
-                                                  [NSNumber numberWithInteger:[self.viewingMonster getFaceIndex]],
-                                                  self.monsterName,
-                                                  @"true",
-                                                  [NSString stringWithFormat:@"My Branchster: %@", self.monsterName],
-                                                  self.monsterDescription,
-                                                  [NSString stringWithFormat:@"https://s3-us-west-1.amazonaws.com/branchmonsterfactory/%hd%hd%hd.png", (short)[self.viewingMonster getColorIndex], (short)[self.viewingMonster getBodyIndex], (short)[self.viewingMonster getFaceIndex]]]
-                                        forKeys:@[
-                                                  @"color_index",
-                                                  @"body_index",
-                                                  @"face_index",
-                                                  @"monster_name",
-                                                  @"monster",
-                                                  @"$og_title",
-                                                  @"$og_description",
-                                                  @"$og_image_url"]];
 }
 
 - (void)viewDidLayoutSubviews {

@@ -1,2 +1,4 @@
 
-pod 'Branch'
+target "BranchMonsterFactory" do
+    pod 'mParticle-Apple-SDK', '~> 6.5.0'
+end

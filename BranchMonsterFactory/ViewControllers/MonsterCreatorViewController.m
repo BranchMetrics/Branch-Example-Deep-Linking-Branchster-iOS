@@ -10,8 +10,6 @@
 #import "MonsterPartsFactory.h"
 #import "ImageCollectionViewCell.h"
 #import "MonsterViewerViewController.h"
-#import "BranchUniversalObject+MonsterHelpers.h"
-#import "Branch.h"
 
 @interface MonsterCreatorViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 
@@ -45,17 +43,19 @@ static CGFloat SIDE_SPACE = 7.0;
     for (int i = 0; i < [self.colorViews count]; i++) {
         UIView *currView = [self.colorViews objectAtIndex:i];
         [currView setBackgroundColor:[MonsterPartsFactory colorForIndex:i]];
-        if (i == [self.editingMonster getColorIndex])
+        
+        if (i == [[self.editingMonster valueForKey:@"color_index"] integerValue])
             [currView.layer setBorderWidth:2.0f];
         else
             [currView.layer setBorderWidth:0.0f];
+        
         [currView.layer setBorderColor:[UIColor colorWithWhite:0.3 alpha:1.0].CGColor];
         [currView.layer setCornerRadius:currView.frame.size.width/2];
     }
         
     [self.cmdDone.layer setCornerRadius:3.0f];
     
-    [self.botViewLayerOne setBackgroundColor:[MonsterPartsFactory colorForIndex:[self.editingMonster getColorIndex]]];
+    [self.botViewLayerOne setBackgroundColor:[MonsterPartsFactory colorForIndex:[[self.editingMonster valueForKey:@"color_index"] integerValue]]];
     
     self.botViewLayerTwo.delegate = self;
     self.botViewLayerTwo.dataSource = self;
@@ -65,7 +65,7 @@ static CGFloat SIDE_SPACE = 7.0;
     self.botViewLayerThree.dataSource = self;
     [self.botViewLayerThree registerClass:[ImageCollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
     
-    [self.monsterName setText:[self.editingMonster getMonsterName]];
+    [self.monsterName setText:[self.editingMonster valueForKey:@"monster_name"]];
     
     
     [self.monsterName addTarget:self.monsterName
@@ -76,8 +76,9 @@ static CGFloat SIDE_SPACE = 7.0;
 - (void)viewDidLayoutSubviews {
     [self adjustMonsterPicturesForScreenSize];
  
-    self.bodyIndex = [self.editingMonster getBodyIndex];
-    self.faceIndex = [self.editingMonster getFaceIndex];
+    self.bodyIndex = [[self.editingMonster valueForKey:@"body_index"] integerValue];
+    self.faceIndex = [[self.editingMonster valueForKey:@"face_index"] integerValue];
+    
     [self.botViewLayerTwo scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:self.bodyIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
     [self.botViewLayerThree scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:self.faceIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredVertically animated:NO];
 }
@@ -116,28 +117,28 @@ static CGFloat SIDE_SPACE = 7.0;
     self.bodyIndex = self.bodyIndex - 1;
     if (self.bodyIndex == -1)
         self.bodyIndex = [MonsterPartsFactory sizeOfBodyArray] - 1;
-    [self.editingMonster setBodyIndex:self.bodyIndex];
+    [self.editingMonster setValue:[NSString stringWithFormat:@"%ld", (long)self.bodyIndex] forKey:@"body_index"];
     [self.botViewLayerTwo scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:self.bodyIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
 }
 - (IBAction)cmdRightClick:(id)sender {
     self.bodyIndex = self.bodyIndex + 1;
     if (self.bodyIndex == [MonsterPartsFactory sizeOfBodyArray])
         self.bodyIndex = 0;
-    [self.editingMonster setBodyIndex:self.bodyIndex];
+    [self.editingMonster setValue:[NSString stringWithFormat:@"%ld", (long)self.bodyIndex] forKey:@"body_index"];
     [self.botViewLayerTwo scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:self.bodyIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
 }
 - (IBAction)cmdUpClick:(id)sender {
     self.faceIndex = self.faceIndex - 1;
     if (self.faceIndex == -1)
         self.faceIndex = [MonsterPartsFactory sizeOfFaceArray] - 1;
-    [self.editingMonster setFaceIndex:self.faceIndex];
+    [self.editingMonster setValue:[NSString stringWithFormat:@"%ld", (long)self.faceIndex] forKey:@"face_index"];
     [self.botViewLayerThree scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:self.faceIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredVertically animated:YES];
 }
 - (IBAction)cmdDownClick:(id)sender {
     self.faceIndex = self.faceIndex + 1;
     if (self.faceIndex == [MonsterPartsFactory sizeOfFaceArray])
         self.faceIndex = 0;
-    [self.editingMonster setFaceIndex:self.faceIndex];
+    [self.editingMonster setValue:[NSString stringWithFormat:@"%ld", (long)self.faceIndex] forKey:@"face_index"];
     [self.botViewLayerThree scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:self.faceIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredVertically animated:YES];
 }
 - (IBAction)cmdColorClick:(id)sender {
@@ -152,7 +153,7 @@ static CGFloat SIDE_SPACE = 7.0;
         }
     }
     
-    [self.editingMonster setColorIndex:selected];
+    [self.editingMonster setValue:[NSString stringWithFormat:@"%d", selected] forKey:@"color_index"];
     [self.botViewLayerOne setBackgroundColor:[MonsterPartsFactory colorForIndex:selected]];
     [currColorButton setSelected:YES];
     [currColorButton.layer setBorderWidth:2.0f];
@@ -160,11 +161,10 @@ static CGFloat SIDE_SPACE = 7.0;
 
 - (IBAction)cmdFinishedClick:(id)sender {
     if ([self.monsterName.text length]) {
-        [self.editingMonster setMonsterName:[self.monsterName text]];
+        [self.editingMonster setValue:[self.monsterName text] forKey:@"monster_name"];
     } else {
-        [self.editingMonster setMonsterName:@"Bingles Jingleheimer"];
+        [self.editingMonster setValue:@"Bingles Jingleheimer" forKey:@"monster_name"];
     }
-    
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {

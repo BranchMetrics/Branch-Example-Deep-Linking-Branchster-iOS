@@ -11,12 +11,11 @@
 #import "MonsterCreatorViewController.h"
 #import "MonsterViewerViewController.h"
 
-#import "BranchUniversalObject.h"
 #import "AppDelegate.h"
 
 @interface SplashViewController ()
 
-@property BranchUniversalObject *startingMonster;
+@property NSMutableDictionary *startingMonster;
 
 @property (weak, nonatomic) IBOutlet UIImageView *imgLoading;
 @property (weak, nonatomic) IBOutlet UILabel *txtNote;
@@ -63,7 +62,7 @@
                                    userInfo:nil
                                     repeats:YES];
     
-    
+    [self pushEditView];
 }
 
 
