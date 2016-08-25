@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		15B4B8141B0AB016002AA93E /* BranchInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15B4B8131B0AB016002AA93E /* BranchInfoViewController.m */; };
+		265FD1DC3BD892A74A7EB1E0 /* libPods-BranchMonsterFactory.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0911E5DE0B8E21C1D2BACC9A /* libPods-BranchMonsterFactory.a */; };
 		374174E91C3C870A0069BA54 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 374174E81C3C870A0069BA54 /* Media.xcassets */; };
 		377C3CE81C121DCC005DF795 /* BranchUniversalObject+MonsterHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 377C3CE71C121DCC005DF795 /* BranchUniversalObject+MonsterHelpers.m */; };
 		378C79551C571E9E0032231B /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 378C79541C571E9E0032231B /* Podfile */; };
@@ -75,6 +76,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0911E5DE0B8E21C1D2BACC9A /* libPods-BranchMonsterFactory.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BranchMonsterFactory.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		15B4B8121B0AB016002AA93E /* BranchInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BranchInfoViewController.h; sourceTree = "<group>"; };
 		15B4B8131B0AB016002AA93E /* BranchInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BranchInfoViewController.m; sourceTree = "<group>"; };
 		374174E81C3C870A0069BA54 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 		377C3CE71C121DCC005DF795 /* BranchUniversalObject+MonsterHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BranchUniversalObject+MonsterHelpers.m"; sourceTree = "<group>"; };
 		377C3CE91C16141C005DF795 /* Branchsters.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Branchsters.entitlements; sourceTree = "<group>"; };
 		378C79541C571E9E0032231B /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		5BD8E97E3C91345EE8950DD2 /* Pods-BranchMonsterFactory.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BranchMonsterFactory.release.xcconfig"; path = "Pods/Target Support Files/Pods-BranchMonsterFactory/Pods-BranchMonsterFactory.release.xcconfig"; sourceTree = "<group>"; };
 		670591E919BBAC630039DAE1 /* Branchsters.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Branchsters.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6705920F19BBB7430039DAE1 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		6705923A19BBD0060039DAE1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -152,6 +155,7 @@
 		67FD94C11A4D250C00D6BFA8 /* SplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashViewController.h; sourceTree = "<group>"; };
 		67FD94C21A4D250C00D6BFA8 /* SplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashViewController.m; sourceTree = "<group>"; };
 		67FD95091A4D25D100D6BFA8 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		7C735E760C689B8CDD102274 /* Pods-BranchMonsterFactory.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BranchMonsterFactory.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BranchMonsterFactory/Pods-BranchMonsterFactory.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +168,7 @@
 				6705923E19BBE22D0039DAE1 /* MessageUI.framework in Frameworks */,
 				6705923B19BBD0060039DAE1 /* UIKit.framework in Frameworks */,
 				6705921019BBB7430039DAE1 /* AdSupport.framework in Frameworks */,
+				265FD1DC3BD892A74A7EB1E0 /* libPods-BranchMonsterFactory.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -181,6 +186,8 @@
 				6705923A19BBD0060039DAE1 /* UIKit.framework */,
 				6705920F19BBB7430039DAE1 /* AdSupport.framework */,
 				670591EA19BBAC630039DAE1 /* Products */,
+				9552A7970BF60B80F8AACB47 /* Pods */,
+				AC4F2E8D49B8AC096F140182 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -349,6 +356,23 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
+		9552A7970BF60B80F8AACB47 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7C735E760C689B8CDD102274 /* Pods-BranchMonsterFactory.debug.xcconfig */,
+				5BD8E97E3C91345EE8950DD2 /* Pods-BranchMonsterFactory.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		AC4F2E8D49B8AC096F140182 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0911E5DE0B8E21C1D2BACC9A /* libPods-BranchMonsterFactory.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -356,9 +380,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6705920919BBAC630039DAE1 /* Build configuration list for PBXNativeTarget "BranchMonsterFactory" */;
 			buildPhases = (
+				647B746D0030F7967AAC9316 /* [CP] Check Pods Manifest.lock */,
 				670591E519BBAC630039DAE1 /* Sources */,
 				670591E619BBAC630039DAE1 /* Frameworks */,
 				670591E719BBAC630039DAE1 /* Resources */,
+				9C891AA919C862A85AEACEB9 /* [CP] Embed Pods Frameworks */,
+				79C3649B649EE75362C602E2 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -469,6 +496,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		647B746D0030F7967AAC9316 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		79C3649B649EE75362C602E2 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BranchMonsterFactory/Pods-BranchMonsterFactory-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9C891AA919C862A85AEACEB9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BranchMonsterFactory/Pods-BranchMonsterFactory-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		670591E519BBAC630039DAE1 /* Sources */ = {
@@ -583,6 +658,7 @@
 		};
 		6705920A19BBAC630039DAE1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7C735E760C689B8CDD102274 /* Pods-BranchMonsterFactory.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -607,6 +683,7 @@
 		};
 		6705920B19BBAC630039DAE1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5BD8E97E3C91345EE8950DD2 /* Pods-BranchMonsterFactory.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
