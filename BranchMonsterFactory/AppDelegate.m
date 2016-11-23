@@ -10,6 +10,7 @@
 #import "Branch.h"
 #import "SplashViewController.h"
 #import "BranchUniversalObject+MonsterHelpers.h"
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
 @import Localytics;
 
 @interface AppDelegate ()
@@ -18,12 +19,16 @@
 
 @implementation AppDelegate
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+- (BOOL)application:(UIApplication *)application
+didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.justLaunched = YES;
     
     // Initalize Branch and register the deep link handler
     // The deep link handler is called on every install/open to tell you if the user had just clicked a deep link
-    [[Branch getInstance] initSessionWithLaunchOptions:launchOptions andRegisterDeepLinkHandlerUsingBranchUniversalObject:^(BranchUniversalObject *BUO, BranchLinkProperties *linkProperties, NSError *error) {
+
+    Branch *branch = [Branch getInstance];
+    [branch registerFacebookDeepLinkingClass:[FBSDKAppLinkUtility class]];
+    [branch initSessionWithLaunchOptions:launchOptions andRegisterDeepLinkHandlerUsingBranchUniversalObject:^(BranchUniversalObject *BUO, BranchLinkProperties *linkProperties, NSError *error) {
         if (BUO && [BUO.metadata objectForKey:@"monster"]) {
             self.initialMonster = BUO;
             [[NSNotificationCenter defaultCenter] postNotificationName:@"pushEditAndViewerViews" object:nil];
