@@ -40,7 +40,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
         }
     }];
 
-//    [Localytics setLoggingEnabled:YES];
+//  [Localytics setLoggingEnabled:YES];
     [Localytics autoIntegrate:@"0d738869f6b0f04eb1341f5-fbdada7a-f4ff-11e4-3279-00f82776ce8b" launchOptions:launchOptions];
 
     return YES;
