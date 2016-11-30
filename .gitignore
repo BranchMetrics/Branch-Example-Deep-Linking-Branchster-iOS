@@ -5,6 +5,6 @@ BranchMonsterFactory.xcodeproj/xcuserdata
 *.xcuserdatad
 *.DS_Store
 
-# Cocoa Pods
+# CocoaPods
 Pods
 Podfile.lock
