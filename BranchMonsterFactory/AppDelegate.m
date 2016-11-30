@@ -27,18 +27,36 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // The deep link handler is called on every install/open to tell you if the user had just clicked a deep link
 
     Branch *branch = [Branch getInstance];
+    [branch delayInitToCheckForSearchAds];
+    [branch setAppleSearchAdsDebugMode];    //  eDebug
     [branch registerFacebookDeepLinkingClass:[FBSDKAppLinkUtility class]];
-    [branch initSessionWithLaunchOptions:launchOptions andRegisterDeepLinkHandlerUsingBranchUniversalObject:^(BranchUniversalObject *BUO, BranchLinkProperties *linkProperties, NSError *error) {
-        if (BUO && [BUO.metadata objectForKey:@"monster"]) {
-            self.initialMonster = BUO;
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"pushEditAndViewerViews" object:nil];
-        }
-        else if (self.justLaunched) {
-            self.initialMonster = [self emptyMonster];
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"pushEditView" object:nil];
-            self.justLaunched = NO;
-        }
-    }];
+    [branch initSessionWithLaunchOptions:launchOptions
+        andRegisterDeepLinkHandlerUsingBranchUniversalObject:
+            ^ (BranchUniversalObject *BUO, BranchLinkProperties *linkProperties, NSError *error) {
+                if (BUO && [BUO.metadata objectForKey:@"monster"]) {
+                    self.initialMonster = BUO;
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"pushEditAndViewerViews" object:nil];
+                }
+                else if (self.justLaunched) {
+                    self.initialMonster = [self emptyMonster];
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"pushEditView" object:nil];
+                    self.justLaunched = NO;
+                }
+
+                NSDictionary *appleSearchAd = [BNCPreferenceHelper preferenceHelper].appleSearchAdDetails;
+                NSString *campaign = appleSearchAd[@"Version3.1"][@"iad-campaign-name"];
+                if (campaign.length) {
+                    NSString *message = [NSString stringWithFormat:@"Campaign: %@", campaign];
+                    UIAlertView *alertView =
+                        [[UIAlertView alloc]
+                            initWithTitle:@"Apple Search Ad Result!"
+                            message:message
+                            delegate:nil
+                            cancelButtonTitle:@"OK"
+                            otherButtonTitles:nil];
+                    [alertView show];
+                }
+            }];
 
 //  [Localytics setLoggingEnabled:YES];
     [Localytics autoIntegrate:@"0d738869f6b0f04eb1341f5-fbdada7a-f4ff-11e4-3279-00f82776ce8b" launchOptions:launchOptions];

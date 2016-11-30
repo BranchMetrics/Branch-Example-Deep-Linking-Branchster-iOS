@@ -11,10 +11,7 @@
 		265FD1DC3BD892A74A7EB1E0 /* libPods-BranchMonsterFactory.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0911E5DE0B8E21C1D2BACC9A /* libPods-BranchMonsterFactory.a */; };
 		374174E91C3C870A0069BA54 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 374174E81C3C870A0069BA54 /* Media.xcassets */; };
 		377C3CE81C121DCC005DF795 /* BranchUniversalObject+MonsterHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 377C3CE71C121DCC005DF795 /* BranchUniversalObject+MonsterHelpers.m */; };
-		378C79551C571E9E0032231B /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 378C79541C571E9E0032231B /* Podfile */; };
 		46FD92CE1A9AD0A70028A385 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67FD945E1A4D250C00D6BFA8 /* Main.storyboard */; };
-		4DD147521DE5132F00B62CF8 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DD147511DE5132F00B62CF8 /* FBSDKCoreKit.framework */; };
-		4DD147541DE5138D00B62CF8 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DD147531DE5138D00B62CF8 /* Bolts.framework */; };
 		6705921019BBB7430039DAE1 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6705920F19BBB7430039DAE1 /* AdSupport.framework */; };
 		6705923B19BBD0060039DAE1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6705923A19BBD0060039DAE1 /* UIKit.framework */; };
 		6705923E19BBE22D0039DAE1 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6705923D19BBE22D0039DAE1 /* MessageUI.framework */; };
@@ -86,8 +83,6 @@
 		377C3CE71C121DCC005DF795 /* BranchUniversalObject+MonsterHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BranchUniversalObject+MonsterHelpers.m"; sourceTree = "<group>"; };
 		377C3CE91C16141C005DF795 /* Branchsters.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Branchsters.entitlements; sourceTree = "<group>"; };
 		378C79541C571E9E0032231B /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
-		4DD147511DE5132F00B62CF8 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
-		4DD147531DE5138D00B62CF8 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		5BD8E97E3C91345EE8950DD2 /* Pods-BranchMonsterFactory.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BranchMonsterFactory.release.xcconfig"; path = "Pods/Target Support Files/Pods-BranchMonsterFactory/Pods-BranchMonsterFactory.release.xcconfig"; sourceTree = "<group>"; };
 		670591E919BBAC630039DAE1 /* Branchsters.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Branchsters.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6705920F19BBB7430039DAE1 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
@@ -171,10 +166,8 @@
 				6705924019BBEBC40039DAE1 /* Social.framework in Frameworks */,
 				6705923E19BBE22D0039DAE1 /* MessageUI.framework in Frameworks */,
 				6705923B19BBD0060039DAE1 /* UIKit.framework in Frameworks */,
-				4DD147521DE5132F00B62CF8 /* FBSDKCoreKit.framework in Frameworks */,
 				6705921019BBB7430039DAE1 /* AdSupport.framework in Frameworks */,
 				265FD1DC3BD892A74A7EB1E0 /* libPods-BranchMonsterFactory.a in Frameworks */,
-				4DD147541DE5138D00B62CF8 /* Bolts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -192,8 +185,6 @@
 				6705923A19BBD0060039DAE1 /* UIKit.framework */,
 				6705920F19BBB7430039DAE1 /* AdSupport.framework */,
 				670591EA19BBAC630039DAE1 /* Products */,
-				4DD147531DE5138D00B62CF8 /* Bolts.framework */,
-				4DD147511DE5132F00B62CF8 /* FBSDKCoreKit.framework */,
 				9552A7970BF60B80F8AACB47 /* Pods */,
 				AC4F2E8D49B8AC096F140182 /* Frameworks */,
 			);
@@ -460,7 +451,6 @@
 				67FD94E21A4D250C00D6BFA8 /* facebook_share.png in Resources */,
 				67FD94D51A4D250C00D6BFA8 /* 250.png in Resources */,
 				67FD94F71A4D250C00D6BFA8 /* Icon-Small@2x.png in Resources */,
-				378C79551C571E9E0032231B /* Podfile in Resources */,
 				67FD94D71A4D250C00D6BFA8 /* 0body.png in Resources */,
 				67FD94FB1A4D250C00D6BFA8 /* Icon-40@2x.png in Resources */,
 				67FD94DC1A4D250C00D6BFA8 /* branchster.png in Resources */,
