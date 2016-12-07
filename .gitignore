@@ -1,5 +1,10 @@
-build/**
+# Xcode
+[Bb]uild/**
 BranchMonsterFactory.xcodeproj/xcuserdata
 *.xccheckout
 *.xcuserdatad
 *.DS_Store
+
+# CocoaPods
+Pods
+Podfile.lock
