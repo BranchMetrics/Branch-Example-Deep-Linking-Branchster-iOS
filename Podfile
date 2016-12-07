@@ -6,4 +6,3 @@ target 'BranchMonsterFactory' do
 	pod 'Tune'
 end
 
-setDebugMode
