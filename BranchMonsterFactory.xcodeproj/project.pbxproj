@@ -406,7 +406,7 @@
 				TargetAttributes = {
 					670591E819BBAC630039DAE1 = {
 						CreatedOnToolsVersion = 6.0;
-						DevelopmentTeam = R63EM248DP;
+						DevelopmentTeam = 3ZNSRC9M83;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Push = {
@@ -672,7 +672,7 @@
 				CODE_SIGN_ENTITLEMENTS = BranchMonsterFactory/Branchsters.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = R63EM248DP;
+				DEVELOPMENT_TEAM = 3ZNSRC9M83;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -681,7 +681,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/BranchMonsterFactory/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "io.branch.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "io.branch-labs.Branchster";
 				PRODUCT_NAME = Branchsters;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -698,7 +698,7 @@
 				CODE_SIGN_ENTITLEMENTS = BranchMonsterFactory/Branchsters.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Branch Metrics, Inc. (R63EM248DP)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = R63EM248DP;
+				DEVELOPMENT_TEAM = 3ZNSRC9M83;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -707,7 +707,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/BranchMonsterFactory/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "io.branch.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "io.branch-labs.Branchster";
 				PRODUCT_NAME = Branchsters;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
