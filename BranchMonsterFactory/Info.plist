@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>Int'l Branchster</string>
+	<string>Int&apos;l Branchster</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIcons</key>
@@ -72,7 +72,11 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>ZBuildInfoDate</key>
+	<string>Tue Feb 28 12:31:43 PST 2017
+Tue Feb 28 12:31:43 PST 2017
+</string>
 	<key>branch_key</key>
-	<string>key_live_gchnKkd3l3m9YBPP2d73jmfejkcgVjgM</string>
+	<string>key_live_elfOI5wkcEhpKfGsVCrPEngpuufT2y6B </string>
 </dict>
 </plist>

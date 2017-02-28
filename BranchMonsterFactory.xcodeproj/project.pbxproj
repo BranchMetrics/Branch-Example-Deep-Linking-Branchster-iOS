@@ -82,7 +82,7 @@
 		377C3CE61C121DCC005DF795 /* BranchUniversalObject+MonsterHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BranchUniversalObject+MonsterHelpers.h"; sourceTree = "<group>"; };
 		377C3CE71C121DCC005DF795 /* BranchUniversalObject+MonsterHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BranchUniversalObject+MonsterHelpers.m"; sourceTree = "<group>"; };
 		377C3CE91C16141C005DF795 /* Branchsters.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Branchsters.entitlements; sourceTree = "<group>"; };
-		378C79541C571E9E0032231B /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		378C79541C571E9E0032231B /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		5BD8E97E3C91345EE8950DD2 /* Pods-BranchMonsterFactory.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BranchMonsterFactory.release.xcconfig"; path = "Pods/Target Support Files/Pods-BranchMonsterFactory/Pods-BranchMonsterFactory.release.xcconfig"; sourceTree = "<group>"; };
 		670591E919BBAC630039DAE1 /* Branchsters.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Branchsters.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6705920F19BBB7430039DAE1 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
@@ -385,6 +385,7 @@
 				670591E719BBAC630039DAE1 /* Resources */,
 				9C891AA919C862A85AEACEB9 /* [CP] Embed Pods Frameworks */,
 				79C3649B649EE75362C602E2 /* [CP] Copy Pods Resources */,
+				4D6B92E91E6615E100AAFD08 /* Add Timestamp */,
 			);
 			buildRules = (
 			);
@@ -497,6 +498,22 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		4D6B92E91E6615E100AAFD08 /* Add Timestamp */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(TARGET_BUILD_DIR)/$(INFOPLIST_PATH)",
+			);
+			name = "Add Timestamp";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/bash;
+			shellScript = "./Tools/ipa-add-timestamp\n";
+			showEnvVarsInLog = 0;
+		};
 		647B746D0030F7967AAC9316 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

@@ -1,0 +1,221 @@
+#!/bin/bash
+
+#   ipa-make-manifest
+#
+#   E.B. Smith  March 2014.
+
+set -eu -o pipefail
+
+scriptname=ipa-make-manifest
+scriptpath=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+source "$scriptpath"/ipa-common
+
+
+function usage() {
+cat 1>&2 <<USAGE
+ipa-make-manifest  -  Create a manifest plist for downloading an iPhone ipa.
+                      Can also optionally create a web page for the download.
+
+Usage:
+
+ipa-make-manifest [-h] -a <iTunes-art-url> -i <icon-url>  -p <ipa-package-url>
+                       [ -b <bundle-id> ]  [ -v version ]  <ipa-name>
+
+Returns:
+
+    Returns 0 on success, 1 on failure.
+
+Options:
+
+    -h      Show usage and exit.
+
+    -p <url> or -u <url>
+
+            The base URL for the download, like:
+                http://website.com/download
+
+    -a <itunes-art-work-url>
+
+            The URL to the iTunes Artwork png file.
+            Optional.  If not given the artwork is derived
+            from the ipa file.
+
+    -i <icon-url>
+
+            The URL to the icon png file.
+            Optional.  If not given the icon is derived
+            from the ipa file.
+
+    <ipa-file>
+
+            The ipa file to use.
+
+If the -w option isn't used, the download manifest plist is written to standard out.
+
+USAGE
+}
+
+if (( $# < 3 )); then
+    usage
+    exit 1
+    fi
+
+
+baseURL=""
+plistURL=""
+iTunesArtworkURL=""
+ipaBundleID=""
+ipaBundleVersion=""
+iconURL=""
+
+
+while getopts ":a:b:hi:p:u:v:" option; do
+    case "$option" in
+    a)  iTunesArtworkURL="$OPTARG" ;;
+    b)  ipaBundleID="$OPTARG" ;;
+    h)  usage; exit 1 ;;
+    i)  iconURL="$OPTARG" ;;
+    p)  plistURL="$OPTARG" ;;
+    u)  baseURL="$OPTARG" ;;
+    v)  ipaBundleVersion="$OPTARG" ;;
+    ?)  error "Unknown option '-$OPTARG'"; exit 1 ;;
+    :)  error "Option '-$OPTARG' requires an argument."; exit 1 ;;
+    esac
+done
+
+
+optionIndex=$(( $OPTIND -1 ))
+if (( $optionIndex < 0 )); then
+    error "Expected an ipa file name."
+    exit 1
+else
+    shift $optionIndex
+    ipaFileName="$1"
+    shift 1
+    fi
+
+while (($#)); do
+    warning "Ignoring '$1'."
+    shift 1
+    done
+
+ipaName=$(basename "$ipaFileName")
+ipaName="${ipaName%.*}"
+
+if (( ${#baseURL} == 0 )); then
+    error "A base download URL is required."
+    exit 1
+    fi
+
+if (( ${#plistURL} == 0 )); then
+    plistURL="${baseURL}"/"${ipaName}".plist
+    fi
+
+ipaURL="${baseURL}"/"${ipaName}".ipa
+
+if (( ${#iTunesArtworkURL} == 0 )); then
+    iTunesArtworkURL="$baseURL"/iTunesArtwork.png
+    fi
+
+if (( ${#iconURL} == 0 )); then
+    iconURL="$baseURL"/Icon.png
+    fi
+
+ipaFileName="$(resolvepath "$ipaFileName")"
+debug "ipaFileName is ${ipaFileName}."
+
+if [[ ! -f "${ipaFileName}" ]]; then
+    error "No .ipa file at ${ipaFileName}."
+    exit 1
+    fi
+
+ipaAppDescription="iOS App"
+ipaAppName="${ipaName}"
+
+if  (( ${#ipaBundleID} == 0 )) || (( ${#ipaBundleVersion} == 0 )); then
+    debug "Unzipping ipa..."
+    unzip -qj "${ipaFileName}" '*/Info.plist' -x 'Payload/*/*/*' -d "${ipaTempPath}" > /dev/null 2>&1
+    ipaInfoPList="${ipaTempPath}"/Info.plist
+    ipaAppName=$(valueOfInfoPListKey "${ipaInfoPList}" "CFBundleDisplayName")
+    ipaAppDescription=$(valueOfInfoPListKey "${ipaInfoPList}" "ZBuildInfoDescriptionShort")
+    ipaBundleID=$(valueOfInfoPListKey "${ipaInfoPList}" "CFBundleIdentifier")
+    ipaBundleVersion=$(valueOfInfoPListKey "${ipaInfoPList}" "CFBundleShortVersionString")
+    fi
+
+if  (( ${#ipaBundleID} == 0 )) || (( ${#ipaBundleVersion} == 0 )); then
+    error "Can't find bundle-id or version in '$ipaFilename'."
+    exit 1
+    fi
+
+ipaMD5=$(md5 -q "${ipaFileName}")
+if (( ${#ipaMD5} == 0 )); then
+    error "Can't get ipa MD5."
+    exit 1
+    fi
+
+debug "           ipaFileName $ipaFileName"
+debug "              plistURL $plistURL"
+debug "                ipaMD5 $ipaMD5"
+debug "           ipaBundleID $ipaBundleID"
+debug "      ipaBundleVersion $ipaBundleVersion"
+debug "      iTunesArtworkURL $iTunesArtworkURL"
+debug "               iconURL $iconURL"
+debug "     ipaAppDescription $ipaAppDescription"
+
+
+debug "writeManifestPList..."
+cat <<PLISTTEXT
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>items</key>
+    <array>
+        <dict>
+            <key>assets</key>
+            <array>
+                <dict>
+                    <key>kind</key>
+                    <string>software-package</string>
+                    <key>url</key>
+                    <string>${ipaURL}</string>
+                    <key>md5</key>
+                    <string>${ipaMD5}</string>
+                </dict>
+                <dict>
+                    <key>kind</key>
+                    <string>full-size-image</string>
+                    <key>needs-shine</key>
+                    <false/>
+                    <key>url</key>
+                    <string>${iTunesArtworkURL}</string>
+                </dict>
+                <dict>
+                    <key>kind</key>
+                    <string>display-image</string>
+                    <key>needs-shine</key>
+                    <false/>
+                    <key>url</key>
+                    <string>${iconURL}</string>
+                </dict>
+            </array>
+            <key>metadata</key>
+            <dict>
+                <key>bundle-identifier</key>
+                <string>${ipaBundleID}</string>
+                <key>bundle-version</key>
+                <string>${ipaBundleVersion}</string>
+                <key>kind</key>
+                <string>software</string>
+                <key>subtitle</key>
+                <string>${ipaAppDescription}</string>
+                <key>title</key>
+                <string>${ipaAppName}</string>
+            </dict>
+        </dict>
+    </array>
+</dict>
+</plist>
+PLISTTEXT
+
+debug "No errors. Done."
