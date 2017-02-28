@@ -1,0 +1,68 @@
+#!/bin/bash
+
+#  ipa-get-version  -  Returns the bundle-id and version of an ipa and apk.
+#
+#  EB Smith, January 2015
+
+set -eu -o pipefail
+scriptname=ipa-publish-update
+scriptpath=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+source "$scriptpath"/ipa-common
+
+function usage() {
+cat 1>&2 <<USAGE
+$scriptname  -  Returns the bundle-id and version of an ipa and apk.
+
+Usage:
+
+$scriptname  [ -h | <app-file> ]
+
+Options:
+
+    -h          Show usage and exit.
+  <app-file>    The ipa or apk file from which to retrieve version information.
+
+USAGE
+}
+
+if (( $# != 1 )); then
+    error "A single app file is expected as a parameter."
+    exit 1
+    fi
+
+if [[ "$1" == "-h" ]]; then
+    usage
+    exit 0
+    fi
+
+if [ ! -f "$1" ]; then
+    error "No file '$1'."
+    exit 1
+fi
+
+ipaFileName=$(resolvepath "$1")
+ipaBaseName=$(basename "$ipaFileName")
+ipaExtension="${ipaBaseName##*.}"
+
+function extractString()
+    {
+    f="${1#*"$2"}"
+    l="${f%%"$3"*}"
+    echo "$l"
+    }
+
+if [[ "$ipaExtension" == "ipa" ]]; then
+    debug "Unzipping ipa..."
+    unzip -qj "${ipaFileName}" '*/Info.plist' -x 'Payload/*/*/*' -d "${ipaTempPath}" > /dev/null 2>&1
+    ipaInfoPList="${ipaTempPath}"/Info.plist
+    ipaBundleID=$(valueOfInfoPListKey "${ipaInfoPList}" "CFBundleIdentifier")
+    ipaBundleVersion=$(valueOfInfoPListKey "${ipaInfoPList}" "CFBundleShortVersionString")
+else
+    package=`$scriptpath/aapt dump badging "$ipaFileName" | grep \^package`
+    ipaBundleID=`extractString "$package" "name='" "'"`
+    v1=`extractString "$package" "versionCode='"  "'"`
+    v2=`extractString "$package" "versionName='"  "'"`
+    ipaBundleVersion=$v1
+fi
+
+echo "$ipaBundleID:$ipaBundleVersion"

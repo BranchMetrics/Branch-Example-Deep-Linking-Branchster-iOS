@@ -1,0 +1,57 @@
+#!/bin/bash
+
+#	ipa-add-timestamp
+#	E.B. Smith  March 2014
+
+set -eu -o pipefail
+
+function usage() {
+cat 1>&2 <<USAGE
+
+ipa-add-timestamp  -  Inserts a ZBuildInfoDate key set to the current time into the 
+                      target plist.
+
+Usage:
+
+ipa-add-timestamp  [ -h | <target-plist-file> ]
+
+    -h    Show usage and exit.
+
+USAGE
+}
+
+
+if (( $# == 0 )); then
+    target="${TARGET_BUILD_DIR:-}"/"${INFOPLIST_PATH:-}"
+    if (( ${#target} == 1 )); then
+        echo ">>> Error: An Info.plist is expected. Try 'ipa-add-target -h' for usage." >&2
+        exit 1
+        fi
+elif (( $# == 1 )); then
+    if [[ "$1" == "-h" ]]; then
+        usage
+        exit 0
+        fi
+    target="$1"
+else
+    echo ">>> Error: An Info.plist is expected. Try 'ipa-add-target -h' for usage." >&2
+    exit 1
+	fi
+
+if [ ! -f "${target}" ]; then
+    echo ">>> Error: No Info.plist file at '$target'." >&2
+    exit 1
+    fi
+
+
+scriptname=ipa-add-timestamp
+scriptpath=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+export ipaUseLogFile=false
+source "$scriptpath"/ipa-common
+
+(${PListBuddy} -c "delete :ZBuildInfoDate" "${target}" &> /dev/null || true)
+${PListBuddy} -c "add :ZBuildInfoDate date `date`" "${target}"
+
+log "Timestamp added to ${target}"
+
+debug "Done: No errors."

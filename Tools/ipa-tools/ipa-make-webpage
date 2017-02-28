@@ -1,0 +1,181 @@
+#!/bin/bash
+
+#   ipa-make-webpage
+#
+#   E.B. Smith  January 2015.
+
+set -eu -o pipefail
+
+scriptname=ipa-make-webpage
+scriptpath=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+source "$scriptpath"/ipa-common
+
+
+function usage() {
+cat 1>&2 <<USAGE
+ipa-make-webpage  -  Create a web page for an iOS app download.
+
+Usage:
+
+ipa-make-webpage [-h] -p <manifest-plist-url> ipa-file-name
+
+Returns:
+
+    Returns 0 on success, 1 on failure.
+
+Options:
+
+    -h      Show usage and exit.
+
+    -p <url>
+
+            The plist URL on the server where the app download manifest plist
+            will reside.  Like:  'http://website.com/download/app.plist'.
+
+    -u <url>  The base URL to use instead of plist.
+
+    <ipa-file>
+
+            The ipa file to use.
+
+USAGE
+}
+
+
+plistURL=""
+baseURL=""
+
+while getopts ":hp:u:" option; do
+    case "$option" in
+    h)  usage; exit 1 ;;
+    p)  plistURL="$OPTARG" ;;
+    u)  baseURL="$OPTARG" ;;
+    ?)  error "Unknown option '-$OPTARG'"; exit 1 ;;
+    :)  error "Option '-$OPTARG' requires an argument."; exit 1 ;;
+    esac
+done
+
+
+optionIndex=$(( $OPTIND -1 ))
+if (( $optionIndex < 0 )); then
+    error "Expected an ipa file name."
+    exit 1
+else
+    shift $optionIndex
+    ipaFileName="${1}"
+    shift 1
+    fi
+
+while (($#)); do
+    warning "Ignoring '$1'."
+    shift 1
+    done
+
+
+ipaName=$(basename "$ipaFileName")
+ipaName="${ipaName%.*}"
+
+if (( ${#plistURL} == 0 )); then
+    if (( ${#baseURL} == 0 )); then
+        error "A base URL for the ipa download URL is required."
+        exit 1
+    else
+        plistURL="$baseURL"/"$ipaName".plist
+        fi
+    fi
+
+ipaFileName="$(resolvepath "$ipaFileName")"
+debug "ipaFileName is ${ipaFileName}."
+
+if [[ ! -f "${ipaFileName}" ]]; then
+    error "No .ipa file at ${ipaFileName}."
+    exit 1
+    fi
+
+debug "Unzipping ipa..."
+unzip -qj "${ipaFileName}" '*/Info.plist' -x 'Payload/*/*/*' -d "${ipaTempPath}" > /dev/null 2>&1
+ipaInfoPList="${ipaTempPath}"/Info.plist
+ipaAppName=$(valueOfInfoPListKey "${ipaInfoPList}" "CFBundleDisplayName")
+ipaAppDescription=$(valueOfInfoPListKey "${ipaInfoPList}" "ZBuildInfoDescriptionShort")
+ipaBundleID=$(valueOfInfoPListKey "${ipaInfoPList}" "CFBundleIdentifier")
+ipaBundleVersion=$(valueOfInfoPListKey "${ipaInfoPList}" "CFBundleShortVersionString")
+ipaBuildDate=$(valueOfInfoPListKey "${ipaInfoPList}" "ZBuildInfoDate")
+
+
+if  (( ${#ipaBundleID} == 0 )) || (( ${#ipaBundleVersion} == 0 )); then
+    error "Can't find bundle-id or version in '$ipaFilename'."
+    exit 1
+    fi
+
+#  Try to parse the build date:
+
+#echo $ipaBuildDate
+epochDate=$(date -jf "%FT%TZ%z" "${ipaBuildDate}+0000" +"%s" 2> /dev/null || true)
+
+if (( ${#epochDate} == 0 )); then
+    epochDate=$(date -jf "%a %b %d %T %Z %Y" "${ipaBuildDate}" +"%s" 2> /dev/null || true)
+    fi
+
+if (( ${#epochDate} == 0 )); then
+    epochDate=$(date -jf "%s" "${ipaBuildDate}" +"%s" 2> /dev/null || true)
+    fi
+
+if (( ${#epochDate} == 0 )); then
+    error "Can't parse date '$ipaBuildDate'."
+    exit 1
+    fi
+
+ipaBuildDate=$(date -jf "%s" "${epochDate}" +"%A %B %-d, %Y %l:%M %p")
+
+
+debug "           ipaFileName $ipaFileName"
+debug "              plistURL $plistURL"
+debug "           ipaBundleID $ipaBundleID"
+debug "      ipaBundleVersion $ipaBundleVersion"
+
+ipaVersionHTML="${ipaAppName}&nbsp;${ipaBundleVersion}<br><span style=\"font-size:0.9em;\">${ipaBuildDate}</span><br>${ipaAppDescription}"
+
+# var downloadLink = 'itms-services://?action=download-manifest&url=$plistURL';
+# var appName = '$ipaName.ipa';
+# var versionString = '${ipaVersionHTML}';
+
+
+debug "Writing web page..."
+cat \
+<<WEBPAGE
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="viewport" content="width=device-width, minimal-ui">
+<link href="./favicon.png"  type="image/png" rel="shortcut icon">
+<title>${ipaFileName} : iOS Download</title>
+<script  type="text/javascript">
+var downloadLink = 'itms-services://?action=download-manifest&url=$plistURL';
+var appName = '$ipaName.ipa';
+var versionString = '${ipaVersionHTML}';
+</script>
+<link rel="stylesheet" type="text/css" href="style.css">
+<script type="text/javascript" src="download.js"></script>
+</head>
+
+<body>
+<br><br>
+<img id="logo" src="Logo.png" alt="Logo">
+<br><br>
+<div id='message-box' onmouseup='startDownload();' ontouchend='startDownload();'>
+<b>
+Loading...
+</b>
+<br><br>
+TestApp&nbsp;0.1.1<br>
+Tuesday March 13, 2015  8:04 PM<br>
+BeingHappy
+</div>
+</body>
+</html>
+WEBPAGE
+
+debug "No errors. Done."
