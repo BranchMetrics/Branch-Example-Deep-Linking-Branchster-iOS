@@ -1,14 +1,22 @@
 #!/bin/bash
 set -euo pipefail
 
+#   ipa-make-archive  -  Make the Branchster ipa file.
+#
+#   E.B. Smith  February 2017.
+
+echo ">>> Compiling Branchster..."
 xcodebuild \
     -workspace BranchMonsterFactory.xcworkspace \
     -scheme BranchMonsterFactory \
+    -destination generic/platform=iOS \
     archive -quiet \
     -archivePath Build/Branchster.xcarchive
 
+echo ">>> Archiving Branchster..."
 xcodebuild \
     -exportArchive \
     -archivePath Build/Branchster.xcarchive \
     -exportOptionsPlist BranchMonsterFactory/Archive.plist \
     -exportPath Staging-Branchster
+-destination generic/platform=iOS

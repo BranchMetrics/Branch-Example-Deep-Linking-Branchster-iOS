@@ -1,10 +1,9 @@
 #!/bin/bash
+set -eu -o pipefail
 
-#   ipa-make-manifest
+#   ipa-make-manifest  -  Make an ipa manifest for OTA distribution.
 #
 #   E.B. Smith  March 2014.
-
-set -eu -o pipefail
 
 scriptname=ipa-make-manifest
 scriptpath=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)

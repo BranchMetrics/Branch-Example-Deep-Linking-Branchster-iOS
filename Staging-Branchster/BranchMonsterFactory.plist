@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>items</key>
+    <array>
+        <dict>
+            <key>assets</key>
+            <array>
+                <dict>
+                    <key>kind</key>
+                    <string>software-package</string>
+                    <key>url</key>
+                    <string>https://shimmering.blue/ios/branchster/BranchMonsterFactory.ipa</string>
+                    <key>md5</key>
+                    <string>9fd11e9a7d3c80b2c1f0e1ec2835e3e3</string>
+                </dict>
+                <dict>
+                    <key>kind</key>
+                    <string>full-size-image</string>
+                    <key>needs-shine</key>
+                    <false/>
+                    <key>url</key>
+                    <string>https://shimmering.blue/ios/branchster/iTunesArtwork.png</string>
+                </dict>
+                <dict>
+                    <key>kind</key>
+                    <string>display-image</string>
+                    <key>needs-shine</key>
+                    <false/>
+                    <key>url</key>
+                    <string>https://shimmering.blue/ios/branchster/Icon.png</string>
+                </dict>
+            </array>
+            <key>metadata</key>
+            <dict>
+                <key>bundle-identifier</key>
+                <string>io.branch-labs.Branchster</string>
+                <key>bundle-version</key>
+                <string>1.2.2</string>
+                <key>kind</key>
+                <string>software</string>
+                <key>subtitle</key>
+                <string>Build your Branchster!</string>
+                <key>title</key>
+                <string>Int’l Branchster</string>
+            </dict>
+        </dict>
+    </array>
+</dict>
+</plist>

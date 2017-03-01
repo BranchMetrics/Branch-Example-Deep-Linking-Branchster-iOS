@@ -1,14 +1,20 @@
 #!/bin/bash
 
+#   deploy-branchster  -  Make the ipa, manifest, and web page for Branchster.
+#
+#   E.B. Smith  February 2017.
+
 set -eu -o pipefail
 scriptname="$(basename "$0")"
 scriptpath="$( cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+cd "$scriptpath"/..
+pwd
 
 deployapp=BranchMonsterFactory
-deployhost="blitzhere@blitzhere.com"
-baseurl="https://blitzhere.com/ios/blitz-labs"
-deploypath="/home/blitzhere/www/ios/blitz-labs"
-stagingpath="${scriptpath}"/Staging-Branchster
+deployhost="shimmering@shimmering.blue"
+baseurl="https://shimmering.blue/ios/branchster"
+deploypath="/home/shimmering/www/blue.shimmering/ios/branchster"
+stagingpath=./Staging-Branchster
 
 
 if [[ ${CLICOLOR:0} == 1 && -t 1 ]]; then
@@ -31,20 +37,26 @@ fi
 
 function showErrorOnExit() {
     printf "${textRed}"
-    printf "[build-all] -------------------------------------------------------------------\n"
-    printf "[build-all]                             Deploy failed.\n"
-    printf "[build-all] -------------------------------------------------------------------"
+    printf " -------------------------------------------------------------------\n"
+    printf "                            Deploy failed.\n"
+    printf " -------------------------------------------------------------------"
     printf "${textNormal}\n"
 }
 trap "showErrorOnExit" EXIT
 
 
-cd "$stagingpath"
 echo ">>> Deploying: `pwd`"
 echo ">>>        To: $deployhost:$deploypath"
-make-manifest -u "${baseurl}" "${deployapp}".ipa > "${deployapp}".plist
-make-webpage  -u "${baseurl}" "${deployapp}".ipa > index.html
 
+# ./Tools/ipa-make-archive
+
+echo ">>> Making manifest..."
+./Tools/ipa-make-manifest -u "${baseurl}" "$stagingpath"/"$deployapp".ipa > "$stagingpath"/"$deployapp".plist
+
+echo ">>> Making webpage..."
+./Tools/ipa-make-webpage  -u "${baseurl}" "$stagingpath"/"$deployapp".ipa > "$stagingpath"/index.html
+
+echo ">>> Uploading archive..."
 ssh "$deployhost" mkdir -p "$deploypath"
 rsync -aP "$stagingpath"/* "$deployhost":"$deploypath"
 ssh "$deployhost" chmod -R 755 "$deploypath"
