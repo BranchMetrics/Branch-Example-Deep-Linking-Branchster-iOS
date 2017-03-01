@@ -4,25 +4,12 @@ set -eu -o pipefail
 scriptname="$(basename "$0")"
 scriptpath="$( cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-if (( $# != 1 )); then
-    echo ">>> Error: A deploy target was expected on the command line." 1>&2
-    exit 1
-elif [[ "$1" == Staging-BlitzLabs* ]]; then
-    deployapp=BlitzLabs
-    deployhost="blitzhere@blitzhere.com"
-    baseurl="https://blitzhere.com/ios/blitz-labs"
-    deploypath="/home/blitzhere/www/ios/blitz-labs"
-    stagingpath="${scriptpath}"/Staging-BlitzLabs
-elif [[ "$1" == Staging-Blitz* ]]; then
-    deployapp=Blitz
-    deployhost="blitzhere@blitzhere.com"
-    baseurl="https://blitzhere.com/ios/blitz"
-    deploypath="/home/blitzhere/www/ios/blitz"
-    stagingpath="${scriptpath}"/Staging-Blitz
-else
-    echo ">>> Error: Unknown deployment target '$1'." 1>&2
-    exit 1
-    fi
+deployapp=BranchMonsterFactory
+deployhost="blitzhere@blitzhere.com"
+baseurl="https://blitzhere.com/ios/blitz-labs"
+deploypath="/home/blitzhere/www/ios/blitz-labs"
+stagingpath="${scriptpath}"/Staging-Branchster
+
 
 if [[ ${CLICOLOR:0} == 1 && -t 1 ]]; then
     textBold="\e[1m"
@@ -40,34 +27,28 @@ else
     textRed=""
     textNormal=""
     textDim=""
-    fi
+fi
 
-function showErrorOnExit()
-    {
-    # (rm -Rf "$temppath" || true)
+function showErrorOnExit() {
     printf "${textRed}"
     printf "[build-all] -------------------------------------------------------------------\n"
     printf "[build-all]                             Deploy failed.\n"
     printf "[build-all] -------------------------------------------------------------------"
     printf "${textNormal}\n"
-    }
+}
 trap "showErrorOnExit" EXIT
 
 
 cd "$stagingpath"
 echo ">>> Deploying: `pwd`"
 echo ">>>        To: $deployhost:$deploypath"
-# (rm -Rf "$stagingpath" || true)
-# mkdir -p "$stagingpath"
-ipa-tool make-manifest -u "${baseurl}" "${deployapp}".ipa > "${deployapp}".plist
-ipa-tool make-webpage  -u "${baseurl}" "${deployapp}".ipa > index.html
-# cp "${deployapp}".ipa "$stagingpath"
+make-manifest -u "${baseurl}" "${deployapp}".ipa > "${deployapp}".plist
+make-webpage  -u "${baseurl}" "${deployapp}".ipa > index.html
 
 ssh "$deployhost" mkdir -p "$deploypath"
 rsync -aP "$stagingpath"/* "$deployhost":"$deploypath"
 ssh "$deployhost" chmod -R 755 "$deploypath"
 
 trap - EXIT
-# (rm -Rf "$stagingpath" || true)
 printf "${textBlue}"
 printf ">>> $deployapp deployed to $deployhost.${textNormal}\n"

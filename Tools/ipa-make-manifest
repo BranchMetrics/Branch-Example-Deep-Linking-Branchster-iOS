@@ -50,15 +50,13 @@ Options:
 
             The ipa file to use.
 
-If the -w option isn't used, the download manifest plist is written to standard out.
-
 USAGE
 }
 
 if (( $# < 3 )); then
     usage
     exit 1
-    fi
+fi
 
 
 baseURL=""
@@ -92,12 +90,12 @@ else
     shift $optionIndex
     ipaFileName="$1"
     shift 1
-    fi
+fi
 
 while (($#)); do
     warning "Ignoring '$1'."
     shift 1
-    done
+done
 
 ipaName=$(basename "$ipaFileName")
 ipaName="${ipaName%.*}"
@@ -105,21 +103,21 @@ ipaName="${ipaName%.*}"
 if (( ${#baseURL} == 0 )); then
     error "A base download URL is required."
     exit 1
-    fi
+fi
 
 if (( ${#plistURL} == 0 )); then
     plistURL="${baseURL}"/"${ipaName}".plist
-    fi
+fi
 
 ipaURL="${baseURL}"/"${ipaName}".ipa
 
 if (( ${#iTunesArtworkURL} == 0 )); then
     iTunesArtworkURL="$baseURL"/iTunesArtwork.png
-    fi
+fi
 
 if (( ${#iconURL} == 0 )); then
     iconURL="$baseURL"/Icon.png
-    fi
+fi
 
 ipaFileName="$(resolvepath "$ipaFileName")"
 debug "ipaFileName is ${ipaFileName}."
@@ -127,7 +125,7 @@ debug "ipaFileName is ${ipaFileName}."
 if [[ ! -f "${ipaFileName}" ]]; then
     error "No .ipa file at ${ipaFileName}."
     exit 1
-    fi
+fi
 
 ipaAppDescription="iOS App"
 ipaAppName="${ipaName}"
@@ -140,18 +138,18 @@ if  (( ${#ipaBundleID} == 0 )) || (( ${#ipaBundleVersion} == 0 )); then
     ipaAppDescription=$(valueOfInfoPListKey "${ipaInfoPList}" "ZBuildInfoDescriptionShort")
     ipaBundleID=$(valueOfInfoPListKey "${ipaInfoPList}" "CFBundleIdentifier")
     ipaBundleVersion=$(valueOfInfoPListKey "${ipaInfoPList}" "CFBundleShortVersionString")
-    fi
+fi
 
 if  (( ${#ipaBundleID} == 0 )) || (( ${#ipaBundleVersion} == 0 )); then
     error "Can't find bundle-id or version in '$ipaFilename'."
     exit 1
-    fi
+fi
 
 ipaMD5=$(md5 -q "${ipaFileName}")
 if (( ${#ipaMD5} == 0 )); then
     error "Can't get ipa MD5."
     exit 1
-    fi
+fi
 
 debug "           ipaFileName $ipaFileName"
 debug "              plistURL $plistURL"

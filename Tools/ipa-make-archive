@@ -1,0 +1,14 @@
+#!/bin/bash
+set -euo pipefail
+
+xcodebuild \
+    -workspace BranchMonsterFactory.xcworkspace \
+    -scheme BranchMonsterFactory \
+    archive -quiet \
+    -archivePath Build/Branchster.xcarchive
+
+xcodebuild \
+    -exportArchive \
+    -archivePath Build/Branchster.xcarchive \
+    -exportOptionsPlist BranchMonsterFactory/Archive.plist \
+    -exportPath Staging-Branchster

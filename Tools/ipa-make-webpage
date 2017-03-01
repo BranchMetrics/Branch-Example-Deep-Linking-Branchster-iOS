@@ -64,12 +64,12 @@ else
     shift $optionIndex
     ipaFileName="${1}"
     shift 1
-    fi
+fi
 
 while (($#)); do
     warning "Ignoring '$1'."
     shift 1
-    done
+done
 
 
 ipaName=$(basename "$ipaFileName")
@@ -81,8 +81,8 @@ if (( ${#plistURL} == 0 )); then
         exit 1
     else
         plistURL="$baseURL"/"$ipaName".plist
-        fi
     fi
+fi
 
 ipaFileName="$(resolvepath "$ipaFileName")"
 debug "ipaFileName is ${ipaFileName}."
@@ -90,7 +90,8 @@ debug "ipaFileName is ${ipaFileName}."
 if [[ ! -f "${ipaFileName}" ]]; then
     error "No .ipa file at ${ipaFileName}."
     exit 1
-    fi
+fi
+
 
 debug "Unzipping ipa..."
 unzip -qj "${ipaFileName}" '*/Info.plist' -x 'Payload/*/*/*' -d "${ipaTempPath}" > /dev/null 2>&1
@@ -105,7 +106,7 @@ ipaBuildDate=$(valueOfInfoPListKey "${ipaInfoPList}" "ZBuildInfoDate")
 if  (( ${#ipaBundleID} == 0 )) || (( ${#ipaBundleVersion} == 0 )); then
     error "Can't find bundle-id or version in '$ipaFilename'."
     exit 1
-    fi
+fi
 
 #  Try to parse the build date:
 
@@ -114,16 +115,16 @@ epochDate=$(date -jf "%FT%TZ%z" "${ipaBuildDate}+0000" +"%s" 2> /dev/null || tru
 
 if (( ${#epochDate} == 0 )); then
     epochDate=$(date -jf "%a %b %d %T %Z %Y" "${ipaBuildDate}" +"%s" 2> /dev/null || true)
-    fi
+fi
 
 if (( ${#epochDate} == 0 )); then
     epochDate=$(date -jf "%s" "${ipaBuildDate}" +"%s" 2> /dev/null || true)
-    fi
+fi
 
 if (( ${#epochDate} == 0 )); then
     error "Can't parse date '$ipaBuildDate'."
     exit 1
-    fi
+fi
 
 ipaBuildDate=$(date -jf "%s" "${epochDate}" +"%A %B %-d, %Y %l:%M %p")
 
@@ -163,7 +164,7 @@ var versionString = '${ipaVersionHTML}';
 
 <body>
 <br><br>
-<img id="logo" src="Logo.png" alt="Logo">
+<img id="logo" src="iTunesArtwork.png" alt="iTunesArtwork">
 <br><br>
 <div id='message-box' onmouseup='startDownload();' ontouchend='startDownload();'>
 <b>
@@ -172,7 +173,7 @@ Loading...
 <br><br>
 TestApp&nbsp;0.1.1<br>
 Tuesday March 13, 2015  8:04 PM<br>
-BeingHappy
+Branchster
 </div>
 </body>
 </html>
