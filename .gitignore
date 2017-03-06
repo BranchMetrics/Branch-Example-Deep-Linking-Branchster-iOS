@@ -8,3 +8,6 @@ BranchMonsterFactory.xcodeproj/xcuserdata
 # CocoaPods
 Pods
 Podfile.lock
+
+# ipa file
+*.ipa

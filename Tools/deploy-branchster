@@ -43,17 +43,17 @@ function showErrorOnExit() {
 trap "showErrorOnExit" EXIT
 
 
-echo ">>> Deploying: `pwd`"
+printf "${textBlue}>>> Deploying: `pwd`${textNormal}\n"
 
 ./Tools/ipa-make-archive
 
-echo ">>> Making manifest..."
+printf "${textBlue}>>> Making manifest...${textNormal}\n"
 ./Tools/ipa-make-manifest -u "${baseurl}" "$stagingpath"/"$deployapp".ipa > "$stagingpath"/"$deployapp".plist
 
-echo ">>> Making webpage..."
+printf "${textBlue}>>> Making webpage...${textNormal}\n"
 ./Tools/ipa-make-webpage  -u "${baseurl}" "$stagingpath"/"$deployapp".ipa > "$stagingpath"/index.html
 
-echo ">>> Uploading..."
+printf "${textBlue}>>> Uploading...${textNormal}\n"
 ./Tools/deploy-upload
 
 trap - EXIT
