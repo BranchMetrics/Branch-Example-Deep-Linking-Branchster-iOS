@@ -8,13 +8,11 @@ set -eu -o pipefail
 scriptname="$(basename "$0")"
 scriptpath="$( cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$scriptpath"/..
-pwd
 
-deployapp=BranchMonsterFactory
-deployhost="shimmering@shimmering.blue"
+
 baseurl="https://shimmering.blue/ios/branchster"
-deploypath="/home/shimmering/www/blue.shimmering/ios/branchster"
 stagingpath=./Staging-Branchster
+deployapp=BranchMonsterFactory
 
 
 if [[ ${CLICOLOR:0} == 1 && -t 1 ]]; then
@@ -46,9 +44,8 @@ trap "showErrorOnExit" EXIT
 
 
 echo ">>> Deploying: `pwd`"
-echo ">>>        To: $deployhost:$deploypath"
 
-# ./Tools/ipa-make-archive
+./Tools/ipa-make-archive
 
 echo ">>> Making manifest..."
 ./Tools/ipa-make-manifest -u "${baseurl}" "$stagingpath"/"$deployapp".ipa > "$stagingpath"/"$deployapp".plist
@@ -56,11 +53,9 @@ echo ">>> Making manifest..."
 echo ">>> Making webpage..."
 ./Tools/ipa-make-webpage  -u "${baseurl}" "$stagingpath"/"$deployapp".ipa > "$stagingpath"/index.html
 
-echo ">>> Uploading archive..."
-ssh "$deployhost" mkdir -p "$deploypath"
-rsync -aP "$stagingpath"/* "$deployhost":"$deploypath"
-ssh "$deployhost" chmod -R 755 "$deploypath"
+echo ">>> Uploading..."
+./Tools/deploy-upload
 
 trap - EXIT
 printf "${textBlue}"
-printf ">>> $deployapp deployed to $deployhost.${textNormal}\n"
+printf ">>> $deployapp deployed.${textNormal}\n"

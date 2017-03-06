@@ -1,0 +1,19 @@
+#!/bin/bash
+
+#   deploy-upload  -  Upload the staged files to the server.
+#
+#   E.B. Smith  March 2017.
+
+set -eu -o pipefail
+scriptname="$(basename "$0")"
+scriptpath="$( cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+cd "$scriptpath"/..
+
+stagingpath=./Staging-Branchster
+deployhost="shimmering@shimmering.blue"
+deploypath="/home/shimmering/www/blue.shimmering/ios/branchster"
+
+echo ">>> Deploying archive to $deployhost..."
+ssh "$deployhost" mkdir -p "$deploypath"
+rsync -aP "$stagingpath"/* "$deployhost":"$deploypath"
+ssh "$deployhost" chmod -R 755 "$deploypath"

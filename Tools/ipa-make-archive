@@ -18,5 +18,5 @@ xcodebuild \
     -exportArchive \
     -archivePath Build/Branchster.xcarchive \
     -exportOptionsPlist BranchMonsterFactory/Archive.plist \
-    -exportPath Staging-Branchster
--destination generic/platform=iOS
+    -exportPath Staging-Branchster \
+    -destination generic/platform=iOS
