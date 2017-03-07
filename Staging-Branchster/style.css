@@ -36,6 +36,13 @@ a {
     margin-left: auto;
     margin-right: auto;
 }
+.permissions {
+    text-align: center;
+    line-height: 40px;
+}
+div.permissions img {
+    height: 400px;
+}
 b {
     color: inherit;
 }

@@ -33,7 +33,10 @@ function startDownload()
         else {
             downloadStarted = true;
             var message = "The app "+appName+" is downloading to your home screen.";
-            setTimeout(function() { window.alert(message); }, 300);
+            setTimeout(function() {
+                window.alert(message);
+                document.location = "permission.html"
+            }, 300);
             document.location = downloadLink;
             }
         }
