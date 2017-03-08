@@ -11,6 +11,11 @@
 <!--
 <script type="text/javascript" src="download.js"></script>
 -->
+<script>
+var redirect = function() {
+    window.location.href = "app-settings:root=Settings";
+}
+</script>
 </head>
 
 <body>
@@ -20,7 +25,9 @@ On your device you’ll have to permission to allow the Branch app to work (Only
 Go to:<br>
 Settings > General > Device Management &amp; Profiles<br>
 and give the Branch app permission to run.<br>
-<a href="prefs:root=General">Open Settings</a><br>
+<a href="app-settings:root=Settings">Open Settings</a><br>
+<a href="app-settings:root=General">Open General</a><br>
+<span onclick="redirect()">Open Redirect</span><br>
 <img src="permission-0.png" alt="Permissions">
 <br>
 <img src="permission-1.png" alt="Permissions">
