@@ -34,7 +34,6 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.justLaunched = YES;
     Branch *branch = [Branch getInstance];
     [branch delayInitToCheckForSearchAds];
-//  [branch setAppleSearchAdsDebugMode];    //  eDebug
     [branch registerFacebookDeepLinkingClass:[FBSDKAppLinkUtility class]];
     [branch initSessionWithLaunchOptions:launchOptions
         andRegisterDeepLinkHandlerUsingBranchUniversalObject:
@@ -52,6 +51,9 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
                 NSDictionary *appleSearchAd = [BNCPreferenceHelper preferenceHelper].appleSearchAdDetails;
                 NSString *campaign = appleSearchAd[@"Version3.1"][@"iad-campaign-name"];
                 if (campaign.length) {
+                    /*  
+                    // Show that the search add was checked:
+
                     NSString *message = [NSString stringWithFormat:@"Campaign: %@", campaign];
                     UIAlertView *alertView =
                         [[UIAlertView alloc]
@@ -61,6 +63,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
                             cancelButtonTitle:@"OK"
                             otherButtonTitles:nil];
                     [alertView show];
+                    */
                 }
             }];
 
