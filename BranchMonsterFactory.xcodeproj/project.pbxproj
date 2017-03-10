@@ -382,10 +382,10 @@
 				647B746D0030F7967AAC9316 /* [CP] Check Pods Manifest.lock */,
 				670591E519BBAC630039DAE1 /* Sources */,
 				670591E619BBAC630039DAE1 /* Frameworks */,
+				4D6B92E91E6615E100AAFD08 /* Add Timestamp */,
 				670591E719BBAC630039DAE1 /* Resources */,
 				9C891AA919C862A85AEACEB9 /* [CP] Embed Pods Frameworks */,
 				79C3649B649EE75362C602E2 /* [CP] Copy Pods Resources */,
-				4D6B92E91E6615E100AAFD08 /* Add Timestamp */,
 			);
 			buildRules = (
 			);
