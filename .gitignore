@@ -11,3 +11,5 @@ Podfile.lock
 
 # ipa file
 *.ipa
+Staging-Branchster/BranchMonsterFactory.plist
+Staging-Branchster/index.html
