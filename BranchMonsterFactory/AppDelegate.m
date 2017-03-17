@@ -34,7 +34,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.justLaunched = YES;
     Branch *branch = [Branch getInstance];
     [branch delayInitToCheckForSearchAds];
-//  [branch setAppleSearchAdsDebugMode];    //  eDebug
+//  [branch setAppleSearchAdsDebugMode];    //  Turn this on to debug Apple Search Ads
     [branch registerFacebookDeepLinkingClass:[FBSDKAppLinkUtility class]];
     [branch initSessionWithLaunchOptions:launchOptions
         andRegisterDeepLinkHandlerUsingBranchUniversalObject:
@@ -52,6 +52,8 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
                 NSDictionary *appleSearchAd = [BNCPreferenceHelper preferenceHelper].appleSearchAdDetails;
                 NSString *campaign = appleSearchAd[@"Version3.1"][@"iad-campaign-name"];
                 if (campaign.length) {
+                    NSLog(@"Got an Apple Search Ad Result :\n%@", appleSearchAd);
+                    /*
                     NSString *message = [NSString stringWithFormat:@"Campaign: %@", campaign];
                     UIAlertView *alertView =
                         [[UIAlertView alloc]
@@ -61,10 +63,11 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
                             cancelButtonTitle:@"OK"
                             otherButtonTitles:nil];
                     [alertView show];
+                    */
                 }
             }];
 
-//  [Localytics setLoggingEnabled:YES]; eDebug
+//  [Localytics setLoggingEnabled:YES]; //  Turn this on to debug Localytics
     [Localytics autoIntegrate:@"0d738869f6b0f04eb1341f5-fbdada7a-f4ff-11e4-3279-00f82776ce8b"
         launchOptions:launchOptions];
 
