@@ -28,6 +28,8 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [Tune initializeWithTuneAdvertiserId:@"192600"
                        tuneConversionKey:@"06232296d8d6cb4faefa879d1939a37a"];
 
+    [self showFileDates];
+
     // Initalize Branch and register the deep link handler
     // The deep link handler is called on every install/open to tell you if the user had just clicked a deep link
 
@@ -72,6 +74,68 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
         launchOptions:launchOptions];
 
     return YES;
+}
+
+- (void) showFileDates {
+    NSFileManager *fileManager = [[NSFileManager alloc] init];
+
+    NSError *error = nil;
+    NSString *bundleRoot = [[NSBundle mainBundle] bundlePath];
+//  NSDictionary *bundleAttributes = [fileManager attributesOfItemAtPath:bundleRoot error:&error];
+    [self showDirectoryAt:[NSURL URLWithString:bundleRoot] fileManager:fileManager];
+
+    bundleRoot = [bundleRoot stringByDeletingLastPathComponent];
+    [self showDirectoryAt:[NSURL URLWithString:bundleRoot] fileManager:fileManager];
+
+    bundleRoot = [bundleRoot stringByDeletingLastPathComponent];
+    [self showDirectoryAt:[NSURL URLWithString:bundleRoot] fileManager:fileManager];
+
+    error = nil;
+    NSURL *libraryURL =
+        [[fileManager URLsForDirectory:NSLibraryDirectory inDomains:NSUserDomainMask] firstObject];
+    [self showDirectoryAt:libraryURL fileManager:fileManager];
+
+/*  //  META-INF
+
+    bundleRoot = [[NSBundle mainBundle] bundlePath];
+    bundleRoot = [bundleRoot stringByAppendingPathComponent:@"META-INF"];
+    [self showDirectoryAt:[NSURL URLWithString:bundleRoot] fileManager:fileManager];
+    NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:bundleRoot]];
+    NSString *s = [[NSString string] initWithData:data encoding:NSUTF8StringEncoding];
+    NSLog(@"%@", s);
+*/
+}
+
+- (void) showDirectoryAt:(NSURL*)directoryURL fileManager:(NSFileManager*)fileManager {
+    NSLog(@"\n\nDirectory: %@.", directoryURL.path);
+    NSError *error = nil;
+    NSArray *URLs =
+        [fileManager contentsOfDirectoryAtURL:directoryURL
+            includingPropertiesForKeys:@[ NSURLCreationDateKey, NSURLAddedToDirectoryDateKey, NSURLContentModificationDateKey]
+            options:0
+            error:&error];
+    if (error) {
+        NSLog(@"Error: %@.", error);
+        return;
+    }
+
+    for (NSURL *URL in URLs) {
+        NSDate *createDate = nil; NSError *createError = nil;
+        [URL getResourceValue:&createDate forKey:NSURLCreationDateKey error:&createError];
+
+        NSDate *addedDate = nil; NSError *addedError = nil;
+        [URL getResourceValue:&addedDate forKey:NSURLAddedToDirectoryDateKey error:&addedError];
+
+        NSDate *modDate = nil; NSError *modError = nil;
+        [URL getResourceValue:&modDate forKey:NSURLContentModificationDateKey error:&modError];
+
+        NSLog(@"\t%@\t%@\t%@\t%@",
+            URL.path,
+            (createError) ? createError : createDate,
+            (addedError)  ? addedError  : addedDate,
+            (modError)    ? modError    : modDate
+        );
+    }
 }
 
 - (BranchUniversalObject *)emptyMonster {
