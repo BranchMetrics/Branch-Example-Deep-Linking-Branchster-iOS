@@ -29,7 +29,7 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>branchinternational</string>
+				<string>bmf-ent</string>
 				<string>fb288726397999326</string>
 			</array>
 		</dict>
@@ -79,6 +79,6 @@ Tue Feb 28 12:31:43 PST 2017
 	<key>ZBuildInfoDescriptionShort</key>
 	<string>Build your Branchster!</string>
 	<key>branch_key</key>
-	<string>key_live_elfOI5wkcEhpKfGsVCrPEngpuufT2y6B</string>
+	<string>key_live_pdAyiKP7ugslZmABsNSQ3nlpEFdYK4Eq</string>
 </dict>
 </plist>
