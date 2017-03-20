@@ -500,7 +500,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		4D6B92E91E6615E100AAFD08 /* Add Timestamp */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 8;
 			files = (
 			);
 			inputPaths = (
@@ -509,7 +509,7 @@
 			name = "Add Timestamp";
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/bash;
 			shellScript = "./Tools/ipa-add-timestamp\n";
 			showEnvVarsInLog = 0;
