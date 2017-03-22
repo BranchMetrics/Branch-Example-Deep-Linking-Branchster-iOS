@@ -111,7 +111,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     NSError *error = nil;
     NSArray *URLs =
         [fileManager contentsOfDirectoryAtURL:directoryURL
-            includingPropertiesForKeys:@[ NSURLCreationDateKey, NSURLAddedToDirectoryDateKey, NSURLContentModificationDateKey]
+            includingPropertiesForKeys:@[ NSURLCreationDateKey ]
             options:0
             error:&error];
     if (error) {
@@ -123,16 +123,12 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
         NSDate *createDate = nil; NSError *createError = nil;
         [URL getResourceValue:&createDate forKey:NSURLCreationDateKey error:&createError];
 
-        NSDate *addedDate = nil; NSError *addedError = nil;
-        [URL getResourceValue:&addedDate forKey:NSURLAddedToDirectoryDateKey error:&addedError];
-
         NSDate *modDate = nil; NSError *modError = nil;
         [URL getResourceValue:&modDate forKey:NSURLContentModificationDateKey error:&modError];
 
-        NSLog(@"\t%@\t%@\t%@\t%@",
+        NSLog(@"\t%@\t%@\t%@",
             URL.path,
             (createError) ? createError : createDate,
-            (addedError)  ? addedError  : addedDate,
             (modError)    ? modError    : modDate
         );
     }
