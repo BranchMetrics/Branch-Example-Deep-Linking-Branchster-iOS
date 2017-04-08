@@ -1,0 +1,80 @@
+#!/bin/bash
+
+#   s3-upload  -  Uploads a file to Amazon S3.
+#
+#   E.B. Smith  March 2017.
+
+set -eu -o pipefail
+scriptname="$(basename "$0")"
+scriptpath="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+if (( $# != 2 ))
+then
+    echo ">>> Error: Two parameters are required on the command line. A file name and an AWS path." 1>&2
+    exit 1
+fi
+
+source="$1"
+target="$2"
+
+source=$(resolvepath "$source")
+if [ ! -e "$source" ]
+then
+    echo ">>> Error: No file '$source'." 1>&2
+    exit 1
+elif [ ! -f "$source" ]
+then
+    echo ">>> Error: Only files can be uploaded." 1>&2
+    exit 1
+fi
+
+S3KEY=AKIAJZM7ZRTPQVWIM3EQ
+S3SECRET=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
+
+awsFile="${source##*/}"
+awsPath="${target#*/}"
+awsBucket="${target%%/*}"
+
+date=$(date +"%a, %d %b %Y %T %z")
+acl="x-amz-acl:public-read"
+ext="${source##*.}"
+contentType=$(file -b --mime-type "$source")
+
+# Fix contentType errors
+if [[ "$ext" = "ipa" ]]; then
+    contentType="application/octet-stream"
+fi
+if [[ "$contentType" = "text/plain" ]]; then
+    if   [[ "$ext" = "css" ]]; then
+         contentType="text/css"
+    elif [[ "$ext" = "js" ]]; then
+         contentType="text/javascript"
+    fi
+fi
+
+string="PUT\n\n$contentType\n$date\n$acl\n/$awsBucket/$awsPath/$awsFile"
+signature=$(echo -en "${string}" | openssl sha1 -hmac "${S3SECRET}" -binary | base64)
+
+
+# Debugging
+cat > /dev/null <<DATA
+source:     $source
+awsFile:    $awsFile
+awsBucket   $awsBucket
+awsPath:    $awsPath
+date        $date
+acl         $acl
+contentType:$contentType
+string:     $string
+signature:  $signature
+DATA
+# exit 0
+
+echo ">>> Uploading $(basename "$source") to $awsPath." 1>&2
+curl -X PUT -T "$source" \
+    -H "Host: $awsBucket.s3.amazonaws.com" \
+    -H "Date: $date" \
+    -H "Content-Type: $contentType" \
+    -H "$acl" \
+    -H "Authorization: AWS ${S3KEY}:$signature" \
+    "https://$awsBucket.s3.amazonaws.com/$awsPath/$awsFile"

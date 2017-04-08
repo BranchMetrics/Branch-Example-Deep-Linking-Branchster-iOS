@@ -1,0 +1,17 @@
+#!/bin/bash
+
+#   deploy-upload  -  Upload the staged files to the server.
+#
+#   E.B. Smith  March 2017.
+
+set -euo pipefail
+scriptname="$(basename "$0")"
+scriptpath="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+cd "$scriptpath"/..
+
+deployhost=branch-ios/ios/branchster
+echo ">>> Deploying archive to $deployhost..."
+for file in ./Staging-Branchster/*
+do
+    ./Tools/s3-upload-file  "$file"  "$deployhost"
+done
