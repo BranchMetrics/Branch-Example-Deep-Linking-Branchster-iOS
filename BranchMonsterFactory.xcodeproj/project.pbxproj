@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		15B4B8141B0AB016002AA93E /* BranchInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15B4B8131B0AB016002AA93E /* BranchInfoViewController.m */; };
-		265FD1DC3BD892A74A7EB1E0 /* libPods-BranchMonsterFactory.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0911E5DE0B8E21C1D2BACC9A /* libPods-BranchMonsterFactory.a */; };
 		374174E91C3C870A0069BA54 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 374174E81C3C870A0069BA54 /* Media.xcassets */; };
 		377C3CE81C121DCC005DF795 /* BranchUniversalObject+MonsterHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 377C3CE71C121DCC005DF795 /* BranchUniversalObject+MonsterHelpers.m */; };
 		46FD92CE1A9AD0A70028A385 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67FD945E1A4D250C00D6BFA8 /* Main.storyboard */; };
@@ -72,12 +71,13 @@
 		67FD95071A4D250C00D6BFA8 /* MonsterViewerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67FD94C01A4D250C00D6BFA8 /* MonsterViewerViewController.m */; };
 		67FD95081A4D250C00D6BFA8 /* SplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67FD94C21A4D250C00D6BFA8 /* SplashViewController.m */; };
 		67FD950A1A4D25D100D6BFA8 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67FD95091A4D25D100D6BFA8 /* CoreTelephony.framework */; };
+		82E521107DF3807A65748C3A /* Pods_BranchMonsterFactory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 319F0FC7DD15DDC4FA49C150 /* Pods_BranchMonsterFactory.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0911E5DE0B8E21C1D2BACC9A /* libPods-BranchMonsterFactory.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BranchMonsterFactory.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		15B4B8121B0AB016002AA93E /* BranchInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BranchInfoViewController.h; sourceTree = "<group>"; };
 		15B4B8131B0AB016002AA93E /* BranchInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BranchInfoViewController.m; sourceTree = "<group>"; };
+		319F0FC7DD15DDC4FA49C150 /* Pods_BranchMonsterFactory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BranchMonsterFactory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		374174E81C3C870A0069BA54 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		377C3CE61C121DCC005DF795 /* BranchUniversalObject+MonsterHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BranchUniversalObject+MonsterHelpers.h"; sourceTree = "<group>"; };
 		377C3CE71C121DCC005DF795 /* BranchUniversalObject+MonsterHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BranchUniversalObject+MonsterHelpers.m"; sourceTree = "<group>"; };
@@ -167,7 +167,7 @@
 				6705923E19BBE22D0039DAE1 /* MessageUI.framework in Frameworks */,
 				6705923B19BBD0060039DAE1 /* UIKit.framework in Frameworks */,
 				6705921019BBB7430039DAE1 /* AdSupport.framework in Frameworks */,
-				265FD1DC3BD892A74A7EB1E0 /* libPods-BranchMonsterFactory.a in Frameworks */,
+				82E521107DF3807A65748C3A /* Pods_BranchMonsterFactory.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -367,7 +367,7 @@
 		AC4F2E8D49B8AC096F140182 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				0911E5DE0B8E21C1D2BACC9A /* libPods-BranchMonsterFactory.a */,
+				319F0FC7DD15DDC4FA49C150 /* Pods_BranchMonsterFactory.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -526,7 +526,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		79C3649B649EE75362C602E2 /* [CP] Copy Pods Resources */ = {
@@ -597,6 +597,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES_NONAGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -644,6 +645,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES_NONAGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;

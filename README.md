@@ -48,3 +48,6 @@
 4. Tap the link - you will get redirected to the web page
 5. Install the app on the device via Xcode
 6. Tapping on the link should now open the app directly
+
+### Notes
+*  App is International Branchster: 3ZNSRC9M83.io.branch-labs.Branchster

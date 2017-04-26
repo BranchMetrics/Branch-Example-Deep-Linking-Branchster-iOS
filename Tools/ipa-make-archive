@@ -10,7 +10,7 @@ xcodebuild \
     -workspace BranchMonsterFactory.xcworkspace \
     -scheme BranchMonsterFactory \
     -destination generic/platform=iOS \
-    archive -quiet \
+    clean archive -quiet \
     -archivePath Build/Branchster.xcarchive
 
 echo ">>> Archiving Branchster..."

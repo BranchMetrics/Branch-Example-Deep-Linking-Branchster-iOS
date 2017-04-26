@@ -12,5 +12,9 @@
 	<string>enterprise</string>
 	<key>thinning</key>
 	<string>&lt;none&gt;</string>
+	<key>uploadBitcode</key>
+	<false/>
+	<key>uploadSymbols</key>
+	<false/>
 </dict>
 </plist>
