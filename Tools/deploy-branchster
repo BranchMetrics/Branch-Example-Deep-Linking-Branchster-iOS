@@ -54,7 +54,7 @@ printf "${textBlue}>>> Making webpage...${textNormal}\n"
 ./Tools/ipa-make-webpage  -u "${baseurl}" "$stagingpath"/"$deployapp".ipa > "$stagingpath"/index.html
 
 printf "${textBlue}>>> Uploading...${textNormal}\n"
-./Tools/deploy-upload
+./Tools/deploy-upload-aws
 
 trap - EXIT
 printf "${textBlue}"

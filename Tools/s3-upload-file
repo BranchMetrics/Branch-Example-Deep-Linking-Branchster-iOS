@@ -28,8 +28,10 @@ then
     exit 1
 fi
 
-S3KEY=AKIAJZM7ZRTPQVWIM3EQ
-S3SECRET=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
+if [ -z ${AWS_ACCESS_KEY_ID+x} ] || [ -z ${AWS_SECRET_ACCESS_KEY+x} ]; then
+    echo ">>> The AWS access variables AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY need to be exported." 1>&2
+    exit 1
+fi
 
 awsFile="${source##*/}"
 awsPath="${target#*/}"
@@ -53,7 +55,7 @@ if [[ "$contentType" = "text/plain" ]]; then
 fi
 
 string="PUT\n\n$contentType\n$date\n$acl\n/$awsBucket/$awsPath/$awsFile"
-signature=$(echo -en "${string}" | openssl sha1 -hmac "${S3SECRET}" -binary | base64)
+signature=$(echo -en "${string}" | openssl sha1 -hmac "${AWS_SECRET_ACCESS_KEY}" -binary | base64)
 
 
 # Debugging
@@ -76,5 +78,5 @@ curl -X PUT -T "$source" \
     -H "Date: $date" \
     -H "Content-Type: $contentType" \
     -H "$acl" \
-    -H "Authorization: AWS ${S3KEY}:$signature" \
+    -H "Authorization: AWS ${AWS_ACCESS_KEY_ID}:$signature" \
     "https://$awsBucket.s3.amazonaws.com/$awsPath/$awsFile"
