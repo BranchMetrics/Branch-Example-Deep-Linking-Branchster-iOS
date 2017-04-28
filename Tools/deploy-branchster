@@ -10,7 +10,8 @@ scriptpath="$( cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$scriptpath"/..
 
 
-baseurl="https://shimmering.blue/ios/branchster"
+# baseurl="https://shimmering.blue/ios/branchster"
+baseurl="http://cdn.branch.io/ios/branchster"
 stagingpath=./Staging-Branchster
 deployapp=BranchMonsterFactory
 
