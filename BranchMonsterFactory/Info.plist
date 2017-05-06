@@ -19,7 +19,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.2.1</string>
+	<string>1.2.2</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleURLTypes</key>
@@ -33,7 +33,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>18</string>
+	<string>19</string>
 	<key>FacebookAppID</key>
 	<string>288726397999326</string>
 	<key>FacebookDisplayName</key>
@@ -71,6 +71,6 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>branch_key</key>
-	<string>key_live_gchnKkd3l3m9YBPP2d73jmfejkcgVjgM</string>
+	<string>key_live_hkDytPACtipny3N9XmnbZlapBDdj4WIL</string>
 </dict>
 </plist>
