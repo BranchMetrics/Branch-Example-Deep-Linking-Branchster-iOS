@@ -33,7 +33,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
     self.justLaunched = YES;
     Branch *branch = [Branch getInstance];
-    [branch delayInitToCheckForSearchAds];
+//  [branch delayInitToCheckForSearchAds];
 //  [branch setAppleSearchAdsDebugMode];    //  Turn this on to debug Apple Search Ads
     [branch registerFacebookDeepLinkingClass:[FBSDKAppLinkUtility class]];
     [branch initSessionWithLaunchOptions:launchOptions
