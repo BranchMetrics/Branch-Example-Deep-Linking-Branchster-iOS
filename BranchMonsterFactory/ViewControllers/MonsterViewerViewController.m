@@ -121,6 +121,7 @@ static CGFloat MONSTER_HEIGHT = 0.4f;
    
     BNCCommerceEvent *commerceEvent = [[BNCCommerceEvent alloc] init];
     commerceEvent.revenue = [NSDecimalNumber decimalNumberWithString:@"5.00"];
+    commerceEvent.currency = @"USD";
     BNCProduct* branchester = [BNCProduct new];
     branchester.sku = [self.viewingMonster getMonsterName];
     //branchester.name = [self.viewingMonster getMonsterName];
