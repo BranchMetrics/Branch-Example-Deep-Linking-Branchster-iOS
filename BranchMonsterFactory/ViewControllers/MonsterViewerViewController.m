@@ -118,9 +118,26 @@ static CGFloat MONSTER_HEIGHT = 0.4f;
 }
 
 -(IBAction)shareSheet:(id)sender {
+   
+    BNCCommerceEvent *commerceEvent = [[BNCCommerceEvent alloc] init];
+    commerceEvent.revenue = [NSDecimalNumber decimalNumberWithString:@"5.00"];
+    BNCProduct* branchester = [BNCProduct new];
+    branchester.sku = [self.viewingMonster getMonsterName];
+    //branchester.name = [self.viewingMonster getMonsterName];
+    commerceEvent.products = [NSArray arrayWithObject:branchester];
+    
     [self.viewingMonster
-     showShareSheetWithShareText:@"Share Your Monster!"
-     completion:nil];[UIMenuController sharedMenuController].menuVisible = NO;
+     showShareSheetWithShareText:@"Share Your Monster!" completion:^(NSString * _Nullable activityType, BOOL completed) {
+            if (completed) {
+                [[Branch getInstance] sendCommerceEvent:commerceEvent
+                                               metadata:nil
+                                         withCompletion:^ (NSDictionary *response, NSError *error) {
+                                             if (error) {  }
+                                         }];
+            }
+        }];
+    
+    [UIMenuController sharedMenuController].menuVisible = NO;
     [self.shareTextView resignFirstResponder];
 }
 
