@@ -126,11 +126,11 @@ static CGFloat MONSTER_HEIGHT = 0.4f;
     branchester.sku = [self.viewingMonster getMonsterName];
     commerceEvent.products = [NSArray arrayWithObject:branchester];
     
-    //[[Branch getInstance] userCompletedAction:BNCAddToCartEvent];
+    [[Branch getInstance] userCompletedAction:BNCAddToCartEvent];
     [self.viewingMonster
      showShareSheetWithShareText:@"Share Your Monster!" completion:^(NSString * _Nullable activityType, BOOL completed) {
             if (completed) {
-                [[Branch getInstance] userCompletedAction:BNCAddToCartEvent];
+               // [[Branch getInstance] userCompletedAction:BNCAddToCartEvent];
                 [[Branch getInstance] sendCommerceEvent:commerceEvent
                                                metadata:nil
                                          withCompletion:^ (NSDictionary *response, NSError *error) {
