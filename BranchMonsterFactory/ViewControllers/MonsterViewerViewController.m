@@ -134,13 +134,13 @@ static CGFloat MONSTER_HEIGHT = 0.4f;
     branchester.quantity = @1;
     branchester.variant = @"X-Tra Hairy";
     branchester.brand = @"Branch";
-    branchester.category = @"Monster";
+    branchester.category = BNCProductCategoryAnimalSupplies;
     branchester.name = monsterName;
     commerceEvent.products = [NSArray arrayWithObject:branchester];
     
     [[Branch getInstance] userCompletedAction:BNCAddToCartEvent withState:@{
         @"sku":     monsterName,
-        @"price":   priceString
+        @"price":   price
     }];
 
     [self.viewingMonster
