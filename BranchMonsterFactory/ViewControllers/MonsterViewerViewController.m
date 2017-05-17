@@ -118,17 +118,34 @@ static CGFloat MONSTER_HEIGHT = 0.4f;
 }
 
 -(IBAction)shareSheet:(id)sender {
-   
+    NSString *monsterName = [self.viewingMonster getMonsterName];
+    if (!monsterName) monsterName = @"None";
+    NSInteger priceInt = arc4random_uniform(4) + 1;
+    NSString *priceString = [NSString stringWithFormat:@"%1.2f", (float)priceInt];
+    NSDecimalNumber *price = [NSDecimalNumber decimalNumberWithString:priceString];
+
     BNCCommerceEvent *commerceEvent = [[BNCCommerceEvent alloc] init];
-    commerceEvent.revenue = [NSDecimalNumber decimalNumberWithString:@"5.00"];
+    commerceEvent.revenue = price;
     commerceEvent.currency = @"USD";
+
     BNCProduct* branchester = [BNCProduct new];
-    branchester.sku = [self.viewingMonster getMonsterName];
+    branchester.sku = monsterName;
+    branchester.price = price;
+    branchester.quantity = @1;
+    branchester.variant = @"X-Tra Hairy";
+    branchester.brand = @"Branch";
+    branchester.category = @"Monster";
+    branchester.name = monsterName;
     commerceEvent.products = [NSArray arrayWithObject:branchester];
     
-    [[Branch getInstance] userCompletedAction:BNCAddToCartEvent];
+    [[Branch getInstance] userCompletedAction:BNCAddToCartEvent withState:@{
+        @"sku":     monsterName,
+        @"price":   priceString
+    }];
+
     [self.viewingMonster
-     showShareSheetWithShareText:@"Share Your Monster!" completion:^(NSString * _Nullable activityType, BOOL completed) {
+        showShareSheetWithShareText:@"Share Your Monster!"
+        completion:^(NSString * _Nullable activityType, BOOL completed) {
             if (completed) {
                // [[Branch getInstance] userCompletedAction:BNCAddToCartEvent];
                 [[Branch getInstance] sendCommerceEvent:commerceEvent
