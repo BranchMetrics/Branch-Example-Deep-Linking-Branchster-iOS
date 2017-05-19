@@ -27,6 +27,7 @@
 
 @property (strong, nonatomic) NSString *monsterName;
 @property (strong, nonatomic) NSString *monsterDescription;
+@property (strong, nonatomic) NSDecimalNumber *price;
 
 @property (weak, nonatomic) IBOutlet UIView *botLayerOneColor;
 @property (weak, nonatomic) IBOutlet UIImageView *botLayerTwoBody;
@@ -59,6 +60,12 @@ static CGFloat MONSTER_HEIGHT = 0.4f;
     [self.botLayerThreeFace setImage:[MonsterPartsFactory imageForFace:[self.viewingMonster getFaceIndex]]];
     
     self.monsterName = [self.viewingMonster getMonsterName];
+    if (!self.monsterName) self.monsterName = @"None";
+
+    NSInteger priceInt = arc4random_uniform(4) + 1;
+    NSString *priceString = [NSString stringWithFormat:@"%1.2f", (float)priceInt];
+    _price = [NSDecimalNumber decimalNumberWithString:priceString];
+
     self.monsterDescription = [self.viewingMonster getMonsterDescription];
     
     [self.txtName setText:self.monsterName];
@@ -94,8 +101,14 @@ static CGFloat MONSTER_HEIGHT = 0.4f;
     [self setViewingMonster:self.viewingMonster];  //not awesome, but it triggers the setter
 }
 
+- (void) viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [[Branch getInstance] userCompletedAction:@"Product View" withState:@{
+        @"sku":     self.monsterName,
+        @"price":   self.price
+    }];
 
-
+}
 -(void) setViewingMonster: (BranchUniversalObject *)monster {
     _viewingMonster = monster;
     
@@ -118,29 +131,24 @@ static CGFloat MONSTER_HEIGHT = 0.4f;
 }
 
 -(IBAction)shareSheet:(id)sender {
-    NSString *monsterName = [self.viewingMonster getMonsterName];
-    if (!monsterName) monsterName = @"None";
-    NSInteger priceInt = arc4random_uniform(4) + 1;
-    NSString *priceString = [NSString stringWithFormat:@"%1.2f", (float)priceInt];
-    NSDecimalNumber *price = [NSDecimalNumber decimalNumberWithString:priceString];
 
     BNCCommerceEvent *commerceEvent = [[BNCCommerceEvent alloc] init];
-    commerceEvent.revenue = price;
+    commerceEvent.revenue = self.price;
     commerceEvent.currency = @"USD";
 
     BNCProduct* branchester = [BNCProduct new];
-    branchester.sku = monsterName;
-    branchester.price = price;
+    branchester.sku = self.monsterName;
+    branchester.price = self.price;
     branchester.quantity = @1;
     branchester.variant = @"X-Tra Hairy";
     branchester.brand = @"Branch";
     branchester.category = BNCProductCategoryAnimalSupplies;
-    branchester.name = monsterName;
+    branchester.name = self.monsterName;
     commerceEvent.products = [NSArray arrayWithObject:branchester];
     
     [[Branch getInstance] userCompletedAction:BNCAddToCartEvent withState:@{
-        @"sku":     monsterName,
-        @"price":   price
+        @"sku":     self.monsterName,
+        @"price":   self.price
     }];
 
     [self.viewingMonster
