@@ -35,11 +35,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *txtName;
 @property (weak, nonatomic) IBOutlet UILabel *txtDescription;
 
-
 @property (weak, nonatomic) IBOutlet UIButton *cmdChange;
 @property (weak, nonatomic) IBOutlet UIButton *cmdInfo;
-
-
 
 @property (weak, nonatomic) IBOutlet UITextView *shareTextView;
 @property NSString *shareURL;
@@ -104,8 +101,9 @@ static CGFloat MONSTER_HEIGHT = 0.4f;
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [[Branch getInstance] userCompletedAction:@"Product View" withState:@{
-        @"sku":     self.monsterName,
-        @"price":   self.price
+        @"sku":      self.monsterName,
+        @"price":    self.price,
+        @"currency": @"USD"
     }];
 
 }
@@ -147,8 +145,9 @@ static CGFloat MONSTER_HEIGHT = 0.4f;
     commerceEvent.products = [NSArray arrayWithObject:branchester];
     
     [[Branch getInstance] userCompletedAction:BNCAddToCartEvent withState:@{
-        @"sku":     self.monsterName,
-        @"price":   self.price
+        @"sku":      self.monsterName,
+        @"price":    self.price,
+        @"currency": @"USD"
     }];
 
     [self.viewingMonster
@@ -235,7 +234,12 @@ static CGFloat MONSTER_HEIGHT = 0.4f;
     CGFloat newHeight = screenSize.size.height;
         newHeight = newHeight * MONSTER_HEIGHT;
     CGFloat newWidth = widthRatio * newHeight;
-    CGRect newFrame = CGRectMake((screenSize.size.width-newWidth)/2, self.botLayerOneColor.frame.origin.y, newWidth, newHeight);
+    CGRect newFrame = CGRectMake(
+        (screenSize.size.width-newWidth)/2,
+        self.botLayerOneColor.frame.origin.y,
+        newWidth,
+        newHeight
+    );
     
     self.botLayerOneColor.frame = newFrame;
     self.botLayerTwoBody.frame = newFrame;
@@ -250,9 +254,5 @@ static CGFloat MONSTER_HEIGHT = 0.4f;
     self.cmdChange.frame = cmdFrame;
     [self.view layoutSubviews];
 }
-
-
-
-
 
 @end
