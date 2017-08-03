@@ -35,6 +35,7 @@
 		<string>applinks:email-epsilon.branch.rocks</string>
 		<string>applinks:email-postup.branch.rocks</string>
 		<string>applinks:branchster.app.link</string>
+		<string>applinks:branchster-alternate.app.link</string>
 	</array>
 </dict>
 </plist>
