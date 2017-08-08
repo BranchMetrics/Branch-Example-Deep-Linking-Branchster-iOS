@@ -5,6 +5,10 @@ set -euo pipefail
 #
 #   E.B. Smith  February 2017.
 
+echo ">>> Making Branchster..."
+echo ">>> Getting Cocoapods..."
+pod install
+pod update
 echo ">>> Compiling Branchster..."
 xcodebuild \
     -workspace BranchMonsterFactory.xcworkspace \
