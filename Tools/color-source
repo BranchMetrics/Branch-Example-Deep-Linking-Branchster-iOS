@@ -1,0 +1,22 @@
+# Terminal color support.
+# source this script from the script you wish to add color suport:
+#   `source color-source`
+
+if [[ ${CLICOLOR:0} == 1 && -t 1 ]]
+then
+    textBold="\e[1m"
+    textBlue="\e[94m"
+    textDarkBlue="\e[1m\e[34m"
+    textYellow="\e[93m"
+    textRed="\e[31m"
+    textNormal="\e[0m"
+    textDim="\e[2m"
+else
+    textBold=""
+    textBlue=""
+    textDarkBlue=""
+    textYellow=""
+    textRed=""
+    textNormal=""
+    textDim=""
+fi
