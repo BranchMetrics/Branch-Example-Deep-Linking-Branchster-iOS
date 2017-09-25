@@ -10,9 +10,9 @@
 #import "Branch.h"
 #import "SplashViewController.h"
 #import "BranchUniversalObject+MonsterHelpers.h"
-#import <FBSDKCoreKit/FBSDKCoreKit.h>
-@import Localytics;
-@import Tune;
+//#import <FBSDKCoreKit/FBSDKCoreKit.h>
+//@import Localytics;
+//@import Tune;
 
 @interface AppDelegate ()
 @property (nonatomic) BOOL justLaunched;
@@ -25,8 +25,8 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
     //  We can add Tune integration too:
 //  [Tune setDebugMode:YES];    //  eDebug
-    [Tune initializeWithTuneAdvertiserId:@"192600"
-                       tuneConversionKey:@"06232296d8d6cb4faefa879d1939a37a"];
+//    [Tune initializeWithTuneAdvertiserId:@"192600"
+//                       tuneConversionKey:@"06232296d8d6cb4faefa879d1939a37a"];
 
     // Initalize Branch and register the deep link handler
     // The deep link handler is called on every install/open to tell you if the user had just clicked a deep link
@@ -35,7 +35,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     Branch *branch = [Branch getInstance];
 //  [branch delayInitToCheckForSearchAds];
 //  [branch setAppleSearchAdsDebugMode];    //  Turn this on to debug Apple Search Ads
-    [branch registerFacebookDeepLinkingClass:[FBSDKAppLinkUtility class]];
+//  [branch registerFacebookDeepLinkingClass:[FBSDKAppLinkUtility class]];
     [branch initSessionWithLaunchOptions:launchOptions
         andRegisterDeepLinkHandlerUsingBranchUniversalObject:
             ^ (BranchUniversalObject *BUO, BranchLinkProperties *linkProperties, NSError *error) {
@@ -68,8 +68,8 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
             }];
 
 //  [Localytics setLoggingEnabled:YES]; //  Turn this on to debug Localytics
-    [Localytics autoIntegrate:@"0d738869f6b0f04eb1341f5-fbdada7a-f4ff-11e4-3279-00f82776ce8b"
-        launchOptions:launchOptions];
+//    [Localytics autoIntegrate:@"0d738869f6b0f04eb1341f5-fbdada7a-f4ff-11e4-3279-00f82776ce8b"
+//        launchOptions:launchOptions];
 
     return YES;
 }
@@ -86,7 +86,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Attribution will not function without the measureSession call included
-    [Tune measureSession];
+//  [Tune measureSession];
 }
 
 - (BOOL)application:(UIApplication *)application
