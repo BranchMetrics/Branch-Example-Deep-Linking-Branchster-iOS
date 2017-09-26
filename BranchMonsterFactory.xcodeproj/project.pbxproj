@@ -71,7 +71,6 @@
 		67FD95061A4D250C00D6BFA8 /* MonsterCreatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67FD94BE1A4D250C00D6BFA8 /* MonsterCreatorViewController.m */; };
 		67FD95071A4D250C00D6BFA8 /* MonsterViewerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67FD94C01A4D250C00D6BFA8 /* MonsterViewerViewController.m */; };
 		67FD95081A4D250C00D6BFA8 /* SplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67FD94C21A4D250C00D6BFA8 /* SplashViewController.m */; };
-		67FD950A1A4D25D100D6BFA8 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67FD95091A4D25D100D6BFA8 /* CoreTelephony.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -152,7 +151,6 @@
 		67FD94C01A4D250C00D6BFA8 /* MonsterViewerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonsterViewerViewController.m; sourceTree = "<group>"; };
 		67FD94C11A4D250C00D6BFA8 /* SplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashViewController.h; sourceTree = "<group>"; };
 		67FD94C21A4D250C00D6BFA8 /* SplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashViewController.m; sourceTree = "<group>"; };
-		67FD95091A4D25D100D6BFA8 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		719445900DBB09BE2A8933D1 /* Pods_BranchMonsterFactory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BranchMonsterFactory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C735E760C689B8CDD102274 /* Pods-BranchMonsterFactory.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BranchMonsterFactory.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BranchMonsterFactory/Pods-BranchMonsterFactory.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -162,7 +160,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				67FD950A1A4D25D100D6BFA8 /* CoreTelephony.framework in Frameworks */,
 				6705924019BBEBC40039DAE1 /* Social.framework in Frameworks */,
 				6705923E19BBE22D0039DAE1 /* MessageUI.framework in Frameworks */,
 				6705923B19BBD0060039DAE1 /* UIKit.framework in Frameworks */,
@@ -179,7 +176,6 @@
 			children = (
 				378C79541C571E9E0032231B /* Podfile */,
 				67FD945B1A4D250C00D6BFA8 /* BranchMonsterFactory */,
-				67FD95091A4D25D100D6BFA8 /* CoreTelephony.framework */,
 				6705923F19BBEBC40039DAE1 /* Social.framework */,
 				6705923D19BBE22D0039DAE1 /* MessageUI.framework */,
 				6705923A19BBD0060039DAE1 /* UIKit.framework */,
