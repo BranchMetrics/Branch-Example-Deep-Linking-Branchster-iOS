@@ -10,7 +10,7 @@
 #import "Branch.h"
 #import "SplashViewController.h"
 #import "BranchUniversalObject+MonsterHelpers.h"
-#import <FBSDKCoreKit/FBSDKCoreKit.h>
+@import FBSDKCoreKit;
 @import Localytics;
 @import Tune;
 
@@ -22,24 +22,29 @@
 
 - (BOOL)application:(UIApplication *)application
 didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    self.justLaunched = YES;
 
     //  We can add Tune integration too:
-//  [Tune setDebugMode:YES];    //  eDebug
+    // [Tune setDebugMode:YES];
     [Tune initializeWithTuneAdvertiserId:@"192600"
                        tuneConversionKey:@"06232296d8d6cb4faefa879d1939a37a"];
 
-    // Initalize Branch and register the deep link handler
-    // The deep link handler is called on every install/open to tell you if the user had just clicked a deep link
-
-    self.justLaunched = YES;
     Branch *branch = [Branch getInstance];
 
     /*
-     * Turn this in to track Apple Search Ad attribution:
+     * Un-comment this to track Apple Search Ad attribution:
      * [branch delayInitToCheckForSearchAds];
      */
 
     [branch registerFacebookDeepLinkingClass:[FBSDKAppLinkUtility class]];
+
+    /*
+     * Initalize Branch and register the deep link handler:
+     *
+     * The deep link handler is called on every install/open to tell you if
+     * the user had just clicked a deep link
+     */
+
     [branch initSessionWithLaunchOptions:launchOptions
         andRegisterDeepLinkHandlerUsingBranchUniversalObject:
             ^ (BranchUniversalObject *BUO, BranchLinkProperties *linkProperties, NSError *error) {

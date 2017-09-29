@@ -21,7 +21,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *txtNote;
 @property (strong, nonatomic) NSArray *loadingMessages;
 @property (nonatomic) NSInteger messageIndex;
-
 @property BOOL firstTime;
 @end
 
@@ -113,13 +112,11 @@
 }
 
 - (void) pushWebView:(NSNotification*)notification {
-    //[[self navigationController] popToRootViewControllerAnimated:NO];
     WebViewController *webViewController =
         [self.storyboard instantiateViewControllerWithIdentifier:@"WebViewController"];
     webViewController.URL = notification.userInfo[@"URL"];
     [self.navigationController pushViewController:webViewController animated:YES];
 }
-
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -129,7 +126,7 @@
 }
 
 - (void) dealloc {
-    // will continue to send notification objects to the deallocate object.
+    // Will continue to send notification objects to the deallocate object.
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 

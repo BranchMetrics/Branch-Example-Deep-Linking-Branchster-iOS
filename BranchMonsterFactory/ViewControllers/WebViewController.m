@@ -9,8 +9,9 @@
 #import "WebViewController.h"
 #import <WebKit/WebKit.h>
 
-@interface WebViewController ()
+@interface WebViewController () <WKNavigationDelegate>
 @property (nonatomic, strong) IBOutlet WKWebView *webView;
+@property (nonatomic, strong) IBOutlet UIActivityIndicatorView *activityIndicatorView;
 @end
 
 @implementation WebViewController
@@ -22,11 +23,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationItem.title = @"Web";
     [self.webView removeFromSuperview];
     self.webView = [[WKWebView alloc] initWithFrame:self.view.bounds];
+    self.webView.navigationDelegate = self;
     [self.view addSubview:self.webView];
     [self updateWebView];
-    self.navigationItem.title = @"Web";
 }
 
 - (void) viewWillAppear:(BOOL)animated {
@@ -37,25 +39,50 @@
 - (void) viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     self.navigationController.navigationBar.hidden = YES;
+    [self hideActivityView];
 }
+
+#pragma mark - Web View Methods
 
 - (void) updateWebView {
     if (!self.URL) {
-        // TODO: Load 'No url' page.
+        [self showErrorMessage:@"No URL to load!"];
         return;
     }
     NSURLRequest *request = [NSURLRequest requestWithURL:self.URL];
     [self.webView loadRequest:request];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)webView:(WKWebView *)webView
+decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction
+    decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
+    [self showActivityView];
+    decisionHandler(WKNavigationActionPolicyAllow);
 }
-*/
+
+- (void)webView:(WKWebView *)webView
+didFailNavigation:(WKNavigation *)navigation
+        withError:(NSError *)error {
+    [self showErrorMessage:[NSString stringWithFormat:@"Can't navigate to\n'%@'.", self.webView.URL]];
+}
+
+- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
+    [self hideActivityView];
+    self.navigationItem.title = self.webView.title;
+}
+
+- (void) showActivityView {
+    [self.activityIndicatorView startAnimating];
+    [self.view.window addSubview:self.activityIndicatorView];
+}
+
+- (void) hideActivityView {
+    [self.activityIndicatorView stopAnimating];
+    [self.activityIndicatorView removeFromSuperview];
+}
+
+- (void) showErrorMessage:(NSString*)message {
+    // TODO: Show error page.
+}
 
 @end

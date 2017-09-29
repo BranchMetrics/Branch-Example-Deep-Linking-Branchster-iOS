@@ -11,6 +11,4 @@
 @interface SplashViewController : UIViewController
 - (void) pushEditView;
 - (void) pushEditAndViewerViews;
-
-
 @end
