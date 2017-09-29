@@ -33,19 +33,38 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
     self.justLaunched = YES;
     Branch *branch = [Branch getInstance];
-//  [branch delayInitToCheckForSearchAds];
-//  [branch setAppleSearchAdsDebugMode];    //  Turn this on to debug Apple Search Ads
+
+    /*
+     * Turn this in to track Apple Search Ad attribution:
+     * [branch delayInitToCheckForSearchAds];
+     */
+
     [branch registerFacebookDeepLinkingClass:[FBSDKAppLinkUtility class]];
     [branch initSessionWithLaunchOptions:launchOptions
         andRegisterDeepLinkHandlerUsingBranchUniversalObject:
             ^ (BranchUniversalObject *BUO, BranchLinkProperties *linkProperties, NSError *error) {
+
+                if (linkProperties.controlParams[@"$3p"] &&
+                    linkProperties.controlParams[@"$web_only"]) {
+                    NSURL *url = [NSURL URLWithString:linkProperties.controlParams[@"$original_url"]];
+                    if (url) {
+                        [[NSNotificationCenter defaultCenter]
+                           postNotificationName:@"pushWebView"
+                           object:self
+                           userInfo:@{@"URL": url}];
+                   }
+                } else
                 if (BUO && [BUO.metadata objectForKey:@"monster"]) {
                     self.initialMonster = BUO;
-                    [[NSNotificationCenter defaultCenter] postNotificationName:@"pushEditAndViewerViews" object:nil];
-                }
-                else if (self.justLaunched) {
+                    [[NSNotificationCenter defaultCenter]
+                        postNotificationName:@"pushEditAndViewerViews"
+                        object:nil];
+                } else
+                if (self.justLaunched) {
                     self.initialMonster = [self emptyMonster];
-                    [[NSNotificationCenter defaultCenter] postNotificationName:@"pushEditView" object:nil];
+                    [[NSNotificationCenter defaultCenter]
+                        postNotificationName:@"pushEditView"
+                        object:nil];
                     self.justLaunched = NO;
                 }
 
