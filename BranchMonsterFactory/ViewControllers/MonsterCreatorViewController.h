@@ -11,5 +11,4 @@
 
 @interface MonsterCreatorViewController : UIViewController
 @property BranchUniversalObject *editingMonster;
-
 @end

@@ -18,7 +18,6 @@
 
 @interface MonsterViewerViewController () /*<UITextViewDelegate>*/
 
-
 @property (strong, nonatomic)BranchUniversalObject *viewingMonster;
 
 @property (strong, nonatomic) NetworkProgressBar *progressBar;
@@ -41,6 +40,8 @@
 @property (weak, nonatomic) IBOutlet UITextView *shareTextView;
 @property NSString *shareURL;
 @end
+
+#pragma mark - MonsterViewerViewController
 
 @implementation MonsterViewerViewController
 

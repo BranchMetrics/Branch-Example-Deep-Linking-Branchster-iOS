@@ -10,7 +10,7 @@
 #import "Branch.h"
 #import "SplashViewController.h"
 #import "BranchUniversalObject+MonsterHelpers.h"
-#import <FBSDKCoreKit/FBSDKCoreKit.h>
+@import FBSDKCoreKit;
 @import Localytics;
 @import Tune;
 
@@ -22,30 +22,54 @@
 
 - (BOOL)application:(UIApplication *)application
 didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    self.justLaunched = YES;
 
     //  We can add Tune integration too:
-//  [Tune setDebugMode:YES];    //  eDebug
+    // [Tune setDebugMode:YES];
     [Tune initializeWithTuneAdvertiserId:@"192600"
                        tuneConversionKey:@"06232296d8d6cb4faefa879d1939a37a"];
 
-    // Initalize Branch and register the deep link handler
-    // The deep link handler is called on every install/open to tell you if the user had just clicked a deep link
-
-    self.justLaunched = YES;
     Branch *branch = [Branch getInstance];
-//  [branch delayInitToCheckForSearchAds];
-//  [branch setAppleSearchAdsDebugMode];    //  Turn this on to debug Apple Search Ads
+
+    /*
+     * Un-comment this to track Apple Search Ad attribution:
+     * [branch delayInitToCheckForSearchAds];
+     */
+
     [branch registerFacebookDeepLinkingClass:[FBSDKAppLinkUtility class]];
+
+    /*
+     * Initalize Branch and register the deep link handler:
+     *
+     * The deep link handler is called on every install/open to tell you if
+     * the user had just clicked a deep link
+     */
+
     [branch initSessionWithLaunchOptions:launchOptions
         andRegisterDeepLinkHandlerUsingBranchUniversalObject:
             ^ (BranchUniversalObject *BUO, BranchLinkProperties *linkProperties, NSError *error) {
+
+                if (linkProperties.controlParams[@"$3p"] &&
+                    linkProperties.controlParams[@"$web_only"]) {
+                    NSURL *url = [NSURL URLWithString:linkProperties.controlParams[@"$original_url"]];
+                    if (url) {
+                        [[NSNotificationCenter defaultCenter]
+                           postNotificationName:@"pushWebView"
+                           object:self
+                           userInfo:@{@"URL": url}];
+                   }
+                } else
                 if (BUO && [BUO.metadata objectForKey:@"monster"]) {
                     self.initialMonster = BUO;
-                    [[NSNotificationCenter defaultCenter] postNotificationName:@"pushEditAndViewerViews" object:nil];
-                }
-                else if (self.justLaunched) {
+                    [[NSNotificationCenter defaultCenter]
+                        postNotificationName:@"pushEditAndViewerViews"
+                        object:nil];
+                } else
+                if (self.justLaunched) {
                     self.initialMonster = [self emptyMonster];
-                    [[NSNotificationCenter defaultCenter] postNotificationName:@"pushEditView" object:nil];
+                    [[NSNotificationCenter defaultCenter]
+                        postNotificationName:@"pushEditView"
+                        object:nil];
                     self.justLaunched = NO;
                 }
 
