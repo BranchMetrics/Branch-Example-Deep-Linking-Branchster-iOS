@@ -10,7 +10,6 @@
 #import "BranchUniversalObject.h"
 
 @interface MonsterViewerViewController : UIViewController
-
 -(void) setViewingMonster: (BranchUniversalObject *)viewingMonster;
 @end
 

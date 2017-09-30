@@ -12,6 +12,9 @@
 		374174E91C3C870A0069BA54 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 374174E81C3C870A0069BA54 /* Media.xcassets */; };
 		377C3CE81C121DCC005DF795 /* BranchUniversalObject+MonsterHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 377C3CE71C121DCC005DF795 /* BranchUniversalObject+MonsterHelpers.m */; };
 		46FD92CE1A9AD0A70028A385 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67FD945E1A4D250C00D6BFA8 /* Main.storyboard */; };
+		4D4F23231F7F456000638C65 /* Strings.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4D4F23221F7F456000638C65 /* Strings.strings */; };
+		4DEDB7591F7EBE7D009E84D1 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DEDB7581F7EBE7D009E84D1 /* WebViewController.m */; };
+		4DEDB75B1F7EBF2D009E84D1 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DEDB75A1F7EBF2D009E84D1 /* WebKit.framework */; };
 		6705921019BBB7430039DAE1 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6705920F19BBB7430039DAE1 /* AdSupport.framework */; };
 		6705923B19BBD0060039DAE1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6705923A19BBD0060039DAE1 /* UIKit.framework */; };
 		6705923E19BBE22D0039DAE1 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6705923D19BBE22D0039DAE1 /* MessageUI.framework */; };
@@ -81,6 +84,10 @@
 		377C3CE71C121DCC005DF795 /* BranchUniversalObject+MonsterHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BranchUniversalObject+MonsterHelpers.m"; sourceTree = "<group>"; };
 		377C3CE91C16141C005DF795 /* Branchsters.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Branchsters.entitlements; sourceTree = "<group>"; };
 		378C79541C571E9E0032231B /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		4D4F23221F7F456000638C65 /* Strings.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Strings.strings; sourceTree = "<group>"; };
+		4DEDB7571F7EBE7D009E84D1 /* WebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		4DEDB7581F7EBE7D009E84D1 /* WebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
+		4DEDB75A1F7EBF2D009E84D1 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		5BD8E97E3C91345EE8950DD2 /* Pods-BranchMonsterFactory.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BranchMonsterFactory.release.xcconfig"; path = "Pods/Target Support Files/Pods-BranchMonsterFactory/Pods-BranchMonsterFactory.release.xcconfig"; sourceTree = "<group>"; };
 		670591E919BBAC630039DAE1 /* Branchsters.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Branchsters.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6705920F19BBB7430039DAE1 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
@@ -160,10 +167,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6705924019BBEBC40039DAE1 /* Social.framework in Frameworks */,
-				6705923E19BBE22D0039DAE1 /* MessageUI.framework in Frameworks */,
-				6705923B19BBD0060039DAE1 /* UIKit.framework in Frameworks */,
 				6705921019BBB7430039DAE1 /* AdSupport.framework in Frameworks */,
+				6705923E19BBE22D0039DAE1 /* MessageUI.framework in Frameworks */,
+				6705924019BBEBC40039DAE1 /* Social.framework in Frameworks */,
+				6705923B19BBD0060039DAE1 /* UIKit.framework in Frameworks */,
+				4DEDB75B1F7EBF2D009E84D1 /* WebKit.framework in Frameworks */,
 				2E42EAC5DC7DBBC132DDA629 /* Pods_BranchMonsterFactory.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -209,6 +217,7 @@
 				374174E81C3C870A0069BA54 /* Media.xcassets */,
 				67FD94BA1A4D250C00D6BFA8 /* Info.plist */,
 				67FD94BB1A4D250C00D6BFA8 /* main.m */,
+				4D4F23221F7F456000638C65 /* Strings.strings */,
 			);
 			path = BranchMonsterFactory;
 			sourceTree = "<group>";
@@ -347,6 +356,8 @@
 				67FD94C01A4D250C00D6BFA8 /* MonsterViewerViewController.m */,
 				15B4B8121B0AB016002AA93E /* BranchInfoViewController.h */,
 				15B4B8131B0AB016002AA93E /* BranchInfoViewController.m */,
+				4DEDB7571F7EBE7D009E84D1 /* WebViewController.h */,
+				4DEDB7581F7EBE7D009E84D1 /* WebViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -363,6 +374,7 @@
 		AC4F2E8D49B8AC096F140182 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4DEDB75A1F7EBF2D009E84D1 /* WebKit.framework */,
 				719445900DBB09BE2A8933D1 /* Pods_BranchMonsterFactory.framework */,
 			);
 			name = Frameworks;
@@ -461,6 +473,7 @@
 				67FD94FE1A4D250C00D6BFA8 /* Icon-76.png in Resources */,
 				67FD94F41A4D250C00D6BFA8 /* Icon-Small-50.png in Resources */,
 				67FD94E01A4D250C00D6BFA8 /* email_share.png in Resources */,
+				4D4F23231F7F456000638C65 /* Strings.strings in Resources */,
 				67FD94FD1A4D250C00D6BFA8 /* Icon-60@2x.png in Resources */,
 				67FD94DF1A4D250C00D6BFA8 /* email_pressed.png in Resources */,
 				67FD94EE1A4D250C00D6BFA8 /* face1.png in Resources */,
@@ -553,6 +566,7 @@
 			files = (
 				67FD94C51A4D250C00D6BFA8 /* ImageCollectionViewCell.m in Sources */,
 				67FD95071A4D250C00D6BFA8 /* MonsterViewerViewController.m in Sources */,
+				4DEDB7591F7EBE7D009E84D1 /* WebViewController.m in Sources */,
 				67FD95061A4D250C00D6BFA8 /* MonsterCreatorViewController.m in Sources */,
 				67FD94C61A4D250C00D6BFA8 /* NetworkProgressBar.m in Sources */,
 				67FD95051A4D250C00D6BFA8 /* main.m in Sources */,
