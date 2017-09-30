@@ -63,7 +63,7 @@ decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction
 - (void)webView:(WKWebView *)webView
 didFailNavigation:(WKNavigation *)navigation
         withError:(NSError *)error {
-    [self showErrorMessage:[NSString stringWithFormat:@"Can't navigate to\n'%@'.", self.webView.URL]];
+    [self showErrorMessage:[NSString stringWithFormat:@"Can't navigate to<br>'%@'.", self.webView.URL]];
 }
 
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
@@ -82,7 +82,14 @@ didFailNavigation:(WKNavigation *)navigation
 }
 
 - (void) showErrorMessage:(NSString*)message {
-    // TODO: Show error page.
+    NSString *errorPage = NSLocalizedStringFromTableInBundle(
+        @"WebErrorPage",
+        @"Strings",
+        [NSBundle bundleForClass:self.class],
+        @""
+    );
+    errorPage = [NSString stringWithFormat:errorPage, message];
+    [self.webView loadHTMLString:errorPage baseURL:nil];
 }
 
 @end
