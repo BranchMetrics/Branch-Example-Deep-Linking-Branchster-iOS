@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Branch. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 
 @interface BranchInfoViewController : UIViewController
 @end

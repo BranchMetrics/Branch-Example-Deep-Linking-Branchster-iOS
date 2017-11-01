@@ -6,15 +6,14 @@
 //  Copyright (c) 2014 Branch, Inc All rights reserved.
 //
 
+@import MessageUI;
+@import Social;
+@import Branch;
+#import "BranchUniversalObject+MonsterHelpers.h"
 #import "BranchInfoViewController.h"
 #import "NetworkProgressBar.h"
 #import "MonsterViewerViewController.h"
 #import "MonsterPartsFactory.h"
-#import "Branch.h"
-#import "BranchUniversalObject.h"
-#import "BranchUniversalObject+MonsterHelpers.h"
-#import <MessageUI/MessageUI.h>
-#import <Social/Social.h>
 
 @interface MonsterViewerViewController () /*<UITextViewDelegate>*/
 
@@ -101,6 +100,7 @@ static CGFloat MONSTER_HEIGHT = 0.4f;
 
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    if (self.monsterName.length <= 0) self.monsterName = @"Nameless Monster";
     [[Branch getInstance] userCompletedAction:@"Product View" withState:@{
         @"sku":      self.monsterName,
         @"price":    self.price,
@@ -136,6 +136,7 @@ static CGFloat MONSTER_HEIGHT = 0.4f;
     commerceEvent.currency = @"USD";
 
     BNCProduct* branchester = [BNCProduct new];
+    if (self.monsterName.length <= 0) self.monsterName = @"Nameless Monster";
     branchester.sku = self.monsterName;
     branchester.price = self.price;
     branchester.quantity = @1;

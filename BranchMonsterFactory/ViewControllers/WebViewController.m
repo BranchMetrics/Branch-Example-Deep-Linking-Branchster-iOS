@@ -7,7 +7,7 @@
 //
 
 #import "WebViewController.h"
-#import <WebKit/WebKit.h>
+@import WebKit;
 
 @interface WebViewController () <WKNavigationDelegate>
 @property (nonatomic, strong) IBOutlet WKWebView *webView;

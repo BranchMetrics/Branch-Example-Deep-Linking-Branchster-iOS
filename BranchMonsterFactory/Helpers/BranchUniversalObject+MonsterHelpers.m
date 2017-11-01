@@ -5,7 +5,8 @@
 //  Created by Dan Walkowski on 12/4/15.
 //  Copyright © 2015 Branch. All rights reserved.
 //
-#import "BranchUniversalObject.h"
+
+#import "BranchUniversalObject+MonsterHelpers.h"
 #import "MonsterPartsFactory.h"
 
 @implementation BranchUniversalObject (MonsterHelpers)

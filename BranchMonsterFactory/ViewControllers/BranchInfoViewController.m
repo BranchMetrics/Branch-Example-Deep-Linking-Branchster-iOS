@@ -7,7 +7,7 @@
 //
 
 #import "BranchInfoViewController.h"
-#import "Branch.h"
+@import Branch;
 
 @interface BranchInfoViewController ()
 @property (nonatomic, weak) IBOutlet UILabel *versionLabel;

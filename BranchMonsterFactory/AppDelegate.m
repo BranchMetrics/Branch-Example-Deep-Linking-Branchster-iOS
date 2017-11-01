@@ -6,13 +6,13 @@
 //  Copyright (c) 2014 Branch, Inc All rights reserved.
 //
 
-#import "AppDelegate.h"
-#import "Branch.h"
-#import "SplashViewController.h"
-#import "BranchUniversalObject+MonsterHelpers.h"
+@import Branch;
 //@import FBSDKCoreKit;
 //@import Localytics;
 //@import Tune;
+#import "AppDelegate.h"
+#import "SplashViewController.h"
+#import "BranchUniversalObject+MonsterHelpers.h"
 
 @interface AppDelegate ()
 @property (nonatomic) BOOL justLaunched;
@@ -22,10 +22,11 @@
 
 - (BOOL)application:(UIApplication *)application
 didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    BNCLogSetDisplayLevel(BNCLogLevelAll);
     self.justLaunched = YES;
 
     // We can add Tune integration too:
-    // [Tune setDebugMode:YES];    //  eDebug
+    // [Tune setDebugMode:YES];
     // [Tune initializeWithTuneAdvertiserId:@"192600"
     //                    tuneConversionKey:@"06232296d8d6cb4faefa879d1939a37a"];
     // [Tune setDebugMode:YES];
@@ -44,6 +45,16 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
      * The deep link handler is called on every install/open to tell you if
      * the user had just clicked a deep link
      */
+
+    // Optional: Set our own identitier for this user at Branch.
+    // This could be an account number our other userID. It only needs to be set once.
+
+    NSString *userIdentity = [[NSUserDefaults standardUserDefaults] objectForKey:@"userIdentity"];
+    if (!userIdentity) {
+        userIdentity = [[NSUUID UUID] UUIDString];
+        [[NSUserDefaults standardUserDefaults] setObject:userIdentity forKey:@"userIdentity"];
+        [branch setIdentity:userIdentity];
+    }
 
     [branch initSessionWithLaunchOptions:launchOptions
         andRegisterDeepLinkHandlerUsingBranchUniversalObject:

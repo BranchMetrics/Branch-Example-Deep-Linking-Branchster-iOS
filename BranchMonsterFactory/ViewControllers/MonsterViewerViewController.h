@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 Branch, Inc All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-#import "BranchUniversalObject.h"
+@import UIKit;
+@import Branch;
 
 @interface MonsterViewerViewController : UIViewController
 -(void) setViewingMonster: (BranchUniversalObject *)viewingMonster;

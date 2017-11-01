@@ -6,7 +6,7 @@
 //  Copyright © 2017 Branch. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 
 @interface WebViewController : UIViewController
 @property (nonatomic, strong) NSURL* URL;
