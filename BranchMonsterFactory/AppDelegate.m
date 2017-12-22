@@ -38,6 +38,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
      * Un-comment this to track Apple Search Ad attribution:
      * [branch delayInitToCheckForSearchAds];
      */
+    [branch delayInitToCheckForSearchAds];
 
     /*
      * Initalize Branch and register the deep link handler:
