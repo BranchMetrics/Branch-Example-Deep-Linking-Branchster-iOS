@@ -47,16 +47,6 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
      * the user had just clicked a deep link
      */
 
-    // Optional: Set our own identitier for this user at Branch.
-    // This could be an account number our other userID. It only needs to be set once.
-
-    NSString *userIdentity = [[NSUserDefaults standardUserDefaults] objectForKey:@"userIdentity"];
-    if (!userIdentity) {
-        userIdentity = [[NSUUID UUID] UUIDString];
-        [[NSUserDefaults standardUserDefaults] setObject:userIdentity forKey:@"userIdentity"];
-        [branch setIdentity:userIdentity];
-    }
-
     [branch initSessionWithLaunchOptions:launchOptions
         andRegisterDeepLinkHandlerUsingBranchUniversalObject:
             ^ (BranchUniversalObject *BUO, BranchLinkProperties *linkProperties, NSError *error) {
@@ -102,6 +92,16 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
                     */
                 }
             }];
+
+    // Optional: Set our own identitier for this user at Branch.
+    // This could be an account number our other userID. It only needs to be set once.
+
+    NSString *userIdentity = [[NSUserDefaults standardUserDefaults] objectForKey:@"userIdentity"];
+    if (!userIdentity) {
+        userIdentity = [[NSUUID UUID] UUIDString];
+        [[NSUserDefaults standardUserDefaults] setObject:userIdentity forKey:@"userIdentity"];
+        [branch setIdentity:userIdentity];
+    }
 
     // [Localytics setLoggingEnabled:YES]; //  Turn this on to debug Localytics
     // [Localytics autoIntegrate:@"0d738869f6b0f04eb1341f5-fbdada7a-f4ff-11e4-3279-00f82776ce8b"
