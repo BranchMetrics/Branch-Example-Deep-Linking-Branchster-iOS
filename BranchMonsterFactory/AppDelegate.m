@@ -61,7 +61,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
                            userInfo:@{@"URL": url}];
                    }
                 } else
-                if (BUO && [BUO.metadata objectForKey:@"monster"]) {
+                if (BUO && BUO.contentMetadata.customMetadata[@"monster"]) {
                     self.initialMonster = BUO;
                     [[NSNotificationCenter defaultCenter]
                         postNotificationName:@"pushEditAndViewerViews"
