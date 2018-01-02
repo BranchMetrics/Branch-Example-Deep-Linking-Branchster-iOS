@@ -10,6 +10,8 @@
 //@import FBSDKCoreKit;
 //@import Localytics;
 //@import Tune;
+@import Fabric;
+@import Crashlytics;
 #import "AppDelegate.h"
 #import "SplashViewController.h"
 #import "BranchUniversalObject+MonsterHelpers.h"
@@ -23,6 +25,7 @@
 - (BOOL)application:(UIApplication *)application
 didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     BNCLogSetDisplayLevel(BNCLogLevelAll);
+    [Fabric with:@[[Crashlytics class]]];
     self.justLaunched = YES;
 
     // We can add Tune integration too:
