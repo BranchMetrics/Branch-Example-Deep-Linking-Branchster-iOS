@@ -36,7 +36,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     Branch *branch = [Branch getInstance];
     [branch registerFacebookDeepLinkingClass:[FBSDKAppLinkUtility class]];
 
-     // Enable this to track Apple Search Ad attribution:
+    // Enable this to track Apple Search Ad attribution:
     [branch delayInitToCheckForSearchAds];
 
     /*
