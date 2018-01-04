@@ -18,9 +18,7 @@
 @interface MonsterViewerViewController () /*<UITextViewDelegate>*/
 
 @property (strong, nonatomic)BranchUniversalObject *viewingMonster;
-
 @property (strong, nonatomic) NetworkProgressBar *progressBar;
-
 @property (strong, nonatomic) NSDictionary *monsterMetadata;
 
 @property (strong, nonatomic) NSString *monsterName;
@@ -50,7 +48,6 @@ static CGFloat MONSTER_HEIGHT = 0.4f;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
     
     [self.botLayerOneColor setBackgroundColor:[MonsterPartsFactory colorForIndex:[self.viewingMonster getColorIndex]]];
     [self.botLayerTwoBody setImage:[MonsterPartsFactory imageForBody:[self.viewingMonster getBodyIndex]]];
@@ -67,8 +64,6 @@ static CGFloat MONSTER_HEIGHT = 0.4f;
     
     [self.txtName setText:self.monsterName];
     [self.txtDescription setText:self.monsterDescription];
-    
-    
     
     self.monsterMetadata = [[NSDictionary alloc]
                             initWithObjects:@[

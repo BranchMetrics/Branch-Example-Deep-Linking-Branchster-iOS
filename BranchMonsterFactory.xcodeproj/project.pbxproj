@@ -12,6 +12,7 @@
 		374174E91C3C870A0069BA54 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 374174E81C3C870A0069BA54 /* Media.xcassets */; };
 		377C3CE81C121DCC005DF795 /* BranchUniversalObject+MonsterHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 377C3CE71C121DCC005DF795 /* BranchUniversalObject+MonsterHelpers.m */; };
 		46FD92CE1A9AD0A70028A385 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67FD945E1A4D250C00D6BFA8 /* Main.storyboard */; };
+		4D4006181FFE8B4C004BE326 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D4006171FFE8B4C004BE326 /* SafariServices.framework */; };
 		4D4F23231F7F456000638C65 /* Strings.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4D4F23221F7F456000638C65 /* Strings.strings */; };
 		4DBAF3A91FED8DDE00C1240E /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DBAF3A81FED8DDE00C1240E /* iAd.framework */; };
 		4DEDB7591F7EBE7D009E84D1 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DEDB7581F7EBE7D009E84D1 /* WebViewController.m */; };
@@ -85,6 +86,7 @@
 		377C3CE71C121DCC005DF795 /* BranchUniversalObject+MonsterHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BranchUniversalObject+MonsterHelpers.m"; sourceTree = "<group>"; };
 		377C3CE91C16141C005DF795 /* Branchsters.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Branchsters.entitlements; sourceTree = "<group>"; };
 		378C79541C571E9E0032231B /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		4D4006171FFE8B4C004BE326 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
 		4D4F23221F7F456000638C65 /* Strings.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Strings.strings; sourceTree = "<group>"; };
 		4DBAF3A81FED8DDE00C1240E /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		4DEDB7571F7EBE7D009E84D1 /* WebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 				4DBAF3A91FED8DDE00C1240E /* iAd.framework in Frameworks */,
 				6705921019BBB7430039DAE1 /* AdSupport.framework in Frameworks */,
 				6705923E19BBE22D0039DAE1 /* MessageUI.framework in Frameworks */,
+				4D4006181FFE8B4C004BE326 /* SafariServices.framework in Frameworks */,
 				6705924019BBEBC40039DAE1 /* Social.framework in Frameworks */,
 				6705923B19BBD0060039DAE1 /* UIKit.framework in Frameworks */,
 				4DEDB75B1F7EBF2D009E84D1 /* WebKit.framework in Frameworks */,
@@ -377,6 +380,7 @@
 		AC4F2E8D49B8AC096F140182 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4D4006171FFE8B4C004BE326 /* SafariServices.framework */,
 				4DBAF3A81FED8DDE00C1240E /* iAd.framework */,
 				4DEDB75A1F7EBF2D009E84D1 /* WebKit.framework */,
 				719445900DBB09BE2A8933D1 /* Pods_BranchMonsterFactory.framework */,

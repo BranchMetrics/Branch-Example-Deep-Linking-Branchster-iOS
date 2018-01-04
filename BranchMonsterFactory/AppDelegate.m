@@ -7,9 +7,9 @@
 //
 
 @import Branch;
-//@import FBSDKCoreKit;
-//@import Localytics;
-//@import Tune;
+@import FBSDKCoreKit;
+@import Localytics;
+@import Tune;
 @import Fabric;
 @import Crashlytics;
 #import "AppDelegate.h"
@@ -30,17 +30,13 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
     // We can add Tune integration too:
     // [Tune setDebugMode:YES];
-    // [Tune initializeWithTuneAdvertiserId:@"192600"
-    //                    tuneConversionKey:@"06232296d8d6cb4faefa879d1939a37a"];
-    // [Tune setDebugMode:YES];
+    [Tune initializeWithTuneAdvertiserId:@"192600"
+                       tuneConversionKey:@"06232296d8d6cb4faefa879d1939a37a"];
 
     Branch *branch = [Branch getInstance];
-    // [branch registerFacebookDeepLinkingClass:[FBSDKAppLinkUtility class]];
+    [branch registerFacebookDeepLinkingClass:[FBSDKAppLinkUtility class]];
 
-    /*
-     * Un-comment this to track Apple Search Ad attribution:
-     * [branch delayInitToCheckForSearchAds];
-     */
+     // Enable this to track Apple Search Ad attribution:
     [branch delayInitToCheckForSearchAds];
 
     /*
@@ -106,15 +102,17 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
         [branch setIdentity:userIdentity];
     }
 
-    // [Localytics setLoggingEnabled:YES]; //  Turn this on to debug Localytics
-    // [Localytics autoIntegrate:@"0d738869f6b0f04eb1341f5-fbdada7a-f4ff-11e4-3279-00f82776ce8b"
-    //     launchOptions:launchOptions];
+    // Turn this on to debug Localytics:
+    // [Localytics setLoggingEnabled:YES];
+    [Localytics autoIntegrate:@"0d738869f6b0f04eb1341f5-fbdada7a-f4ff-11e4-3279-00f82776ce8b"
+        launchOptions:launchOptions];
 
     return YES;
 }
 
 - (BranchUniversalObject *)emptyMonster {
-    BranchUniversalObject *empty = [[BranchUniversalObject alloc] initWithTitle:@"Jingles Bingleheimer"];
+    BranchUniversalObject *empty =
+        [[BranchUniversalObject alloc] initWithTitle:@"Jingles Bingleheimer"];
     [empty setIsMonster];
     [empty setFaceIndex:0];
     [empty setBodyIndex:0];
@@ -124,8 +122,8 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-    // Attribution will not function without the measureSession call included
-    // [Tune measureSession];
+    // Attribution will not function without the measureSession call included:
+    [Tune measureSession];
 }
 
 - (BOOL)application:(UIApplication *)application
