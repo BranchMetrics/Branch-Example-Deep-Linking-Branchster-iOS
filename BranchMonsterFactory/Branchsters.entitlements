@@ -31,10 +31,20 @@
 		<string>applinks:email-sailthru.givemeulinksorgivemedeath.com</string>
 		<string>applinks:email-responsys.givemeulinksorgivemedeath.com</string>
 		<string>applinks:email-exacttarget.givemeulinksorgivemedeath.com</string>
-		<string>applinks:c47b.app.link</string>
 		<string>applinks:click.s1.qa1.sfmctest.com</string>
 		<string>applinks:email-epsilon.branch.rocks</string>
 		<string>applinks:email-postup.branch.rocks</string>
+        <string>applinks:email-bronto.branch.rocks</string>
+        <string>applinks:email-mailjet.branch.rocks</string>
+        <string>applinks:email-mandrill.branch.rocks</string>
+        <string>applinks:email-sp.branch.rocks</string>
+        <string>applinks:email-cm.branch.rocks</string>
+        <string>applinks:email-campmon.branch.rocks</string>
+        <string>applinks:email-cm.branch.rocks</string>
+        <string>applinks:amazon-email.branch.rocks</string>
+        <string>applinks:email-iterable.branch.rocks</string>
+		<string>applinks:c47b.app.link</string>
+		<string>applinks:c47b-alternate.app.link</string>
 	</array>
 </dict>
 </plist>

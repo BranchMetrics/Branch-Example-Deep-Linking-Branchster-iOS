@@ -6,27 +6,24 @@
 //  Copyright (c) 2014 Branch, Inc All rights reserved.
 //
 
+@import MessageUI;
+@import Social;
+@import Branch;
+#import "BranchUniversalObject+MonsterHelpers.h"
 #import "BranchInfoViewController.h"
 #import "NetworkProgressBar.h"
 #import "MonsterViewerViewController.h"
 #import "MonsterPartsFactory.h"
-#import "Branch.h"
-#import "BranchUniversalObject.h"
-#import "BranchUniversalObject+MonsterHelpers.h"
-#import <MessageUI/MessageUI.h>
-#import <Social/Social.h>
 
 @interface MonsterViewerViewController () /*<UITextViewDelegate>*/
 
-
 @property (strong, nonatomic)BranchUniversalObject *viewingMonster;
-
 @property (strong, nonatomic) NetworkProgressBar *progressBar;
-
 @property (strong, nonatomic) NSDictionary *monsterMetadata;
 
 @property (strong, nonatomic) NSString *monsterName;
 @property (strong, nonatomic) NSString *monsterDescription;
+@property (strong, nonatomic) NSDecimalNumber *price;
 
 @property (weak, nonatomic) IBOutlet UIView *botLayerOneColor;
 @property (weak, nonatomic) IBOutlet UIImageView *botLayerTwoBody;
@@ -34,15 +31,14 @@
 @property (weak, nonatomic) IBOutlet UILabel *txtName;
 @property (weak, nonatomic) IBOutlet UILabel *txtDescription;
 
-
 @property (weak, nonatomic) IBOutlet UIButton *cmdChange;
 @property (weak, nonatomic) IBOutlet UIButton *cmdInfo;
-
-
 
 @property (weak, nonatomic) IBOutlet UITextView *shareTextView;
 @property NSString *shareURL;
 @end
+
+#pragma mark - MonsterViewerViewController
 
 @implementation MonsterViewerViewController
 
@@ -52,19 +48,22 @@ static CGFloat MONSTER_HEIGHT = 0.4f;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
     
     [self.botLayerOneColor setBackgroundColor:[MonsterPartsFactory colorForIndex:[self.viewingMonster getColorIndex]]];
     [self.botLayerTwoBody setImage:[MonsterPartsFactory imageForBody:[self.viewingMonster getBodyIndex]]];
     [self.botLayerThreeFace setImage:[MonsterPartsFactory imageForFace:[self.viewingMonster getFaceIndex]]];
     
     self.monsterName = [self.viewingMonster getMonsterName];
+    if (!self.monsterName) self.monsterName = @"None";
+
+    NSInteger priceInt = arc4random_uniform(4) + 1;
+    NSString *priceString = [NSString stringWithFormat:@"%1.2f", (float)priceInt];
+    _price = [NSDecimalNumber decimalNumberWithString:priceString];
+
     self.monsterDescription = [self.viewingMonster getMonsterDescription];
     
     [self.txtName setText:self.monsterName];
     [self.txtDescription setText:self.monsterDescription];
-    
-    
     
     self.monsterMetadata = [[NSDictionary alloc]
                             initWithObjects:@[
@@ -94,8 +93,16 @@ static CGFloat MONSTER_HEIGHT = 0.4f;
     [self setViewingMonster:self.viewingMonster];  //not awesome, but it triggers the setter
 }
 
+- (void) viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    if (self.monsterName.length <= 0) self.monsterName = @"Nameless Monster";
+    [[Branch getInstance] userCompletedAction:@"Product View" withState:@{
+        @"sku":      self.monsterName,
+        @"price":    self.price,
+        @"currency": @"USD"
+    }];
 
-
+}
 -(void) setViewingMonster: (BranchUniversalObject *)monster {
     _viewingMonster = monster;
     
@@ -118,9 +125,42 @@ static CGFloat MONSTER_HEIGHT = 0.4f;
 }
 
 -(IBAction)shareSheet:(id)sender {
+
+    BNCCommerceEvent *commerceEvent = [[BNCCommerceEvent alloc] init];
+    commerceEvent.revenue = self.price;
+    commerceEvent.currency = @"USD";
+
+    BNCProduct* branchester = [BNCProduct new];
+    if (self.monsterName.length <= 0) self.monsterName = @"Nameless Monster";
+    branchester.sku = self.monsterName;
+    branchester.price = self.price;
+    branchester.quantity = @1;
+    branchester.variant = @"X-Tra Hairy";
+    branchester.brand = @"Branch";
+    branchester.category = BNCProductCategoryAnimalSupplies;
+    branchester.name = self.monsterName;
+    commerceEvent.products = [NSArray arrayWithObject:branchester];
+    
+    [[Branch getInstance] userCompletedAction:BNCAddToCartEvent withState:@{
+        @"sku":      self.monsterName,
+        @"price":    self.price,
+        @"currency": @"USD"
+    }];
+
     [self.viewingMonster
-     showShareSheetWithShareText:@"Share Your Monster!"
-     completion:nil];[UIMenuController sharedMenuController].menuVisible = NO;
+        showShareSheetWithShareText:@"Share Your Monster!"
+        completion:^(NSString * _Nullable activityType, BOOL completed) {
+            if (completed) {
+               // [[Branch getInstance] userCompletedAction:BNCAddToCartEvent];
+                [[Branch getInstance] sendCommerceEvent:commerceEvent
+                                               metadata:nil
+                                         withCompletion:^ (NSDictionary *response, NSError *error) {
+                                             if (error) {  }
+                                         }];
+            }
+        }];
+    
+    [UIMenuController sharedMenuController].menuVisible = NO;
     [self.shareTextView resignFirstResponder];
 }
 
@@ -191,7 +231,12 @@ static CGFloat MONSTER_HEIGHT = 0.4f;
     CGFloat newHeight = screenSize.size.height;
         newHeight = newHeight * MONSTER_HEIGHT;
     CGFloat newWidth = widthRatio * newHeight;
-    CGRect newFrame = CGRectMake((screenSize.size.width-newWidth)/2, self.botLayerOneColor.frame.origin.y, newWidth, newHeight);
+    CGRect newFrame = CGRectMake(
+        (screenSize.size.width-newWidth)/2,
+        self.botLayerOneColor.frame.origin.y,
+        newWidth,
+        newHeight
+    );
     
     self.botLayerOneColor.frame = newFrame;
     self.botLayerTwoBody.frame = newFrame;
@@ -206,9 +251,5 @@ static CGFloat MONSTER_HEIGHT = 0.4f;
     self.cmdChange.frame = cmdFrame;
     [self.view layoutSubviews];
 }
-
-
-
-
 
 @end

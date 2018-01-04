@@ -8,10 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		15B4B8141B0AB016002AA93E /* BranchInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15B4B8131B0AB016002AA93E /* BranchInfoViewController.m */; };
-		265FD1DC3BD892A74A7EB1E0 /* libPods-BranchMonsterFactory.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0911E5DE0B8E21C1D2BACC9A /* libPods-BranchMonsterFactory.a */; };
+		2E42EAC5DC7DBBC132DDA629 /* Pods_BranchMonsterFactory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 719445900DBB09BE2A8933D1 /* Pods_BranchMonsterFactory.framework */; };
 		374174E91C3C870A0069BA54 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 374174E81C3C870A0069BA54 /* Media.xcassets */; };
 		377C3CE81C121DCC005DF795 /* BranchUniversalObject+MonsterHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 377C3CE71C121DCC005DF795 /* BranchUniversalObject+MonsterHelpers.m */; };
 		46FD92CE1A9AD0A70028A385 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67FD945E1A4D250C00D6BFA8 /* Main.storyboard */; };
+		4D4006181FFE8B4C004BE326 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D4006171FFE8B4C004BE326 /* SafariServices.framework */; };
+		4D4F23231F7F456000638C65 /* Strings.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4D4F23221F7F456000638C65 /* Strings.strings */; };
+		4DBAF3A91FED8DDE00C1240E /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DBAF3A81FED8DDE00C1240E /* iAd.framework */; };
+		4DEDB7591F7EBE7D009E84D1 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DEDB7581F7EBE7D009E84D1 /* WebViewController.m */; };
+		4DEDB75B1F7EBF2D009E84D1 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DEDB75A1F7EBF2D009E84D1 /* WebKit.framework */; };
 		6705921019BBB7430039DAE1 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6705920F19BBB7430039DAE1 /* AdSupport.framework */; };
 		6705923B19BBD0060039DAE1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6705923A19BBD0060039DAE1 /* UIKit.framework */; };
 		6705923E19BBE22D0039DAE1 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6705923D19BBE22D0039DAE1 /* MessageUI.framework */; };
@@ -71,11 +76,9 @@
 		67FD95061A4D250C00D6BFA8 /* MonsterCreatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67FD94BE1A4D250C00D6BFA8 /* MonsterCreatorViewController.m */; };
 		67FD95071A4D250C00D6BFA8 /* MonsterViewerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67FD94C01A4D250C00D6BFA8 /* MonsterViewerViewController.m */; };
 		67FD95081A4D250C00D6BFA8 /* SplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67FD94C21A4D250C00D6BFA8 /* SplashViewController.m */; };
-		67FD950A1A4D25D100D6BFA8 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67FD95091A4D25D100D6BFA8 /* CoreTelephony.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0911E5DE0B8E21C1D2BACC9A /* libPods-BranchMonsterFactory.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BranchMonsterFactory.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		15B4B8121B0AB016002AA93E /* BranchInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BranchInfoViewController.h; sourceTree = "<group>"; };
 		15B4B8131B0AB016002AA93E /* BranchInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BranchInfoViewController.m; sourceTree = "<group>"; };
 		374174E81C3C870A0069BA54 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
@@ -83,6 +86,12 @@
 		377C3CE71C121DCC005DF795 /* BranchUniversalObject+MonsterHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BranchUniversalObject+MonsterHelpers.m"; sourceTree = "<group>"; };
 		377C3CE91C16141C005DF795 /* Branchsters.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Branchsters.entitlements; sourceTree = "<group>"; };
 		378C79541C571E9E0032231B /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		4D4006171FFE8B4C004BE326 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
+		4D4F23221F7F456000638C65 /* Strings.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Strings.strings; sourceTree = "<group>"; };
+		4DBAF3A81FED8DDE00C1240E /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
+		4DEDB7571F7EBE7D009E84D1 /* WebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		4DEDB7581F7EBE7D009E84D1 /* WebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
+		4DEDB75A1F7EBF2D009E84D1 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		5BD8E97E3C91345EE8950DD2 /* Pods-BranchMonsterFactory.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BranchMonsterFactory.release.xcconfig"; path = "Pods/Target Support Files/Pods-BranchMonsterFactory/Pods-BranchMonsterFactory.release.xcconfig"; sourceTree = "<group>"; };
 		670591E919BBAC630039DAE1 /* Branchsters.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Branchsters.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6705920F19BBB7430039DAE1 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
@@ -153,7 +162,7 @@
 		67FD94C01A4D250C00D6BFA8 /* MonsterViewerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonsterViewerViewController.m; sourceTree = "<group>"; };
 		67FD94C11A4D250C00D6BFA8 /* SplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashViewController.h; sourceTree = "<group>"; };
 		67FD94C21A4D250C00D6BFA8 /* SplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashViewController.m; sourceTree = "<group>"; };
-		67FD95091A4D25D100D6BFA8 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		719445900DBB09BE2A8933D1 /* Pods_BranchMonsterFactory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BranchMonsterFactory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C735E760C689B8CDD102274 /* Pods-BranchMonsterFactory.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BranchMonsterFactory.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BranchMonsterFactory/Pods-BranchMonsterFactory.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -162,12 +171,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				67FD950A1A4D25D100D6BFA8 /* CoreTelephony.framework in Frameworks */,
-				6705924019BBEBC40039DAE1 /* Social.framework in Frameworks */,
-				6705923E19BBE22D0039DAE1 /* MessageUI.framework in Frameworks */,
-				6705923B19BBD0060039DAE1 /* UIKit.framework in Frameworks */,
+				4DBAF3A91FED8DDE00C1240E /* iAd.framework in Frameworks */,
 				6705921019BBB7430039DAE1 /* AdSupport.framework in Frameworks */,
-				265FD1DC3BD892A74A7EB1E0 /* libPods-BranchMonsterFactory.a in Frameworks */,
+				6705923E19BBE22D0039DAE1 /* MessageUI.framework in Frameworks */,
+				4D4006181FFE8B4C004BE326 /* SafariServices.framework in Frameworks */,
+				6705924019BBEBC40039DAE1 /* Social.framework in Frameworks */,
+				6705923B19BBD0060039DAE1 /* UIKit.framework in Frameworks */,
+				4DEDB75B1F7EBF2D009E84D1 /* WebKit.framework in Frameworks */,
+				2E42EAC5DC7DBBC132DDA629 /* Pods_BranchMonsterFactory.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -179,7 +190,6 @@
 			children = (
 				378C79541C571E9E0032231B /* Podfile */,
 				67FD945B1A4D250C00D6BFA8 /* BranchMonsterFactory */,
-				67FD95091A4D25D100D6BFA8 /* CoreTelephony.framework */,
 				6705923F19BBEBC40039DAE1 /* Social.framework */,
 				6705923D19BBE22D0039DAE1 /* MessageUI.framework */,
 				6705923A19BBD0060039DAE1 /* UIKit.framework */,
@@ -213,6 +223,7 @@
 				374174E81C3C870A0069BA54 /* Media.xcassets */,
 				67FD94BA1A4D250C00D6BFA8 /* Info.plist */,
 				67FD94BB1A4D250C00D6BFA8 /* main.m */,
+				4D4F23221F7F456000638C65 /* Strings.strings */,
 			);
 			path = BranchMonsterFactory;
 			sourceTree = "<group>";
@@ -351,6 +362,8 @@
 				67FD94C01A4D250C00D6BFA8 /* MonsterViewerViewController.m */,
 				15B4B8121B0AB016002AA93E /* BranchInfoViewController.h */,
 				15B4B8131B0AB016002AA93E /* BranchInfoViewController.m */,
+				4DEDB7571F7EBE7D009E84D1 /* WebViewController.h */,
+				4DEDB7581F7EBE7D009E84D1 /* WebViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -367,7 +380,10 @@
 		AC4F2E8D49B8AC096F140182 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				0911E5DE0B8E21C1D2BACC9A /* libPods-BranchMonsterFactory.a */,
+				4D4006171FFE8B4C004BE326 /* SafariServices.framework */,
+				4DBAF3A81FED8DDE00C1240E /* iAd.framework */,
+				4DEDB75A1F7EBF2D009E84D1 /* WebKit.framework */,
+				719445900DBB09BE2A8933D1 /* Pods_BranchMonsterFactory.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -386,6 +402,7 @@
 				670591E719BBAC630039DAE1 /* Resources */,
 				9C891AA919C862A85AEACEB9 /* [CP] Embed Pods Frameworks */,
 				79C3649B649EE75362C602E2 /* [CP] Copy Pods Resources */,
+				4DE9ADC81FFC294500944AAA /* Update Crashlytics */,
 			);
 			buildRules = (
 			);
@@ -402,7 +419,7 @@
 		670591E119BBAC630039DAE1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = Branch;
 				TargetAttributes = {
 					670591E819BBAC630039DAE1 = {
@@ -466,6 +483,7 @@
 				67FD94FE1A4D250C00D6BFA8 /* Icon-76.png in Resources */,
 				67FD94F41A4D250C00D6BFA8 /* Icon-Small-50.png in Resources */,
 				67FD94E01A4D250C00D6BFA8 /* email_share.png in Resources */,
+				4D4F23231F7F456000638C65 /* Strings.strings in Resources */,
 				67FD94FD1A4D250C00D6BFA8 /* Icon-60@2x.png in Resources */,
 				67FD94DF1A4D250C00D6BFA8 /* email_pressed.png in Resources */,
 				67FD94EE1A4D250C00D6BFA8 /* face1.png in Resources */,
@@ -513,6 +531,19 @@
 			shellPath = /bin/bash;
 			shellScript = "./Tools/ipa-add-timestamp\n";
 			showEnvVarsInLog = 0;
+		4DE9ADC81FFC294500944AAA /* Update Crashlytics */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Update Crashlytics";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" a5689371c7d402061ef8dd47b44a89f0515ca4a7 e42146267f609d143ac39e0bde3b685cd9bfe77f7bb3d5c394aaa3df3f31eda5\n";
 		};
 		647B746D0030F7967AAC9316 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -556,9 +587,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-BranchMonsterFactory/Pods-BranchMonsterFactory-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/Branch/Branch.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Branch.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -574,6 +612,7 @@
 			files = (
 				67FD94C51A4D250C00D6BFA8 /* ImageCollectionViewCell.m in Sources */,
 				67FD95071A4D250C00D6BFA8 /* MonsterViewerViewController.m in Sources */,
+				4DEDB7591F7EBE7D009E84D1 /* WebViewController.m in Sources */,
 				67FD95061A4D250C00D6BFA8 /* MonsterCreatorViewController.m in Sources */,
 				67FD94C61A4D250C00D6BFA8 /* NetworkProgressBar.m in Sources */,
 				67FD95051A4D250C00D6BFA8 /* main.m in Sources */,
@@ -607,19 +646,23 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -654,19 +697,23 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Branch Metrics, Inc. (R63EM248DP)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Branch Metrics, Inc. (R63EM248DP)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -719,7 +766,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = BranchMonsterFactory/Branchsters.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Branch Metrics, Inc. (R63EM248DP)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 3ZNSRC9M83;
 				ENABLE_BITCODE = NO;
@@ -733,6 +780,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "io.branch-labs.bmf-ent";
 				PRODUCT_NAME = Branchsters;
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

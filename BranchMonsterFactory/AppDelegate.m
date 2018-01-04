@@ -6,13 +6,15 @@
 //  Copyright (c) 2014 Branch, Inc All rights reserved.
 //
 
-#import "AppDelegate.h"
-#import "Branch.h"
-#import "SplashViewController.h"
-#import "BranchUniversalObject+MonsterHelpers.h"
-#import <FBSDKCoreKit/FBSDKCoreKit.h>
+@import Branch;
+@import FBSDKCoreKit;
 @import Localytics;
 @import Tune;
+@import Fabric;
+@import Crashlytics;
+#import "AppDelegate.h"
+#import "SplashViewController.h"
+#import "BranchUniversalObject+MonsterHelpers.h"
 
 @interface AppDelegate ()
 @property (nonatomic) BOOL justLaunched;
@@ -22,32 +24,56 @@
 
 - (BOOL)application:(UIApplication *)application
 didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    BNCLogSetDisplayLevel(BNCLogLevelAll);
+    [Fabric with:@[[Crashlytics class]]];
+    self.justLaunched = YES;
 
-    //  We can add Tune integration too:
-//  [Tune setDebugMode:YES];    //  eDebug
+    // We can add Tune integration too:
+    // [Tune setDebugMode:YES];
     [Tune initializeWithTuneAdvertiserId:@"192600"
                        tuneConversionKey:@"06232296d8d6cb4faefa879d1939a37a"];
 
+    // Debug the file dates on Enterprise builds:
     [self showFileDates];
 
-    // Initalize Branch and register the deep link handler
-    // The deep link handler is called on every install/open to tell you if the user had just clicked a deep link
-
-    self.justLaunched = YES;
     Branch *branch = [Branch getInstance];
-    [branch delayInitToCheckForSearchAds];
-//  [branch setAppleSearchAdsDebugMode];    //  Turn this on to debug Apple Search Ads
     [branch registerFacebookDeepLinkingClass:[FBSDKAppLinkUtility class]];
+
+    // Enable this to track Apple Search Ad attribution:
+    [branch delayInitToCheckForSearchAds];
+
+    /*
+     * Initalize Branch and register the deep link handler:
+     *
+     * The deep link handler is called on every install/open to tell you if
+     * the user had just clicked a deep link
+     */
+
     [branch initSessionWithLaunchOptions:launchOptions
         andRegisterDeepLinkHandlerUsingBranchUniversalObject:
             ^ (BranchUniversalObject *BUO, BranchLinkProperties *linkProperties, NSError *error) {
-                if (BUO && [BUO.metadata objectForKey:@"monster"]) {
+
+                if (linkProperties.controlParams[@"$3p"] &&
+                    linkProperties.controlParams[@"$web_only"]) {
+                    NSURL *url = [NSURL URLWithString:linkProperties.controlParams[@"$original_url"]];
+                    if (url) {
+                        [[NSNotificationCenter defaultCenter]
+                           postNotificationName:@"pushWebView"
+                           object:self
+                           userInfo:@{@"URL": url}];
+                   }
+                } else
+                if (BUO && BUO.contentMetadata.customMetadata[@"monster"]) {
                     self.initialMonster = BUO;
-                    [[NSNotificationCenter defaultCenter] postNotificationName:@"pushEditAndViewerViews" object:nil];
-                }
-                else if (self.justLaunched) {
+                    [[NSNotificationCenter defaultCenter]
+                        postNotificationName:@"pushEditAndViewerViews"
+                        object:nil];
+                } else
+                if (self.justLaunched) {
                     self.initialMonster = [self emptyMonster];
-                    [[NSNotificationCenter defaultCenter] postNotificationName:@"pushEditView" object:nil];
+                    [[NSNotificationCenter defaultCenter]
+                        postNotificationName:@"pushEditView"
+                        object:nil];
                     self.justLaunched = NO;
                 }
 
@@ -69,7 +95,18 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
                 }
             }];
 
-//  [Localytics setLoggingEnabled:YES]; //  Turn this on to debug Localytics
+    // Optional: Set our own identitier for this user at Branch.
+    // This could be an account number our other userID. It only needs to be set once.
+
+    NSString *userIdentity = [[NSUserDefaults standardUserDefaults] objectForKey:@"userIdentity"];
+    if (!userIdentity) {
+        userIdentity = [[NSUUID UUID] UUIDString];
+        [[NSUserDefaults standardUserDefaults] setObject:userIdentity forKey:@"userIdentity"];
+        [branch setIdentity:userIdentity];
+    }
+
+    // Turn this on to debug Localytics:
+    // [Localytics setLoggingEnabled:YES];
     [Localytics autoIntegrate:@"0d738869f6b0f04eb1341f5-fbdada7a-f4ff-11e4-3279-00f82776ce8b"
         launchOptions:launchOptions];
 
@@ -135,7 +172,8 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 }
 
 - (BranchUniversalObject *)emptyMonster {
-    BranchUniversalObject *empty = [[BranchUniversalObject alloc] initWithTitle:@"Jingles Bingleheimer"];
+    BranchUniversalObject *empty =
+        [[BranchUniversalObject alloc] initWithTitle:@"Jingles Bingleheimer"];
     [empty setIsMonster];
     [empty setFaceIndex:0];
     [empty setBodyIndex:0];
@@ -145,7 +183,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-    // Attribution will not function without the measureSession call included
+    // Attribution will not function without the measureSession call included:
     [Tune measureSession];
 }
 
