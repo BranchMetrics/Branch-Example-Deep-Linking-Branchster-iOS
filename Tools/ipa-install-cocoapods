@@ -1,0 +1,10 @@
+#!/bin/bash
+set -euo pipefail
+
+#   ipa-make-archive  -  Make the Branchster ipa file.
+#
+#   E.B. Smith  February 2017.
+
+echo ">>> Getting Cocoapods..."
+pod install
+pod update
