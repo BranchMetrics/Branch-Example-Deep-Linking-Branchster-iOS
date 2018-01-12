@@ -16,6 +16,10 @@
 #import "SplashViewController.h"
 #import "BranchUniversalObject+MonsterHelpers.h"
 
+#import "BNCApplication.h"
+#import "BNCKeyChain.h"
+#import "BNCDeviceInfo.h"
+
 @interface AppDelegate ()
 @property (nonatomic) BOOL justLaunched;
 @end
@@ -27,6 +31,49 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     BNCLogSetDisplayLevel(BNCLogLevelAll);
     [Fabric with:@[[Crashlytics class]]];
     self.justLaunched = YES;
+
+    NSString*const kCloudGroup =
+        [NSString stringWithFormat:@"3ZNSRC9M83.%@", [NSBundle mainBundle].bundleIdentifier];
+        
+#if 1
+    BNCLogSetBreakPointsEnabled(YES);
+    NSError *error = nil;
+    NSString *value = nil;
+    error = [BNCKeyChain removeValuesForService:@"Branch" key:nil];
+    BNCLogAssert(!error);
+
+    error = [BNCKeyChain removeValuesForService:@"Service" key:nil];
+    BNCLogAssert(!error);
+
+    error = [BNCKeyChain removeValuesForService:@"Service2" key:nil];
+    BNCLogAssert(!error);
+
+    error = [BNCKeyChain storeValue:@"3xyz123" forService:@"Service" key:@"key1" cloudAccessGroup:nil];
+    BNCLogAssert(!error);
+
+    value = [BNCKeyChain retrieveValueForService:@"Service" key:@"key1" error:&error];
+    BNCLogAssert(error == nil && [value isEqualToString:@"3xyz123"]);
+
+    error = [BNCKeyChain storeValue:@"6xyz123" forService:@"Service" key:@"key2" cloudAccessGroup:kCloudGroup];
+    value = [BNCKeyChain retrieveValueForService:@"Service" key:@"key2" error:&error];
+    BNCLogAssert(error == nil && [value isEqualToString:@"6xyz123"]);
+
+    error = [BNCKeyChain storeValue:@"9xyz123" forService:@"Service2" key:@"skey2" cloudAccessGroup:kCloudGroup];
+    value = [BNCKeyChain retrieveValueForService:@"Service2" key:@"skey2" error:&error];
+    BNCLogAssert(error == nil && [value isEqualToString:@"9xyz123"]);
+
+    error = [BNCKeyChain removeValuesForService:@"Service" key:nil];
+    BNCLogAssert(!error);
+
+    value = [BNCKeyChain retrieveValueForService:@"Service" key:@"key1" error:&error];
+    BNCLogAssert(error.code == errSecItemNotFound && value == nil);
+
+    value = [BNCKeyChain retrieveValueForService:@"Service" key:@"key2" error:&error];
+    BNCLogAssert(error.code == errSecItemNotFound && value == nil);
+
+    value = [BNCKeyChain retrieveValueForService:@"Service2" key:@"skey2" error:&error];
+    BNCLogAssert(!error && [value isEqualToString:@"9xyz123"]);
+#endif
 
     // We can add Tune integration too:
     // [Tune setDebugMode:YES];
@@ -52,6 +99,8 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [branch initSessionWithLaunchOptions:launchOptions
         andRegisterDeepLinkHandlerUsingBranchUniversalObject:
             ^ (BranchUniversalObject *BUO, BranchLinkProperties *linkProperties, NSError *error) {
+
+                [self testAppDates];
 
                 if (linkProperties.controlParams[@"$3p"] &&
                     linkProperties.controlParams[@"$web_only"]) {
@@ -111,6 +160,39 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
         launchOptions:launchOptions];
 
     return YES;
+}
+
+- (void) testAppDates {
+    BNCApplication *application = [BNCApplication currentApplication];
+    NSString *deviceID = [BNCDeviceInfo getInstance].hardwareId;
+    NSString *identityID = [BNCPreferenceHelper preferenceHelper].identityID;
+
+    [application addDeviceID:deviceID identityID:identityID];
+    NSDictionary *ids = [application deviceKeyIdentityValueDictionary];
+
+    NSString *message = [NSString stringWithFormat:
+        @"firstBuildDate: %@\n"
+         "buildDate: %@\n"
+         "\n"
+         "firstInstall: %@\n"
+         "install: %@\n"
+         "\n"
+         "identity: %@\n"
+         "all: %@\n",
+         application.firstInstallBuildDate,
+         application.currentBuildDate,
+         application.firstInstallDate,
+         application.currentInstallDate,
+         identityID,
+         ids];
+    NSLog(@"App Info:\n%@.", message);
+    [[[UIAlertView alloc]
+        initWithTitle:@"Dates"
+        message:message
+        delegate:nil
+        cancelButtonTitle:@"OK"
+        otherButtonTitles:nil]
+            show];
 }
 
 - (void) showFileDates {
