@@ -9,23 +9,27 @@
 #import "BNCKeyChain.h"
 #import "BNCLog.h"
 
+// Apple Reference:
+// https://developer.apple.com/library/content/documentation/Security/Conceptual/keychainServConcepts/02concepts/concepts.html#//apple_ref/doc/uid/TP30000897-CH204-SW1
+
 @implementation BNCKeyChain
 
 //#define BNC_WEAK_EXPORT __attribute__((weak_import))
 
-#define BNC_WEAK_EXPORT
-
 #if defined(BNC_WEAK_EXPORT)
 
-CFStringRef SecCopyErrorMessageStringStub(OSStatus status, void *reserved)
-    __attribute__((weak));
-CFStringRef SecCopyErrorMessageStringStub(OSStatus status, void *reserved) {
-    return CFSTR("Wut");
-}
+//CFStringRef SecCopyErrorMessageStringStub(OSStatus status, void *reserved)
+//    __attribute__((weak));
+//CFStringRef SecCopyErrorMessageStringStub(OSStatus status, void *reserved) {
+//    return CFSTR("Wut");
+//}
 
 //CFStringRef SecCopyErrorMessageString(OSStatus status, void *reserved) __attribute__((weak));
+//#pragma comment(linker, -U_SecCopyErrorMessageString)
+
 extern CFStringRef SecCopyErrorMessageString(OSStatus status, void *reserved)
-    __attribute__((weak));
+    __attribute__((weak_import));
+
 //  __attribute__((alias("SecCopyErrorMessageStringStub")));
 
 //CFStringRef SecCopyErrorMessageString(OSStatus status, void *reserved)

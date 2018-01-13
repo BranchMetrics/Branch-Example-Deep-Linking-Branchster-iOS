@@ -10,6 +10,8 @@
 #import "BNCLog.h"
 #import "BNCKeyChain.h"
 
+static NSString * const kBranchKeychainService = @"Branch";
+
 @implementation BNCApplication
 
 + (BNCApplication*) currentApplication {
@@ -108,8 +110,6 @@ extern SecTaskRef SecTaskCreateFromSelf(CFAllocatorRef allocator)
 
     return buildDate;
 }
-
-static NSString * const kBranchKeychainService = @"Branch";
 
 + (NSDate*) firstInstallBuildDate {
     NSDate* firstBuildDate = nil;

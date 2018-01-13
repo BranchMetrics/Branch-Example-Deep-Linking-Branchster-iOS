@@ -36,11 +36,19 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
         [NSString stringWithFormat:@"3ZNSRC9M83.%@", [NSBundle mainBundle].bundleIdentifier];
         
 #if 1
+    // -------------------------------------------------------------------------------------- Danger
+    #if 0
+    {
+        NSError *error = nil;
+        error = [BNCKeyChain removeValuesForService:@"Branch" key:nil];
+        BNCLogAssert(!error);
+    }
+    #endif
+    // -------------------------------------------------------------------------------------- Danger
+
     BNCLogSetBreakPointsEnabled(YES);
     NSError *error = nil;
     NSString *value = nil;
-    error = [BNCKeyChain removeValuesForService:@"Branch" key:nil];
-    BNCLogAssert(!error);
 
     error = [BNCKeyChain removeValuesForService:@"Service" key:nil];
     BNCLogAssert(!error);
