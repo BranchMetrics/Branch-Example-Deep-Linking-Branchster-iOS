@@ -46,7 +46,5 @@
 		<string>applinks:c47b.app.link</string>
 		<string>applinks:c47b-alternate.app.link</string>
 	</array>
-	<key>keychain-access-groups</key>
-	<array/>
 </dict>
 </plist>

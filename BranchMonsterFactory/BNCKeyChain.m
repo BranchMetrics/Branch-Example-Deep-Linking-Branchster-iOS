@@ -1,48 +1,29 @@
-//
-//  BNCKeyChain.m
-//  Branch-SDK
-//
-//  Created by Edward on 1/8/18.
-//  Copyright © 2018 Branch. All rights reserved.
-//
+/**
+ @file          BNCKeyChain.m
+ @package       Branch-SDK
+ @brief         Simple access routines for secure keychain storage.
+
+ @author        Edward Smith
+ @date          January 8, 2018
+ @copyright     Copyright © 2018 Branch. All rights reserved.
+*/
 
 #import "BNCKeyChain.h"
 #import "BNCLog.h"
 
-// Apple Reference:
-// https://developer.apple.com/library/content/documentation/Security/Conceptual/keychainServConcepts/02concepts/concepts.html#//apple_ref/doc/uid/TP30000897-CH204-SW1
+// Apple Keychain Reference:
+// https://developer.apple.com/library/content/documentation/Conceptual/
+//      keychainServConcepts/02concepts/concepts.html#//apple_ref/doc/uid/TP30000897-CH204-SW1
 
-@implementation BNCKeyChain
+#pragma mark SecCopyErrorMessageString
 
-//#define BNC_WEAK_EXPORT __attribute__((weak_import))
-
-#if defined(BNC_WEAK_EXPORT)
-
-//CFStringRef SecCopyErrorMessageStringStub(OSStatus status, void *reserved)
-//    __attribute__((weak));
-//CFStringRef SecCopyErrorMessageStringStub(OSStatus status, void *reserved) {
-//    return CFSTR("Wut");
-//}
-
-//CFStringRef SecCopyErrorMessageString(OSStatus status, void *reserved) __attribute__((weak));
-//#pragma comment(linker, -U_SecCopyErrorMessageString)
-
+//#pragma clang link undefined _SecCopyErrorMessageString // -Wl,-U,_SecCopyErrorMessageString
 extern CFStringRef SecCopyErrorMessageString(OSStatus status, void *reserved)
     __attribute__((weak_import));
 
-//  __attribute__((alias("SecCopyErrorMessageStringStub")));
+#pragma mark - BNCKeyChain
 
-//CFStringRef SecCopyErrorMessageString(OSStatus status, void *reserved)
-//    __attribute__((weak, weakref("_SecCopyErrorMessageStringStub")));
-//    //BNC_WEAK_EXPORT;
-
-#endif
-
-// extern CFStringRef __attribute__((weak_import)) SecCopyErrorMessageString(OSStatus status, void *reserved)
-    // __attribute__((weak));
-    // __attribute__((weak_import));
-    // __attribute__((extern_weak));
-    // __attribute__((visibility ("default"))) __attribute__((weak_import));
+@implementation BNCKeyChain
 
 + (NSError*) errorWithKey:(NSString*)key OSStatus:(OSStatus)status {
     // Security errors are defined in Security/SecBase.h
@@ -51,20 +32,58 @@ extern CFStringRef SecCopyErrorMessageString(OSStatus status, void *reserved)
     NSString *description =
         [NSString stringWithFormat:@"Security error with key '%@': code %ld.", key, (long) status];
 
-#if defined(BNC_WEAK_EXPORT)
-    if (SecCopyErrorMessageString == NULL)
-        reason = @"Sec security error.";
-    else
+    if (SecCopyErrorMessageString != NULL)
         reason = (__bridge_transfer NSString*) SecCopyErrorMessageString(status, NULL);
-#else
-    reason = @"Sec security error.";
-#endif
+
+    if (!reason)
+        reason = @"Sec OSStatus error.";
 
     NSError *error = [NSError errorWithDomain:NSOSStatusErrorDomain code:status userInfo:@{
         NSLocalizedDescriptionKey: description,
         NSLocalizedFailureReasonErrorKey: reason
     }];
     return error;
+}
+
++ (NSArray*) retieveAllValuesWithError:(NSError**)error {
+    if (error) *error = nil;
+    NSDictionary* dictionary = @{
+        (__bridge id)kSecClass:                 (__bridge id)kSecClassGenericPassword,
+        (__bridge id)kSecReturnData:            (__bridge id)kCFBooleanTrue,
+        (__bridge id)kSecAttrSynchronizable:    (__bridge id)kSecAttrSynchronizableAny,
+        (__bridge id)kSecMatchLimit:            (__bridge id)kSecMatchLimitAll
+    };
+    CFTypeRef valueData = NULL;
+    OSStatus status = SecItemCopyMatching((__bridge CFDictionaryRef)dictionary, &valueData);
+    if (status) {
+        NSError *localError = [self errorWithKey:@"<all>" OSStatus:status];
+        BNCLogDebugSDK(@"Can't retrieve key: %@.", localError);
+        if (error) *error = localError;
+        if (valueData) CFRelease(valueData);
+        return nil;
+    }
+    NSMutableArray *array = nil;
+    if ([((__bridge NSArray*)valueData) isKindOfClass:[NSArray class]]) {
+        NSArray *dataArray = (__bridge NSArray*) valueData;
+        array = [NSMutableArray new];
+        for (NSData* data in dataArray) {
+            id value = nil;
+            @try {
+                value = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+            }
+            @catch (id) {
+                value = nil;
+            }
+            if (value)
+                [array addObject:value];
+            else
+            if (data)
+                [array addObject:data];
+        }
+    }
+    if (valueData)
+        CFRelease(valueData);
+    return array;
 }
 
 + (id) retrieveValueForService:(NSString*)service key:(NSString*)key error:(NSError**)error {
@@ -133,7 +152,11 @@ extern CFStringRef SecCopyErrorMessageString(OSStatus status, void *reserved)
         (__bridge id)kSecAttrAccount:           key,
         (__bridge id)kSecAttrSynchronizable:    (__bridge id)kSecAttrSynchronizableAny
     }];
-    SecItemDelete((__bridge CFDictionaryRef)dictionary);
+    OSStatus status = SecItemDelete((__bridge CFDictionaryRef)dictionary);
+    if (status != errSecSuccess && status != errSecItemNotFound) {
+        NSError *error = [self errorWithKey:key OSStatus:status];
+        BNCLogDebugSDK(@"Can't clear to store key: %@.", error);
+    }
 
     dictionary[(__bridge id)kSecValueData] = valueData;
     dictionary[(__bridge id)kSecAttrIsInvisible] = (__bridge id)kCFBooleanTrue;
@@ -145,7 +168,7 @@ extern CFStringRef SecCopyErrorMessageString(OSStatus status, void *reserved)
     } else {
         dictionary[(__bridge id)kSecAttrSynchronizable] = (__bridge id) kCFBooleanFalse;
     }
-    OSStatus status = SecItemAdd((__bridge CFDictionaryRef)dictionary, NULL);
+    status = SecItemAdd((__bridge CFDictionaryRef)dictionary, NULL);
     if (status) {
         NSError *error = [self errorWithKey:key OSStatus:status];
         BNCLogDebugSDK(@"Can't store key: %@.", error);
@@ -157,7 +180,6 @@ extern CFStringRef SecCopyErrorMessageString(OSStatus status, void *reserved)
 + (NSError*) removeValuesForService:(NSString*)service key:(NSString*)key {
     NSMutableDictionary* dictionary = [NSMutableDictionary dictionaryWithDictionary:@{
         (__bridge id)kSecClass:                 (__bridge id)kSecClassGenericPassword,
-        (__bridge id)kSecAttrAccessible:        (__bridge id)kSecAttrAccessibleAfterFirstUnlock,
         (__bridge id)kSecAttrSynchronizable:    (__bridge id)kSecAttrSynchronizableAny
     }];
     if (service) dictionary[(__bridge id)kSecAttrService] = service;

@@ -15,7 +15,7 @@
 #import "MonsterViewerViewController.h"
 #import "MonsterPartsFactory.h"
 
-@interface MonsterViewerViewController () /*<UITextViewDelegate>*/
+@interface MonsterViewerViewController () // <UITextViewDelegate>
 
 @property (strong, nonatomic)BranchUniversalObject *viewingMonster;
 @property (strong, nonatomic) NetworkProgressBar *progressBar;

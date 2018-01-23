@@ -5,7 +5,12 @@
 # Dependency line:
 # $(TARGET_BUILD_DIR)/$(INFOPLIST_PATH)
 set -euo pipefail
-target="${TARGET_BUILD_DIR}/${INFOPLIST_PATH}"
+if (( $# == 1 ))
+then
+    target="$1"
+else
+    target="${TARGET_BUILD_DIR}/${INFOPLIST_PATH}"
+fi
 echo "Updating date '`date`' in '$target'."
 (/usr/libexec/PlistBuddy -c "delete :ZBuildInfoDate" "${target}" || true)
  /usr/libexec/PlistBuddy -c "add :ZBuildInfoDate date `date`" "${target}"

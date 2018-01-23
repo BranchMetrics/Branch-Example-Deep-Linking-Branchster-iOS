@@ -29,6 +29,7 @@ trap "showErrorOnExit" EXIT
 printf "${textBlue}>>> Deploying: `pwd`${textNormal}\n"
 
 # ./Tools/ipa-install-cocoapods
+./Tools/ipa-add-timestamp ./BranchMonsterFactory/Info.plist
 ./Tools/ipa-make-archive
 
 printf "${textBlue}>>> Making manifest...${textNormal}\n"

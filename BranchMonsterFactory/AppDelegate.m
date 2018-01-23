@@ -32,24 +32,27 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [Fabric with:@[[Crashlytics class]]];
     self.justLaunched = YES;
 
+    NSError *error = nil;
+    NSString *value = nil;
     NSString*const kCloudGroup =
         [NSString stringWithFormat:@"3ZNSRC9M83.%@", [NSBundle mainBundle].bundleIdentifier];
-        
+
+    NSArray *stuff = [BNCKeyChain retieveAllValuesWithError:&error];
+    NSLog(@"Stuff:\n%@\nError: %@.", stuff, error);
+
 #if 1
     // -------------------------------------------------------------------------------------- Danger
     #if 0
     {
         NSError *error = nil;
-        error = [BNCKeyChain removeValuesForService:@"Branch" key:nil];
+        error = [BNCKeyChain removeValuesForService:nil key:nil];
         BNCLogAssert(!error);
+        exit(0);
     }
     #endif
     // -------------------------------------------------------------------------------------- Danger
 
     BNCLogSetBreakPointsEnabled(YES);
-    NSError *error = nil;
-    NSString *value = nil;
-
     error = [BNCKeyChain removeValuesForService:@"Service" key:nil];
     BNCLogAssert(!error);
 
