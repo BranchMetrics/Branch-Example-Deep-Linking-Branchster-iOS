@@ -6,6 +6,7 @@ target 'BranchMonsterFactory' do
     pod 'Crashlytics'
     pod 'LocalyticsStaticFramework', '~> 4.0'
     pod 'FBSDKCoreKit'
+    pod 'FBSDKLoginKit'
     pod 'Tune'
     pod 'Branch'
 end

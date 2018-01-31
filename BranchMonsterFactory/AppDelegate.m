@@ -50,8 +50,8 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
         andRegisterDeepLinkHandlerUsingBranchUniversalObject:
             ^ (BranchUniversalObject *BUO, BranchLinkProperties *linkProperties, NSError *error) {
 
-                if (linkProperties.controlParams[@"$3p"] &&
-                    linkProperties.controlParams[@"$web_only"]) {
+                if (linkProperties.controlParams[@"$3p"] != nil &&
+                    linkProperties.controlParams[@"$web_only"] != nil) {
                     NSURL *url = [NSURL URLWithString:linkProperties.controlParams[@"$original_url"]];
                     if (url) {
                         [[NSNotificationCenter defaultCenter]
@@ -102,8 +102,12 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
         [branch setIdentity:userIdentity];
     }
 
+    [[FBSDKApplicationDelegate sharedInstance] application:application
+        didFinishLaunchingWithOptions:launchOptions];
+
     // Turn this on to debug Localytics:
     // [Localytics setLoggingEnabled:YES];
+    // Initialize Localytics:
     [Localytics autoIntegrate:@"0d738869f6b0f04eb1341f5-fbdada7a-f4ff-11e4-3279-00f82776ce8b"
         launchOptions:launchOptions];
 
@@ -130,6 +134,20 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
             openURL:(NSURL *)url
   sourceApplication:(NSString *)sourceApplication
          annotation:(id)annotation {
+         
+    BOOL handled =
+        [[FBSDKApplicationDelegate sharedInstance] application:application
+            openURL:url
+            sourceApplication:sourceApplication
+            annotation:annotation];
+    if (handled) {
+
+        FBSDKAccessToken *token = [FBSDKAccessToken currentAccessToken];
+        NSLog(@"Token is %@.", token);
+
+        return YES;
+    }
+
     [[Branch getInstance] handleDeepLink:url];
     return YES;
 }

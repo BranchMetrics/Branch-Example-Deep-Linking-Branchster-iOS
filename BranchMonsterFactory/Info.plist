@@ -86,5 +86,12 @@
 	</array>
 	<key>branch_key</key>
 	<string>key_live_hkDytPACtipny3N9XmnbZlapBDdj4WIL</string>
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+      <string>fbapi</string>
+      <string>fb-messenger-share-api</string>
+      <string>fbauth2</string>
+      <string>fbshareextension</string>
+    </array>
 </dict>
 </plist>

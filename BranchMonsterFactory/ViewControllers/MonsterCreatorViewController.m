@@ -12,6 +12,8 @@
 #import "MonsterViewerViewController.h"
 #import "BranchUniversalObject+MonsterHelpers.h"
 #import "Branch.h"
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
 
 @interface MonsterCreatorViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 
@@ -26,6 +28,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *cmdLeftArrow;
 @property (weak, nonatomic) IBOutlet UIButton *cmdDownArrow;
 @property (weak, nonatomic) IBOutlet UIButton *cmdDone;
+@property (strong, nonatomic) IBOutlet FBSDKLoginButton *loginButton;
 
 @property (nonatomic) NSInteger bodyIndex;
 @property (nonatomic) NSInteger faceIndex;
@@ -41,7 +44,11 @@ static CGFloat SIDE_SPACE = 7.0;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
+    // Facebook login:
+    self.loginButton = [[FBSDKLoginButton alloc] init];
+    [self.view addSubview:self.loginButton];
+
     for (int i = 0; i < [self.colorViews count]; i++) {
         UIView *currView = [self.colorViews objectAtIndex:i];
         [currView setBackgroundColor:[MonsterPartsFactory colorForIndex:i]];
@@ -75,7 +82,14 @@ static CGFloat SIDE_SPACE = 7.0;
 
 - (void)viewDidLayoutSubviews {
     [self adjustMonsterPicturesForScreenSize];
- 
+
+    CGRect r = self.loginButton.frame;
+    r.origin.x = 0.0;
+    r.origin.y = 20.0;
+    r.size.height = MAX(r.size.height, 35.0);
+    r.size.width = MAX(r.size.width, 70.0);
+    self.loginButton.frame = r;
+
     self.bodyIndex = [self.editingMonster getBodyIndex];
     self.faceIndex = [self.editingMonster getFaceIndex];
     [self.botViewLayerTwo scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:self.bodyIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
@@ -159,6 +173,10 @@ static CGFloat SIDE_SPACE = 7.0;
 }
 
 - (IBAction)cmdFinishedClick:(id)sender {
+
+    FBSDKAccessToken *token = [FBSDKAccessToken currentAccessToken];
+    NSLog(@"Token is %@.", token);
+
     if ([self.monsterName.text length]) {
         [self.editingMonster setMonsterName:[self.monsterName text]];
     } else {
