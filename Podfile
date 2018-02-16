@@ -7,5 +7,5 @@ target 'BranchMonsterFactory' do
     pod 'LocalyticsStaticFramework', '~> 4.0'
     pod 'FBSDKCoreKit'
     pod 'Tune'
-    pod 'Branch'
+    pod 'Branch', :git => 'https://github.com/BranchMetrics/ios-branch-deep-linking.git', :branch => 'fix-airdrop-with-scheme-INTENG-4106'
 end
