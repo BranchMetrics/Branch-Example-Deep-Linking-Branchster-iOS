@@ -45,6 +45,7 @@
         <string>applinks:email-cm.branch.rocks</string>
         <string>applinks:amazon-email.branch.rocks</string>
         <string>applinks:email-iterable.branch.rocks</string>
+	<string>applinks:email-adobe.branch.rocks</string>
 	</array>
 </dict>
 </plist>
