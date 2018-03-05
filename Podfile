@@ -5,7 +5,6 @@ target 'BranchMonsterFactory' do
     pod 'Fabric'
     pod 'Crashlytics'
     pod 'LocalyticsStaticFramework', '~> 4.0'
-    pod 'FBSDKCoreKit'
     pod 'Tune'
     pod 'Branch'
 end

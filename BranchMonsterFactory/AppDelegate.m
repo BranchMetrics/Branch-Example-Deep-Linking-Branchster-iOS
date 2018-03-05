@@ -7,7 +7,6 @@
 //
 
 @import Branch;
-@import FBSDKCoreKit;
 @import Localytics;
 @import Tune;
 @import Fabric;
@@ -34,8 +33,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
                        tuneConversionKey:@"06232296d8d6cb4faefa879d1939a37a"];
 
     Branch *branch = [Branch getInstance];
-    [branch registerFacebookDeepLinkingClass:[FBSDKAppLinkUtility class]];
-
+    
     // Enable this to track Apple Search Ad attribution:
     [branch delayInitToCheckForSearchAds];
 
