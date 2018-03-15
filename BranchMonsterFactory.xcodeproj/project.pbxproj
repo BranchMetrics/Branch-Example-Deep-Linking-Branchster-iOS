@@ -569,16 +569,22 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-BranchMonsterFactory/Pods-BranchMonsterFactory-frameworks.sh",
+<<<<<<< HEAD
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/Branch/Branch.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+=======
+>>>>>>> 97b76fe2b854f16df8850a8a95619a4e73fdf832
 				"${PODS_ROOT}/Tune/Tune.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+<<<<<<< HEAD
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Branch.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+=======
+>>>>>>> 97b76fe2b854f16df8850a8a95619a4e73fdf832
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Tune.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
