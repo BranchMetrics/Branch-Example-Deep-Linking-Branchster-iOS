@@ -7,11 +7,6 @@
 //
 
 @import Branch;
-@import FBSDKCoreKit;
-@import Localytics;
-@import Tune;
-@import Fabric;
-@import Crashlytics;
 #import "AppDelegate.h"
 #import "SplashViewController.h"
 #import "BranchUniversalObject+MonsterHelpers.h"
@@ -25,16 +20,9 @@
 - (BOOL)application:(UIApplication *)application
 didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     BNCLogSetDisplayLevel(BNCLogLevelAll);
-    [Fabric with:@[[Crashlytics class]]];
     self.justLaunched = YES;
 
-    // We can add Tune integration too:
-    // [Tune setDebugMode:YES];
-    [Tune initializeWithTuneAdvertiserId:@"192600"
-                       tuneConversionKey:@"06232296d8d6cb4faefa879d1939a37a"];
-
     Branch *branch = [Branch getInstance];
-    [branch registerFacebookDeepLinkingClass:[FBSDKAppLinkUtility class]];
 
     // Enable this to track Apple Search Ad attribution:
     [branch delayInitToCheckForSearchAds];
@@ -102,17 +90,11 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
         [branch setIdentity:userIdentity];
     }
 
-    // Turn this on to debug Localytics:
-    // [Localytics setLoggingEnabled:YES];
-    [Localytics autoIntegrate:@"0d738869f6b0f04eb1341f5-fbdada7a-f4ff-11e4-3279-00f82776ce8b"
-        launchOptions:launchOptions];
-
     return YES;
 }
 
 - (BranchUniversalObject *)emptyMonster {
-    BranchUniversalObject *empty =
-        [[BranchUniversalObject alloc] initWithTitle:@"Jingles Bingleheimer"];
+    BranchUniversalObject *empty = [[BranchUniversalObject alloc] initWithTitle:@"Jingles Bingleheimer"];
     [empty setIsMonster];
     [empty setFaceIndex:0];
     [empty setBodyIndex:0];
@@ -121,22 +103,12 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     return empty;
 }
 
-- (void)applicationDidBecomeActive:(UIApplication *)application {
-    // Attribution will not function without the measureSession call included:
-    [Tune measureSession];
-}
-
-- (BOOL)application:(UIApplication *)application
-            openURL:(NSURL *)url
-  sourceApplication:(NSString *)sourceApplication
-         annotation:(id)annotation {
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
     [[Branch getInstance] handleDeepLink:url];
     return YES;
 }
 
-- (BOOL)application:(UIApplication *)application
-continueUserActivity:(NSUserActivity *)userActivity
-  restorationHandler:(void (^)(NSArray *))restorationHandler {
+- (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray<id<UIUserActivityRestoring>> * _Nullable))restorationHandler {
     [[Branch getInstance] continueUserActivity:userActivity];
     return YES;
 }
