@@ -2,10 +2,6 @@ use_frameworks!
 platform :ios, '8.0'
 
 target 'BranchMonsterFactory' do
-    #pod 'Fabric'
-    #pod 'Crashlytics'
-    #pod 'LocalyticsStaticFramework', '~> 4.0'
-    #pod 'FBSDKCoreKit'
-    #pod 'Tune'
-    pod 'Branch'
+  pod 'Branch', :path => '~/github/ios-branch-deep-linking-attribution'
+
 end
