@@ -15,7 +15,6 @@
 
 @interface MonsterCreatorViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 
-
 @property (weak, nonatomic) IBOutlet UITextField *monsterName;
 
 @property (weak, nonatomic) IBOutlet UIView *botViewLayerOne;
@@ -30,8 +29,9 @@
 
 @property (nonatomic) NSInteger bodyIndex;
 @property (nonatomic) NSInteger faceIndex;
-
 @end
+
+#pragma mark - MonsterCreatorViewController
 
 @implementation MonsterCreatorViewController
 
@@ -164,7 +164,6 @@ static CGFloat SIDE_SPACE = 7.0;
     } else {
         [self.editingMonster setMonsterName:@"Bingles Jingleheimer"];
     }
-    
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
@@ -179,10 +178,11 @@ static CGFloat SIDE_SPACE = 7.0;
     return CGSizeMake(self.botViewLayerOne.frame.size.width, self.botViewLayerOne.frame.size.height);
 }
 
-
-
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    ImageCollectionViewCell *cell = (ImageCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
+                  cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    ImageCollectionViewCell *cell =
+        (ImageCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"cell"
+           forIndexPath:indexPath];
     
     if ([collectionView isEqual:self.botViewLayerTwo]) {
         UIImage *bodyImage = [MonsterPartsFactory imageForBody:indexPath.row];
@@ -196,13 +196,11 @@ static CGFloat SIDE_SPACE = 7.0;
     return cell;
 }
 
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     MonsterViewerViewController *receiver = (MonsterViewerViewController *)[segue destinationViewController];
     [receiver setViewingMonster:self.editingMonster];
 }
-
 
 @end
