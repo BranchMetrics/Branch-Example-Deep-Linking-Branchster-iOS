@@ -1,0 +1,42 @@
+PODS:
+  - Branch (0.35.0)
+  - Crashlytics (3.14.0):
+    - Fabric (~> 1.10.2)
+  - Fabric (1.10.2)
+  - FBSDKCoreKit (7.1.1):
+    - FBSDKCoreKit/Basics (= 7.1.1)
+    - FBSDKCoreKit/Core (= 7.1.1)
+  - FBSDKCoreKit/Basics (7.1.1)
+  - FBSDKCoreKit/Core (7.1.1):
+    - FBSDKCoreKit/Basics
+  - LocalyticsStaticFramework (4.4.1)
+  - Tune (6.2.2)
+
+DEPENDENCIES:
+  - Branch
+  - Crashlytics
+  - Fabric
+  - FBSDKCoreKit
+  - LocalyticsStaticFramework (~> 4.0)
+  - Tune
+
+SPEC REPOS:
+  trunk:
+    - Branch
+    - Crashlytics
+    - Fabric
+    - FBSDKCoreKit
+    - LocalyticsStaticFramework
+    - Tune
+
+SPEC CHECKSUMS:
+  Branch: 9a37f707974a128c37829033c49018b79c7e7a2d
+  Crashlytics: 540b7e5f5da5a042647227a5e3ac51d85eed06df
+  Fabric: 706c8b8098fff96c33c0db69cbf81f9c551d0d74
+  FBSDKCoreKit: b46507dc8b8cefed31d644e74d7cc30e2a715ef8
+  LocalyticsStaticFramework: 6eaa42ea2d6e8f331831afd8e9656c3cbc238f2e
+  Tune: 6b3d4cf5b45b422ff890c0f814199900de0bf399
+
+PODFILE CHECKSUM: 63a0b5490f7b33577b559e0a67cc1626b6a02ea5
+
+COCOAPODS: 1.9.3
