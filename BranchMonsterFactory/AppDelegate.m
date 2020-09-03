@@ -126,17 +126,14 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [Tune measureSession];
 }
 
-- (BOOL)application:(UIApplication *)application
-            openURL:(NSURL *)url
-  sourceApplication:(NSString *)sourceApplication
-         annotation:(id)annotation {
-    [[Branch getInstance] handleDeepLink:url];
-    return YES;
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options
+{
+    return [[Branch getInstance] application:app openURL:url options:options];
 }
 
 - (BOOL)application:(UIApplication *)application
 continueUserActivity:(NSUserActivity *)userActivity
-  restorationHandler:(void (^)(NSArray *))restorationHandler {
+  restorationHandler:(void (^)(NSArray<id<UIUserActivityRestoring>> *))restorationHandler {
     [[Branch getInstance] continueUserActivity:userActivity];
     return YES;
 }
