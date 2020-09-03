@@ -88,5 +88,7 @@
 	</array>
 	<key>branch_key</key>
 	<string>key_live_hkDytPACtipny3N9XmnbZlapBDdj4WIL</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>(TODO) The app uses your location to....</string>
 </dict>
 </plist>
