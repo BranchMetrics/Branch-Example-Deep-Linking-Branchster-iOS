@@ -8,10 +8,6 @@
 
 @import Branch;
 @import FBSDKCoreKit;
-@import Localytics;
-@import Tune;
-@import Fabric;
-@import Crashlytics;
 #import "AppDelegate.h"
 #import "SplashViewController.h"
 #import "BranchUniversalObject+MonsterHelpers.h"
@@ -25,13 +21,7 @@
 - (BOOL)application:(UIApplication *)application
 didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     BNCLogSetDisplayLevel(BNCLogLevelAll);
-    [Fabric with:@[[Crashlytics class]]];
     self.justLaunched = YES;
-
-    // We can add Tune integration too:
-    // [Tune setDebugMode:YES];
-    [Tune initializeWithTuneAdvertiserId:@"192600"
-                       tuneConversionKey:@"06232296d8d6cb4faefa879d1939a37a"];
 
     Branch *branch = [Branch getInstance];
     [branch registerFacebookDeepLinkingClass:[FBSDKAppLinkUtility class]];
@@ -102,11 +92,6 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
         [branch setIdentity:userIdentity];
     }
 
-    // Turn this on to debug Localytics:
-    // [Localytics setLoggingEnabled:YES];
-    [Localytics autoIntegrate:@"0d738869f6b0f04eb1341f5-fbdada7a-f4ff-11e4-3279-00f82776ce8b"
-        launchOptions:launchOptions];
-
     return YES;
 }
 
@@ -119,11 +104,6 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [empty setColorIndex:0];
     [empty setMonsterName:@""];
     return empty;
-}
-
-- (void)applicationDidBecomeActive:(UIApplication *)application {
-    // Attribution will not function without the measureSession call included:
-    [Tune measureSession];
 }
 
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options

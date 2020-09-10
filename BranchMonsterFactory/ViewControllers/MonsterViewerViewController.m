@@ -6,8 +6,6 @@
 //  Copyright (c) 2014 Branch, Inc All rights reserved.
 //
 
-@import MessageUI;
-@import Social;
 @import Branch;
 #import "BranchUniversalObject+MonsterHelpers.h"
 #import "BranchInfoViewController.h"

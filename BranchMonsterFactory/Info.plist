@@ -34,20 +34,6 @@
 	</array>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
-	<key>Fabric</key>
-	<dict>
-		<key>APIKey</key>
-		<string>a5689371c7d402061ef8dd47b44a89f0515ca4a7</string>
-		<key>Kits</key>
-		<array>
-			<dict>
-				<key>KitInfo</key>
-				<dict/>
-				<key>KitName</key>
-				<string>Crashlytics</string>
-			</dict>
-		</array>
-	</dict>
 	<key>FacebookAppID</key>
 	<string>288726397999326</string>
 	<key>FacebookDisplayName</key>
@@ -56,17 +42,6 @@
 	<false/>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>NSAppTransportSecurity</key>
-	<dict>
-		<key>NSExceptionDomains</key>
-		<dict>
-			<key>public.localytics.s3.amazonaws.com</key>
-			<dict>
-				<key>NSExceptionAllowsInsecureHTTPLoads</key>
-				<true/>
-			</dict>
-		</dict>
-	</dict>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -88,7 +63,5 @@
 	</array>
 	<key>branch_key</key>
 	<string>key_live_hkDytPACtipny3N9XmnbZlapBDdj4WIL</string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>(TODO) The app uses your location to....</string>
 </dict>
 </plist>
