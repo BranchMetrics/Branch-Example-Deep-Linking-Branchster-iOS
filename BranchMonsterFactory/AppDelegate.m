@@ -8,10 +8,6 @@
 
 @import Branch;
 @import FBSDKCoreKit;
-@import Localytics;
-@import Tune;
-@import Fabric;
-@import Crashlytics;
 #import "AppDelegate.h"
 #import "SplashViewController.h"
 #import "BranchUniversalObject+MonsterHelpers.h"
@@ -25,13 +21,7 @@
 - (BOOL)application:(UIApplication *)application
 didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     BNCLogSetDisplayLevel(BNCLogLevelAll);
-    [Fabric with:@[[Crashlytics class]]];
     self.justLaunched = YES;
-
-    // We can add Tune integration too:
-    // [Tune setDebugMode:YES];
-    [Tune initializeWithTuneAdvertiserId:@"192600"
-                       tuneConversionKey:@"06232296d8d6cb4faefa879d1939a37a"];
 
     Branch *branch = [Branch getInstance];
     [branch registerFacebookDeepLinkingClass:[FBSDKAppLinkUtility class]];
@@ -92,21 +82,17 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
                 }
             }];
 
-    // Optional: Set our own identitier for this user at Branch.
-    // This could be an account number our other userID. It only needs to be set once.
+        // Optional: Set our own identitier for this user at Branch.
+        // This could be an account number our other userID. It only needs to be set once.
 
-    NSString *userIdentity = [[NSUserDefaults standardUserDefaults] objectForKey:@"userIdentity"];
-    if (!userIdentity) {
-        userIdentity = [[NSUUID UUID] UUIDString];
-        [[NSUserDefaults standardUserDefaults] setObject:userIdentity forKey:@"userIdentity"];
-        [branch setIdentity:userIdentity];
-    }
-
-    // Turn this on to debug Localytics:
-    // [Localytics setLoggingEnabled:YES];
-    [Localytics autoIntegrate:@"0d738869f6b0f04eb1341f5-fbdada7a-f4ff-11e4-3279-00f82776ce8b"
-        launchOptions:launchOptions];
-
+        // User Identity
+    //    NSString *userIdentity = [[NSUserDefaults standardUserDefaults] objectForKey:@"userIdentity"];
+    //    if (!userIdentity) {
+    //        userIdentity = [[NSUUID UUID] UUIDString];
+    //        [[NSUserDefaults standardUserDefaults] setObject:userIdentity forKey:@"userIdentity"];
+    //        [branch setIdentity:userIdentity];
+    //    }
+    
     return YES;
 }
 
@@ -121,22 +107,14 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     return empty;
 }
 
-- (void)applicationDidBecomeActive:(UIApplication *)application {
-    // Attribution will not function without the measureSession call included:
-    [Tune measureSession];
-}
-
-- (BOOL)application:(UIApplication *)application
-            openURL:(NSURL *)url
-  sourceApplication:(NSString *)sourceApplication
-         annotation:(id)annotation {
-    [[Branch getInstance] handleDeepLink:url];
-    return YES;
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options
+{
+    return [[Branch getInstance] application:app openURL:url options:options];
 }
 
 - (BOOL)application:(UIApplication *)application
 continueUserActivity:(NSUserActivity *)userActivity
-  restorationHandler:(void (^)(NSArray *))restorationHandler {
+  restorationHandler:(void (^)(NSArray<id<UIUserActivityRestoring>> *))restorationHandler {
     [[Branch getInstance] continueUserActivity:userActivity];
     return YES;
 }
