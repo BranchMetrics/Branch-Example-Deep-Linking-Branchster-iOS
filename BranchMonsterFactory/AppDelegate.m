@@ -82,16 +82,17 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
                 }
             }];
 
-    // Optional: Set our own identitier for this user at Branch.
-    // This could be an account number our other userID. It only needs to be set once.
+        // Optional: Set our own identitier for this user at Branch.
+        // This could be an account number our other userID. It only needs to be set once.
 
-    NSString *userIdentity = [[NSUserDefaults standardUserDefaults] objectForKey:@"userIdentity"];
-    if (!userIdentity) {
-        userIdentity = [[NSUUID UUID] UUIDString];
-        [[NSUserDefaults standardUserDefaults] setObject:userIdentity forKey:@"userIdentity"];
-        [branch setIdentity:userIdentity];
-    }
-
+        // User Identity
+    //    NSString *userIdentity = [[NSUserDefaults standardUserDefaults] objectForKey:@"userIdentity"];
+    //    if (!userIdentity) {
+    //        userIdentity = [[NSUUID UUID] UUIDString];
+    //        [[NSUserDefaults standardUserDefaults] setObject:userIdentity forKey:@"userIdentity"];
+    //        [branch setIdentity:userIdentity];
+    //    }
+    
     return YES;
 }
 
