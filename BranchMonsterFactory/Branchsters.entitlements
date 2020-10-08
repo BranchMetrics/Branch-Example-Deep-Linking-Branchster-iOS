@@ -48,5 +48,9 @@
 		<string>applinks:email-adobe.branch.rocks</string>
 		<string>applinks:click.email-salesforce.branch.rocks</string>
 	</array>
+	<key>com.apple.security.application-groups</key>
+	<array>
+		<string>group.io.branch</string>
+	</array>
 </dict>
 </plist>

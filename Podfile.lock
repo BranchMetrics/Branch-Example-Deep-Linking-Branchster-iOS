@@ -1,10 +1,10 @@
 PODS:
-  - Branch (0.35.0)
-  - FBSDKCoreKit (7.1.1):
-    - FBSDKCoreKit/Basics (= 7.1.1)
-    - FBSDKCoreKit/Core (= 7.1.1)
-  - FBSDKCoreKit/Basics (7.1.1)
-  - FBSDKCoreKit/Core (7.1.1):
+  - Branch (0.35.1)
+  - FBSDKCoreKit (8.0.0):
+    - FBSDKCoreKit/Basics (= 8.0.0)
+    - FBSDKCoreKit/Core (= 8.0.0)
+  - FBSDKCoreKit/Basics (8.0.0)
+  - FBSDKCoreKit/Core (8.0.0):
     - FBSDKCoreKit/Basics
 
 DEPENDENCIES:
@@ -17,8 +17,8 @@ SPEC REPOS:
     - FBSDKCoreKit
 
 SPEC CHECKSUMS:
-  Branch: 9a37f707974a128c37829033c49018b79c7e7a2d
-  FBSDKCoreKit: b46507dc8b8cefed31d644e74d7cc30e2a715ef8
+  Branch: 43863eab4c2339a58fa552f2f277139c3839dfb4
+  FBSDKCoreKit: 9d27fe97a2fa2abe5eeefea8240e837623ab88e0
 
 PODFILE CHECKSUM: 6c4e05f52a8ba537fcc0ee507ebc2d0fd27ac995
 
