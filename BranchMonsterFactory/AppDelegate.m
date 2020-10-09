@@ -24,6 +24,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.justLaunched = YES;
 
     Branch *branch = [Branch getInstance];
+    [branch setAppClipAppGroup:@"group.io.branch"];
     [branch registerFacebookDeepLinkingClass:[FBSDKAppLinkUtility class]];
 
     // Enable this to track Apple Search Ad attribution:

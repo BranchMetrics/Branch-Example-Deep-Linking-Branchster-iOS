@@ -15,6 +15,22 @@
 		4D4F23231F7F456000638C65 /* Strings.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4D4F23221F7F456000638C65 /* Strings.strings */; };
 		4DEDB7591F7EBE7D009E84D1 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DEDB7581F7EBE7D009E84D1 /* WebViewController.m */; };
 		5F5016DC250AD95500B181E7 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F5016DB250AD95500B181E7 /* WebKit.framework */; };
+		5F790B81252FCA4800C82E83 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F790B80252FCA4800C82E83 /* AppDelegate.swift */; };
+		5F790B83252FCA4800C82E83 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F790B82252FCA4800C82E83 /* SceneDelegate.swift */; };
+		5F790B85252FCA4800C82E83 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F790B84252FCA4800C82E83 /* ViewController.swift */; };
+		5F790B88252FCA4800C82E83 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F790B86252FCA4800C82E83 /* Main.storyboard */; };
+		5F790B8A252FCA4A00C82E83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F790B89252FCA4A00C82E83 /* Assets.xcassets */; };
+		5F790B8D252FCA4A00C82E83 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F790B8B252FCA4A00C82E83 /* LaunchScreen.storyboard */; };
+		5F790B99252FCA4A00C82E83 /* BranchMonsterFactoryAppClipTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F790B98252FCA4A00C82E83 /* BranchMonsterFactoryAppClipTests.swift */; };
+		5F790BA4252FCA4A00C82E83 /* BranchMonsterFactoryAppClipUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F790BA3252FCA4A00C82E83 /* BranchMonsterFactoryAppClipUITests.swift */; };
+		5F790BA8252FCA4A00C82E83 /* BranchMonsterFactoryAppClip.app in Embed App Clips */ = {isa = PBXBuildFile; fileRef = 5F790B7E252FCA4800C82E83 /* BranchMonsterFactoryAppClip.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		5F790BC4252FCAE200C82E83 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F790BC3252FCAE200C82E83 /* AdSupport.framework */; };
+		5F790BC6252FCAEF00C82E83 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F790BC5252FCAEF00C82E83 /* CoreTelephony.framework */; };
+		5F790BC8252FCAF400C82E83 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F790BC7252FCAF400C82E83 /* iAd.framework */; };
+		5F790BCA252FCE9800C82E83 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F790BC9252FCE9700C82E83 /* SystemConfiguration.framework */; };
+		5F790BCB252FCEA100C82E83 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F5016DB250AD95500B181E7 /* WebKit.framework */; };
+		5F790BCD252FCEAB00C82E83 /* Branch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F790BCC252FCEAB00C82E83 /* Branch.framework */; };
+		5F790BCE252FCEAB00C82E83 /* Branch.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5F790BCC252FCEAB00C82E83 /* Branch.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		67FD94C31A4D250C00D6BFA8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 67FD945D1A4D250C00D6BFA8 /* AppDelegate.m */; };
 		67FD94C51A4D250C00D6BFA8 /* ImageCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 67FD94621A4D250C00D6BFA8 /* ImageCollectionViewCell.m */; };
 		67FD94C61A4D250C00D6BFA8 /* NetworkProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 67FD94641A4D250C00D6BFA8 /* NetworkProgressBar.m */; };
@@ -72,6 +88,55 @@
 		67FD95081A4D250C00D6BFA8 /* SplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67FD94C21A4D250C00D6BFA8 /* SplashViewController.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		5F790B95252FCA4A00C82E83 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 670591E119BBAC630039DAE1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5F790B7D252FCA4800C82E83;
+			remoteInfo = BranchMonsterFactoryAppClip;
+		};
+		5F790BA0252FCA4A00C82E83 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 670591E119BBAC630039DAE1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5F790B7D252FCA4800C82E83;
+			remoteInfo = BranchMonsterFactoryAppClip;
+		};
+		5F790BA6252FCA4A00C82E83 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 670591E119BBAC630039DAE1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5F790B7D252FCA4800C82E83;
+			remoteInfo = BranchMonsterFactoryAppClip;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		5F790BA9252FCA4A00C82E83 /* Embed App Clips */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/AppClips";
+			dstSubfolderSpec = 16;
+			files = (
+				5F790BA8252FCA4A00C82E83 /* BranchMonsterFactoryAppClip.app in Embed App Clips */,
+			);
+			name = "Embed App Clips";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5F790BCF252FCEAB00C82E83 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				5F790BCE252FCEAB00C82E83 /* Branch.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		15B4B8121B0AB016002AA93E /* BranchInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BranchInfoViewController.h; sourceTree = "<group>"; };
 		15B4B8131B0AB016002AA93E /* BranchInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BranchInfoViewController.m; sourceTree = "<group>"; };
@@ -84,6 +149,26 @@
 		4DEDB7581F7EBE7D009E84D1 /* WebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		5BD8E97E3C91345EE8950DD2 /* Pods-BranchMonsterFactory.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BranchMonsterFactory.release.xcconfig"; path = "Pods/Target Support Files/Pods-BranchMonsterFactory/Pods-BranchMonsterFactory.release.xcconfig"; sourceTree = "<group>"; };
 		5F5016DB250AD95500B181E7 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		5F790B7E252FCA4800C82E83 /* BranchMonsterFactoryAppClip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BranchMonsterFactoryAppClip.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F790B80252FCA4800C82E83 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		5F790B82252FCA4800C82E83 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		5F790B84252FCA4800C82E83 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5F790B87252FCA4800C82E83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		5F790B89252FCA4A00C82E83 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5F790B8C252FCA4A00C82E83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		5F790B8E252FCA4A00C82E83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5F790B8F252FCA4A00C82E83 /* BranchMonsterFactoryAppClip.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BranchMonsterFactoryAppClip.entitlements; sourceTree = "<group>"; };
+		5F790B94252FCA4A00C82E83 /* BranchMonsterFactoryAppClipTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BranchMonsterFactoryAppClipTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F790B98252FCA4A00C82E83 /* BranchMonsterFactoryAppClipTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchMonsterFactoryAppClipTests.swift; sourceTree = "<group>"; };
+		5F790B9A252FCA4A00C82E83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5F790B9F252FCA4A00C82E83 /* BranchMonsterFactoryAppClipUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BranchMonsterFactoryAppClipUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F790BA3252FCA4A00C82E83 /* BranchMonsterFactoryAppClipUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchMonsterFactoryAppClipUITests.swift; sourceTree = "<group>"; };
+		5F790BA5252FCA4A00C82E83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5F790BC3252FCAE200C82E83 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		5F790BC5252FCAEF00C82E83 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		5F790BC7252FCAF400C82E83 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
+		5F790BC9252FCE9700C82E83 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		5F790BCC252FCEAB00C82E83 /* Branch.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Branch.framework; sourceTree = "<group>"; };
 		670591E919BBAC630039DAE1 /* Branchsters.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Branchsters.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		67FD945C1A4D250C00D6BFA8 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		67FD945D1A4D250C00D6BFA8 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -154,6 +239,33 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		5F790B7B252FCA4800C82E83 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5F790BCB252FCEA100C82E83 /* WebKit.framework in Frameworks */,
+				5F790BC8252FCAF400C82E83 /* iAd.framework in Frameworks */,
+				5F790BC6252FCAEF00C82E83 /* CoreTelephony.framework in Frameworks */,
+				5F790BCA252FCE9800C82E83 /* SystemConfiguration.framework in Frameworks */,
+				5F790BCD252FCEAB00C82E83 /* Branch.framework in Frameworks */,
+				5F790BC4252FCAE200C82E83 /* AdSupport.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5F790B91252FCA4A00C82E83 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5F790B9C252FCA4A00C82E83 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		670591E619BBAC630039DAE1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -166,10 +278,46 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5F790B7F252FCA4800C82E83 /* BranchMonsterFactoryAppClip */ = {
+			isa = PBXGroup;
+			children = (
+				5F790B80252FCA4800C82E83 /* AppDelegate.swift */,
+				5F790B82252FCA4800C82E83 /* SceneDelegate.swift */,
+				5F790B84252FCA4800C82E83 /* ViewController.swift */,
+				5F790B86252FCA4800C82E83 /* Main.storyboard */,
+				5F790B89252FCA4A00C82E83 /* Assets.xcassets */,
+				5F790B8B252FCA4A00C82E83 /* LaunchScreen.storyboard */,
+				5F790B8E252FCA4A00C82E83 /* Info.plist */,
+				5F790B8F252FCA4A00C82E83 /* BranchMonsterFactoryAppClip.entitlements */,
+			);
+			path = BranchMonsterFactoryAppClip;
+			sourceTree = "<group>";
+		};
+		5F790B97252FCA4A00C82E83 /* BranchMonsterFactoryAppClipTests */ = {
+			isa = PBXGroup;
+			children = (
+				5F790B98252FCA4A00C82E83 /* BranchMonsterFactoryAppClipTests.swift */,
+				5F790B9A252FCA4A00C82E83 /* Info.plist */,
+			);
+			path = BranchMonsterFactoryAppClipTests;
+			sourceTree = "<group>";
+		};
+		5F790BA2252FCA4A00C82E83 /* BranchMonsterFactoryAppClipUITests */ = {
+			isa = PBXGroup;
+			children = (
+				5F790BA3252FCA4A00C82E83 /* BranchMonsterFactoryAppClipUITests.swift */,
+				5F790BA5252FCA4A00C82E83 /* Info.plist */,
+			);
+			path = BranchMonsterFactoryAppClipUITests;
+			sourceTree = "<group>";
+		};
 		670591E019BBAC630039DAE1 = {
 			isa = PBXGroup;
 			children = (
 				67FD945B1A4D250C00D6BFA8 /* BranchMonsterFactory */,
+				5F790B7F252FCA4800C82E83 /* BranchMonsterFactoryAppClip */,
+				5F790B97252FCA4A00C82E83 /* BranchMonsterFactoryAppClipTests */,
+				5F790BA2252FCA4A00C82E83 /* BranchMonsterFactoryAppClipUITests */,
 				670591EA19BBAC630039DAE1 /* Products */,
 				9552A7970BF60B80F8AACB47 /* Pods */,
 				AC4F2E8D49B8AC096F140182 /* Frameworks */,
@@ -180,6 +328,9 @@
 			isa = PBXGroup;
 			children = (
 				670591E919BBAC630039DAE1 /* Branchsters.app */,
+				5F790B7E252FCA4800C82E83 /* BranchMonsterFactoryAppClip.app */,
+				5F790B94252FCA4A00C82E83 /* BranchMonsterFactoryAppClipTests.xctest */,
+				5F790B9F252FCA4A00C82E83 /* BranchMonsterFactoryAppClipUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -356,6 +507,11 @@
 		AC4F2E8D49B8AC096F140182 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5F790BCC252FCEAB00C82E83 /* Branch.framework */,
+				5F790BC9252FCE9700C82E83 /* SystemConfiguration.framework */,
+				5F790BC7252FCAF400C82E83 /* iAd.framework */,
+				5F790BC5252FCAEF00C82E83 /* CoreTelephony.framework */,
+				5F790BC3252FCAE200C82E83 /* AdSupport.framework */,
 				5F5016DB250AD95500B181E7 /* WebKit.framework */,
 				719445900DBB09BE2A8933D1 /* Pods_BranchMonsterFactory.framework */,
 			);
@@ -365,6 +521,60 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		5F790B7D252FCA4800C82E83 /* BranchMonsterFactoryAppClip */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5F790BB0252FCA4A00C82E83 /* Build configuration list for PBXNativeTarget "BranchMonsterFactoryAppClip" */;
+			buildPhases = (
+				5F790B7A252FCA4800C82E83 /* Sources */,
+				5F790B7B252FCA4800C82E83 /* Frameworks */,
+				5F790B7C252FCA4800C82E83 /* Resources */,
+				5F790BCF252FCEAB00C82E83 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BranchMonsterFactoryAppClip;
+			productName = BranchMonsterFactoryAppClip;
+			productReference = 5F790B7E252FCA4800C82E83 /* BranchMonsterFactoryAppClip.app */;
+			productType = "com.apple.product-type.application.on-demand-install-capable";
+		};
+		5F790B93252FCA4A00C82E83 /* BranchMonsterFactoryAppClipTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5F790BB1252FCA4A00C82E83 /* Build configuration list for PBXNativeTarget "BranchMonsterFactoryAppClipTests" */;
+			buildPhases = (
+				5F790B90252FCA4A00C82E83 /* Sources */,
+				5F790B91252FCA4A00C82E83 /* Frameworks */,
+				5F790B92252FCA4A00C82E83 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5F790B96252FCA4A00C82E83 /* PBXTargetDependency */,
+			);
+			name = BranchMonsterFactoryAppClipTests;
+			productName = BranchMonsterFactoryAppClipTests;
+			productReference = 5F790B94252FCA4A00C82E83 /* BranchMonsterFactoryAppClipTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		5F790B9E252FCA4A00C82E83 /* BranchMonsterFactoryAppClipUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5F790BB2252FCA4A00C82E83 /* Build configuration list for PBXNativeTarget "BranchMonsterFactoryAppClipUITests" */;
+			buildPhases = (
+				5F790B9B252FCA4A00C82E83 /* Sources */,
+				5F790B9C252FCA4A00C82E83 /* Frameworks */,
+				5F790B9D252FCA4A00C82E83 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5F790BA1252FCA4A00C82E83 /* PBXTargetDependency */,
+			);
+			name = BranchMonsterFactoryAppClipUITests;
+			productName = BranchMonsterFactoryAppClipUITests;
+			productReference = 5F790B9F252FCA4A00C82E83 /* BranchMonsterFactoryAppClipUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		670591E819BBAC630039DAE1 /* BranchMonsterFactory */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6705920919BBAC630039DAE1 /* Build configuration list for PBXNativeTarget "BranchMonsterFactory" */;
@@ -374,10 +584,12 @@
 				670591E619BBAC630039DAE1 /* Frameworks */,
 				670591E719BBAC630039DAE1 /* Resources */,
 				9C891AA919C862A85AEACEB9 /* [CP] Embed Pods Frameworks */,
+				5F790BA9252FCA4A00C82E83 /* Embed App Clips */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				5F790BA7252FCA4A00C82E83 /* PBXTargetDependency */,
 			);
 			name = BranchMonsterFactory;
 			productName = BranchBots;
@@ -390,9 +602,27 @@
 		670591E119BBAC630039DAE1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 1200;
 				LastUpgradeCheck = 1170;
 				ORGANIZATIONNAME = Branch;
 				TargetAttributes = {
+					5F790B7D252FCA4800C82E83 = {
+						CreatedOnToolsVersion = 12.0.1;
+						DevelopmentTeam = R63EM248DP;
+						ProvisioningStyle = Automatic;
+					};
+					5F790B93252FCA4A00C82E83 = {
+						CreatedOnToolsVersion = 12.0.1;
+						DevelopmentTeam = R63EM248DP;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 5F790B7D252FCA4800C82E83;
+					};
+					5F790B9E252FCA4A00C82E83 = {
+						CreatedOnToolsVersion = 12.0.1;
+						DevelopmentTeam = R63EM248DP;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 5F790B7D252FCA4800C82E83;
+					};
 					670591E819BBAC630039DAE1 = {
 						CreatedOnToolsVersion = 6.0;
 						DevelopmentTeam = R63EM248DP;
@@ -422,11 +652,38 @@
 			projectRoot = "";
 			targets = (
 				670591E819BBAC630039DAE1 /* BranchMonsterFactory */,
+				5F790B7D252FCA4800C82E83 /* BranchMonsterFactoryAppClip */,
+				5F790B93252FCA4A00C82E83 /* BranchMonsterFactoryAppClipTests */,
+				5F790B9E252FCA4A00C82E83 /* BranchMonsterFactoryAppClipUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		5F790B7C252FCA4800C82E83 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5F790B8D252FCA4A00C82E83 /* LaunchScreen.storyboard in Resources */,
+				5F790B8A252FCA4A00C82E83 /* Assets.xcassets in Resources */,
+				5F790B88252FCA4800C82E83 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5F790B92252FCA4A00C82E83 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5F790B9D252FCA4A00C82E83 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		670591E719BBAC630039DAE1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -528,6 +785,32 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5F790B7A252FCA4800C82E83 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5F790B85252FCA4800C82E83 /* ViewController.swift in Sources */,
+				5F790B81252FCA4800C82E83 /* AppDelegate.swift in Sources */,
+				5F790B83252FCA4800C82E83 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5F790B90252FCA4A00C82E83 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5F790B99252FCA4A00C82E83 /* BranchMonsterFactoryAppClipTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5F790B9B252FCA4A00C82E83 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5F790BA4252FCA4A00C82E83 /* BranchMonsterFactoryAppClipUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		670591E519BBAC630039DAE1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -548,7 +831,41 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		5F790B96252FCA4A00C82E83 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5F790B7D252FCA4800C82E83 /* BranchMonsterFactoryAppClip */;
+			targetProxy = 5F790B95252FCA4A00C82E83 /* PBXContainerItemProxy */;
+		};
+		5F790BA1252FCA4A00C82E83 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5F790B7D252FCA4800C82E83 /* BranchMonsterFactoryAppClip */;
+			targetProxy = 5F790BA0252FCA4A00C82E83 /* PBXContainerItemProxy */;
+		};
+		5F790BA7252FCA4A00C82E83 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5F790B7D252FCA4800C82E83 /* BranchMonsterFactoryAppClip */;
+			targetProxy = 5F790BA6252FCA4A00C82E83 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
+		5F790B86252FCA4800C82E83 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5F790B87252FCA4800C82E83 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		5F790B8B252FCA4A00C82E83 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5F790B8C252FCA4A00C82E83 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
 		67FD945E1A4D250C00D6BFA8 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -560,6 +877,201 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		5F790BAA252FCA4A00C82E83 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = BranchMonsterFactoryAppClip/BranchMonsterFactoryAppClip.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = R63EM248DP;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = BranchMonsterFactoryAppClip/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.4.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = io.branch.Branchsters.Clip;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		5F790BAB252FCA4A00C82E83 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = BranchMonsterFactoryAppClip/BranchMonsterFactoryAppClip.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = R63EM248DP;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = BranchMonsterFactoryAppClip/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.4.0;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = io.branch.Branchsters.Clip;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		5F790BAC252FCA4A00C82E83 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = R63EM248DP;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = BranchMonsterFactoryAppClipTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = io.branch.Branchsters.BranchMonsterFactoryAppClipTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BranchMonsterFactoryAppClip.app/BranchMonsterFactoryAppClip";
+			};
+			name = Debug;
+		};
+		5F790BAD252FCA4A00C82E83 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = R63EM248DP;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = BranchMonsterFactoryAppClipTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = io.branch.Branchsters.BranchMonsterFactoryAppClipTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BranchMonsterFactoryAppClip.app/BranchMonsterFactoryAppClip";
+			};
+			name = Release;
+		};
+		5F790BAE252FCA4A00C82E83 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = R63EM248DP;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = BranchMonsterFactoryAppClipUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = io.branch.Branchsters.BranchMonsterFactoryAppClipUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = BranchMonsterFactoryAppClip;
+			};
+			name = Debug;
+		};
+		5F790BAF252FCA4A00C82E83 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = R63EM248DP;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = BranchMonsterFactoryAppClipUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = io.branch.Branchsters.BranchMonsterFactoryAppClipUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = BranchMonsterFactoryAppClip;
+			};
+			name = Release;
+		};
 		6705920719BBAC630039DAE1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -674,7 +1186,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = R63EM248DP;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -684,7 +1196,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/BranchMonsterFactory/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.3.2;
+				MARKETING_VERSION = 1.4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "io.branch.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Branchsters;
 				PROVISIONING_PROFILE = "";
@@ -704,7 +1216,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = R63EM248DP;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -714,7 +1226,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/BranchMonsterFactory/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.3.2;
+				MARKETING_VERSION = 1.4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "io.branch.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Branchsters;
 				PROVISIONING_PROFILE = "";
@@ -726,6 +1238,33 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5F790BB0252FCA4A00C82E83 /* Build configuration list for PBXNativeTarget "BranchMonsterFactoryAppClip" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5F790BAA252FCA4A00C82E83 /* Debug */,
+				5F790BAB252FCA4A00C82E83 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5F790BB1252FCA4A00C82E83 /* Build configuration list for PBXNativeTarget "BranchMonsterFactoryAppClipTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5F790BAC252FCA4A00C82E83 /* Debug */,
+				5F790BAD252FCA4A00C82E83 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5F790BB2252FCA4A00C82E83 /* Build configuration list for PBXNativeTarget "BranchMonsterFactoryAppClipUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5F790BAE252FCA4A00C82E83 /* Debug */,
+				5F790BAF252FCA4A00C82E83 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		670591E419BBAC630039DAE1 /* Build configuration list for PBXProject "BranchMonsterFactory" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

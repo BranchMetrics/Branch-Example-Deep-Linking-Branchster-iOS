@@ -8,18 +8,21 @@ PODS:
     - FBSDKCoreKit/Basics
 
 DEPENDENCIES:
-  - Branch
+  - Branch (from `~/github/ios-branch-deep-linking-attribution`)
   - FBSDKCoreKit
 
 SPEC REPOS:
   trunk:
-    - Branch
     - FBSDKCoreKit
+
+EXTERNAL SOURCES:
+  Branch:
+    :path: "~/github/ios-branch-deep-linking-attribution"
 
 SPEC CHECKSUMS:
   Branch: 43863eab4c2339a58fa552f2f277139c3839dfb4
   FBSDKCoreKit: 9d27fe97a2fa2abe5eeefea8240e837623ab88e0
 
-PODFILE CHECKSUM: 6c4e05f52a8ba537fcc0ee507ebc2d0fd27ac995
+PODFILE CHECKSUM: 95bf7fc47a63639ea32538064e95c6d17fcb8a4d
 
 COCOAPODS: 1.9.1
