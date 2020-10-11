@@ -31,6 +31,7 @@
 		5F790BCB252FCEA100C82E83 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F5016DB250AD95500B181E7 /* WebKit.framework */; };
 		5F790BCD252FCEAB00C82E83 /* Branch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F790BCC252FCEAB00C82E83 /* Branch.framework */; };
 		5F790BCE252FCEAB00C82E83 /* Branch.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5F790BCC252FCEAB00C82E83 /* Branch.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5F92A93525310D22008B3151 /* Monster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F92A93425310D22008B3151 /* Monster.swift */; };
 		67FD94C31A4D250C00D6BFA8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 67FD945D1A4D250C00D6BFA8 /* AppDelegate.m */; };
 		67FD94C51A4D250C00D6BFA8 /* ImageCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 67FD94621A4D250C00D6BFA8 /* ImageCollectionViewCell.m */; };
 		67FD94C61A4D250C00D6BFA8 /* NetworkProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 67FD94641A4D250C00D6BFA8 /* NetworkProgressBar.m */; };
@@ -169,6 +170,7 @@
 		5F790BC7252FCAF400C82E83 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		5F790BC9252FCE9700C82E83 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		5F790BCC252FCEAB00C82E83 /* Branch.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Branch.framework; sourceTree = "<group>"; };
+		5F92A93425310D22008B3151 /* Monster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Monster.swift; sourceTree = "<group>"; };
 		670591E919BBAC630039DAE1 /* Branchsters.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Branchsters.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		67FD945C1A4D250C00D6BFA8 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		67FD945D1A4D250C00D6BFA8 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -284,6 +286,7 @@
 				5F790B80252FCA4800C82E83 /* AppDelegate.swift */,
 				5F790B82252FCA4800C82E83 /* SceneDelegate.swift */,
 				5F790B84252FCA4800C82E83 /* ViewController.swift */,
+				5F92A93425310D22008B3151 /* Monster.swift */,
 				5F790B86252FCA4800C82E83 /* Main.storyboard */,
 				5F790B89252FCA4A00C82E83 /* Assets.xcassets */,
 				5F790B8B252FCA4A00C82E83 /* LaunchScreen.storyboard */,
@@ -789,6 +792,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F92A93525310D22008B3151 /* Monster.swift in Sources */,
 				5F790B85252FCA4800C82E83 /* ViewController.swift in Sources */,
 				5F790B81252FCA4800C82E83 /* AppDelegate.swift in Sources */,
 				5F790B83252FCA4800C82E83 /* SceneDelegate.swift in Sources */,

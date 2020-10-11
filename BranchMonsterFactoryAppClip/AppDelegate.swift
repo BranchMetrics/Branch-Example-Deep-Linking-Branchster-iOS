@@ -12,15 +12,22 @@ import Branch
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
         Branch.getInstance().setAppClipAppGroup("group.io.branch")
         BranchScene.shared().initSession(launchOptions: launchOptions) { (params, error, scene) in
-            if let message = params?.description {
-                print(message)
+            if let dict = params {
+                
+                let name = (dict["monster_name"] as? String) ?? ""
+                let text = (dict["$og_description"] as? String) ?? ""
+                let face = (dict["face_index"] as? Int) ?? 0
+                let body = (dict["body_index"] as? Int) ?? 0
+                let color = (dict["color_index"] as? Int) ?? 0
+
+                Monster.shared.update(name: name, text: text, face: face, body: body, color: color)
+                
+                print(dict.description)
             }
         }
         
