@@ -73,6 +73,11 @@
       <EnvironmentVariables>
          <EnvironmentVariable
             key = "_XCAppClipURL"
+            value = "https://branchster.app.link/"
+            isEnabled = "NO">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "_XCAppClipURL"
             value = "https://branchster.app.link/J22tvM77rab"
             isEnabled = "YES">
          </EnvironmentVariable>
