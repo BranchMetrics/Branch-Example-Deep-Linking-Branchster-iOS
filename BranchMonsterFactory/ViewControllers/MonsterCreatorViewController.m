@@ -13,17 +13,17 @@
 #import "BranchUniversalObject+MonsterHelpers.h"
 #import "Branch.h"
 
-@interface MonsterCreatorViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface MonsterCreatorViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextField *monsterName;
 
-@property (weak, nonatomic) IBOutlet UIView *botViewLayerOne;
-@property (weak, nonatomic) IBOutlet UICollectionView *botViewLayerTwo;
-@property (weak, nonatomic) IBOutlet UICollectionView *botViewLayerThree;
+@property (weak, nonatomic) IBOutlet UIImageView *faceView;
+@property (weak, nonatomic) IBOutlet UIImageView *bodyView;
 
 @property (strong, nonatomic) IBOutletCollection(UIView) NSArray *colorViews;
 @property (weak, nonatomic) IBOutlet UIButton *cmdRightArrow;
 @property (weak, nonatomic) IBOutlet UIButton *cmdLeftArrow;
+@property (weak, nonatomic) IBOutlet UIButton *cmdUpArrow;
 @property (weak, nonatomic) IBOutlet UIButton *cmdDownArrow;
 @property (weak, nonatomic) IBOutlet UIButton *cmdDone;
 
@@ -55,19 +55,9 @@ static CGFloat SIDE_SPACE = 7.0;
         
     [self.cmdDone.layer setCornerRadius:3.0f];
     
-    [self.botViewLayerOne setBackgroundColor:[MonsterPartsFactory colorForIndex:[self.editingMonster getColorIndex]]];
-    
-    self.botViewLayerTwo.delegate = self;
-    self.botViewLayerTwo.dataSource = self;
-    [self.botViewLayerTwo registerClass:[ImageCollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
-    
-    self.botViewLayerThree.delegate = self;
-    self.botViewLayerThree.dataSource = self;
-    [self.botViewLayerThree registerClass:[ImageCollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
+    [self.bodyView setBackgroundColor:[MonsterPartsFactory colorForIndex:[self.editingMonster getColorIndex]]];
     
     [self.monsterName setText:[self.editingMonster getMonsterName]];
-    
-    
     [self.monsterName addTarget:self.monsterName
                       action:@selector(resignFirstResponder)
             forControlEvents:UIControlEventEditingDidEndOnExit];
@@ -78,38 +68,56 @@ static CGFloat SIDE_SPACE = 7.0;
  
     self.bodyIndex = [self.editingMonster getBodyIndex];
     self.faceIndex = [self.editingMonster getFaceIndex];
-    [self.botViewLayerTwo scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:self.bodyIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
-    [self.botViewLayerThree scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:self.faceIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredVertically animated:NO];
+    
+    // TODO: update monster here
+    //[self.botViewLayerTwo scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:self.bodyIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
+    //[self.botViewLayerThree scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:self.faceIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredVertically animated:NO];
 }
 
 - (void)adjustMonsterPicturesForScreenSize {
     CGRect screenSize = [[UIScreen mainScreen] bounds];
-    CGFloat widthRatio = self.botViewLayerOne.frame.size.width/self.botViewLayerOne.frame.size.height;
+    CGFloat widthRatio = self.faceView.frame.size.width/self.faceView.frame.size.height;
     CGFloat newHeight = screenSize.size.height;
     //    if (IS_IPHONE_5)
     //        newHeight = newHeight * MONSTER_HEIGHT_FIVE;
     //    else
     newHeight = newHeight * MONSTER_HEIGHT;
     CGFloat newWidth = widthRatio * newHeight;
-    CGRect newFrame = CGRectMake((screenSize.size.width-newWidth)/2, self.botViewLayerOne.frame.origin.y, newWidth, newHeight);
+    CGRect newFrame = CGRectMake((screenSize.size.width-newWidth)/2, self.faceView.frame.origin.y, newWidth, newHeight);
     
-    self.botViewLayerOne.frame = newFrame;
-    self.botViewLayerTwo.frame = newFrame;
-    self.botViewLayerThree.frame = newFrame;
+    [self.view bringSubviewToFront:self.faceView];
+    self.faceView.frame = newFrame;
+    self.bodyView.frame = newFrame;
     
     CGRect rightRect = self.cmdRightArrow.frame;
     CGRect leftRect = self.cmdLeftArrow.frame;
-    rightRect.origin.y = self.botViewLayerOne.frame.origin.y + (self.botViewLayerOne.frame.size.height-rightRect.size.height)/2;
-    rightRect.origin.x = self.botViewLayerOne.frame.origin.x + self.botViewLayerOne.frame.size.width + SIDE_SPACE;
+    rightRect.origin.y = self.faceView.frame.origin.y + (self.faceView.frame.size.height-rightRect.size.height)/2;
+    rightRect.origin.x = self.faceView.frame.origin.x + self.faceView.frame.size.width + SIDE_SPACE;
     leftRect.origin.y = rightRect.origin.y;
-    leftRect.origin.x = self.botViewLayerOne.frame.origin.x - SIDE_SPACE - leftRect.size.width;
+    leftRect.origin.x = self.faceView.frame.origin.x - SIDE_SPACE - leftRect.size.width;
     self.cmdRightArrow.frame = rightRect;
     self.cmdLeftArrow.frame = leftRect;
     
+    CGRect upRect = self.cmdUpArrow.frame;
     CGRect botRect = self.cmdDownArrow.frame;
+    upRect.origin.x = (screenSize.size.width - botRect.size.width)/2;
+    upRect.origin.y = self.faceView.frame.origin.y - (upRect.size.height + SIDE_SPACE);
     botRect.origin.x = (screenSize.size.width - botRect.size.width)/2;
-    botRect.origin.y = self.botViewLayerOne.frame.size.height + self.botViewLayerOne.frame.origin.y + SIDE_SPACE;
+    botRect.origin.y = self.faceView.frame.size.height + self.faceView.frame.origin.y + SIDE_SPACE;
+    self.cmdUpArrow.frame = upRect;
     self.cmdDownArrow.frame = botRect;
+}
+
+- (void)updateFaceWithImage:(UIImage *)image {
+    [UIView transitionWithView:self.faceView duration:0.12 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
+        self.faceView.image = image;
+    } completion:nil];
+}
+
+- (void)updateBodyWithImage:(UIImage *)image {
+    [UIView transitionWithView:self.bodyView duration:0.12 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
+        self.bodyView.image = image;
+    } completion:nil];
 }
 
 - (IBAction)cmdLeftClick:(id)sender {
@@ -117,29 +125,49 @@ static CGFloat SIDE_SPACE = 7.0;
     if (self.bodyIndex == -1)
         self.bodyIndex = [MonsterPartsFactory sizeOfBodyArray] - 1;
     [self.editingMonster setBodyIndex:self.bodyIndex];
-    [self.botViewLayerTwo scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:self.bodyIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+    
+    UIImage *bodyImage = [MonsterPartsFactory imageForBody:self.bodyIndex];
+    if (bodyImage) {
+        [self updateBodyWithImage:bodyImage];
+    }
 }
+
 - (IBAction)cmdRightClick:(id)sender {
     self.bodyIndex = self.bodyIndex + 1;
     if (self.bodyIndex == [MonsterPartsFactory sizeOfBodyArray])
         self.bodyIndex = 0;
     [self.editingMonster setBodyIndex:self.bodyIndex];
-    [self.botViewLayerTwo scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:self.bodyIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+    
+    UIImage *bodyImage = [MonsterPartsFactory imageForBody:self.bodyIndex];
+    if (bodyImage) {
+        [self updateBodyWithImage:bodyImage];
+    }
 }
+
 - (IBAction)cmdUpClick:(id)sender {
     self.faceIndex = self.faceIndex - 1;
     if (self.faceIndex == -1)
         self.faceIndex = [MonsterPartsFactory sizeOfFaceArray] - 1;
     [self.editingMonster setFaceIndex:self.faceIndex];
-    [self.botViewLayerThree scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:self.faceIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredVertically animated:YES];
+    
+    UIImage *faceImage = [MonsterPartsFactory imageForFace:self.faceIndex];
+    if (faceImage) {
+        [self updateFaceWithImage:faceImage];
+    }
 }
+
 - (IBAction)cmdDownClick:(id)sender {
     self.faceIndex = self.faceIndex + 1;
     if (self.faceIndex == [MonsterPartsFactory sizeOfFaceArray])
         self.faceIndex = 0;
     [self.editingMonster setFaceIndex:self.faceIndex];
-    [self.botViewLayerThree scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:self.faceIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredVertically animated:YES];
+    
+    UIImage *faceImage = [MonsterPartsFactory imageForFace:self.faceIndex];
+    if (faceImage) {
+        [self updateFaceWithImage:faceImage];
+    }
 }
+
 - (IBAction)cmdColorClick:(id)sender {
     UIButton *currColorButton = (UIButton *)sender;
     
@@ -153,7 +181,7 @@ static CGFloat SIDE_SPACE = 7.0;
     }
     
     [self.editingMonster setColorIndex:selected];
-    [self.botViewLayerOne setBackgroundColor:[MonsterPartsFactory colorForIndex:selected]];
+    [self.bodyView setBackgroundColor:[MonsterPartsFactory colorForIndex:selected]];
     [currColorButton setSelected:YES];
     [currColorButton.layer setBorderWidth:2.0f];
 }
@@ -164,36 +192,6 @@ static CGFloat SIDE_SPACE = 7.0;
     } else {
         [self.editingMonster setMonsterName:@"Bingles Jingleheimer"];
     }
-}
-
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    if ([collectionView isEqual:self.botViewLayerTwo]) {
-        return [MonsterPartsFactory sizeOfBodyArray];
-    } else {
-        return [MonsterPartsFactory sizeOfFaceArray];
-    }
-}
-
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return CGSizeMake(self.botViewLayerOne.frame.size.width, self.botViewLayerOne.frame.size.height);
-}
-
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
-                  cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    ImageCollectionViewCell *cell =
-        (ImageCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"cell"
-           forIndexPath:indexPath];
-    
-    if ([collectionView isEqual:self.botViewLayerTwo]) {
-        UIImage *bodyImage = [MonsterPartsFactory imageForBody:indexPath.row];
-        [cell.imageView setImage:bodyImage];
-    } else {
-        UIImage *faceImage = [MonsterPartsFactory imageForFace:indexPath.row];
-        [cell.imageView setImage:faceImage];
-        [cell bringSubviewToFront:cell.imageView];
-    }
-    
-    return cell;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
