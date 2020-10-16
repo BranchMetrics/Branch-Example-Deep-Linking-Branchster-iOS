@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Branch
 
 // ViewModel
 class Monster: NSObject {
@@ -49,6 +50,7 @@ class Monster: NSObject {
     var body : UIImage
     var color : UIColor
     var text : String
+    var waitingForData: Bool
     
     override init() {
         name = "Monster Incoming!"
@@ -56,9 +58,51 @@ class Monster: NSObject {
         body = bodies[0]!
         color = UIColor.white
         text = ""
+        waitingForData = true
+    }
+    
+    func prevFace() {
+        var index = self.faces.firstIndex(of: self.face) ?? 0
+        index = index - 1
+        
+        if (index < 0) {
+            index = self.faces.count-1
+        }
+        self.face = self.faces[index] ?? self.face
+    }
+    
+    func nextFace() {
+        var index = self.faces.firstIndex(of: self.face) ?? 0
+        index = index + 1
+
+        if (index == self.faces.count) {
+            index = 0
+        }
+        self.face = self.faces[index] ?? self.face
+    }
+    
+    func prevBody() {
+        var index = self.bodies.firstIndex(of: self.body) ?? 0
+        index = index - 1
+
+        if (index < 0) {
+            index = self.bodies.count-1
+        }
+        self.body = self.bodies[index] ?? self.body
+    }
+    
+    func nextBody() {
+        var index = self.bodies.firstIndex(of: self.body) ?? 0
+        index = index + 1
+
+        if (index == self.bodies.count) {
+            index = 0
+        }
+        self.body = self.bodies[index] ?? self.body
     }
     
     func update(name: String, text: String, face: Int, body: Int, color: Int) {
+        self.waitingForData = false
         self.name = name
         self.text = text
         
@@ -75,5 +119,27 @@ class Monster: NSObject {
         }
         
         self.callback()
+    }
+    
+    func shareWithBranch() -> (BranchUniversalObject) {
+        let buo = BranchUniversalObject(title: self.name)
+        
+        let faceIndex = self.faces.firstIndex(of: self.face) ?? 0
+        let bodyIndex = self.bodies.firstIndex(of: self.body) ?? 0
+        let colorIndex = self.colors.firstIndex(of: self.color) ?? 0
+        
+        buo.contentMetadata.customMetadata = [
+            "monster" : "true",
+            "monster_name" : self.name,
+            "face_index" : String(faceIndex),
+            "body_index" : String(bodyIndex),
+            "color_index" : String(colorIndex)
+        ]
+        
+        buo.title = self.name
+        buo.contentDescription = "Monster from App Clip"
+        buo.imageUrl = String(format: "https://s3-us-west-1.amazonaws.com/branchmonsterfactory/%hd%hd%hd.png", colorIndex, bodyIndex, faceIndex)
+        
+        return buo
     }
 }

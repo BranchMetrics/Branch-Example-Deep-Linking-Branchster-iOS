@@ -15,17 +15,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        // fallback if we're offline
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            if (Monster.shared.waitingForData) {
+                Monster.shared.update(name: "Branchster", text: "", face: 0, body: 0, color: 0)
+            }
+        }
+        
         Branch.getInstance().setAppClipAppGroup("group.io.branch")
         BranchScene.shared().initSession(launchOptions: launchOptions) { (params, error, scene) in
             if let dict = params {
-                                
-                let name = (dict["monster_name"] as? String) ?? "Branchster"
-                let text = (dict["$og_description"] as? String) ?? ""
-                let face = Int(dict["face_index"] as? String ?? "0") ?? 0
-                let body = Int(dict["body_index"] as? String ?? "0") ?? 0
-                let color = Int(dict["color_index"] as? String ?? "0") ?? 0
-
-                Monster.shared.update(name: name, text: text, face: face, body: body, color: color)
+                
+                // update to monster in branch payload, or fallack monster
+                if (Monster.shared.waitingForData) {
+                    let name = (dict["monster_name"] as? String) ?? "Branchster"
+                    let text = (dict["$og_description"] as? String) ?? ""
+                    let face = Int(dict["face_index"] as? String ?? "0") ?? 0
+                    let body = Int(dict["body_index"] as? String ?? "0") ?? 0
+                    let color = Int(dict["color_index"] as? String ?? "0") ?? 0
+                    Monster.shared.update(name: name, text: text, face: face, body: body, color: color)
+                }
                 
                 print(dict.description)
             }
