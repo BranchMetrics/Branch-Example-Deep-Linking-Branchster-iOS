@@ -493,7 +493,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <state key="normal" title="Info"/>
                                 <connections>
-                                    <segue destination="rab-AQ-UbK" kind="presentation" id="Gzn-7g-FUX"/>
+                                    <segue destination="rab-AQ-UbK" kind="show" id="Gzn-7g-FUX"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MUc-9V-p35">
@@ -568,11 +568,11 @@
                         <viewControllerLayoutGuide type="bottom" id="Ghe-JY-K6h"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="1yI-dp-i8k">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hGD-u8-B4m">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <items>
                                     <navigationItem title="Branch" id="Rx2-2I-7zy">
                                         <barButtonItem key="rightBarButtonItem" title="Done" id="LlI-H1-Bx7">
@@ -584,7 +584,7 @@
                                 </items>
                             </navigationBar>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pzz-hW-P62">
-                                <rect key="frame" x="16" y="67" width="288" height="133"/>
+                                <rect key="frame" x="16" y="55" width="288" height="133"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <attributedString key="attributedText">
                                     <fragment>
@@ -598,7 +598,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DSG-V1-U2u">
-                                <rect key="frame" x="16" y="357" width="288" height="29.5"/>
+                                <rect key="frame" x="16" y="345" width="288" height="29.5"/>
                                 <state key="normal">
                                     <attributedString key="attributedTitle">
                                         <fragment content="Check us out on the web!">
@@ -613,13 +613,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.2 / 0.19.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dVs-bG-mA0">
-                                <rect key="frame" x="244" y="389.5" width="60" height="14.5"/>
+                                <rect key="frame" x="244" y="409.5" width="60" height="14.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VGL-MZ-yf0">
-                                <rect key="frame" x="16" y="216" width="288" height="133"/>
+                                <rect key="frame" x="16" y="204" width="288" height="133"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <attributedString key="attributedText">
                                     <fragment>
@@ -632,6 +632,13 @@
                                 </attributedString>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nyO-aP-Ceu">
+                                <rect key="frame" x="67" y="382" width="186" height="30"/>
+                                <state key="normal" title="Check out Device ID Finder"/>
+                                <connections>
+                                    <action selector="showDeviceFinder:" destination="rab-AQ-UbK" eventType="primaryActionTriggered" id="Bgu-hj-OKA"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -641,6 +648,7 @@
                             <constraint firstItem="Ghe-JY-K6h" firstAttribute="top" secondItem="dVs-bG-mA0" secondAttribute="bottom" constant="7" id="Cq8-VF-z4n"/>
                             <constraint firstItem="hGD-u8-B4m" firstAttribute="leading" secondItem="1yI-dp-i8k" secondAttribute="leading" id="DnB-iA-AF4"/>
                             <constraint firstAttribute="centerX" secondItem="hGD-u8-B4m" secondAttribute="centerX" id="LyN-vf-2G2"/>
+                            <constraint firstItem="nyO-aP-Ceu" firstAttribute="centerX" secondItem="DSG-V1-U2u" secondAttribute="centerX" id="Qca-UD-xJe"/>
                             <constraint firstItem="dVs-bG-mA0" firstAttribute="trailing" secondItem="1yI-dp-i8k" secondAttribute="trailingMargin" id="USm-aJ-4S3"/>
                             <constraint firstItem="DSG-V1-U2u" firstAttribute="leading" secondItem="VGL-MZ-yf0" secondAttribute="leading" id="Ve3-ng-Hmg"/>
                             <constraint firstItem="hGD-u8-B4m" firstAttribute="top" secondItem="QKa-Ku-2jo" secondAttribute="bottom" id="ZCB-QF-LAY"/>
@@ -648,12 +656,15 @@
                             <constraint firstItem="pzz-hW-P62" firstAttribute="top" secondItem="hGD-u8-B4m" secondAttribute="bottom" constant="11" id="ajv-9m-0wx"/>
                             <constraint firstItem="VGL-MZ-yf0" firstAttribute="top" secondItem="pzz-hW-P62" secondAttribute="bottom" constant="16" id="b0v-TL-7fa"/>
                             <constraint firstItem="DSG-V1-U2u" firstAttribute="top" secondItem="VGL-MZ-yf0" secondAttribute="bottom" constant="8" id="eD0-Ok-tcD"/>
+                            <constraint firstItem="nyO-aP-Ceu" firstAttribute="leading" secondItem="1yI-dp-i8k" secondAttribute="leadingMargin" constant="51" id="fhw-xE-KUd"/>
                             <constraint firstItem="VGL-MZ-yf0" firstAttribute="trailing" secondItem="pzz-hW-P62" secondAttribute="trailing" id="kuu-ez-cDH"/>
+                            <constraint firstItem="nyO-aP-Ceu" firstAttribute="top" secondItem="DSG-V1-U2u" secondAttribute="bottom" constant="7.5" id="mee-mr-BUs"/>
                             <constraint firstItem="VGL-MZ-yf0" firstAttribute="leading" secondItem="pzz-hW-P62" secondAttribute="leading" id="p2w-XE-ToM"/>
                             <constraint firstItem="pzz-hW-P62" firstAttribute="leading" secondItem="1yI-dp-i8k" secondAttribute="leadingMargin" id="zSu-Nu-o8V"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="Fua-mk-cB2"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="versionLabel" destination="dVs-bG-mA0" id="WN2-Qc-RHT"/>

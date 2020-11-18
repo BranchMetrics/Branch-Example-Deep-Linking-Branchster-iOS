@@ -6,6 +6,7 @@
 	<string>development</string>
 	<key>com.apple.developer.associated-domains</key>
 	<array>
+		<string>appclips:branchster.app.link</string>
 		<string>applinks:email-04.givemeulinksorgivemedeath.com</string>
 		<string>applinks:email-04.branch.rocks</string>
 		<string>applinks:email-03.givemeulinksorgivemedeath.com</string>

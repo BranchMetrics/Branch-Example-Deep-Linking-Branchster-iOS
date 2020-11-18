@@ -14,6 +14,7 @@
 		46FD92CE1A9AD0A70028A385 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67FD945E1A4D250C00D6BFA8 /* Main.storyboard */; };
 		4D4F23231F7F456000638C65 /* Strings.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4D4F23221F7F456000638C65 /* Strings.strings */; };
 		4DEDB7591F7EBE7D009E84D1 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DEDB7581F7EBE7D009E84D1 /* WebViewController.m */; };
+		5F293D0125489E200062B80C /* BranchAdNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F293D0025489E200062B80C /* BranchAdNetwork.m */; };
 		5F5016DC250AD95500B181E7 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F5016DB250AD95500B181E7 /* WebKit.framework */; };
 		5F790B81252FCA4800C82E83 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F790B80252FCA4800C82E83 /* AppDelegate.swift */; };
 		5F790B83252FCA4800C82E83 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F790B82252FCA4800C82E83 /* SceneDelegate.swift */; };
@@ -149,6 +150,8 @@
 		4DEDB7571F7EBE7D009E84D1 /* WebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		4DEDB7581F7EBE7D009E84D1 /* WebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		5BD8E97E3C91345EE8950DD2 /* Pods-BranchMonsterFactory.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BranchMonsterFactory.release.xcconfig"; path = "Pods/Target Support Files/Pods-BranchMonsterFactory/Pods-BranchMonsterFactory.release.xcconfig"; sourceTree = "<group>"; };
+		5F293CFF25489E200062B80C /* BranchAdNetwork.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BranchAdNetwork.h; sourceTree = "<group>"; };
+		5F293D0025489E200062B80C /* BranchAdNetwork.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BranchAdNetwork.m; sourceTree = "<group>"; };
 		5F5016DB250AD95500B181E7 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		5F790B7E252FCA4800C82E83 /* BranchMonsterFactoryAppClip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BranchMonsterFactoryAppClip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F790B80252FCA4800C82E83 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -344,6 +347,8 @@
 				377C3CE91C16141C005DF795 /* Branchsters.entitlements */,
 				67FD945C1A4D250C00D6BFA8 /* AppDelegate.h */,
 				67FD945D1A4D250C00D6BFA8 /* AppDelegate.m */,
+				5F293CFF25489E200062B80C /* BranchAdNetwork.h */,
+				5F293D0025489E200062B80C /* BranchAdNetwork.m */,
 				67FD945E1A4D250C00D6BFA8 /* Main.storyboard */,
 				67FD94BC1A4D250C00D6BFA8 /* ViewControllers */,
 				67FD94601A4D250C00D6BFA8 /* CustomViews */,
@@ -828,6 +833,7 @@
 				15B4B8141B0AB016002AA93E /* BranchInfoViewController.m in Sources */,
 				67FD94D21A4D250C00D6BFA8 /* MonsterPartsFactory.m in Sources */,
 				67FD95081A4D250C00D6BFA8 /* SplashViewController.m in Sources */,
+				5F293D0125489E200062B80C /* BranchAdNetwork.m in Sources */,
 				67FD94C31A4D250C00D6BFA8 /* AppDelegate.m in Sources */,
 				377C3CE81C121DCC005DF795 /* BranchUniversalObject+MonsterHelpers.m in Sources */,
 			);
@@ -908,7 +914,7 @@
 				INFOPLIST_FILE = BranchMonsterFactoryAppClip/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.5.0;
+				MARKETING_VERSION = 1.5.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = io.branch.Branchsters.Clip;
@@ -948,7 +954,7 @@
 				INFOPLIST_FILE = BranchMonsterFactoryAppClip/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.5.0;
+				MARKETING_VERSION = 1.5.1;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = io.branch.Branchsters.Clip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1202,7 +1208,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/BranchMonsterFactory/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.5.0;
+				MARKETING_VERSION = 1.5.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "io.branch.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Branchsters;
 				PROVISIONING_PROFILE = "";
@@ -1232,7 +1238,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/BranchMonsterFactory/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.5.0;
+				MARKETING_VERSION = 1.5.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "io.branch.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Branchsters;
 				PROVISIONING_PROFILE = "";

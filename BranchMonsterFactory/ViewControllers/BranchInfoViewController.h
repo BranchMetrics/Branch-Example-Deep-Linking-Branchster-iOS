@@ -7,6 +7,7 @@
 //
 
 @import UIKit;
+@import StoreKit;
 
-@interface BranchInfoViewController : UIViewController
+@interface BranchInfoViewController : UIViewController <SKStoreProductViewControllerDelegate>
 @end
