@@ -347,8 +347,6 @@
 				377C3CE91C16141C005DF795 /* Branchsters.entitlements */,
 				67FD945C1A4D250C00D6BFA8 /* AppDelegate.h */,
 				67FD945D1A4D250C00D6BFA8 /* AppDelegate.m */,
-				5F293CFF25489E200062B80C /* BranchAdNetwork.h */,
-				5F293D0025489E200062B80C /* BranchAdNetwork.m */,
 				67FD945E1A4D250C00D6BFA8 /* Main.storyboard */,
 				67FD94BC1A4D250C00D6BFA8 /* ViewControllers */,
 				67FD94601A4D250C00D6BFA8 /* CustomViews */,
@@ -377,6 +375,8 @@
 		67FD947E1A4D250C00D6BFA8 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				5F293CFF25489E200062B80C /* BranchAdNetwork.h */,
+				5F293D0025489E200062B80C /* BranchAdNetwork.m */,
 				67FD947F1A4D250C00D6BFA8 /* MonsterPartsFactory.h */,
 				67FD94801A4D250C00D6BFA8 /* MonsterPartsFactory.m */,
 				377C3CE61C121DCC005DF795 /* BranchUniversalObject+MonsterHelpers.h */,

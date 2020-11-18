@@ -37,14 +37,24 @@
 }
 
 - (IBAction)showDeviceFinder:(id)sender {
+    
+    #ifdef DEBUG
+    // Debug builds should send 0
     NSString *source = @"0";
+    #else
+    // Branch Monster Factory
+    NSString *source = @"917737838";
+    #endif
+    
+    // Branch Device ID Finder
     NSString *target = @"1477763736";
     
     BranchAdNetwork *adNetwork = [BranchAdNetwork new];
     [adNetwork requestAttributionWithSource:source target:target completion:^(NSMutableDictionary * _Nonnull params) {
-        // add the target app, or
+        // on successful attribution, we recieve a json with all the required params except the target app id. on failure we get nil
         NSMutableDictionary *tmp = params ? params : [NSMutableDictionary new];
         if (tmp) {
+            // in either case, add the target id so the store page opens
             [tmp setObject:target forKey:SKStoreProductParameterITunesItemIdentifier];
         }
         
@@ -59,9 +69,7 @@
     productVC = [SKStoreProductViewController new];
     [productVC loadProductWithParameters:params completionBlock:^(BOOL result, NSError * _Nullable error) {
         if (result) {
-            [self presentViewController:productVC animated:YES completion:^{
-
-            }];
+            [self presentViewController:productVC animated:YES completion:^{ }];
         }
     }];
 }

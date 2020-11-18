@@ -14,9 +14,8 @@
     if (@available(iOS 14.0, *)) {
         
         // test server,
-        NSString *urlString = [NSString stringWithFormat:@"http://192.168.1.7:8080/attribute?source=%@&target=%@", source, target];
-        
-        //NSString *urlString = [NSString stringWithFormat:@"https://branch-ad-network.branch.io/attribute?source=%@&target=%@", source, target];
+        //NSString *urlString = [NSString stringWithFormat:@"http://192.168.1.7:8080/attribute?source=%@&target=%@", source, target];
+        NSString *urlString = [NSString stringWithFormat:@"https://branch-ad-network.branch.io/attribute?source=%@&target=%@", source, target];
         NSURL *url = [NSURL URLWithString:urlString];
         
         if (url) {
