@@ -31,9 +31,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 if (Monster.shared.waitingForData) {
                     let name = (dict["monster_name"] as? String) ?? "Branchster"
                     let text = (dict["$og_description"] as? String) ?? ""
-                    let face = Int(dict["face_index"] as? String ?? "0") ?? 0
-                    let body = Int(dict["body_index"] as? String ?? "0") ?? 0
-                    let color = Int(dict["color_index"] as? String ?? "0") ?? 0
+                    let face = dict["face_index"] as? Int ?? 0
+                    let body = dict["body_index"] as? Int ?? 0
+                    let color = dict["color_index"] as? Int ?? 0
                     Monster.shared.update(name: name, text: text, face: face, body: body, color: color)
                 }
                 
