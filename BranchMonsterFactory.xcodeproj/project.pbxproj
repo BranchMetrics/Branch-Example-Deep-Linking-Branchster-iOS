@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,6 +14,8 @@
 		46FD92CE1A9AD0A70028A385 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67FD945E1A4D250C00D6BFA8 /* Main.storyboard */; };
 		4D4F23231F7F456000638C65 /* Strings.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4D4F23221F7F456000638C65 /* Strings.strings */; };
 		4DEDB7591F7EBE7D009E84D1 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DEDB7581F7EBE7D009E84D1 /* WebViewController.m */; };
+		5F05C9C226B9C63B005B46B1 /* Branch in Frameworks */ = {isa = PBXBuildFile; productRef = 5F05C9C126B9C63B005B46B1 /* Branch */; };
+		5F05C9C426B9C653005B46B1 /* Branch in Frameworks */ = {isa = PBXBuildFile; productRef = 5F05C9C326B9C653005B46B1 /* Branch */; };
 		5F293D0125489E200062B80C /* BranchAdNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F293D0025489E200062B80C /* BranchAdNetwork.m */; };
 		5F5016DC250AD95500B181E7 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F5016DB250AD95500B181E7 /* WebKit.framework */; };
 		5F790B81252FCA4800C82E83 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F790B80252FCA4800C82E83 /* AppDelegate.swift */; };
@@ -30,8 +32,6 @@
 		5F790BC8252FCAF400C82E83 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F790BC7252FCAF400C82E83 /* iAd.framework */; };
 		5F790BCA252FCE9800C82E83 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F790BC9252FCE9700C82E83 /* SystemConfiguration.framework */; };
 		5F790BCB252FCEA100C82E83 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F5016DB250AD95500B181E7 /* WebKit.framework */; };
-		5F790BCD252FCEAB00C82E83 /* Branch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F790BCC252FCEAB00C82E83 /* Branch.framework */; };
-		5F790BCE252FCEAB00C82E83 /* Branch.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5F790BCC252FCEAB00C82E83 /* Branch.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5F92A93525310D22008B3151 /* Monster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F92A93425310D22008B3151 /* Monster.swift */; };
 		67FD94C31A4D250C00D6BFA8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 67FD945D1A4D250C00D6BFA8 /* AppDelegate.m */; };
 		67FD94C51A4D250C00D6BFA8 /* ImageCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 67FD94621A4D250C00D6BFA8 /* ImageCollectionViewCell.m */; };
@@ -126,17 +126,6 @@
 			name = "Embed App Clips";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5F790BCF252FCEAB00C82E83 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				5F790BCE252FCEAB00C82E83 /* Branch.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -150,6 +139,7 @@
 		4DEDB7571F7EBE7D009E84D1 /* WebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		4DEDB7581F7EBE7D009E84D1 /* WebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		5BD8E97E3C91345EE8950DD2 /* Pods-BranchMonsterFactory.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BranchMonsterFactory.release.xcconfig"; path = "Pods/Target Support Files/Pods-BranchMonsterFactory/Pods-BranchMonsterFactory.release.xcconfig"; sourceTree = "<group>"; };
+		5F05C9BC26B9C4B2005B46B1 /* Branch.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = Branch.xcframework; sourceTree = "<group>"; };
 		5F293CFF25489E200062B80C /* BranchAdNetwork.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BranchAdNetwork.h; sourceTree = "<group>"; };
 		5F293D0025489E200062B80C /* BranchAdNetwork.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BranchAdNetwork.m; sourceTree = "<group>"; };
 		5F5016DB250AD95500B181E7 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
@@ -248,11 +238,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F05C9C426B9C653005B46B1 /* Branch in Frameworks */,
 				5F790BCB252FCEA100C82E83 /* WebKit.framework in Frameworks */,
 				5F790BC8252FCAF400C82E83 /* iAd.framework in Frameworks */,
 				5F790BC6252FCAEF00C82E83 /* CoreTelephony.framework in Frameworks */,
 				5F790BCA252FCE9800C82E83 /* SystemConfiguration.framework in Frameworks */,
-				5F790BCD252FCEAB00C82E83 /* Branch.framework in Frameworks */,
 				5F790BC4252FCAE200C82E83 /* AdSupport.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -275,6 +265,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F05C9C226B9C63B005B46B1 /* Branch in Frameworks */,
 				5F5016DC250AD95500B181E7 /* WebKit.framework in Frameworks */,
 				2E42EAC5DC7DBBC132DDA629 /* Pods_BranchMonsterFactory.framework in Frameworks */,
 			);
@@ -515,6 +506,7 @@
 		AC4F2E8D49B8AC096F140182 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5F05C9BC26B9C4B2005B46B1 /* Branch.xcframework */,
 				5F790BCC252FCEAB00C82E83 /* Branch.framework */,
 				5F790BC9252FCE9700C82E83 /* SystemConfiguration.framework */,
 				5F790BC7252FCAF400C82E83 /* iAd.framework */,
@@ -536,13 +528,15 @@
 				5F790B7A252FCA4800C82E83 /* Sources */,
 				5F790B7B252FCA4800C82E83 /* Frameworks */,
 				5F790B7C252FCA4800C82E83 /* Resources */,
-				5F790BCF252FCEAB00C82E83 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = BranchMonsterFactoryAppClip;
+			packageProductDependencies = (
+				5F05C9C326B9C653005B46B1 /* Branch */,
+			);
 			productName = BranchMonsterFactoryAppClip;
 			productReference = 5F790B7E252FCA4800C82E83 /* BranchMonsterFactoryAppClip.app */;
 			productType = "com.apple.product-type.application.on-demand-install-capable";
@@ -600,6 +594,9 @@
 				5F790BA7252FCA4A00C82E83 /* PBXTargetDependency */,
 			);
 			name = BranchMonsterFactory;
+			packageProductDependencies = (
+				5F05C9C126B9C63B005B46B1 /* Branch */,
+			);
 			productName = BranchBots;
 			productReference = 670591E919BBAC630039DAE1 /* Branchsters.app */;
 			productType = "com.apple.product-type.application";
@@ -655,6 +652,9 @@
 				Base,
 			);
 			mainGroup = 670591E019BBAC630039DAE1;
+			packageReferences = (
+				5F05C9C026B9C63B005B46B1 /* XCRemoteSwiftPackageReference "ios-branch-sdk-spm" */,
+			);
 			productRefGroup = 670591EA19BBAC630039DAE1 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -777,13 +777,15 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-BranchMonsterFactory/Pods-BranchMonsterFactory-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Branch/Branch.framework",
+				"${BUILT_PRODUCTS_DIR}/FBAEMKit/FBAEMKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit_Basics/FBSDKCoreKit_Basics.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Branch.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBAEMKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit_Basics.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -913,8 +915,11 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = BranchMonsterFactoryAppClip/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.5.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.6.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = io.branch.Branchsters.Clip;
@@ -953,12 +958,16 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = BranchMonsterFactoryAppClip/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.5.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.6.0;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = io.branch.Branchsters.Clip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -982,7 +991,11 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = BranchMonsterFactoryAppClipTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = io.branch.Branchsters.BranchMonsterFactoryAppClipTests;
@@ -1014,11 +1027,16 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = BranchMonsterFactoryAppClipTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = io.branch.Branchsters.BranchMonsterFactoryAppClipTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BranchMonsterFactoryAppClip.app/BranchMonsterFactoryAppClip";
@@ -1042,7 +1060,11 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = BranchMonsterFactoryAppClipUITests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = io.branch.Branchsters.BranchMonsterFactoryAppClipUITests;
@@ -1073,11 +1095,16 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = BranchMonsterFactoryAppClipUITests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = io.branch.Branchsters.BranchMonsterFactoryAppClipUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = BranchMonsterFactoryAppClip;
@@ -1207,8 +1234,11 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/BranchMonsterFactory/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.5.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.6.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "io.branch.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Branchsters;
 				PROVISIONING_PROFILE = "";
@@ -1237,8 +1267,11 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/BranchMonsterFactory/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.5.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.6.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "io.branch.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Branchsters;
 				PROVISIONING_PROFILE = "";
@@ -1296,6 +1329,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5F05C9C026B9C63B005B46B1 /* XCRemoteSwiftPackageReference "ios-branch-sdk-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/BranchMetrics/ios-branch-sdk-spm";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.39.4;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5F05C9C126B9C63B005B46B1 /* Branch */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5F05C9C026B9C63B005B46B1 /* XCRemoteSwiftPackageReference "ios-branch-sdk-spm" */;
+			productName = Branch;
+		};
+		5F05C9C326B9C653005B46B1 /* Branch */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5F05C9C026B9C63B005B46B1 /* XCRemoteSwiftPackageReference "ios-branch-sdk-spm" */;
+			productName = Branch;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 670591E119BBAC630039DAE1 /* Project object */;
 }

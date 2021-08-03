@@ -22,8 +22,12 @@
 didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     BNCLogSetDisplayLevel(BNCLogLevelAll);
     self.justLaunched = YES;
+    
+    // required by FB starting with v9.0
+    [FBSDKApplicationDelegate.sharedInstance application:application didFinishLaunchingWithOptions:launchOptions];
 
     Branch *branch = [Branch getInstance];
+    [branch checkPasteboardOnInstall];
     [branch setAppClipAppGroup:@"group.io.branch"];
     [branch registerFacebookDeepLinkingClass:[FBSDKAppLinkUtility class]];
 
