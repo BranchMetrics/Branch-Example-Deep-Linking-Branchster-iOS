@@ -85,7 +85,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
                     [alertView show];
                     */
                 }
-            }];
+    }];
 
         // Optional: Set our own identitier for this user at Branch.
         // This could be an account number our other userID. It only needs to be set once.

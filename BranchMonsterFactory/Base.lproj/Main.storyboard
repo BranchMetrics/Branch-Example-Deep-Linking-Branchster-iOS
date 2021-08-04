@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="aDv-gc-D2h">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="aDv-gc-D2h">
     <device id="retina3_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -12,7 +12,7 @@
             <objects>
                 <navigationController id="aDv-gc-D2h" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="VW4-Bk-I27">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -598,7 +598,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DSG-V1-U2u">
-                                <rect key="frame" x="16" y="345" width="288" height="29.5"/>
+                                <rect key="frame" x="74" y="196" width="172" height="29.5"/>
                                 <state key="normal">
                                     <attributedString key="attributedTitle">
                                         <fragment content="Check us out on the web!">
@@ -612,63 +612,42 @@
                                     <action selector="goToWebTapped:" destination="rab-AQ-UbK" eventType="touchUpInside" id="1SD-Kr-Yor"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.2 / 0.19.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dVs-bG-mA0">
-                                <rect key="frame" x="244" y="409.5" width="60" height="14.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VGL-MZ-yf0">
-                                <rect key="frame" x="16" y="204" width="288" height="133"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <attributedString key="attributedText">
-                                    <fragment>
-                                        <string key="content">Branch link technology is the foundation of our free, powerful linking and tracking platform that offers install attribution, user referral programs, content sharing, download banners and more to drive app engagement and growth. Sign up and see what you can build!</string>
-                                        <attributes>
-                                            <font key="NSFont" size="14" name="HelveticaNeue"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nyO-aP-Ceu">
-                                <rect key="frame" x="67" y="382" width="186" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nyO-aP-Ceu">
+                                <rect key="frame" x="67" y="233" width="187" height="30"/>
                                 <state key="normal" title="Check out Device ID Finder"/>
                                 <connections>
                                     <action selector="showDeviceFinder:" destination="rab-AQ-UbK" eventType="primaryActionTriggered" id="Bgu-hj-OKA"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d4R-cx-0ft">
+                                <rect key="frame" x="109" y="271" width="102" height="30"/>
+                                <state key="normal" title="Allow Analytics"/>
+                                <connections>
+                                    <action selector="requestIDFAPermission:" destination="rab-AQ-UbK" eventType="primaryActionTriggered" id="SuL-zu-ChE"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="dVs-bG-mA0" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="1yI-dp-i8k" secondAttribute="leadingMargin" id="0Jl-SK-lUn"/>
-                            <constraint firstItem="pzz-hW-P62" firstAttribute="centerX" secondItem="hGD-u8-B4m" secondAttribute="centerX" id="3YY-e6-7BA"/>
-                            <constraint firstItem="Ghe-JY-K6h" firstAttribute="top" relation="greaterThanOrEqual" secondItem="DSG-V1-U2u" secondAttribute="bottom" constant="20" id="4ME-w0-5XU"/>
-                            <constraint firstItem="Ghe-JY-K6h" firstAttribute="top" secondItem="dVs-bG-mA0" secondAttribute="bottom" constant="7" id="Cq8-VF-z4n"/>
-                            <constraint firstItem="hGD-u8-B4m" firstAttribute="leading" secondItem="1yI-dp-i8k" secondAttribute="leading" id="DnB-iA-AF4"/>
-                            <constraint firstAttribute="centerX" secondItem="hGD-u8-B4m" secondAttribute="centerX" id="LyN-vf-2G2"/>
-                            <constraint firstItem="nyO-aP-Ceu" firstAttribute="centerX" secondItem="DSG-V1-U2u" secondAttribute="centerX" id="Qca-UD-xJe"/>
-                            <constraint firstItem="dVs-bG-mA0" firstAttribute="trailing" secondItem="1yI-dp-i8k" secondAttribute="trailingMargin" id="USm-aJ-4S3"/>
-                            <constraint firstItem="DSG-V1-U2u" firstAttribute="leading" secondItem="VGL-MZ-yf0" secondAttribute="leading" id="Ve3-ng-Hmg"/>
-                            <constraint firstItem="hGD-u8-B4m" firstAttribute="top" secondItem="QKa-Ku-2jo" secondAttribute="bottom" id="ZCB-QF-LAY"/>
-                            <constraint firstItem="DSG-V1-U2u" firstAttribute="trailing" secondItem="VGL-MZ-yf0" secondAttribute="trailing" id="a8N-nl-9AS"/>
-                            <constraint firstItem="pzz-hW-P62" firstAttribute="top" secondItem="hGD-u8-B4m" secondAttribute="bottom" constant="11" id="ajv-9m-0wx"/>
-                            <constraint firstItem="VGL-MZ-yf0" firstAttribute="top" secondItem="pzz-hW-P62" secondAttribute="bottom" constant="16" id="b0v-TL-7fa"/>
-                            <constraint firstItem="DSG-V1-U2u" firstAttribute="top" secondItem="VGL-MZ-yf0" secondAttribute="bottom" constant="8" id="eD0-Ok-tcD"/>
-                            <constraint firstItem="nyO-aP-Ceu" firstAttribute="leading" secondItem="1yI-dp-i8k" secondAttribute="leadingMargin" constant="51" id="fhw-xE-KUd"/>
-                            <constraint firstItem="VGL-MZ-yf0" firstAttribute="trailing" secondItem="pzz-hW-P62" secondAttribute="trailing" id="kuu-ez-cDH"/>
-                            <constraint firstItem="nyO-aP-Ceu" firstAttribute="top" secondItem="DSG-V1-U2u" secondAttribute="bottom" constant="7.5" id="mee-mr-BUs"/>
-                            <constraint firstItem="VGL-MZ-yf0" firstAttribute="leading" secondItem="pzz-hW-P62" secondAttribute="leading" id="p2w-XE-ToM"/>
-                            <constraint firstItem="pzz-hW-P62" firstAttribute="leading" secondItem="1yI-dp-i8k" secondAttribute="leadingMargin" id="zSu-Nu-o8V"/>
+                            <constraint firstItem="d4R-cx-0ft" firstAttribute="top" secondItem="nyO-aP-Ceu" secondAttribute="bottom" constant="8" id="4wq-GW-muB"/>
+                            <constraint firstItem="d4R-cx-0ft" firstAttribute="leading" secondItem="1yI-dp-i8k" secondAttribute="leadingMargin" constant="93" id="9bB-as-r2L"/>
+                            <constraint firstItem="pzz-hW-P62" firstAttribute="centerX" secondItem="DSG-V1-U2u" secondAttribute="centerX" id="BKG-Jh-LKa"/>
+                            <constraint firstItem="DSG-V1-U2u" firstAttribute="top" secondItem="pzz-hW-P62" secondAttribute="bottom" constant="8" id="L44-Tk-Owy"/>
+                            <constraint firstItem="pzz-hW-P62" firstAttribute="trailing" secondItem="1yI-dp-i8k" secondAttribute="trailingMargin" id="NqH-7H-0id"/>
+                            <constraint firstItem="nyO-aP-Ceu" firstAttribute="centerX" secondItem="DSG-V1-U2u" secondAttribute="centerX" id="TmB-zV-3bA"/>
+                            <constraint firstItem="nyO-aP-Ceu" firstAttribute="top" secondItem="DSG-V1-U2u" secondAttribute="bottom" constant="7.5" id="WEZ-ep-7ZR"/>
+                            <constraint firstItem="hGD-u8-B4m" firstAttribute="centerX" secondItem="pzz-hW-P62" secondAttribute="centerX" id="aWA-u2-1lT"/>
+                            <constraint firstItem="nyO-aP-Ceu" firstAttribute="leading" secondItem="1yI-dp-i8k" secondAttribute="leadingMargin" constant="51" id="alT-SS-s8B"/>
+                            <constraint firstItem="pzz-hW-P62" firstAttribute="top" secondItem="hGD-u8-B4m" secondAttribute="bottom" constant="11" id="bXo-2d-DW3"/>
+                            <constraint firstItem="hGD-u8-B4m" firstAttribute="top" secondItem="1yI-dp-i8k" secondAttribute="topMargin" id="quL-Zc-YPp"/>
+                            <constraint firstItem="nyO-aP-Ceu" firstAttribute="centerX" secondItem="d4R-cx-0ft" secondAttribute="centerX" id="xPc-sS-FxW"/>
+                            <constraint firstItem="pzz-hW-P62" firstAttribute="leading" secondItem="1yI-dp-i8k" secondAttribute="leadingMargin" id="yrV-5t-9T8"/>
+                            <constraint firstItem="hGD-u8-B4m" firstAttribute="leading" secondItem="1yI-dp-i8k" secondAttribute="leadingMargin" constant="-16" id="zyT-i7-vq5"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="Fua-mk-cB2"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <outlet property="versionLabel" destination="dVs-bG-mA0" id="WN2-Qc-RHT"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aS1-oh-ERT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
