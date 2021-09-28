@@ -22,8 +22,12 @@
 didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     BNCLogSetDisplayLevel(BNCLogLevelAll);
     self.justLaunched = YES;
+    
+    // required by FB starting with v9.0
+    [FBSDKApplicationDelegate.sharedInstance application:application didFinishLaunchingWithOptions:launchOptions];
 
     Branch *branch = [Branch getInstance];
+    [branch checkPasteboardOnInstall];
     [branch setAppClipAppGroup:@"group.io.branch"];
     [branch registerFacebookDeepLinkingClass:[FBSDKAppLinkUtility class]];
 
@@ -81,7 +85,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
                     [alertView show];
                     */
                 }
-            }];
+    }];
 
         // Optional: Set our own identitier for this user at Branch.
         // This could be an account number our other userID. It only needs to be set once.

@@ -1,25 +1,31 @@
 PODS:
-  - Branch (0.36.0)
-  - FBSDKCoreKit (8.2.0):
-    - FBSDKCoreKit/Basics (= 8.2.0)
-    - FBSDKCoreKit/Core (= 8.2.0)
-  - FBSDKCoreKit/Basics (8.2.0)
-  - FBSDKCoreKit/Core (8.2.0):
-    - FBSDKCoreKit/Basics
+  - FBAEMKit (11.1.0):
+    - FBAEMKit/AEM (= 11.1.0)
+  - FBAEMKit/AEM (11.1.0):
+    - FBSDKCoreKit_Basics (~> 11.1.0)
+  - FBSDKCoreKit (11.1.0):
+    - FBSDKCoreKit/Core (= 11.1.0)
+  - FBSDKCoreKit/Core (11.1.0):
+    - FBAEMKit (~> 11.1.0)
+    - FBSDKCoreKit_Basics (~> 11.1.0)
+  - FBSDKCoreKit_Basics (11.1.0):
+    - FBSDKCoreKit_Basics/Basics (= 11.1.0)
+  - FBSDKCoreKit_Basics/Basics (11.1.0)
 
 DEPENDENCIES:
-  - Branch
   - FBSDKCoreKit
 
 SPEC REPOS:
   trunk:
-    - Branch
+    - FBAEMKit
     - FBSDKCoreKit
+    - FBSDKCoreKit_Basics
 
 SPEC CHECKSUMS:
-  Branch: 8aebcb7a6465f19f9f4d315acced369ae078d3f2
-  FBSDKCoreKit: 4afd6ff53d8133a433dbcda44451c9498f8c6ce4
+  FBAEMKit: 5c8a8d08e5b2c79628490784883e0fcc75b12615
+  FBSDKCoreKit: 7ccb8b4bb2b5ee2ad94327b774dc23f03509675d
+  FBSDKCoreKit_Basics: 8f978bce195845f609b0ec6b425949d0d24f525b
 
-PODFILE CHECKSUM: 774a8ad4e6873c9cfb3fdafd78b73514ee39819e
+PODFILE CHECKSUM: caac65de59e067591bcd3f7536f42c4cf94671e7
 
-COCOAPODS: 1.9.1
+COCOAPODS: 1.10.1
