@@ -12,6 +12,7 @@
 #import "MonsterViewerViewController.h"
 #import "BranchUniversalObject+MonsterHelpers.h"
 #import "Branch.h"
+@import AppTrackingTransparency;
 
 @interface MonsterCreatorViewController ()
 
@@ -61,7 +62,17 @@ static CGFloat SIDE_SPACE = 7.0;
     [self.monsterName addTarget:self.monsterName
                       action:@selector(resignFirstResponder)
             forControlEvents:UIControlEventEditingDidEndOnExit];
+    
+    [self requestIDFAPermission];
 }
+
+- (void)requestIDFAPermission {
+    if (@available(iOS 14.0, *)) {
+        [ATTrackingManager requestTrackingAuthorizationWithCompletionHandler:^(ATTrackingManagerAuthorizationStatus status) {
+            [[Branch getInstance] handleATTAuthorizationStatus:status];
+        }];
+    }
+ }
 
 - (void)viewDidLayoutSubviews {
     [self adjustMonsterPicturesForScreenSize];

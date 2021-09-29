@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="aDv-gc-D2h">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="aDv-gc-D2h">
     <device id="retina3_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -619,18 +619,9 @@
                                     <action selector="showDeviceFinder:" destination="rab-AQ-UbK" eventType="primaryActionTriggered" id="Bgu-hj-OKA"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d4R-cx-0ft">
-                                <rect key="frame" x="109" y="271" width="102" height="30"/>
-                                <state key="normal" title="Allow Analytics"/>
-                                <connections>
-                                    <action selector="requestIDFAPermission:" destination="rab-AQ-UbK" eventType="primaryActionTriggered" id="SuL-zu-ChE"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="d4R-cx-0ft" firstAttribute="top" secondItem="nyO-aP-Ceu" secondAttribute="bottom" constant="8" id="4wq-GW-muB"/>
-                            <constraint firstItem="d4R-cx-0ft" firstAttribute="leading" secondItem="1yI-dp-i8k" secondAttribute="leadingMargin" constant="93" id="9bB-as-r2L"/>
                             <constraint firstItem="pzz-hW-P62" firstAttribute="centerX" secondItem="DSG-V1-U2u" secondAttribute="centerX" id="BKG-Jh-LKa"/>
                             <constraint firstItem="DSG-V1-U2u" firstAttribute="top" secondItem="pzz-hW-P62" secondAttribute="bottom" constant="8" id="L44-Tk-Owy"/>
                             <constraint firstItem="pzz-hW-P62" firstAttribute="trailing" secondItem="1yI-dp-i8k" secondAttribute="trailingMargin" id="NqH-7H-0id"/>
@@ -640,7 +631,6 @@
                             <constraint firstItem="nyO-aP-Ceu" firstAttribute="leading" secondItem="1yI-dp-i8k" secondAttribute="leadingMargin" constant="51" id="alT-SS-s8B"/>
                             <constraint firstItem="pzz-hW-P62" firstAttribute="top" secondItem="hGD-u8-B4m" secondAttribute="bottom" constant="11" id="bXo-2d-DW3"/>
                             <constraint firstItem="hGD-u8-B4m" firstAttribute="top" secondItem="1yI-dp-i8k" secondAttribute="topMargin" id="quL-Zc-YPp"/>
-                            <constraint firstItem="nyO-aP-Ceu" firstAttribute="centerX" secondItem="d4R-cx-0ft" secondAttribute="centerX" id="xPc-sS-FxW"/>
                             <constraint firstItem="pzz-hW-P62" firstAttribute="leading" secondItem="1yI-dp-i8k" secondAttribute="leadingMargin" id="yrV-5t-9T8"/>
                             <constraint firstItem="hGD-u8-B4m" firstAttribute="leading" secondItem="1yI-dp-i8k" secondAttribute="leadingMargin" constant="-16" id="zyT-i7-vq5"/>
                         </constraints>
