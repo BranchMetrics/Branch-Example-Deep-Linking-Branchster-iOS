@@ -8,7 +8,6 @@
 
 #import "BranchInfoViewController.h"
 #import "BranchAdNetwork.h"
-@import AppTrackingTransparency;
 @import Branch;
 @import StoreKit;
 
@@ -64,14 +63,6 @@
         });
     }];
 }
-
-- (IBAction)requestIDFAPermission:(id)sender {
-    if (@available(iOS 14.0, *)) {
-        [ATTrackingManager requestTrackingAuthorizationWithCompletionHandler:^(ATTrackingManagerAuthorizationStatus status) {
-            [[Branch getInstance] handleATTAuthorizationStatus:status];
-        }];
-    }
- }
 
 - (void)openStoreWithParams:(NSDictionary *)params {
     SKStoreProductViewController *productVC = [SKStoreProductViewController new];
