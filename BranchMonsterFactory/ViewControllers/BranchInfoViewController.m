@@ -8,6 +8,7 @@
 
 #import "BranchInfoViewController.h"
 #import "BranchAdNetwork.h"
+@import SafariServices;
 @import Branch;
 @import StoreKit;
 
@@ -72,6 +73,16 @@
             [self presentViewController:productVC animated:YES completion:^{ }];
         }
     }];
+}
+
+- (IBAction)showPrivacyPolicy:(id)sender {
+    NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:@"https://branch.io/policies/privacy-policy/"]];
+    if (@available(iOS 10, tvOS 10, *)) {
+        SFSafariViewController *sfvc = [[SFSafariViewController alloc] initWithURL:URL];
+        [self presentViewController:sfvc animated:YES completion:nil];
+    } else {
+        [[UIApplication sharedApplication] openURL:URL];
+    }
 }
 
 @end
