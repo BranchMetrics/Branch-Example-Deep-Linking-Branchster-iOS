@@ -12,7 +12,7 @@
             <objects>
                 <navigationController id="aDv-gc-D2h" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="VW4-Bk-I27">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -612,16 +612,26 @@
                                     <action selector="goToWebTapped:" destination="rab-AQ-UbK" eventType="touchUpInside" id="1SD-Kr-Yor"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nyO-aP-Ceu">
-                                <rect key="frame" x="67" y="233" width="187" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nyO-aP-Ceu">
+                                <rect key="frame" x="67" y="233" width="186" height="30"/>
                                 <state key="normal" title="Check out Device ID Finder"/>
                                 <connections>
                                     <action selector="showDeviceFinder:" destination="rab-AQ-UbK" eventType="primaryActionTriggered" id="Bgu-hj-OKA"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6wo-aI-rnU">
+                                <rect key="frame" x="101" y="270.5" width="118" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Privacy Policy"/>
+                                <connections>
+                                    <action selector="showPrivacyPolicy:" destination="rab-AQ-UbK" eventType="touchUpInside" id="Z0s-sK-Fkl"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="6wo-aI-rnU" firstAttribute="leading" secondItem="1yI-dp-i8k" secondAttribute="leadingMargin" constant="85" id="39e-9N-hlv"/>
                             <constraint firstItem="pzz-hW-P62" firstAttribute="centerX" secondItem="DSG-V1-U2u" secondAttribute="centerX" id="BKG-Jh-LKa"/>
                             <constraint firstItem="DSG-V1-U2u" firstAttribute="top" secondItem="pzz-hW-P62" secondAttribute="bottom" constant="8" id="L44-Tk-Owy"/>
                             <constraint firstItem="pzz-hW-P62" firstAttribute="trailing" secondItem="1yI-dp-i8k" secondAttribute="trailingMargin" id="NqH-7H-0id"/>
@@ -629,8 +639,10 @@
                             <constraint firstItem="nyO-aP-Ceu" firstAttribute="top" secondItem="DSG-V1-U2u" secondAttribute="bottom" constant="7.5" id="WEZ-ep-7ZR"/>
                             <constraint firstItem="hGD-u8-B4m" firstAttribute="centerX" secondItem="pzz-hW-P62" secondAttribute="centerX" id="aWA-u2-1lT"/>
                             <constraint firstItem="nyO-aP-Ceu" firstAttribute="leading" secondItem="1yI-dp-i8k" secondAttribute="leadingMargin" constant="51" id="alT-SS-s8B"/>
+                            <constraint firstItem="6wo-aI-rnU" firstAttribute="top" secondItem="nyO-aP-Ceu" secondAttribute="bottom" constant="7.5" id="bCL-qJ-pgE"/>
                             <constraint firstItem="pzz-hW-P62" firstAttribute="top" secondItem="hGD-u8-B4m" secondAttribute="bottom" constant="11" id="bXo-2d-DW3"/>
                             <constraint firstItem="hGD-u8-B4m" firstAttribute="top" secondItem="1yI-dp-i8k" secondAttribute="topMargin" id="quL-Zc-YPp"/>
+                            <constraint firstItem="6wo-aI-rnU" firstAttribute="centerX" secondItem="nyO-aP-Ceu" secondAttribute="centerX" id="xfC-QC-heC"/>
                             <constraint firstItem="pzz-hW-P62" firstAttribute="leading" secondItem="1yI-dp-i8k" secondAttribute="leadingMargin" id="yrV-5t-9T8"/>
                             <constraint firstItem="hGD-u8-B4m" firstAttribute="leading" secondItem="1yI-dp-i8k" secondAttribute="leadingMargin" constant="-16" id="zyT-i7-vq5"/>
                         </constraints>

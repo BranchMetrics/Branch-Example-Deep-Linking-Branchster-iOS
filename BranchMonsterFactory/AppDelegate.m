@@ -69,7 +69,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
                     self.justLaunched = NO;
                 }
 
-                NSDictionary *appleSearchAd = [BNCPreferenceHelper preferenceHelper].appleSearchAdDetails;
+                NSDictionary *appleSearchAd = [BNCPreferenceHelper sharedInstance].appleSearchAdDetails;
                 NSString *campaign = appleSearchAd[@"Version3.1"][@"iad-campaign-name"];
                 if (campaign.length) {
                     NSLog(@"Got an Apple Search Ad Result :\n%@", appleSearchAd);
