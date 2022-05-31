@@ -6,8 +6,8 @@
         "repositoryURL": "https://github.com/BranchMetrics/ios-branch-sdk-spm",
         "state": {
           "branch": null,
-          "revision": "b1a66b4d355826e443697add05396f4374bc1bb1",
-          "version": "1.39.4"
+          "revision": "a189a664f7c7bcb43245e3c244cb71af5f7a25e2",
+          "version": "1.42.0"
         }
       }
     ]

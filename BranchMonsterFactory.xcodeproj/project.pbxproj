@@ -1336,7 +1336,7 @@
 			repositoryURL = "https://github.com/BranchMetrics/ios-branch-sdk-spm";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.39.4;
+				minimumVersion = 1.42.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
