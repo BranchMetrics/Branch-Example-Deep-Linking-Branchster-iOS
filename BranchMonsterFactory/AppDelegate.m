@@ -27,12 +27,16 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [FBSDKApplicationDelegate.sharedInstance application:application didFinishLaunchingWithOptions:launchOptions];
 
     Branch *branch = [Branch getInstance];
-    [branch checkPasteboardOnInstall];
+    
+    // NativeLink
+    if (@available(iOS 16.0, *)) {
+        // Don't check pasteboard on install, instead utilize UIPasteControl
+    } else if (@available(iOS 15.0, *)) {
+        [branch checkPasteboardOnInstall];
+    }
+    
     [branch setAppClipAppGroup:@"group.io.branch"];
     [branch registerFacebookDeepLinkingClass:[FBSDKAppLinkUtility class]];
-
-    // Enable this to track Apple Search Ad attribution:
-    [branch delayInitToCheckForSearchAds];
 
     /*
      * Initalize Branch and register the deep link handler:

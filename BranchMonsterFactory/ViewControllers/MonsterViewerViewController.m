@@ -42,7 +42,7 @@
 
 static CGFloat MONSTER_HEIGHT = 0.4f;
 
-
+@synthesize pasteConfiguration;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -89,6 +89,21 @@ static CGFloat MONSTER_HEIGHT = 0.4f;
     
     [self.progressBar hide];
     [self setViewingMonster:self.viewingMonster];  //not awesome, but it triggers the setter
+    
+    if (@available(iOS 16.0, *)) {
+        
+        UIPasteControlConfiguration *pcConfig = [UIPasteControlConfiguration new];
+        pcConfig.baseBackgroundColor = [UIColor colorWithRed:81.0f/255.0f green:131.0f/255.0f blue:212.0f/255.0f alpha:1.0f];
+        pcConfig.displayMode = UIPasteControlDisplayModeLabelOnly;
+        
+        CGRect rectPC = CGRectMake(15, (self.view.bounds.size.height - 53), 68, 34);
+        UIPasteControl *pc = [[UIPasteControl alloc] initWithConfiguration:pcConfig];
+        pc.frame = rectPC;
+        pc.target = self;
+        [self.view addSubview:pc];
+        
+        pasteConfiguration = [[UIPasteConfiguration alloc] initWithAcceptableTypeIdentifiers:@[UTTypeURL.identifier]];
+    }
 }
 
 - (void) viewDidAppear:(BOOL)animated {
@@ -101,6 +116,22 @@ static CGFloat MONSTER_HEIGHT = 0.4f;
     }];
 
 }
+
+- (void)pasteItemProviders:(NSArray<NSItemProvider *> *)itemProviders {
+    if (@available(iOS 16, *)) {
+        [[Branch getInstance] passPasteItemProviders:itemProviders];
+    }
+}
+
+- (BOOL)canPasteItemProviders:(NSArray<NSItemProvider *> *)itemProviders {
+    for (NSItemProvider* item in itemProviders)
+        if (@available(iOS 14.0, *)) {
+            if ( [item hasItemConformingToTypeIdentifier: UTTypeURL.identifier] )
+                return true;
+        }
+    return false;
+}
+
 -(void) setViewingMonster: (BranchUniversalObject *)monster {
     _viewingMonster = monster;
     
