@@ -7,7 +7,7 @@
 //
 
 @import UIKit;
-@import Branch;
+@import BranchSDK;
 
 @interface MonsterViewerViewController : UIViewController
 -(void) setViewingMonster: (BranchUniversalObject *)viewingMonster;

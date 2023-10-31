@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Branch, Inc All rights reserved.
 //
 
-@import Branch;
+@import BranchSDK;
 #import "BranchUniversalObject+MonsterHelpers.h"
 #import "BranchInfoViewController.h"
 #import "NetworkProgressBar.h"
@@ -94,11 +94,11 @@ static CGFloat MONSTER_HEIGHT = 0.4f;
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     if (self.monsterName.length <= 0) self.monsterName = @"Nameless Monster";
-    [[Branch getInstance] userCompletedAction:@"Product View" withState:@{
-        @"sku":      self.monsterName,
-        @"price":    self.price,
-        @"currency": @"USD"
-    }];
+//    [[Branch getInstance] userCompletedAction:@"Product View" withState:@{
+//        @"sku":      self.monsterName,
+//        @"price":    self.price,
+//        @"currency": @"USD"
+//    }];
 
 }
 -(void) setViewingMonster: (BranchUniversalObject *)monster {
@@ -124,37 +124,39 @@ static CGFloat MONSTER_HEIGHT = 0.4f;
 
 -(IBAction)shareSheet:(id)sender {
 
-    BNCCommerceEvent *commerceEvent = [[BNCCommerceEvent alloc] init];
-    commerceEvent.revenue = self.price;
-    commerceEvent.currency = @"USD";
 
-    BNCProduct* branchester = [BNCProduct new];
+
+    BranchContentMetadata* branchester = [BranchContentMetadata new];
     if (self.monsterName.length <= 0) self.monsterName = @"Nameless Monster";
     branchester.sku = self.monsterName;
     branchester.price = self.price;
-    branchester.quantity = @1;
-    branchester.variant = @"X-Tra Hairy";
-    branchester.brand = @"Branch";
-    branchester.category = BNCProductCategoryAnimalSupplies;
-    branchester.name = self.monsterName;
-    commerceEvent.products = [NSArray arrayWithObject:branchester];
+    branchester.quantity = 1;
+    branchester.productVariant = @"X-Tra Hairy";
+    branchester.productBrand = @"Branch";
+    branchester.productCategory = BNCProductCategoryAnimalSupplies;
+    branchester.productName = self.monsterName;
+    //commerceEvent.products = [NSArray arrayWithObject:branchester];
+    BranchUniversalObject *buo = [[BranchUniversalObject alloc] initWithCanonicalIdentifier:@"monster"];
+    buo.contentMetadata = branchester;
     
-    [[Branch getInstance] userCompletedAction:BNCAddToCartEvent withState:@{
-        @"sku":      self.monsterName,
-        @"price":    self.price,
-        @"currency": @"USD"
-    }];
+    BranchEvent *commerceEvent = [BranchEvent standardEvent:BNCAddToCartEvent withContentItem:buo];
+    commerceEvent.revenue = self.price;
+    commerceEvent.currency = @"USD";
+    
+    [commerceEvent logEvent];
+    
+//    [[Branch getInstance] userCompletedAction:BNCAddToCartEvent withState:@{
+//        @"sku":      self.monsterName,
+//        @"price":    self.price,
+//        @"currency": @"USD"
+//    }];
 
     [self.viewingMonster
         showShareSheetWithShareText:@"Share Your Monster!"
         completion:^(NSString * _Nullable activityType, BOOL completed) {
             if (completed) {
-               // [[Branch getInstance] userCompletedAction:BNCAddToCartEvent];
-                [[Branch getInstance] sendCommerceEvent:commerceEvent
-                                               metadata:nil
-                                         withCompletion:^ (NSDictionary *response, NSError *error) {
-                                             if (error) {  }
-                                         }];
+                [[BranchEvent standardEvent:BNCAddToCartEvent] logEvent];
+
             }
         }];
     

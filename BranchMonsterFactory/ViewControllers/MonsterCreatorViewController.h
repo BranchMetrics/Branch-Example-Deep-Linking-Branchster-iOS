@@ -7,7 +7,7 @@
 //
 
 @import UIKit;
-@import Branch;
+@import BranchSDK;
 
 @interface MonsterCreatorViewController : UIViewController
 @property BranchUniversalObject *editingMonster;

@@ -7,7 +7,7 @@
 //
 
 @import UIKit;
-@import Branch;
+@import BranchSDK;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 @property (strong, nonatomic) UIWindow *window;

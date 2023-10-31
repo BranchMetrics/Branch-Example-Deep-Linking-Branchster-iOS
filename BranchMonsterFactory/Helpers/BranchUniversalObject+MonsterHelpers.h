@@ -7,7 +7,7 @@
 //
 
 @import Foundation;
-@import Branch;
+@import BranchSDK;
 
 @interface BranchUniversalObject (MonsterHelpers)
 
