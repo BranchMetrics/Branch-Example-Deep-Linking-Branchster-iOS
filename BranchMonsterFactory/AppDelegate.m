@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 Branch, Inc All rights reserved.
 //
 
-@import Branch;
-@import FBSDKCoreKit;
+@import BranchSDK;
+#import "FBSDKCoreKit.h"
 #import "AppDelegate.h"
 #import "SplashViewController.h"
 #import "BranchUniversalObject+MonsterHelpers.h"
@@ -25,14 +25,10 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     // required by FB starting with v9.0
     [FBSDKApplicationDelegate.sharedInstance application:application didFinishLaunchingWithOptions:launchOptions];
-
+    
     Branch *branch = [Branch getInstance];
     [branch checkPasteboardOnInstall];
     [branch setAppClipAppGroup:@"group.io.branch"];
-    [branch registerFacebookDeepLinkingClass:[FBSDKAppLinkUtility class]];
-
-    // Enable this to track Apple Search Ad attribution:
-    [branch delayInitToCheckForSearchAds];
 
     /*
      * Initalize Branch and register the deep link handler:
@@ -69,34 +65,18 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
                     self.justLaunched = NO;
                 }
 
-                NSDictionary *appleSearchAd = [BNCPreferenceHelper sharedInstance].appleSearchAdDetails;
-                NSString *campaign = appleSearchAd[@"Version3.1"][@"iad-campaign-name"];
-                if (campaign.length) {
-                    NSLog(@"Got an Apple Search Ad Result :\n%@", appleSearchAd);
-                    /*
-                    NSString *message = [NSString stringWithFormat:@"Campaign: %@", campaign];
-                    UIAlertView *alertView =
-                        [[UIAlertView alloc]
-                            initWithTitle:@"Apple Search Ad Result!"
-                            message:message
-                            delegate:nil
-                            cancelButtonTitle:@"OK"
-                            otherButtonTitles:nil];
-                    [alertView show];
-                    */
-                }
     }];
 
         // Optional: Set our own identitier for this user at Branch.
         // This could be an account number our other userID. It only needs to be set once.
 
         // User Identity
-    //    NSString *userIdentity = [[NSUserDefaults standardUserDefaults] objectForKey:@"userIdentity"];
-    //    if (!userIdentity) {
-    //        userIdentity = [[NSUUID UUID] UUIDString];
-    //        [[NSUserDefaults standardUserDefaults] setObject:userIdentity forKey:@"userIdentity"];
-    //        [branch setIdentity:userIdentity];
-    //    }
+        NSString *userIdentity = [[NSUserDefaults standardUserDefaults] objectForKey:@"userIdentity"];
+        if (!userIdentity) {
+            userIdentity = [[NSUUID UUID] UUIDString];
+            [[NSUserDefaults standardUserDefaults] setObject:userIdentity forKey:@"userIdentity"];
+            [branch setIdentity:userIdentity];
+        }
     
     return YES;
 }

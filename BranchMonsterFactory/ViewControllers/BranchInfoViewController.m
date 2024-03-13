@@ -9,7 +9,7 @@
 #import "BranchInfoViewController.h"
 #import "BranchAdNetwork.h"
 @import SafariServices;
-@import Branch;
+@import BranchSDK;
 @import StoreKit;
 
 @interface BranchInfoViewController ()

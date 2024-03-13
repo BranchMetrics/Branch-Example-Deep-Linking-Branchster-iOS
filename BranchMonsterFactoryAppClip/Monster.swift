@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Branch
+import BranchSDK
 
 // ViewModel
 class Monster: NSObject {
