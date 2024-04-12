@@ -24,12 +24,11 @@
     self.versionLabel.text =
         [NSString stringWithFormat:@"%@ / %@",
             [NSBundle mainBundle].infoDictionary[@"CFBundleShortVersionString"],
-            BNC_SDK_VERSION];
+            @"3.4.1"];
 }
 
 - (IBAction)doneTapped:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
-    //[self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)goToWebTapped:(id)sender {
