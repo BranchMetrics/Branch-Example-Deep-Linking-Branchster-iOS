@@ -10,7 +10,7 @@ import UIKit
 import BranchSDK
 
 class ViewController: UIViewController {
-
+    
     let monster = Monster.shared
     
     @IBOutlet weak var name: UILabel?
@@ -156,28 +156,7 @@ class ViewController: UIViewController {
             }, completion: nil)
         }
     }
-    
-    
-    /*
-     
-     [self.viewingMonster
-         showShareSheetWithShareText:@"Share Your Monster!"
-         completion:^(NSString * _Nullable activityType, BOOL completed) {
-             if (completed) {
-                // [[Branch getInstance] userCompletedAction:BNCAddToCartEvent];
-                 [[Branch getInstance] sendCommerceEvent:commerceEvent
-                                                metadata:nil
-                                          withCompletion:^ (NSDictionary *response, NSError *error) {
-                                              if (error) {  }
-                                          }];
-             }
-         }];
-     
-     [UIMenuController sharedMenuController].menuVisible = NO;
-     [self.shareTextView resignFirstResponder];
-     
-     */
-    
+
     
     @IBAction func shareMonster() {
         let lp = BranchLinkProperties()
@@ -185,7 +164,7 @@ class ViewController: UIViewController {
         lp.channel = "appclip"
         
         let buo = self.monster.shareWithBranch()
-        buo.showShareSheet(withShareText: "Share Your Monster!") { (activityType, success) in
+        buo.showShareSheet(withShareText: "Share Your Monster!") { (activityType, success, error) in
             if (success) {
                 print("should log an event here")
             }

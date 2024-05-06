@@ -94,13 +94,18 @@ static CGFloat MONSTER_HEIGHT = 0.4f;
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     if (self.monsterName.length <= 0) self.monsterName = @"Nameless Monster";
-//    [[Branch getInstance] userCompletedAction:@"Product View" withState:@{
-//        @"sku":      self.monsterName,
-//        @"price":    self.price,
-//        @"currency": @"USD"
-//    }];
-
+    BranchEvent *event = [BranchEvent standardEvent:BranchStandardEventViewItem];
+    BranchUniversalObject *buo = [[BranchUniversalObject alloc] init];
+    BranchContentMetadata *metadata = [[BranchContentMetadata alloc] init];
+    metadata.sku = self.monsterName;
+    metadata.price = self.price;
+    metadata.currency = @"USD";
+    
+    buo.contentMetadata = metadata;
+    event.contentItems = @[buo];
+    [event logEvent];
 }
+
 -(void) setViewingMonster: (BranchUniversalObject *)monster {
     _viewingMonster = monster;
     
@@ -124,8 +129,6 @@ static CGFloat MONSTER_HEIGHT = 0.4f;
 
 -(IBAction)shareSheet:(id)sender {
 
-
-
     BranchContentMetadata* branchester = [BranchContentMetadata new];
     if (self.monsterName.length <= 0) self.monsterName = @"Nameless Monster";
     branchester.sku = self.monsterName;
@@ -135,32 +138,21 @@ static CGFloat MONSTER_HEIGHT = 0.4f;
     branchester.productBrand = @"Branch";
     branchester.productCategory = BNCProductCategoryAnimalSupplies;
     branchester.productName = self.monsterName;
-    //commerceEvent.products = [NSArray arrayWithObject:branchester];
     BranchUniversalObject *buo = [[BranchUniversalObject alloc] initWithCanonicalIdentifier:@"monster"];
     buo.contentMetadata = branchester;
     
     BranchEvent *commerceEvent = [BranchEvent standardEvent:BNCAddToCartEvent withContentItem:buo];
     commerceEvent.revenue = self.price;
     commerceEvent.currency = @"USD";
-    
     [commerceEvent logEvent];
     
-//    [[Branch getInstance] userCompletedAction:BNCAddToCartEvent withState:@{
-//        @"sku":      self.monsterName,
-//        @"price":    self.price,
-//        @"currency": @"USD"
-//    }];
+    [self.viewingMonster showShareSheetWithShareText:@"Share Your Monster!" completion:^(NSString * _Nullable activityType, BOOL completed, NSError * _Nullable error) {
+        if (completed) {
+            [[BranchEvent standardEvent:BNCAddToCartEvent] logEvent];
 
-    [self.viewingMonster
-        showShareSheetWithShareText:@"Share Your Monster!"
-        completion:^(NSString * _Nullable activityType, BOOL completed) {
-            if (completed) {
-                [[BranchEvent standardEvent:BNCAddToCartEvent] logEvent];
-
-            }
-        }];
+        }
+    }];
     
-    [UIMenuController sharedMenuController].menuVisible = NO;
     [self.shareTextView resignFirstResponder];
 }
 
