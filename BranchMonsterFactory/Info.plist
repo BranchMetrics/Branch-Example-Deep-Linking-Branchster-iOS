@@ -24,6 +24,12 @@
 	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+    <key>branch_universal_link_domains</key>
+    <array>
+        <string>monster-factory.app.link</string>
+        <string>monster-factory-alternate.app.link</string>
+        <string>monster-factory.test.app.link</string>
+    </array>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>

@@ -6,7 +6,7 @@
 	<string>development</string>
 	<key>com.apple.developer.associated-domains</key>
 	<array>
-		<string>appclips:branchster.app.link</string>
+		<string>appclips:monster-factory.app.link</string>
 		<string>applinks:email-04.givemeulinksorgivemedeath.com</string>
 		<string>applinks:email-04.branch.rocks</string>
 		<string>applinks:email-03.givemeulinksorgivemedeath.com</string>
@@ -35,8 +35,8 @@
 		<string>applinks:click.s1.qa1.sfmctest.com</string>
 		<string>applinks:email-epsilon.branch.rocks</string>
 		<string>applinks:email-postup.branch.rocks</string>
-		<string>applinks:branchster.app.link</string>
-		<string>applinks:branchster-alternate.app.link</string>
+		<string>applinks:monster-factory.app.link</string>
+		<string>applinks:monster-factory-alternate.app.link</string>
 		<string>applinks:email-bronto.branch.rocks</string>
 		<string>applinks:email-mailjet.branch.rocks</string>
 		<string>applinks:email-mandrill.branch.rocks</string>
