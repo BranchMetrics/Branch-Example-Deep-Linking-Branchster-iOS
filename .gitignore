@@ -1,6 +1,34 @@
+# Mac
+.DS_Store
+.LSOverride
+
 # Xcode
 [Bb]uild/**
 BranchMonsterFactory.xcodeproj/xcuserdata
 *.xccheckout
+[Bb]uild
+*.xcuserstate
 *.xcuserdatad
-*.DS_Store
+# *.xcscmblueprint # We should probably check this in.
+*.o
+DerivedData
+
+# merge-repo commit/discard file
+merge-repo-commit
+
+# Pods
+Pods/
+
+# Carthage
+carthage-files/*.zip
+carthage-files/Carthage
+
+# Fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots
+fastlane/test_output
+
+# Ruby stuff
+vendor
+.bundle

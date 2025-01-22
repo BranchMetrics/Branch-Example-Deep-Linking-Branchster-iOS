@@ -24,7 +24,7 @@
     self.versionLabel.text =
         [NSString stringWithFormat:@"%@ / %@",
             [NSBundle mainBundle].infoDictionary[@"CFBundleShortVersionString"],
-            @"3.4.1"];
+            @"3.8.0"];
 }
 
 - (IBAction)doneTapped:(id)sender {
