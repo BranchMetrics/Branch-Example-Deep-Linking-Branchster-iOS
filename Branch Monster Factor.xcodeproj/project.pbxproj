@@ -1,0 +1,597 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FCE301162EBAA91E009B2F7A /* Branch_Monster_FactorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE301152EBAA91E009B2F7A /* Branch_Monster_FactorApp.swift */; };
+		FCE301182EBAA91E009B2F7A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE301172EBAA91E009B2F7A /* ContentView.swift */; };
+		FCE3011A2EBAA91E009B2F7A /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE301192EBAA91E009B2F7A /* Item.swift */; };
+		FCE3011C2EBAA91F009B2F7A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCE3011B2EBAA91F009B2F7A /* Assets.xcassets */; };
+		FCE3011F2EBAA91F009B2F7A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCE3011E2EBAA91F009B2F7A /* Preview Assets.xcassets */; };
+		FCE301292EBAA91F009B2F7A /* Branch_Monster_FactorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE301282EBAA91F009B2F7A /* Branch_Monster_FactorTests.swift */; };
+		FCE301332EBAA91F009B2F7A /* Branch_Monster_FactorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE301322EBAA91F009B2F7A /* Branch_Monster_FactorUITests.swift */; };
+		FCE301352EBAA91F009B2F7A /* Branch_Monster_FactorUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE301342EBAA91F009B2F7A /* Branch_Monster_FactorUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FCE301252EBAA91F009B2F7A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FCE3010A2EBAA91E009B2F7A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FCE301112EBAA91E009B2F7A;
+			remoteInfo = "Branch Monster Factor";
+		};
+		FCE3012F2EBAA91F009B2F7A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FCE3010A2EBAA91E009B2F7A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FCE301112EBAA91E009B2F7A;
+			remoteInfo = "Branch Monster Factor";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		FCE301122EBAA91E009B2F7A /* Branch Monster Factor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Branch Monster Factor.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FCE301152EBAA91E009B2F7A /* Branch_Monster_FactorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Branch_Monster_FactorApp.swift; sourceTree = "<group>"; };
+		FCE301172EBAA91E009B2F7A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		FCE301192EBAA91E009B2F7A /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		FCE3011B2EBAA91F009B2F7A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FCE3011E2EBAA91F009B2F7A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		FCE301242EBAA91F009B2F7A /* Branch Monster FactorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Branch Monster FactorTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FCE301282EBAA91F009B2F7A /* Branch_Monster_FactorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Branch_Monster_FactorTests.swift; sourceTree = "<group>"; };
+		FCE3012E2EBAA91F009B2F7A /* Branch Monster FactorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Branch Monster FactorUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FCE301322EBAA91F009B2F7A /* Branch_Monster_FactorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Branch_Monster_FactorUITests.swift; sourceTree = "<group>"; };
+		FCE301342EBAA91F009B2F7A /* Branch_Monster_FactorUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Branch_Monster_FactorUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FCE3010F2EBAA91E009B2F7A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FCE301212EBAA91F009B2F7A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FCE3012B2EBAA91F009B2F7A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FCE301092EBAA91E009B2F7A = {
+			isa = PBXGroup;
+			children = (
+				FCE301142EBAA91E009B2F7A /* Branch Monster Factor */,
+				FCE301272EBAA91F009B2F7A /* Branch Monster FactorTests */,
+				FCE301312EBAA91F009B2F7A /* Branch Monster FactorUITests */,
+				FCE301132EBAA91E009B2F7A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FCE301132EBAA91E009B2F7A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FCE301122EBAA91E009B2F7A /* Branch Monster Factor.app */,
+				FCE301242EBAA91F009B2F7A /* Branch Monster FactorTests.xctest */,
+				FCE3012E2EBAA91F009B2F7A /* Branch Monster FactorUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FCE301142EBAA91E009B2F7A /* Branch Monster Factor */ = {
+			isa = PBXGroup;
+			children = (
+				FCE301152EBAA91E009B2F7A /* Branch_Monster_FactorApp.swift */,
+				FCE301172EBAA91E009B2F7A /* ContentView.swift */,
+				FCE301192EBAA91E009B2F7A /* Item.swift */,
+				FCE3011B2EBAA91F009B2F7A /* Assets.xcassets */,
+				FCE3011D2EBAA91F009B2F7A /* Preview Content */,
+			);
+			path = "Branch Monster Factor";
+			sourceTree = "<group>";
+		};
+		FCE3011D2EBAA91F009B2F7A /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				FCE3011E2EBAA91F009B2F7A /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		FCE301272EBAA91F009B2F7A /* Branch Monster FactorTests */ = {
+			isa = PBXGroup;
+			children = (
+				FCE301282EBAA91F009B2F7A /* Branch_Monster_FactorTests.swift */,
+			);
+			path = "Branch Monster FactorTests";
+			sourceTree = "<group>";
+		};
+		FCE301312EBAA91F009B2F7A /* Branch Monster FactorUITests */ = {
+			isa = PBXGroup;
+			children = (
+				FCE301322EBAA91F009B2F7A /* Branch_Monster_FactorUITests.swift */,
+				FCE301342EBAA91F009B2F7A /* Branch_Monster_FactorUITestsLaunchTests.swift */,
+			);
+			path = "Branch Monster FactorUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FCE301112EBAA91E009B2F7A /* Branch Monster Factor */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FCE301382EBAA91F009B2F7A /* Build configuration list for PBXNativeTarget "Branch Monster Factor" */;
+			buildPhases = (
+				FCE3010E2EBAA91E009B2F7A /* Sources */,
+				FCE3010F2EBAA91E009B2F7A /* Frameworks */,
+				FCE301102EBAA91E009B2F7A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Branch Monster Factor";
+			productName = "Branch Monster Factor";
+			productReference = FCE301122EBAA91E009B2F7A /* Branch Monster Factor.app */;
+			productType = "com.apple.product-type.application";
+		};
+		FCE301232EBAA91F009B2F7A /* Branch Monster FactorTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FCE3013B2EBAA91F009B2F7A /* Build configuration list for PBXNativeTarget "Branch Monster FactorTests" */;
+			buildPhases = (
+				FCE301202EBAA91F009B2F7A /* Sources */,
+				FCE301212EBAA91F009B2F7A /* Frameworks */,
+				FCE301222EBAA91F009B2F7A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FCE301262EBAA91F009B2F7A /* PBXTargetDependency */,
+			);
+			name = "Branch Monster FactorTests";
+			productName = "Branch Monster FactorTests";
+			productReference = FCE301242EBAA91F009B2F7A /* Branch Monster FactorTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		FCE3012D2EBAA91F009B2F7A /* Branch Monster FactorUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FCE3013E2EBAA91F009B2F7A /* Build configuration list for PBXNativeTarget "Branch Monster FactorUITests" */;
+			buildPhases = (
+				FCE3012A2EBAA91F009B2F7A /* Sources */,
+				FCE3012B2EBAA91F009B2F7A /* Frameworks */,
+				FCE3012C2EBAA91F009B2F7A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FCE301302EBAA91F009B2F7A /* PBXTargetDependency */,
+			);
+			name = "Branch Monster FactorUITests";
+			productName = "Branch Monster FactorUITests";
+			productReference = FCE3012E2EBAA91F009B2F7A /* Branch Monster FactorUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FCE3010A2EBAA91E009B2F7A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1530;
+				LastUpgradeCheck = 1530;
+				TargetAttributes = {
+					FCE301112EBAA91E009B2F7A = {
+						CreatedOnToolsVersion = 15.3;
+					};
+					FCE301232EBAA91F009B2F7A = {
+						CreatedOnToolsVersion = 15.3;
+						TestTargetID = FCE301112EBAA91E009B2F7A;
+					};
+					FCE3012D2EBAA91F009B2F7A = {
+						CreatedOnToolsVersion = 15.3;
+						TestTargetID = FCE301112EBAA91E009B2F7A;
+					};
+				};
+			};
+			buildConfigurationList = FCE3010D2EBAA91E009B2F7A /* Build configuration list for PBXProject "Branch Monster Factor" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FCE301092EBAA91E009B2F7A;
+			productRefGroup = FCE301132EBAA91E009B2F7A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FCE301112EBAA91E009B2F7A /* Branch Monster Factor */,
+				FCE301232EBAA91F009B2F7A /* Branch Monster FactorTests */,
+				FCE3012D2EBAA91F009B2F7A /* Branch Monster FactorUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FCE301102EBAA91E009B2F7A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FCE3011F2EBAA91F009B2F7A /* Preview Assets.xcassets in Resources */,
+				FCE3011C2EBAA91F009B2F7A /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FCE301222EBAA91F009B2F7A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FCE3012C2EBAA91F009B2F7A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FCE3010E2EBAA91E009B2F7A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FCE301182EBAA91E009B2F7A /* ContentView.swift in Sources */,
+				FCE3011A2EBAA91E009B2F7A /* Item.swift in Sources */,
+				FCE301162EBAA91E009B2F7A /* Branch_Monster_FactorApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FCE301202EBAA91F009B2F7A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FCE301292EBAA91F009B2F7A /* Branch_Monster_FactorTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FCE3012A2EBAA91F009B2F7A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FCE301352EBAA91F009B2F7A /* Branch_Monster_FactorUITestsLaunchTests.swift in Sources */,
+				FCE301332EBAA91F009B2F7A /* Branch_Monster_FactorUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FCE301262EBAA91F009B2F7A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FCE301112EBAA91E009B2F7A /* Branch Monster Factor */;
+			targetProxy = FCE301252EBAA91F009B2F7A /* PBXContainerItemProxy */;
+		};
+		FCE301302EBAA91F009B2F7A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FCE301112EBAA91E009B2F7A /* Branch Monster Factor */;
+			targetProxy = FCE3012F2EBAA91F009B2F7A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		FCE301362EBAA91F009B2F7A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		FCE301372EBAA91F009B2F7A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FCE301392EBAA91F009B2F7A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Branch Monster Factor/Preview Content\"";
+				DEVELOPMENT_TEAM = R63EM248DP;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "io.branch.branchster.Branch-Monster-Factor";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		FCE3013A2EBAA91F009B2F7A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Branch Monster Factor/Preview Content\"";
+				DEVELOPMENT_TEAM = R63EM248DP;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "io.branch.branchster.Branch-Monster-Factor";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		FCE3013C2EBAA91F009B2F7A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = R63EM248DP;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "io.branch.branchster.Branch-Monster-FactorTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Branch Monster Factor.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Branch Monster Factor";
+			};
+			name = Debug;
+		};
+		FCE3013D2EBAA91F009B2F7A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = R63EM248DP;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "io.branch.branchster.Branch-Monster-FactorTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Branch Monster Factor.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Branch Monster Factor";
+			};
+			name = Release;
+		};
+		FCE3013F2EBAA91F009B2F7A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = R63EM248DP;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "io.branch.branchster.Branch-Monster-FactorUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Branch Monster Factor";
+			};
+			name = Debug;
+		};
+		FCE301402EBAA91F009B2F7A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = R63EM248DP;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "io.branch.branchster.Branch-Monster-FactorUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Branch Monster Factor";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FCE3010D2EBAA91E009B2F7A /* Build configuration list for PBXProject "Branch Monster Factor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FCE301362EBAA91F009B2F7A /* Debug */,
+				FCE301372EBAA91F009B2F7A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FCE301382EBAA91F009B2F7A /* Build configuration list for PBXNativeTarget "Branch Monster Factor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FCE301392EBAA91F009B2F7A /* Debug */,
+				FCE3013A2EBAA91F009B2F7A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FCE3013B2EBAA91F009B2F7A /* Build configuration list for PBXNativeTarget "Branch Monster FactorTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FCE3013C2EBAA91F009B2F7A /* Debug */,
+				FCE3013D2EBAA91F009B2F7A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FCE3013E2EBAA91F009B2F7A /* Build configuration list for PBXNativeTarget "Branch Monster FactorUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FCE3013F2EBAA91F009B2F7A /* Debug */,
+				FCE301402EBAA91F009B2F7A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FCE3010A2EBAA91E009B2F7A /* Project object */;
+}
