@@ -1,0 +1,13 @@
+# Xcode build and cache files
+build/
+DerivedData/
+
+# macOS junk
+.DS_Store
+
+# User-specific Xcode data
+xcuserdata/
+
+# Swift Package Manager (SPM) cache
+.swiftpm/
+*.xcworkspace/xcshareddata/swiftpm/
