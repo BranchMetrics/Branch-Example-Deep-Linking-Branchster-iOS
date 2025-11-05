@@ -25,7 +25,8 @@ struct Branch_Monster_FactorApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            //ContentView()
+            OnboardingScreen()
         }
         .modelContainer(sharedModelContainer)
     }

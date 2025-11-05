@@ -16,6 +16,7 @@
 		FCE301332EBAA91F009B2F7A /* Branch_Monster_FactorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE301322EBAA91F009B2F7A /* Branch_Monster_FactorUITests.swift */; };
 		FCE301352EBAA91F009B2F7A /* Branch_Monster_FactorUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE301342EBAA91F009B2F7A /* Branch_Monster_FactorUITestsLaunchTests.swift */; };
 		FF72FD5F2EBB807E000DE618 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF72FD5E2EBB807E000DE618 /* LaunchScreen.storyboard */; };
+		FF72FD642EBB892D000DE618 /* OnboardingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF72FD632EBB892D000DE618 /* OnboardingScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		FCE301322EBAA91F009B2F7A /* Branch_Monster_FactorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Branch_Monster_FactorUITests.swift; sourceTree = "<group>"; };
 		FCE301342EBAA91F009B2F7A /* Branch_Monster_FactorUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Branch_Monster_FactorUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		FF72FD5E2EBB807E000DE618 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		FF72FD632EBB892D000DE618 /* OnboardingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 				FCE301192EBAA91E009B2F7A /* Item.swift */,
 				FCE3011B2EBAA91F009B2F7A /* Assets.xcassets */,
 				FCE3011D2EBAA91F009B2F7A /* Preview Content */,
+				FF72FD632EBB892D000DE618 /* OnboardingScreen.swift */,
 			);
 			path = "Branch Monster Factor";
 			sourceTree = "<group>";
@@ -264,6 +267,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF72FD642EBB892D000DE618 /* OnboardingScreen.swift in Sources */,
 				FCE301182EBAA91E009B2F7A /* ContentView.swift in Sources */,
 				FCE3011A2EBAA91E009B2F7A /* Item.swift in Sources */,
 				FCE301162EBAA91E009B2F7A /* Branch_Monster_FactorApp.swift in Sources */,
