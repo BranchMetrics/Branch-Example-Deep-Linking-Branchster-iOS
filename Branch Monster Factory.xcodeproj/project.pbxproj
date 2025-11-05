@@ -16,7 +16,7 @@
 		275F8F3B2EBBE65A004884BB /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 275F8F3A2EBBE65A004884BB /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		275F8F3D2EBBE666004884BB /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 275F8F3C2EBBE666004884BB /* StoreKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		275F8F3F2EBBE671004884BB /* LinkPresentation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 275F8F3E2EBBE671004884BB /* LinkPresentation.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		275F8F412EBBE69C004884BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275F8F402EBBE698004884BB /* AppDelegate.swift */; };
+		275F8F412EBBE69C004884BB /* AppDelegateAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275F8F402EBBE698004884BB /* AppDelegateAdapter.swift */; };
 		FCE301162EBAA91E009B2F7A /* Branch_Monster_FactorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE301152EBAA91E009B2F7A /* Branch_Monster_FactorApp.swift */; };
 		FCE301182EBAA91E009B2F7A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE301172EBAA91E009B2F7A /* ContentView.swift */; };
 		FCE3011A2EBAA91E009B2F7A /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE301192EBAA91E009B2F7A /* Item.swift */; };
@@ -59,7 +59,7 @@
 		275F8F3A2EBBE65A004884BB /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		275F8F3C2EBBE666004884BB /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		275F8F3E2EBBE671004884BB /* LinkPresentation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LinkPresentation.framework; path = System/Library/Frameworks/LinkPresentation.framework; sourceTree = SDKROOT; };
-		275F8F402EBBE698004884BB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		275F8F402EBBE698004884BB /* AppDelegateAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateAdapter.swift; sourceTree = "<group>"; };
 		FCE301122EBAA91E009B2F7A /* Branch Monster Factor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Branch Monster Factor.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCE301152EBAA91E009B2F7A /* Branch_Monster_FactorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Branch_Monster_FactorApp.swift; sourceTree = "<group>"; };
 		FCE301172EBAA91E009B2F7A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -156,8 +156,7 @@
 		FCE301142EBAA91E009B2F7A /* Branch Monster Factor */ = {
 			isa = PBXGroup;
 			children = (
-				FF72FD7C2EBBE0B5000DE618 /* Challenges.swift */,
-				275F8F402EBBE698004884BB /* AppDelegate.swift */,
+				275F8F402EBBE698004884BB /* AppDelegateAdapter.swift */,
 				275F8F232EBBE475004884BB /* Branch Monster Factor.entitlements */,
 				FF72FD722EBBD3EE000DE618 /* MonsterImages.swift */,
 				FF72FD6A2EBB95A5000DE618 /* Branch-Monster-Factor-Info.plist */,
@@ -340,7 +339,7 @@
 				FF72FD6C2EBBA1A3000DE618 /* HomeScreen.swift in Sources */,
 				FCE301182EBAA91E009B2F7A /* ContentView.swift in Sources */,
 				FCE3011A2EBAA91E009B2F7A /* Item.swift in Sources */,
-				275F8F412EBBE69C004884BB /* AppDelegate.swift in Sources */,
+				275F8F412EBBE69C004884BB /* AppDelegateAdapter.swift in Sources */,
 				FF72FD732EBBD3F3000DE618 /* MonsterImages.swift in Sources */,
 				FF72FD7D2EBBE0B8000DE618 /* Challenges.swift in Sources */,
 				FCE301162EBAA91E009B2F7A /* Branch_Monster_FactorApp.swift in Sources */,
