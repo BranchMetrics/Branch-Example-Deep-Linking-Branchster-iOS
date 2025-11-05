@@ -5,33 +5,37 @@
 //  Created by Guru Prasadh on 05/11/25.
 //
 
-import SwiftUI
 import SwiftData
+import SwiftUI
 
 @main
 struct Branch_Monster_FactorApp: App {
-    
-    @State private var nav = AppNavigation()
-    
-    var sharedModelContainer: ModelContainer = {
-        let schema = Schema([
-            Item.self,
-        ])
-        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
-        do {
-            return try ModelContainer(for: schema, configurations: [modelConfiguration])
-        } catch {
-            fatalError("Could not create ModelContainer: \(error)")
-        }
-    }()
+    @State private var nav: AppNavigation
+    @AppStorage("persistentMonsterLevel") private var storedMonsterLevel: Int = 1
+    @AppStorage("persistentMonsterExp") private var storedMonsterExp: Double = 0
+
+    init() {
+        let initialLevel = UserDefaults.standard.integer(
+            forKey: "persistentMonsterLevel")
+        let initialExp = UserDefaults.standard.double(
+            forKey: "persistentMonsterExp")
+        _nav = State(initialValue: AppNavigation(initialXP: initialExp))
+        nav.monsterLevel = initialLevel == 0 ? 1 : initialLevel
+        nav.currentXP = initialExp
+    }
 
     var body: some Scene {
         WindowGroup {
             NavigationStack(path: $nav.path) {
                 OnboardingScreen()
             }.environment(nav)
+                .onChange(of: nav.monsterLevel) { oldValue, newValue in
+                    storedMonsterLevel = newValue
+                }
+                .onChange(of: nav.currentXP) { oldValue, newValue in
+                    storedMonsterExp = newValue
+                }
         }
-        .modelContainer(sharedModelContainer)
     }
 }

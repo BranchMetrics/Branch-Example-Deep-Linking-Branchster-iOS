@@ -41,10 +41,10 @@ struct HomeScreen: View {
     let challenges = Challenges.shared.allChallenges
     
     private func getDisplayName(from assetName: String) -> String {
-        return "Dusk Gleam"
-//        return assetName
+        return "Dusk Gleam \(nav.monsterLevel)"
+//        return selectedMonsterName
 //            .replacingOccurrences(of: "_", with: " ")
-//            .replacingOccurrences(of: "level 1", with: " ")
+//            //.replacingOccurrences(of: "level 1", with: " ")
 //            .capitalized
     }
     
@@ -134,33 +134,13 @@ struct HomeScreen: View {
                 Spacer()
             }
             
-            .onAppear {
-                if nav.currentXP < nav.requiredXP {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                        nav.questCompleted()
-                    }
-                    
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
-                        nav.questCompleted()
-                    }
-                    
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 6.0) {
-                        nav.questCompleted()
-                    }
-                    
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 9.0) {
-                        nav.questCompleted()
-                    }
-                    
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 12.0) {
-                        nav.questCompleted()
-                    }
-                    
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 15.0) {
-                        nav.questCompleted()
-                    }
-                }
-            }
+//            .onAppear {
+//                if nav.currentXP < nav.requiredXP {
+//                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+//                        nav.questCompleted()
+//                    }
+//                }
+//            }
         }
     }
 }
