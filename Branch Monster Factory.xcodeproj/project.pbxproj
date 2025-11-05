@@ -15,6 +15,7 @@
 		FCE301292EBAA91F009B2F7A /* Branch_Monster_FactorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE301282EBAA91F009B2F7A /* Branch_Monster_FactorTests.swift */; };
 		FCE301332EBAA91F009B2F7A /* Branch_Monster_FactorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE301322EBAA91F009B2F7A /* Branch_Monster_FactorUITests.swift */; };
 		FCE301352EBAA91F009B2F7A /* Branch_Monster_FactorUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE301342EBAA91F009B2F7A /* Branch_Monster_FactorUITestsLaunchTests.swift */; };
+		FF2765BB2EBBF49000C18CE7 /* AppNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2765BA2EBBF48C00C18CE7 /* AppNavigation.swift */; };
 		FF72FD5F2EBB807E000DE618 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF72FD5E2EBB807E000DE618 /* LaunchScreen.storyboard */; };
 		FF72FD642EBB892D000DE618 /* OnboardingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF72FD632EBB892D000DE618 /* OnboardingScreen.swift */; };
 		FF72FD6C2EBBA1A3000DE618 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF72FD6B2EBBA1A3000DE618 /* HomeScreen.swift */; };
@@ -51,6 +52,7 @@
 		FCE3012E2EBAA91F009B2F7A /* Branch Monster FactorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Branch Monster FactorUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCE301322EBAA91F009B2F7A /* Branch_Monster_FactorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Branch_Monster_FactorUITests.swift; sourceTree = "<group>"; };
 		FCE301342EBAA91F009B2F7A /* Branch_Monster_FactorUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Branch_Monster_FactorUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		FF2765BA2EBBF48C00C18CE7 /* AppNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavigation.swift; sourceTree = "<group>"; };
 		FF72FD5E2EBB807E000DE618 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FF72FD632EBB892D000DE618 /* OnboardingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingScreen.swift; sourceTree = "<group>"; };
 		FF72FD6A2EBB95A5000DE618 /* Branch-Monster-Factor-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Branch-Monster-Factor-Info.plist"; sourceTree = SOURCE_ROOT; };
@@ -111,6 +113,7 @@
 		FCE301142EBAA91E009B2F7A /* Branch Monster Factor */ = {
 			isa = PBXGroup;
 			children = (
+				FF2765BA2EBBF48C00C18CE7 /* AppNavigation.swift */,
 				FF72FD7C2EBBE0B5000DE618 /* Challenges.swift */,
 				FF72FD722EBBD3EE000DE618 /* MonsterImages.swift */,
 				FF72FD6A2EBB95A5000DE618 /* Branch-Monster-Factor-Info.plist */,
@@ -293,6 +296,7 @@
 				FF72FD732EBBD3F3000DE618 /* MonsterImages.swift in Sources */,
 				FF72FD7D2EBBE0B8000DE618 /* Challenges.swift in Sources */,
 				FCE301162EBAA91E009B2F7A /* Branch_Monster_FactorApp.swift in Sources */,
+				FF2765BB2EBBF49000C18CE7 /* AppNavigation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

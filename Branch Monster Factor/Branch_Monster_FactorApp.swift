@@ -10,6 +10,9 @@ import SwiftData
 
 @main
 struct Branch_Monster_FactorApp: App {
+    
+    @State private var nav = AppNavigation()
+    
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             Item.self,
@@ -25,8 +28,9 @@ struct Branch_Monster_FactorApp: App {
 
     var body: some Scene {
         WindowGroup {
-            //ContentView()
-            OnboardingScreen()
+            NavigationStack(path: $nav.path) {
+                OnboardingScreen()
+            }.environment(nav)
         }
         .modelContainer(sharedModelContainer)
     }
