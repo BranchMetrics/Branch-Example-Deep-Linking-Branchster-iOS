@@ -212,7 +212,7 @@
 					};
 				};
 			};
-			buildConfigurationList = FCE3010D2EBAA91E009B2F7A /* Build configuration list for PBXProject "Branch Monster Factor" */;
+			buildConfigurationList = FCE3010D2EBAA91E009B2F7A /* Build configuration list for PBXProject "Branch Monster Factory" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -433,6 +433,7 @@
 				DEVELOPMENT_TEAM = R63EM248DP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -463,6 +464,7 @@
 				DEVELOPMENT_TEAM = R63EM248DP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -561,7 +563,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		FCE3010D2EBAA91E009B2F7A /* Build configuration list for PBXProject "Branch Monster Factor" */ = {
+		FCE3010D2EBAA91E009B2F7A /* Build configuration list for PBXProject "Branch Monster Factory" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FCE301362EBAA91F009B2F7A /* Debug */,
