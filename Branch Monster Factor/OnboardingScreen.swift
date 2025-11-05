@@ -16,7 +16,6 @@ struct OnboardingStep: Identifiable {
 }
 
 struct MonsterSelectButton: View {
-    
     let imageName: String
     let monsterName: String
     let action: () -> Void
@@ -54,6 +53,8 @@ struct MonsterSelectButton: View {
 struct StepCardView: View {
     let step: OnboardingStep
     @Binding var isOnboardingComplete: Bool
+    @Binding var selectedMonsterName: String
+    
     let isLastStep: Bool
 
     @State private var randomMonsters: [String] = []
@@ -83,7 +84,7 @@ struct StepCardView: View {
                 )
                 .fontWeight(.heavy)
                 .foregroundColor(.white)
-                .multilineTextAlignment(.center)
+                .multilineTextAlignment(.leading)
                 .padding(.horizontal, 10)
 
             if isLastStep {
@@ -100,7 +101,7 @@ struct StepCardView: View {
                                 imageName: monsterAssetName,
                                 monsterName: getDisplayName(from: monsterAssetName),
                                 action: {
-                                    print("Selected \(monsterAssetName)")
+                                    selectedMonsterName = monsterAssetName
                                     isOnboardingComplete = true
                                 },
                                 cornerRadius: cornerRadius,
@@ -125,7 +126,7 @@ struct StepCardView: View {
                             relativeTo: .body)
                     )
                     .foregroundColor(.white.opacity(0.8))
-                    .multilineTextAlignment(.center)
+                    .multilineTextAlignment(.leading)
                     .padding(.horizontal, 10)
             }
         }
@@ -141,8 +142,8 @@ struct StepCardView: View {
 
 struct OnboardingScreen: View {
     @State private var currentPage: Int = 0
-    @AppStorage("isOnboardingComplete") private var isOnboardingComplete: Bool =
-        false
+    @AppStorage("isOnboardingComplete") private var isOnboardingComplete: Bool = false
+    @AppStorage("selectedMonsterName") private var selectedMonsterName: String = ""
 
     private let steps: [OnboardingStep] = [
         OnboardingStep(
@@ -165,73 +166,80 @@ struct OnboardingScreen: View {
     private let backgroundColor = Color(red: 0.165, green: 0.176, blue: 0.196)
     private let cornerRadius: CGFloat = 12
 
+    private var nextButtonArea: some View {
+        VStack {
+            if currentPage < steps.count - 1 {
+                Button(action: handleNextButton) {
+                    HStack(spacing: 8) {
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 4)
+                                .stroke(primaryColor, lineWidth: 2)
+                                .frame(width: 24, height: 24)
+
+                            Image(systemName: "arrow.right")
+                                .foregroundColor(primaryColor)
+                                .font(.headline)
+                        }
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding()
+                    .background(backgroundColor.opacity(0.001))
+                    .cornerRadius(cornerRadius)
+                }
+                .padding(.horizontal, 40)
+            } else {
+                Rectangle()
+                    .fill(Color.clear)
+                    .frame(height: 50)
+            }
+        }
+    }
+    
+    private var onboardingContent: some View {
+        ZStack {
+            backgroundColor.ignoresSafeArea(.all)
+
+            VStack {
+                TabView(selection: $currentPage) {
+                    ForEach(steps.indices, id: \.self) { index in
+                        StepCardView(
+                            step: steps[index],
+                            isOnboardingComplete: $isOnboardingComplete,
+                            selectedMonsterName: $selectedMonsterName,
+                            isLastStep: index == steps.count - 1
+                        )
+                        .tag(index)
+                    }
+                }
+                .tabViewStyle(
+                    PageTabViewStyle(indexDisplayMode: .never)
+                )
+                .animation(.easeInOut, value: currentPage)
+                
+                nextButtonArea
+
+                HStack(spacing: 10) {
+                    ForEach(0..<steps.count, id: \.self) { index in
+                        Circle()
+                            .fill(
+                                index == currentPage
+                                    ? primaryColor.opacity(1)
+                                    : primaryColor.opacity(0.3)
+                            )
+                            .frame(width: 10, height: 10)
+                    }
+                }
+                .padding(.vertical, 20)
+            }
+        }
+    }
+
     var body: some View {
         Group {
-//            if isOnboardingComplete {
-//                HomeScreen()
-//            } else {
-                ZStack {
-                    backgroundColor.ignoresSafeArea(.all)
-
-                    VStack {
-                        TabView(selection: $currentPage) {
-                            ForEach(steps.indices, id: \.self) { index in
-                                StepCardView(
-                                    step: steps[index],
-                                    isOnboardingComplete: $isOnboardingComplete,
-                                    isLastStep: index == steps.count - 1
-                                )
-                                .tag(index)
-                            }
-                        }
-                        .tabViewStyle(
-                            PageTabViewStyle(indexDisplayMode: .never)
-                        )
-                        .animation(.easeInOut, value: currentPage)
-
-                        HStack(spacing: 10) {
-                            ForEach(0..<steps.count, id: \.self) { index in
-                                Circle()
-                                    .fill(
-                                        index == currentPage
-                                            ? primaryColor.opacity(1)
-                                            : primaryColor.opacity(0.3)
-                                    )
-                                    .frame(width: 10, height: 10)
-                            }
-                        }
-                        .padding(.vertical, 20)
-
-                        if currentPage < steps.count - 1 {
-                            Button(action: handleNextButton) {
-                                HStack(spacing: 8) {
-                                    ZStack {
-                                        RoundedRectangle(cornerRadius: 4)
-                                            .stroke(primaryColor, lineWidth: 2)
-                                            .frame(width: 24, height: 24)
-
-                                        Image(systemName: "arrow.right")
-                                            .foregroundColor(primaryColor)
-                                            .font(.headline)
-                                    }
-                                    Text("NEXT")
-                                        .font(.headline)
-                                        .foregroundColor(primaryColor)
-                                }
-                                .frame(maxWidth: .infinity, alignment: .trailing)
-                                .padding()
-                                .background(backgroundColor.opacity(0.001))
-                                .cornerRadius(cornerRadius)
-                            }
-                            .padding(.horizontal, 40)
-                        } else {
-                            
-                            Rectangle()
-                                .fill(Color.clear)
-                                .frame(height: 50)
-                        }
-//                    }
-                }
+            if isOnboardingComplete {
+                HomeScreen()
+            } else {
+                onboardingContent
             }
         }
     }

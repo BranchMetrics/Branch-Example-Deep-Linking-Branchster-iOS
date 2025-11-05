@@ -10,6 +10,9 @@ import SwiftData
 
 @main
 struct Branch_Monster_FactorApp: App {
+    
+    @UIApplicationDelegateAdaptor(AppDelegateAdapter.self) var appDelegate
+    
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             Item.self,
@@ -25,7 +28,6 @@ struct Branch_Monster_FactorApp: App {
 
     var body: some Scene {
         WindowGroup {
-            //ContentView()
             OnboardingScreen()
         }
         .modelContainer(sharedModelContainer)
