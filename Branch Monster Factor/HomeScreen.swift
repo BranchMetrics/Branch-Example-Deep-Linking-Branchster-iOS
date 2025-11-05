@@ -16,7 +16,6 @@ struct HomeScreen: View {
     private func getDisplayName(from assetName: String) -> String {
         return assetName
             .replacingOccurrences(of: "_", with: " ")
-            .replacingOccurrences(of: " level 1", with: "")
             .capitalized
     }
 
