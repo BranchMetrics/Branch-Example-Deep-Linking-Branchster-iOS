@@ -10,7 +10,7 @@ import SwiftUI
 @Observable
 class AppNavigation {
     var path = NavigationPath()
-    var currentXP: Double = 250.0
+    var currentXP: Double = 0.0
     let requiredXP: Double = 500.0
     
     var monsterLevel: Int = 1
@@ -55,8 +55,10 @@ class AppNavigation {
     
     func checkLevelUp() {
         if currentXP >= requiredXP {
-            monsterLevel += 1
-            currentXP = 0.0
+            withAnimation(.spring(duration: 0.8)) {
+                monsterLevel += 1
+                currentXP = 0.0
+            }
             print("MONSTER LEVELED UP to Level \(monsterLevel)!")
         }
     }

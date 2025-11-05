@@ -21,11 +21,21 @@ struct HomeScreen: View {
     }
     
     private var xpLabel: String {
-            return "XP: \(Int(nav.currentXP)) / \(Int(nav.requiredXP))"
+        return "XP: \(Int(nav.currentXP)) / \(Int(nav.requiredXP))"
     }
-        
+            
     private var progressRatio: Double {
-            return nav.currentXP / nav.requiredXP
+        return nav.currentXP / nav.requiredXP
+    }
+    
+    private var monsterIconName: String {
+        switch nav.monsterLevel {
+            case 1: return "yellow_monster_level_1"
+            case 2: return "yellow_monster_level_2"
+            case 3: return "yellow_monster_level_3"
+            case 4: return "yellow_monster_level_4"
+            default: return "yellow_monster_level_4"
+        }
     }
 
     var body: some View {
@@ -43,12 +53,14 @@ struct HomeScreen: View {
                 .padding(.bottom, 20)
 
                 VStack {
-                    Image(selectedMonsterName)
+                    Image(monsterIconName)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 300, height: 300)
                         .clipShape(Circle())
                         .shadow(radius: 10)
+                        .transition(.scale(scale: 0.1).combined(with: .opacity))
+                        .id(nav.monsterLevel)
                     
                     HStack {
                         ProgressView("Level \(nav.monsterLevel)", value: progressRatio, total: 1.0)
@@ -61,7 +73,9 @@ struct HomeScreen: View {
                             .font(.caption)
                     }
                     .padding()
-                }.border(.white, width: 2).padding()
+                }
+                .border(.white, width: 2)
+                .padding()
 
                 ScrollView {
                     VStack(spacing: 15) {
@@ -97,6 +111,10 @@ struct HomeScreen: View {
             .onAppear {
                 if nav.currentXP < nav.requiredXP {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                        nav.questCompleted()
+                    }
+                        
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
                         nav.questCompleted()
                     }
                 }
