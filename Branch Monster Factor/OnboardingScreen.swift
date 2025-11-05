@@ -39,7 +39,8 @@ struct MonsterSelectButton: View {
 
 struct OnboardingScreen: View {
     @State private var currentPage: Int = 0
-    @AppStorage("isOnboardingComplete") private var isOnboardingComplete: Bool = false
+    @AppStorage("isOnboardingComplete") private var isOnboardingComplete: Bool =
+        false
 
     private let steps: [OnboardingStep] = [
         OnboardingStep(
@@ -64,10 +65,9 @@ struct OnboardingScreen: View {
 
     var body: some View {
         Group {
-//            if isOnboardingComplete {
-//                // You would show your main app view here
-//                Text("Home Screen").font(.largeTitle)
-//            } else {
+            if isOnboardingComplete {
+                HomeScreen()
+            } else {
                 ZStack {
                     backgroundColor.ignoresSafeArea(.all)
 
@@ -76,7 +76,8 @@ struct OnboardingScreen: View {
                             ForEach(steps.indices, id: \.self) { index in
                                 StepCardView(
                                     step: steps[index],
-                                    isOnboardingComplete: $isOnboardingComplete, isLastStep: index == steps.count - 1
+                                    isOnboardingComplete: $isOnboardingComplete,
+                                    isLastStep: index == steps.count - 1
                                 )
                                 .tag(index)
                             }
@@ -88,18 +89,18 @@ struct OnboardingScreen: View {
 
                         // Page Indicator Dots
 
-                            HStack(spacing: 10) {
-                                ForEach(0..<steps.count, id: \.self) { index in
-                                    Circle()
-                                        .fill(
-                                            index == currentPage
-                                                ? primaryColor.opacity(1)
-                                                : primaryColor.opacity(0.3)
-                                        )
-                                        .frame(width: 10, height: 10)
-                                }
+                        HStack(spacing: 10) {
+                            ForEach(0..<steps.count, id: \.self) { index in
+                                Circle()
+                                    .fill(
+                                        index == currentPage
+                                            ? primaryColor.opacity(1)
+                                            : primaryColor.opacity(0.3)
+                                    )
+                                    .frame(width: 10, height: 10)
                             }
-                            .padding(.vertical, 20)
+                        }
+                        .padding(.vertical, 20)
 
                         if currentPage < steps.count - 1 {
                             Button(action: handleNextButton) {
@@ -120,12 +121,11 @@ struct OnboardingScreen: View {
                                 .cornerRadius(cornerRadius)
                             }
                             .padding(.horizontal, 40)
-                            .padding(.bottom, 40)
                         } else {
                             Spacer()
                         }
                     }
-//                }
+                }
             }
         }
     }
@@ -133,8 +133,6 @@ struct OnboardingScreen: View {
     private func handleNextButton() {
         if currentPage < steps.count - 1 {
             currentPage += 1
-        } else {
-            isOnboardingComplete = true
         }
     }
 
@@ -169,7 +167,9 @@ struct OnboardingScreen: View {
                     VStack(spacing: 20) {
                         MonsterSelectButton(
                             monsterName: "Monster Name 1",
-                            action: { isOnboardingComplete = true },
+                            action: {
+                                isOnboardingComplete = true
+                            },
                             cornerRadius: cornerRadius,
                             primaryColor: primaryColor
                         )
@@ -192,7 +192,8 @@ struct OnboardingScreen: View {
                     Text(step.description)
                         .font(
                             Font.custom(
-                                "IBMPlexSans-Regular", size: 18, relativeTo: .body)
+                                "IBMPlexSans-Regular", size: 18,
+                                relativeTo: .body)
                         )
                         .foregroundColor(.white.opacity(0.8))
                         .multilineTextAlignment(.leading)
