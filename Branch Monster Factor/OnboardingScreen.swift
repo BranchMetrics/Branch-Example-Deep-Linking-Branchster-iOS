@@ -84,7 +84,7 @@ struct StepCardView: View {
                 )
                 .fontWeight(.heavy)
                 .foregroundColor(.white)
-                .multilineTextAlignment(.center)
+                .multilineTextAlignment(.leading)
                 .padding(.horizontal, 10)
 
             if isLastStep {
@@ -126,7 +126,7 @@ struct StepCardView: View {
                             relativeTo: .body)
                     )
                     .foregroundColor(.white.opacity(0.8))
-                    .multilineTextAlignment(.center)
+                    .multilineTextAlignment(.leading)
                     .padding(.horizontal, 10)
             }
         }
@@ -180,11 +180,8 @@ struct OnboardingScreen: View {
                                 .foregroundColor(primaryColor)
                                 .font(.headline)
                         }
-                        Text("NEXT")
-                            .font(.headline)
-                            .foregroundColor(primaryColor)
                     }
-                    .frame(maxWidth: .infinity, alignment: .trailing)
+                    .frame(maxWidth: .infinity, alignment: .leading)
                     .padding()
                     .background(backgroundColor.opacity(0.001))
                     .cornerRadius(cornerRadius)
@@ -218,6 +215,8 @@ struct OnboardingScreen: View {
                     PageTabViewStyle(indexDisplayMode: .never)
                 )
                 .animation(.easeInOut, value: currentPage)
+                
+                nextButtonArea
 
                 HStack(spacing: 10) {
                     ForEach(0..<steps.count, id: \.self) { index in
@@ -231,8 +230,6 @@ struct OnboardingScreen: View {
                     }
                 }
                 .padding(.vertical, 20)
-
-                nextButtonArea
             }
         }
     }

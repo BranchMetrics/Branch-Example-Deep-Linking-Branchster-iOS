@@ -19,6 +19,7 @@
 		FF72FD642EBB892D000DE618 /* OnboardingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF72FD632EBB892D000DE618 /* OnboardingScreen.swift */; };
 		FF72FD6C2EBBA1A3000DE618 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF72FD6B2EBBA1A3000DE618 /* HomeScreen.swift */; };
 		FF72FD732EBBD3F3000DE618 /* MonsterImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF72FD722EBBD3EE000DE618 /* MonsterImages.swift */; };
+		FF72FD7D2EBBE0B8000DE618 /* Challenges.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF72FD7C2EBBE0B5000DE618 /* Challenges.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		FF72FD6A2EBB95A5000DE618 /* Branch-Monster-Factor-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Branch-Monster-Factor-Info.plist"; sourceTree = SOURCE_ROOT; };
 		FF72FD6B2EBBA1A3000DE618 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		FF72FD722EBBD3EE000DE618 /* MonsterImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterImages.swift; sourceTree = "<group>"; };
+		FF72FD7C2EBBE0B5000DE618 /* Challenges.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenges.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -109,6 +111,7 @@
 		FCE301142EBAA91E009B2F7A /* Branch Monster Factor */ = {
 			isa = PBXGroup;
 			children = (
+				FF72FD7C2EBBE0B5000DE618 /* Challenges.swift */,
 				FF72FD722EBBD3EE000DE618 /* MonsterImages.swift */,
 				FF72FD6A2EBB95A5000DE618 /* Branch-Monster-Factor-Info.plist */,
 				FF72FD692EBB953C000DE618 /* Fonts */,
@@ -288,6 +291,7 @@
 				FCE301182EBAA91E009B2F7A /* ContentView.swift in Sources */,
 				FCE3011A2EBAA91E009B2F7A /* Item.swift in Sources */,
 				FF72FD732EBBD3F3000DE618 /* MonsterImages.swift in Sources */,
+				FF72FD7D2EBBE0B8000DE618 /* Challenges.swift in Sources */,
 				FCE301162EBAA91E009B2F7A /* Branch_Monster_FactorApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
