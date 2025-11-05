@@ -8,8 +8,21 @@
 import SwiftUI
 
 struct HomeScreen: View {
+    @AppStorage("selectedMonsterName") private var selectedMonsterName: String = ""
+    
     var body: some View {
-        Color(red: 0.165, green: 0.176, blue: 0.196).edgesIgnoringSafeArea(.all)
+        ZStack {
+            Color(red: 0.165, green: 0.176, blue: 0.196).edgesIgnoringSafeArea(.all)
+            
+            VStack(spacing: 40) {
+
+                Image(selectedMonsterName)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 300, height: 300)
+                    .clipShape(Circle())
+                    .shadow(radius: 10)
+            }
+        }
     }
 }
-
