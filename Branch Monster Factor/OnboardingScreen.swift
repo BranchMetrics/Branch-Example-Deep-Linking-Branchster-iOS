@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Foundation
 
 struct OnboardingStep: Identifiable {
     let id = UUID()
@@ -15,6 +16,8 @@ struct OnboardingStep: Identifiable {
 }
 
 struct MonsterSelectButton: View {
+    
+    let imageName: String
     let monsterName: String
     let action: () -> Void
     let cornerRadius: CGFloat
@@ -22,17 +25,116 @@ struct MonsterSelectButton: View {
 
     var body: some View {
         Button(action: action) {
-            Text(monsterName)
-                .font(.subheadline)
-                .fontWeight(.bold)
-                .foregroundColor(primaryColor)
-                .padding(.vertical, 10)
-                .padding(.horizontal, 8)
-                .frame(maxWidth: .infinity)
-                .overlay(
-                    RoundedRectangle(cornerRadius: cornerRadius)
-                        .stroke(primaryColor, lineWidth: 2)
+            HStack {
+                Image(imageName)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 60, height: 60)
+                    .clipShape(Circle())
+                    .overlay(Circle().stroke(Color.white, lineWidth: 2))
+
+                Text(monsterName)
+                    .font(.subheadline)
+                    .fontWeight(.bold)
+                    .foregroundColor(primaryColor)
+                    .padding(.vertical, 10)
+                    .padding(.horizontal, 8)
+                
+                Spacer()
+            }
+            .padding(8)
+            .background(
+                RoundedRectangle(cornerRadius: cornerRadius)
+                    .stroke(primaryColor, lineWidth: 2)
+            )
+        }
+    }
+}
+
+struct StepCardView: View {
+    let step: OnboardingStep
+    @Binding var isOnboardingComplete: Bool
+    let isLastStep: Bool
+
+    @State private var randomMonsters: [String] = []
+
+    private let imageSize: CGFloat = 400
+    private var primaryColor: Color { .white }
+    private var cornerRadius: CGFloat { 12 }
+    
+    private func getDisplayName(from assetName: String) -> String {
+        return assetName
+            .replacingOccurrences(of: "_", with: " ")
+            .replacingOccurrences(of: " level 1", with: "")
+            .capitalized
+    }
+
+    var body: some View {
+        VStack(spacing: 20) {
+            Image(step.imageName)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(maxHeight: 400)
+
+            Text(step.title)
+                .font(
+                    Font.custom(
+                        "IBMPlexMono-Bold", size: 24, relativeTo: .body)
                 )
+                .fontWeight(.heavy)
+                .foregroundColor(.white)
+                .multilineTextAlignment(.center)
+                .padding(.horizontal, 10)
+
+            if isLastStep {
+                
+                VStack(spacing: 20) {
+                    
+                    if randomMonsters.isEmpty {
+                        ProgressView("Loading monsters...")
+                            .foregroundColor(.white)
+                            .padding()
+                    } else {
+                        ForEach(randomMonsters, id: \.self) { monsterAssetName in
+                            MonsterSelectButton(
+                                imageName: monsterAssetName,
+                                monsterName: getDisplayName(from: monsterAssetName),
+                                action: {
+                                    print("Selected \(monsterAssetName)")
+                                    isOnboardingComplete = true
+                                },
+                                cornerRadius: cornerRadius,
+                                primaryColor: primaryColor
+                            )
+                        }
+                    }
+                }
+                .padding(.horizontal, 10)
+                .onAppear {
+                    if randomMonsters.isEmpty {
+                        randomMonsters = MonsterImages.shared
+                            .getThreeRandomLevel1Monsters()
+                    }
+                }
+
+            } else {
+                Text(step.description)
+                    .font(
+                        Font.custom(
+                            "IBMPlexSans-Regular", size: 18,
+                            relativeTo: .body)
+                    )
+                    .foregroundColor(.white.opacity(0.8))
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal, 10)
+            }
+        }
+        .padding(.horizontal, 40)
+        .padding(.top, 20)
+        .onChange(of: isLastStep) { newValue in
+            if !newValue {
+                randomMonsters = []
+            }
         }
     }
 }
@@ -55,7 +157,7 @@ struct OnboardingScreen: View {
             imageName: "onboarding_2"),
         OnboardingStep(
             title: "Select your monster",
-            description: "",
+            description: "Choose your unique starter monster to begin your journey!",
             imageName: "onboarding_3"),
     ]
 
@@ -65,9 +167,9 @@ struct OnboardingScreen: View {
 
     var body: some View {
         Group {
-            if isOnboardingComplete {
-                HomeScreen()
-            } else {
+//            if isOnboardingComplete {
+//                HomeScreen()
+//            } else {
                 ZStack {
                     backgroundColor.ignoresSafeArea(.all)
 
@@ -86,8 +188,6 @@ struct OnboardingScreen: View {
                             PageTabViewStyle(indexDisplayMode: .never)
                         )
                         .animation(.easeInOut, value: currentPage)
-
-                        // Page Indicator Dots
 
                         HStack(spacing: 10) {
                             ForEach(0..<steps.count, id: \.self) { index in
@@ -114,17 +214,23 @@ struct OnboardingScreen: View {
                                             .foregroundColor(primaryColor)
                                             .font(.headline)
                                     }
+                                    Text("NEXT")
+                                        .font(.headline)
+                                        .foregroundColor(primaryColor)
                                 }
-                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .frame(maxWidth: .infinity, alignment: .trailing)
                                 .padding()
-                                .background(backgroundColor)
+                                .background(backgroundColor.opacity(0.001))
                                 .cornerRadius(cornerRadius)
                             }
                             .padding(.horizontal, 40)
                         } else {
-                            Spacer()
+                            
+                            Rectangle()
+                                .fill(Color.clear)
+                                .frame(height: 50)
                         }
-                    }
+//                    }
                 }
             }
         }
@@ -133,74 +239,6 @@ struct OnboardingScreen: View {
     private func handleNextButton() {
         if currentPage < steps.count - 1 {
             currentPage += 1
-        }
-    }
-
-    struct StepCardView: View {
-        let step: OnboardingStep
-        @Binding var isOnboardingComplete: Bool
-
-        let isLastStep: Bool
-        private let imageSize: CGFloat = 400
-        private var primaryColor: Color { .white }
-        private var cornerRadius: CGFloat { 12 }
-
-        var body: some View {
-            VStack(spacing: 20) {
-                Image(step.imageName)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: imageSize, height: imageSize)
-
-                Text(step.title)
-                    .font(
-                        Font.custom(
-                            "IBMPlexMono-Bold", size: 24, relativeTo: .body)
-                    )
-                    .fontWeight(.heavy)
-                    .foregroundColor(.white)
-                    .frame(width: 400)
-                    .multilineTextAlignment(.leading)
-                    .padding(.horizontal, 10)
-
-                if isLastStep {
-                    VStack(spacing: 20) {
-                        MonsterSelectButton(
-                            monsterName: "Monster Name 1",
-                            action: {
-                                isOnboardingComplete = true
-                            },
-                            cornerRadius: cornerRadius,
-                            primaryColor: primaryColor
-                        )
-                        MonsterSelectButton(
-                            monsterName: "Monster Name 2",
-                            action: { isOnboardingComplete = true },
-                            cornerRadius: cornerRadius,
-                            primaryColor: primaryColor
-                        )
-                        MonsterSelectButton(
-                            monsterName: "Monster Name 3",
-                            action: { isOnboardingComplete = true },
-                            cornerRadius: cornerRadius,
-                            primaryColor: primaryColor
-                        )
-                    }
-                    .padding(.horizontal, 10)
-
-                } else {
-                    Text(step.description)
-                        .font(
-                            Font.custom(
-                                "IBMPlexSans-Regular", size: 18,
-                                relativeTo: .body)
-                        )
-                        .foregroundColor(.white.opacity(0.8))
-                        .multilineTextAlignment(.leading)
-                        .frame(width: 400)
-                        .padding(.horizontal, 10)
-                }
-            }
         }
     }
 }
