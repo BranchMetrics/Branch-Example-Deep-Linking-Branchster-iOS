@@ -9,7 +9,6 @@ import SwiftUI
 
 struct OnboardingStep: Identifiable {
     let id = UUID()
-    // FIX 1: Must declare type using a colon (:)
     let title: String
     let description: String
     let imageName: String
@@ -17,9 +16,9 @@ struct OnboardingStep: Identifiable {
 
 struct OnboardingScreen: View {
     @State private var currentPage: Int = 0
-    // State variable to manage onboarding status
-    @AppStorage("isOnboardingComplete") private var isOnboardingComplete: Bool = false
-    
+    @AppStorage("isOnboardingComplete") private var isOnboardingComplete: Bool =
+        false
+
     private let steps: [OnboardingStep] = [
         OnboardingStep(
             title: "See what Branch can do for you",
@@ -38,69 +37,70 @@ struct OnboardingScreen: View {
     ]
 
     private let primaryColor = Color.white
-    // Use the custom dark gradient colors from our previous chat for a better look
     private let backgroundColor = Color(red: 0.165, green: 0.176, blue: 0.196)
-    
-    // FIX 2: Must declare type using a colon (:)
     private let cornerRadius: CGFloat = 12
 
     var body: some View {
         Group {
-            if isOnboardingComplete {
-                // You would show your main app view here
-                Text("Home Screen").font(.largeTitle)
-            } else {
-                ZStack {
-                    // FIX 3: Ignore safe area for the background color
-                    backgroundColor.ignoresSafeArea(.all)
-                    
-                    VStack {
-                        TabView(selection: $currentPage) {
-                            ForEach(steps.indices, id: \.self) { index in
-                                StepCardView(step: steps[index])
-                                    .tag(index)
-                            }
-                        }
-                        // FIX 4 & 5: Corrected PageTabViewStyle and removed extra modifiers/parentheses
-                        .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
-                        .animation(.easeInOut, value: currentPage)
-                        
-                        HStack(spacing: 10) {
-                            ForEach(0..<steps.count, id: \.self) { index in
-                                Circle()
-                                    .fill(
-                                        index == currentPage
-                                            ? primaryColor.opacity(1)
-                                            : primaryColor.opacity(0.3) // Use primaryColor opacity for better contrast
-                                    )
-                                    .frame(width: 10, height: 10)
-                            }
-                        }
-                        // FIX 6: Corrected modifier name from .vetical to .vertical
-                        .padding(.vertical, 20)
+            //            if isOnboardingComplete {
+            //                // You would show your main app view here
+            //                Text("Home Screen").font(.largeTitle)
+            //            } else {
+            ZStack {
+                backgroundColor.ignoresSafeArea(.all)
 
-                        Button(action: handleNextButton) {
-                            Text(
-                                currentPage == steps.count - 1
-                                    ? "Get Started!" : "Next"
-                            )
-                            .font(.headline)
-                            .foregroundColor(backgroundColor) // Text contrast against primaryColor background
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                            // FIX 7: Swapped primaryColor and backgroundColor for button appearance
-                            .background(primaryColor)
-                            .cornerRadius(cornerRadius)
+                VStack {
+                    TabView(selection: $currentPage) {
+                        ForEach(steps.indices, id: \.self) { index in
+                            StepCardView(step: steps[index])
+                                .tag(index)
                         }
-                        .padding(.horizontal, 40)
-                        .padding(.bottom, 40)
                     }
+                    .tabViewStyle(
+                        PageTabViewStyle(indexDisplayMode: .never)
+                    )
+                    .animation(.easeInOut, value: currentPage)
+
+                    Button(action: handleNextButton) {
+                        HStack(spacing: 8) {
+
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 4)
+                                    .stroke(primaryColor, lineWidth: 2)
+                                    .frame(width: 24, height: 24)
+
+                                Image(systemName: "arrow.right")
+                                    .foregroundColor(primaryColor)
+                                    .font(.headline)
+                            }
+                            Spacer()
+                        }
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding()
+                        .background(backgroundColor)
+                        .cornerRadius(cornerRadius)
+                    }
+                    .padding(.horizontal, 40)
+                    .padding(.bottom, 40)
+
+                    HStack(spacing: 10) {
+                        ForEach(0..<steps.count, id: \.self) { index in
+                            Circle()
+                                .fill(
+                                    index == currentPage
+                                        ? primaryColor.opacity(1)
+                                        : primaryColor.opacity(0.3)
+                                )
+                                .frame(width: 10, height: 10)
+                        }
+                    }
+                    .padding(.vertical, 20)
                 }
             }
         }
     }
+    //    }
 
-    // Function is correct
     private func handleNextButton() {
         if currentPage < steps.count - 1 {
             currentPage += 1
@@ -111,28 +111,37 @@ struct OnboardingScreen: View {
 
     struct StepCardView: View {
         let step: OnboardingStep
-        private let imageSize: CGFloat = 200
+        private let imageSize: CGFloat = 400
+
+        let regularFontName = "IBMPlexSans-Regular"
+        let titleFontName = "IBMPlexMono-Bold"
+
         var body: some View {
             VStack(spacing: 30) {
-                Text(step.title)
-                    .font(.largeTitle)
-                    .fontWeight(.heavy)
-                    .foregroundColor(.white)
-                    .multilineTextAlignment(.center)
-                    .padding(.horizontal, 40) // Added horizontal padding for text
-
                 Image(step.imageName)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: imageSize, height: imageSize)
 
+                Text(step.title)
+                    .font(
+                        Font.custom(
+                            "IBMPlexMono-Bold", size: 24, relativeTo: .body)
+                    )
+                    .fontWeight(.heavy)
+                    .foregroundColor(.white)
+                    .multilineTextAlignment(.leading)
+                    .padding(.horizontal, 10)
+
                 Text(step.description)
-                    .font(.title3)
+                    .font(
+                        Font.custom(
+                            "IBMPlexSans-Regular", size: 18, relativeTo: .body)
+                    )
                     .foregroundColor(.white.opacity(0.8))
-                    .multilineTextAlignment(.center)
-                    // Removed maxHeight: .infinity to let the VStack control the spacing
+                    .multilineTextAlignment(.leading)
                     .frame(maxWidth: .infinity)
-                    .padding(.horizontal, 40)
+                    .padding(.horizontal, 10)
             }
         }
     }
