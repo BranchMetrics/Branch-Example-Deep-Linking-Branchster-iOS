@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		275F8F2E2EBBE607004884BB /* BranchSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 275F8F2D2EBBE607004884BB /* BranchSDK */; };
+		275F8F312EBBE632004884BB /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 275F8F302EBBE632004884BB /* CoreServices.framework */; };
+		275F8F332EBBE63A004884BB /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 275F8F322EBBE63A004884BB /* SystemConfiguration.framework */; };
+		275F8F352EBBE641004884BB /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 275F8F342EBBE641004884BB /* WebKit.framework */; };
+		275F8F372EBBE647004884BB /* CoreSpotlight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 275F8F362EBBE647004884BB /* CoreSpotlight.framework */; };
+		275F8F392EBBE650004884BB /* AdServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 275F8F382EBBE650004884BB /* AdServices.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		275F8F3B2EBBE65A004884BB /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 275F8F3A2EBBE65A004884BB /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		275F8F3D2EBBE666004884BB /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 275F8F3C2EBBE666004884BB /* StoreKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		275F8F3F2EBBE671004884BB /* LinkPresentation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 275F8F3E2EBBE671004884BB /* LinkPresentation.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		275F8F412EBBE69C004884BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275F8F402EBBE698004884BB /* AppDelegate.swift */; };
 		FCE301162EBAA91E009B2F7A /* Branch_Monster_FactorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE301152EBAA91E009B2F7A /* Branch_Monster_FactorApp.swift */; };
 		FCE301182EBAA91E009B2F7A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE301172EBAA91E009B2F7A /* ContentView.swift */; };
 		FCE3011A2EBAA91E009B2F7A /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE301192EBAA91E009B2F7A /* Item.swift */; };
@@ -41,6 +51,15 @@
 
 /* Begin PBXFileReference section */
 		275F8F232EBBE475004884BB /* Branch Monster Factor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Branch Monster Factor.entitlements"; sourceTree = "<group>"; };
+		275F8F302EBBE632004884BB /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
+		275F8F322EBBE63A004884BB /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		275F8F342EBBE641004884BB /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		275F8F362EBBE647004884BB /* CoreSpotlight.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreSpotlight.framework; path = System/Library/Frameworks/CoreSpotlight.framework; sourceTree = SDKROOT; };
+		275F8F382EBBE650004884BB /* AdServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdServices.framework; path = System/Library/Frameworks/AdServices.framework; sourceTree = SDKROOT; };
+		275F8F3A2EBBE65A004884BB /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		275F8F3C2EBBE666004884BB /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		275F8F3E2EBBE671004884BB /* LinkPresentation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LinkPresentation.framework; path = System/Library/Frameworks/LinkPresentation.framework; sourceTree = SDKROOT; };
+		275F8F402EBBE698004884BB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FCE301122EBAA91E009B2F7A /* Branch Monster Factor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Branch Monster Factor.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCE301152EBAA91E009B2F7A /* Branch_Monster_FactorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Branch_Monster_FactorApp.swift; sourceTree = "<group>"; };
 		FCE301172EBAA91E009B2F7A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -69,6 +88,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				275F8F3F2EBBE671004884BB /* LinkPresentation.framework in Frameworks */,
+				275F8F3D2EBBE666004884BB /* StoreKit.framework in Frameworks */,
+				275F8F3B2EBBE65A004884BB /* AdSupport.framework in Frameworks */,
+				275F8F392EBBE650004884BB /* AdServices.framework in Frameworks */,
+				275F8F372EBBE647004884BB /* CoreSpotlight.framework in Frameworks */,
+				275F8F352EBBE641004884BB /* WebKit.framework in Frameworks */,
+				275F8F332EBBE63A004884BB /* SystemConfiguration.framework in Frameworks */,
+				275F8F312EBBE632004884BB /* CoreServices.framework in Frameworks */,
+				275F8F2E2EBBE607004884BB /* BranchSDK in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,12 +117,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		275F8F2F2EBBE632004884BB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				275F8F3E2EBBE671004884BB /* LinkPresentation.framework */,
+				275F8F3C2EBBE666004884BB /* StoreKit.framework */,
+				275F8F3A2EBBE65A004884BB /* AdSupport.framework */,
+				275F8F382EBBE650004884BB /* AdServices.framework */,
+				275F8F362EBBE647004884BB /* CoreSpotlight.framework */,
+				275F8F342EBBE641004884BB /* WebKit.framework */,
+				275F8F322EBBE63A004884BB /* SystemConfiguration.framework */,
+				275F8F302EBBE632004884BB /* CoreServices.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		FCE301092EBAA91E009B2F7A = {
 			isa = PBXGroup;
 			children = (
 				FCE301142EBAA91E009B2F7A /* Branch Monster Factor */,
 				FCE301272EBAA91F009B2F7A /* Branch Monster FactorTests */,
 				FCE301312EBAA91F009B2F7A /* Branch Monster FactorUITests */,
+				275F8F2F2EBBE632004884BB /* Frameworks */,
 				FCE301132EBAA91E009B2F7A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -113,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				FF72FD7C2EBBE0B5000DE618 /* Challenges.swift */,
+				275F8F402EBBE698004884BB /* AppDelegate.swift */,
 				275F8F232EBBE475004884BB /* Branch Monster Factor.entitlements */,
 				FF72FD722EBBD3EE000DE618 /* MonsterImages.swift */,
 				FF72FD6A2EBB95A5000DE618 /* Branch-Monster-Factor-Info.plist */,
@@ -245,6 +290,9 @@
 				Base,
 			);
 			mainGroup = FCE301092EBAA91E009B2F7A;
+			packageReferences = (
+				275F8F2C2EBBE607004884BB /* XCRemoteSwiftPackageReference "ios-branch-sdk-spm" */,
+			);
 			productRefGroup = FCE301132EBAA91E009B2F7A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -292,6 +340,7 @@
 				FF72FD6C2EBBA1A3000DE618 /* HomeScreen.swift in Sources */,
 				FCE301182EBAA91E009B2F7A /* ContentView.swift in Sources */,
 				FCE3011A2EBAA91E009B2F7A /* Item.swift in Sources */,
+				275F8F412EBBE69C004884BB /* AppDelegate.swift in Sources */,
 				FF72FD732EBBD3F3000DE618 /* MonsterImages.swift in Sources */,
 				FF72FD7D2EBBE0B8000DE618 /* Challenges.swift in Sources */,
 				FCE301162EBAA91E009B2F7A /* Branch_Monster_FactorApp.swift in Sources */,
@@ -630,6 +679,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		275F8F2C2EBBE607004884BB /* XCRemoteSwiftPackageReference "ios-branch-sdk-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/BranchMetrics/ios-branch-sdk-spm";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.13.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		275F8F2D2EBBE607004884BB /* BranchSDK */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 275F8F2C2EBBE607004884BB /* XCRemoteSwiftPackageReference "ios-branch-sdk-spm" */;
+			productName = BranchSDK;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = FCE3010A2EBAA91E009B2F7A /* Project object */;
 }

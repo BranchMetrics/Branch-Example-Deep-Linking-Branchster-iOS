@@ -8,7 +8,7 @@
 import SwiftUI
 import SwiftData
 
-@main
+
 struct Branch_Monster_FactorApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
