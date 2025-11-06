@@ -19,6 +19,7 @@ struct Branch_Monster_FactorApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 
     @State private var progress: MonsterProgress
+    @State private var deepLinkHandler = DeepLinkHandler()
     
     @AppStorage("persistentMonsterLevel") private var storedMonsterLevel: Int = 1
     @AppStorage("persistentMonsterExp") private var storedMonsterExp: Double = 0
@@ -40,6 +41,11 @@ struct Branch_Monster_FactorApp: App {
                 initialColor: initialColor
             )
         )
+        
+        let handler = DeepLinkHandler( /* initializers if needed */ )
+                _deepLinkHandler = State(initialValue: handler)
+                // CRITICAL: Pass the created instance to the AppDelegate before the body is called
+                appDelegate.deepLinkHandler = handler
     }
 
     var body: some Scene {
@@ -48,6 +54,7 @@ struct Branch_Monster_FactorApp: App {
                 OnboardingScreen()
             }
             .environment(progress)
+            .environment(deepLinkHandler)
 
             .onChange(of: progress.monsterLevel) {
                 storedMonsterLevel = progress.monsterLevel
@@ -71,6 +78,9 @@ struct Branch_Monster_FactorApp: App {
 
 class AppDelegate: NSObject, UIApplicationDelegate {
     
+    // Store the deepLinkHandler reference
+    var deepLinkHandler: DeepLinkHandler?
+
     func application(
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication
@@ -80,9 +90,16 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         Branch.setUseTestBranchKey(true)
         Branch.enableLogging()
         Branch.getInstance().checkPasteboardOnInstall()
+
+        // IMPORTANT: Call initSession, and perform deep link logic in the completion block
         Branch.getInstance().initSession(launchOptions: launchOptions) {
-            (params, error) in
-            
+             [weak self] (params, error) in
+             
+             // Branch SDK has finished initialization and retrieved deep link params
+             DispatchQueue.main.async {
+                 // Pass the parameters directly to the DeepLinkHandler
+                 self?.deepLinkHandler?.handleDeepLinkDisplay(sessionParams: params)
+             }
         }
         return true
     }
