@@ -5,8 +5,9 @@
 //  Created by Robert Gioia on 11/5/25.
 //
 
+import Foundation
+
 final class MonsterImages {
-    
     static let shared = MonsterImages()
     private init() {}
 
@@ -22,7 +23,7 @@ final class MonsterImages {
         "orange": ["orange_monster_level_1", "orange_monster_level_2", "orange_monster_level_3", "orange_monster_level_4"]
     ]
     
-    private var monsterNames: [String: String] = [
+    let monsterNameMap: [String: String] = [
         "green": "Thorn Stalker",
         "red": "Rage Bastion",
         "blue": "Frost Wraith",
@@ -38,9 +39,5 @@ final class MonsterImages {
         let allLevelOneMonsters: [String] = monsterAssets.values.compactMap { $0.first }
         let finalCount = min(count, allLevelOneMonsters.count)
         return Array(allLevelOneMonsters.shuffled().prefix(finalCount))
-    }
-    
-    func getMonsters() -> [String: String] {
-        return monsterNames
     }
 }

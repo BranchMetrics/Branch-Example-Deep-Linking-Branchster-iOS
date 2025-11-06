@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Foundation
 
 @Observable
 class AppNavigation {
@@ -17,9 +18,10 @@ class AppNavigation {
     var showEvolutionFlash: Bool = false
     var selectedColor: String
     
-    init(initialXP: Double, initialColor: String) {
-            self.currentXP = initialXP
-            self.selectedColor = initialColor
+    init(initialXP: Double, initialLevel: Int, initialColor: String) {
+        self.currentXP = initialXP
+        self.monsterLevel = initialLevel
+        self.selectedColor = initialColor
     }
 
     func getMonsterAssetName() -> String {
@@ -37,8 +39,8 @@ class AppNavigation {
     }
     
     func questCompleted() {
-        if currentXP >= requiredXP { path = NavigationPath(); return }
         path = NavigationPath()
+        if currentXP >= requiredXP { return }
         incrementXP(amount: 250.0, duration: 1.0)
     }
     
@@ -50,17 +52,24 @@ class AppNavigation {
         let incrementPerStep = (amount / Double(steps))
         var currentStep = 0
         
-        Timer.scheduledTimer(withTimeInterval: timeInterval, repeats: true) { timer in
+        Timer.scheduledTimer(withTimeInterval: timeInterval, repeats: true) { [weak self] timer in
+            guard let self = self else {
+                timer.invalidate()
+                return
+            }
+            
             guard currentStep < steps else {
                 timer.invalidate()
                 self.isAnimatingProgress = false
                 self.checkLevelUp()
                 return
             }
+            
             withAnimation(.easeInOut(duration: timeInterval)) {
                 self.currentXP = min(self.requiredXP, self.currentXP + incrementPerStep)
             }
             currentStep += 1
+            
             if self.currentXP >= self.requiredXP {
                 timer.invalidate()
                 self.isAnimatingProgress = false
@@ -70,16 +79,21 @@ class AppNavigation {
     }
     
     func checkLevelUp() {
-        if currentXP >= requiredXP {
-            withAnimation(.easeOut(duration: 0.2)) {
-                self.showEvolutionFlash = true
-            }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                withAnimation(.spring(duration: 0.7, bounce: 0.4)) {
-                    self.monsterLevel += 1
-                    self.currentXP = 0.0
-                    self.showEvolutionFlash = false
-                }
+        guard currentXP >= requiredXP else { return }
+        
+        let flashDuration = 0.2
+        let levelUpDelay = 0.2
+        let levelUpDuration = 0.7
+        
+        withAnimation(.easeOut(duration: flashDuration)) {
+            self.showEvolutionFlash = true
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + levelUpDelay) {
+            withAnimation(.spring(duration: levelUpDuration, bounce: 0.4)) {
+                self.monsterLevel += 1
+                self.currentXP = 0.0
+                self.showEvolutionFlash = false
             }
         }
     }

@@ -5,46 +5,45 @@
 //  Created by Guru Prasadh on 05/11/25.
 //
 
-import SwiftData
 import SwiftUI
+import Foundation
 
 @main
 struct Branch_Monster_FactorApp: App {
 
     @State private var nav: AppNavigation
-    @AppStorage("persistentMonsterLevel") private var storedMonsterLevel: Int =
-        1
+    
+    @AppStorage("persistentMonsterLevel") private var storedMonsterLevel: Int = 1
     @AppStorage("persistentMonsterExp") private var storedMonsterExp: Double = 0
-    @AppStorage("persistentMonsterColor") private var storedMonsterColor:
-        String = "yellow"
+    @AppStorage("persistentMonsterColor") private var storedMonsterColor: String = "yellow"
 
     init() {
-        let initialLevel = UserDefaults.standard.integer(
-            forKey: "persistentMonsterLevel")
-        let initialExp = UserDefaults.standard.double(
-            forKey: "persistentMonsterExp")
-        let initialColor = UserDefaults.standard.string(forKey: "persistentMonsterColor") ?? "yellow"
+        let defaults = UserDefaults.standard
+        
+        let initialLevel = defaults.integer(forKey: "persistentMonsterLevel")
+        let initialExp = defaults.double(forKey: "persistentMonsterExp")
+        let initialColor = defaults.string(forKey: "persistentMonsterColor") ?? "yellow"
+
+        let safeLevel = initialLevel == 0 ? 1 : initialLevel
+        
         _nav = State(
             initialValue: AppNavigation(
-                initialXP: initialExp, initialColor: initialColor))
-        nav.monsterLevel = initialLevel == 0 ? 1 : initialLevel
-        nav.currentXP = initialExp
+                initialXP: initialExp,
+                initialLevel: safeLevel,
+                initialColor: initialColor
+            )
+        )
     }
 
     var body: some Scene {
         WindowGroup {
             NavigationStack(path: $nav.path) {
                 OnboardingScreen()
-            }.environment(nav)
-                .onChange(of: nav.monsterLevel) { oldValue, newValue in
-                    storedMonsterLevel = newValue
-                }
-                .onChange(of: nav.currentXP) { oldValue, newValue in
-                    storedMonsterExp = newValue
-                }
-                .onChange(of: nav.selectedColor) { _, newValue in
-                    storedMonsterColor = newValue
-                }
+            }
+            .environment(nav)
+            .onChange(of: nav.monsterLevel) { storedMonsterLevel = nav.monsterLevel }
+            .onChange(of: nav.currentXP) { storedMonsterExp = nav.currentXP }
+            .onChange(of: nav.selectedColor) { storedMonsterColor = nav.selectedColor }
         }
     }
 }
