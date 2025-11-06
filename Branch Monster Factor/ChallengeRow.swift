@@ -14,6 +14,7 @@ import SwiftUI
 struct ChallengeRow: View {
     let challenge: Challenge
     let action: () -> Void
+    let isCompleted: Bool
 
     var body: some View {
         Button(action: action) {
@@ -21,7 +22,7 @@ struct ChallengeRow: View {
                 Text(challenge.title)
                     .font(.headline)
                     .foregroundColor(.white)
-                
+
                 Text(challenge.description)
                     .font(.subheadline)
                     .foregroundColor(.gray)
@@ -31,5 +32,7 @@ struct ChallengeRow: View {
             .border(Color.white, width: 2)
             .cornerRadius(5)
         }.buttonStyle(PlainButtonStyle())
+            .disabled(isCompleted)
+            .opacity(isCompleted ? 0.5 : 1.0)
     }
 }

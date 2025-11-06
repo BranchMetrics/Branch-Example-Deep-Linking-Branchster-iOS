@@ -61,43 +61,57 @@ struct HomeScreen: View {
                 ScrollView {
                     VStack(spacing: 15) {
                         ForEach(challenges, id: \.title) { challenge in
-                            ChallengeRow(challenge: challenge) {
-                                switch challenge.title {
-                                case "Generate Branch QR Code":
-                                    createQRCode(
-                                        completion: { qrCodeImage in
-                                            DispatchQueue.main.async {
-                                                if let image = qrCodeImage {
-                                                    self.generatedQRCode = image
-                                                    self.showingPopup = true
-                                                } else {
-                                                    print("Failed to generate QR Code Image.")
-                                                }
-                                            }
-                                        },
+                            let challengeIsComplete = nav.isChallengeComplete(
+                                challenge)
 
-                                        monsterColor: nav.selectedColor,
-                                        monsterLevel: nav.monsterLevel
-                                    )
-                                default:
-                                    break
-                                }
-                            }
+                            ChallengeRow(
+                                challenge: challenge,
+                                action: {
+
+                                    switch challenge.title {
+                                    case "Generate Branch QR Code":
+                                        createQRCode(
+                                            completion: { qrCodeImage in
+                                                DispatchQueue.main.async {
+                                                    if let image = qrCodeImage {
+                                                        self.generatedQRCode =
+                                                            image
+                                                        self.showingPopup = true
+                                                    } else {
+                                                        print(
+                                                            "Failed to generate QR Code Image."
+                                                        )
+                                                    }
+                                                }
+                                            },
+                                            monsterColor: nav.selectedColor,
+                                            monsterLevel: nav.monsterLevel
+                                        )
+                                    default:
+                                        break
+                                    }
+                                }, isCompleted: challengeIsComplete)
                         }
                     }
-                    .padding(.horizontal)
                 }
+                .padding(.horizontal)
+            }
 
-                Spacer()
-            }
-            
-            if showingPopup, let image = generatedQRCode {
-                QRCodePopupView(image: image)
-                    .transition(.opacity.combined(with: .scale))
-                    .onTapGesture {
-                        showingPopup = false
+            Spacer()
+        }
+
+        if showingPopup, let image = generatedQRCode {
+            QRCodePopupView(image: image)
+                .transition(.opacity.combined(with: .scale))
+                .onTapGesture {
+                    showingPopup = false
+                    if let completedChallenge = challenges.first(where: {
+                        $0.title == "Generate Branch QR Code"
+                    }) {
+                        nav.markChallengeAsComplete(completedChallenge)
+                        nav.questCompleted()
                     }
-            }
+                }
         }
     }
 }

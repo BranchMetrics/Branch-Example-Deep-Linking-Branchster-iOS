@@ -31,8 +31,8 @@ struct QRCodePopupView: View {
         .padding(30)
         .background(
             RoundedRectangle(cornerRadius: 20)
-                .fill(Color.black.opacity(0.85)) // <-- Closing parenthesis MOVED HERE
-                .shadow(radius: 20)              // <-- shadow applied to the Rectangle
+                .fill(Color.black.opacity(0.85))
+                .shadow(radius: 20)
         )
         .frame(maxWidth: 300)
     }
