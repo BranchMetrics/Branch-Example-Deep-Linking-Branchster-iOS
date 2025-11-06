@@ -16,20 +16,19 @@ import SwiftUI
 @main
 struct Branch_Monster_FactorApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
+    
     @State private var progress: MonsterProgress
-    @AppStorage("persistentMonsterLevel") private var storedMonsterLevel: Int =
-        1
+    
+    @AppStorage("persistentMonsterLevel") private var storedMonsterLevel: Int = 1
     @AppStorage("persistentMonsterExp") private var storedMonsterExp: Double = 0
-    @AppStorage("persistentMonsterColor") private var storedMonsterColor:
-        String = "yellow"
+    @AppStorage("persistentMonsterColor") private var storedMonsterColor: String = "yellow"
 
     init() {
         let defaults = UserDefaults.standard
 
         let initialLevel = defaults.integer(forKey: "persistentMonsterLevel")
         let initialExp = defaults.double(forKey: "persistentMonsterExp")
-        let initialColor =
-            defaults.string(forKey: "persistentMonsterColor") ?? "yellow"
+        let initialColor = defaults.string(forKey: "persistentMonsterColor") ?? "yellow"
 
         let safeLevel = initialLevel == 0 ? 1 : initialLevel
 
@@ -48,6 +47,7 @@ struct Branch_Monster_FactorApp: App {
                 OnboardingScreen()
             }
             .environment(progress)
+
             .onChange(of: progress.monsterLevel) {
                 storedMonsterLevel = progress.monsterLevel
             }
@@ -57,33 +57,32 @@ struct Branch_Monster_FactorApp: App {
             .onChange(of: progress.selectedColor) {
                 storedMonsterColor = progress.selectedColor
             }
+            
+            .onContinueUserActivity(NSUserActivityTypeBrowsingWeb) { activity in
+                Branch.getInstance().continue(activity)
+            }
+            .onOpenURL { url in
+                Branch.getInstance().handleDeepLink(url)
+            }
         }
     }
 }
 
 class AppDelegate: NSObject, UIApplicationDelegate {
+    
+    func application(
+        _ application: UIApplication,
+        didFinishLaunchingWithOptions launchOptions: [UIApplication
+            .LaunchOptionsKey: Any]?
+    ) -> Bool {
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
         Branch.setUseTestBranchKey(true)
         Branch.enableLogging()
-        Branch.getInstance().initSession(launchOptions: launchOptions) { (params, error) in
-            print(params as? [String: AnyObject] ?? [:])
+        Branch.getInstance().checkPasteboardOnInstall()
+        Branch.getInstance().initSession(launchOptions: launchOptions) {
+            (params, error) in
+            print("Branch Init Params: \(params as? [String: AnyObject] ?? [:])")
         }
-        Branch.getInstance().validateSDKIntegration()
-        
-        return true
-    }
-    
-    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        print("Debugging - open URL hit")
-        Branch.getInstance().application(app, open: url, options: options)
-        return true
-    }
-    
-    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
-        print("Debugging - continue user activity hit")
-        Branch.getInstance().continue(userActivity)
         return true
     }
 }
