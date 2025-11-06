@@ -44,4 +44,45 @@ final class MonsterImages {
         let finalCount = min(count, allLevelOneMonsters.count)
         return Array(allLevelOneMonsters.shuffled().prefix(finalCount))
     }
+    
+    func getDeeplinkImage(params: NSDictionary) -> String {
+            guard let deepLinkPath = params["$deeplink_path"] as? String else {
+                print("Error: $deeplink_path not found or not a String.")
+                return ""
+            }
+
+            let pathComponents = deepLinkPath
+                .split(separator: "/")
+                .map { String($0).lowercased() }
+                .filter { !$0.isEmpty }
+
+            guard pathComponents.count == 2 else {
+                print("Error: Invalid path format. Expected two components (color/level), got \(pathComponents.count).")
+                return ""
+            }
+            
+            let colorKey = pathComponents[0]
+            let levelString = pathComponents[1]
+            
+            guard let level = Int(levelString) else {
+                print("Error: Could not parse level '\(levelString)' into an integer.")
+                return ""
+            }
+
+            guard let assets = monsterAssets[colorKey] else {
+                print("Error: Color '\(colorKey)' not found in monsterAssets.")
+                return ""
+            }
+            
+            let assetIndex = level - 1
+            
+            guard assets.indices.contains(assetIndex) else {
+                print("Error: Monster level \(level) is out of bounds for color \(colorKey). Max level is \(assets.count).")
+                return ""
+            }
+            
+            let finalAssetName = assets[assetIndex]
+            print("Successfully parsed deep link: \(deepLinkPath) -> Asset: \(finalAssetName)")
+            return finalAssetName
+        }
 }

@@ -81,7 +81,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         Branch.getInstance().checkPasteboardOnInstall()
         Branch.getInstance().initSession(launchOptions: launchOptions) {
             (params, error) in
-            print("Branch Init Params: \(params as? [String: AnyObject] ?? [:])")
+            
         }
         return true
     }
