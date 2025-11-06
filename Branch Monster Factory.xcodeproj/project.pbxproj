@@ -16,7 +16,6 @@
 		275F8F3B2EBBE65A004884BB /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 275F8F3A2EBBE65A004884BB /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		275F8F3D2EBBE666004884BB /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 275F8F3C2EBBE666004884BB /* StoreKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		275F8F3F2EBBE671004884BB /* LinkPresentation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 275F8F3E2EBBE671004884BB /* LinkPresentation.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		275F8F412EBBE69C004884BB /* AppDelegateAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275F8F402EBBE698004884BB /* AppDelegateAdapter.swift */; };
 		FCE301162EBAA91E009B2F7A /* Branch_Monster_FactorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE301152EBAA91E009B2F7A /* Branch_Monster_FactorApp.swift */; };
 		FCE3011C2EBAA91F009B2F7A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCE3011B2EBAA91F009B2F7A /* Assets.xcassets */; };
 		FCE3011F2EBAA91F009B2F7A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCE3011E2EBAA91F009B2F7A /* Preview Assets.xcassets */; };
@@ -67,7 +66,6 @@
 		275F8F3A2EBBE65A004884BB /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		275F8F3C2EBBE666004884BB /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		275F8F3E2EBBE671004884BB /* LinkPresentation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LinkPresentation.framework; path = System/Library/Frameworks/LinkPresentation.framework; sourceTree = SDKROOT; };
-		275F8F402EBBE698004884BB /* AppDelegateAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateAdapter.swift; sourceTree = "<group>"; };
 		FCE301122EBAA91E009B2F7A /* Branch Monster Factor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Branch Monster Factor.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCE301152EBAA91E009B2F7A /* Branch_Monster_FactorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Branch_Monster_FactorApp.swift; sourceTree = "<group>"; };
 		FCE3011B2EBAA91F009B2F7A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -183,7 +181,6 @@
 				FF5AAD362EBC2DF9002CC015 /* DataModules.swift */,
 				FF2765BA2EBBF48C00C18CE7 /* MonsterProgress.swift */,
 				FF72FD7C2EBBE0B5000DE618 /* Challenges.swift */,
-				275F8F402EBBE698004884BB /* AppDelegateAdapter.swift */,
 				FF72FD722EBBD3EE000DE618 /* MonsterImages.swift */,
 				FCE301152EBAA91E009B2F7A /* Branch_Monster_FactorApp.swift */,
 				FF72FD632EBB892D000DE618 /* OnboardingScreen.swift */,
@@ -362,7 +359,6 @@
 			files = (
 				FF72FD642EBB892D000DE618 /* OnboardingScreen.swift in Sources */,
 				FF72FD6C2EBBA1A3000DE618 /* HomeScreen.swift in Sources */,
-				275F8F412EBBE69C004884BB /* AppDelegateAdapter.swift in Sources */,
 				FF5AAD392EBC2E34002CC015 /* ChallengeRow.swift in Sources */,
 				FF5AAD3F2EBC2E78002CC015 /* MonsterSelectButton.swift in Sources */,
 				FF72FD732EBBD3F3000DE618 /* MonsterImages.swift in Sources */,
