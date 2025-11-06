@@ -10,17 +10,23 @@ import SwiftUI
 
 @main
 struct Branch_Monster_FactorApp: App {
-    
+
     @State private var nav: AppNavigation
-    @AppStorage("persistentMonsterLevel") private var storedMonsterLevel: Int = 1
+    @AppStorage("persistentMonsterLevel") private var storedMonsterLevel: Int =
+        1
     @AppStorage("persistentMonsterExp") private var storedMonsterExp: Double = 0
+    @AppStorage("persistentMonsterColor") private var storedMonsterColor:
+        String = "yellow"
 
     init() {
         let initialLevel = UserDefaults.standard.integer(
             forKey: "persistentMonsterLevel")
         let initialExp = UserDefaults.standard.double(
             forKey: "persistentMonsterExp")
-        _nav = State(initialValue: AppNavigation(initialXP: initialExp))
+        let initialColor = UserDefaults.standard.string(forKey: "persistentMonsterColor") ?? "yellow"
+        _nav = State(
+            initialValue: AppNavigation(
+                initialXP: initialExp, initialColor: initialColor))
         nav.monsterLevel = initialLevel == 0 ? 1 : initialLevel
         nav.currentXP = initialExp
     }
@@ -35,6 +41,9 @@ struct Branch_Monster_FactorApp: App {
                 }
                 .onChange(of: nav.currentXP) { oldValue, newValue in
                     storedMonsterExp = newValue
+                }
+                .onChange(of: nav.selectedColor) { _, newValue in
+                    storedMonsterColor = newValue
                 }
         }
     }

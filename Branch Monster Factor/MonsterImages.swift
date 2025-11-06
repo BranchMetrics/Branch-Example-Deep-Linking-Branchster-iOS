@@ -10,7 +10,7 @@ final class MonsterImages {
     static let shared = MonsterImages()
     private init() {}
 
-    private let monsterAssets: [String: [String]] = [
+    let monsterAssets: [String: [String]] = [
         "green": ["green_monster_level_1", "green_monster_level_2", "green_monster_level_3", "green_monster_level_4"],
         "red": ["red_monster_level_1", "red_monster_level_2", "red_monster_level_3", "red_monster_level_4"],
         "blue": ["blue_monster_level_1", "blue_monster_level_2", "blue_monster_level_3", "blue_monster_level_4"],
@@ -21,10 +21,26 @@ final class MonsterImages {
         "pink": ["pink_monster_level_1", "pink_monster_level_2", "pink_monster_level_3", "pink_monster_level_4"],
         "orange": ["orange_monster_level_1", "orange_monster_level_2", "orange_monster_level_3", "orange_monster_level_4"]
     ]
+    
+    private var monsterNames: [String: String] = [
+        "green": "Thorn Stalker",
+        "red": "Rage Bastion",
+        "blue": "Frost Wraith",
+        "yellow": "Dusk Gleam",
+        "purple": "Dream Serpent",
+        "white": "Ice Revenant",
+        "black": "Shadow Maw",
+        "pink": "Bliss Warden",
+        "orange": "Cinder Howl"
+    ]
 
     func getThreeRandomLevel1Monsters(count: Int = 3) -> [String] {
         let allLevelOneMonsters: [String] = monsterAssets.values.compactMap { $0.first }
         let finalCount = min(count, allLevelOneMonsters.count)
         return Array(allLevelOneMonsters.shuffled().prefix(finalCount))
+    }
+    
+    func getMonsters() -> [String: String] {
+        return monsterNames
     }
 }

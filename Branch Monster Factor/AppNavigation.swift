@@ -15,20 +15,17 @@ class AppNavigation {
     let requiredXP: Double = 500.0
     var isAnimatingProgress = false
     var showEvolutionFlash: Bool = false
+    var selectedColor: String
     
-    private let monsterAssets: [String: [String]] = [
-        "yellow": ["yellow_monster_level_1", "yellow_monster_level_2", "yellow_monster_level_3", "yellow_monster_level_4"]
-    ]
-    let selectedColor: String = "yellow"
-    
-    init(initialXP: Double) {
+    init(initialXP: Double, initialColor: String) {
             self.currentXP = initialXP
+            self.selectedColor = initialColor
     }
 
     func getMonsterAssetName() -> String {
         let levelIndex = self.monsterLevel - 1
         
-        guard let assets = self.monsterAssets[self.selectedColor] else {
+        guard let assets = MonsterImages.shared.monsterAssets[self.selectedColor] else {
             return "yellow_monster_level_1"
         }
         

@@ -41,11 +41,8 @@ struct HomeScreen: View {
     let challenges = Challenges.shared.allChallenges
     
     private func getDisplayName(from assetName: String) -> String {
-        return "Dusk Gleam \(nav.monsterLevel)"
-//        return selectedMonsterName
-//            .replacingOccurrences(of: "_", with: " ")
-//            //.replacingOccurrences(of: "level 1", with: " ")
-//            .capitalized
+        let namesDictionary = MonsterImages.shared.getMonsters()
+        return namesDictionary[nav.selectedColor] ?? "Unknown Monster"
     }
     
     private var xpLabel: String {

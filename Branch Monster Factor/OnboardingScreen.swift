@@ -5,8 +5,8 @@
 //  Created by Robert Gioia on 11/5/25.
 //
 
-import SwiftUI
 import Foundation
+import SwiftUI
 
 struct OnboardingStep: Identifiable {
     let id = UUID()
@@ -38,7 +38,7 @@ struct MonsterSelectButton: View {
                     .foregroundColor(primaryColor)
                     .padding(.vertical, 10)
                     .padding(.horizontal, 8)
-                
+
                 Spacer()
             }
             .padding(8)
@@ -54,7 +54,8 @@ struct StepCardView: View {
     let step: OnboardingStep
     @Binding var isOnboardingComplete: Bool
     @Binding var selectedMonsterName: String
-    
+    @Environment(AppNavigation.self) private var nav: AppNavigation
+
     let isLastStep: Bool
 
     @State private var randomMonsters: [String] = []
@@ -62,12 +63,18 @@ struct StepCardView: View {
     private let imageSize: CGFloat = 400
     private var primaryColor: Color { .white }
     private var cornerRadius: CGFloat { 12 }
-    
+
     private func getDisplayName(from assetName: String) -> String {
-        return assetName
+        return
+            assetName
             .replacingOccurrences(of: "_", with: " ")
             .replacingOccurrences(of: " level 1", with: "")
             .capitalized
+    }
+
+    private func getColorKey(from assetName: String) -> String {
+        // e.g., converts "yellow_monster_level_1" to "yellow"
+        return assetName.components(separatedBy: "_").first ?? "yellow"
     }
 
     var body: some View {
@@ -88,19 +95,23 @@ struct StepCardView: View {
                 .padding(.horizontal, 10)
 
             if isLastStep {
-                
+
                 VStack(spacing: 20) {
-                    
+
                     if randomMonsters.isEmpty {
                         ProgressView("Loading monsters...")
                             .foregroundColor(.white)
                             .padding()
                     } else {
-                        ForEach(randomMonsters, id: \.self) { monsterAssetName in
+                        ForEach(randomMonsters, id: \.self) {
+                            monsterAssetName in
                             MonsterSelectButton(
                                 imageName: monsterAssetName,
-                                monsterName: getDisplayName(from: monsterAssetName),
+                                monsterName: getDisplayName(
+                                    from: monsterAssetName),
                                 action: {
+                                    let colorKey = getColorKey(from: monsterAssetName)
+                                    nav.selectedColor = colorKey
                                     selectedMonsterName = monsterAssetName
                                     isOnboardingComplete = true
                                 },
@@ -142,8 +153,10 @@ struct StepCardView: View {
 
 struct OnboardingScreen: View {
     @State private var currentPage: Int = 0
-    @AppStorage("isOnboardingComplete") private var isOnboardingComplete: Bool = false
-    @AppStorage("selectedMonsterName") private var selectedMonsterName: String = ""
+    @AppStorage("isOnboardingComplete") private var isOnboardingComplete: Bool =
+        false
+    @AppStorage("selectedMonsterName") private var selectedMonsterName: String =
+        ""
 
     private let steps: [OnboardingStep] = [
         OnboardingStep(
@@ -158,7 +171,8 @@ struct OnboardingScreen: View {
             imageName: "onboarding_2"),
         OnboardingStep(
             title: "Select your monster",
-            description: "Choose your unique starter monster to begin your journey!",
+            description:
+                "Choose your unique starter monster to begin your journey!",
             imageName: "onboarding_3"),
     ]
 
@@ -194,7 +208,7 @@ struct OnboardingScreen: View {
             }
         }
     }
-    
+
     private var onboardingContent: some View {
         ZStack {
             backgroundColor.ignoresSafeArea(.all)
@@ -215,7 +229,7 @@ struct OnboardingScreen: View {
                     PageTabViewStyle(indexDisplayMode: .never)
                 )
                 .animation(.easeInOut, value: currentPage)
-                
+
                 nextButtonArea
 
                 HStack(spacing: 10) {
