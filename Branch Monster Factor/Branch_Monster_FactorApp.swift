@@ -15,8 +15,9 @@ import SwiftUI
  */
 @main
 struct Branch_Monster_FactorApp: App {
-    @UIApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
-    
+  
+    @UIApplicationDelegateAdaptor(AppDelegateAdapter.self) var appDelegate
+
     @State private var progress: MonsterProgress
     
     @AppStorage("persistentMonsterLevel") private var storedMonsterLevel: Int = 1
