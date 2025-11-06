@@ -147,6 +147,12 @@ struct HomeScreen: View {
                 .transition(.opacity.combined(with: .scale))
                 .onTapGesture {
                     showingEventDetailsPopup = false
+                    if let completedChallenge = challenges.first(where: {
+                        $0.title == "View Branch Event Data"
+                    }) {
+                        progress.markChallengeAsComplete(completedChallenge)
+                        progress.questCompleted()
+                    }
                 }
         }
     }
