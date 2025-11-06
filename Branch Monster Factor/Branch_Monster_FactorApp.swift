@@ -16,7 +16,7 @@ import SwiftUI
 @main
 struct Branch_Monster_FactorApp: App {
   
-    @UIApplicationDelegateAdaptor(AppDelegateAdapter.self) var appDelegate
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 
     @State private var progress: MonsterProgress
     

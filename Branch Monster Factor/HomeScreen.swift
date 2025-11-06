@@ -204,33 +204,20 @@ struct HomeScreen: View {
                                                 monsterLevel: progress.monsterLevel,
                                                 selectedMonsterName: self.selectedMonsterName
                                             )
+                                        case "Create Branch Link":
+                                            handleGenerateLinkQuest(challenge: challenge)
+                                            progress.markChallengeAsUnlocked("Share Branch Link")
+                                            break
+                                                    
+                                        case "Share Branch Link":
+                                              handleShareLinkQuest(challenge: challenge)
+                                              break
                                         default:
                                             break
                                         }
                                     }, isCompleted: challengeIsComplete,
                                     isLocked: challengeIsLocked)
                             }
-                                                }
-                                            },
-                                            monsterColor: progress
-                                                .selectedColor,
-                                            monsterLevel: progress.monsterLevel,
-                                            selectedMonsterName: self
-                                                .selectedMonsterName
-                                        )
-                                    case "Create Branch Link":
-                                        handleGenerateLinkQuest(challenge: challenge)
-                                        progress.markChallengeAsUnlocked("Share Branch Link")
-                                        break
-                                                
-                                    case "Share Branch Link":
-                                          handleShareLinkQuest(challenge: challenge)
-                                          break
-                                    default:
-                                        break
-                                    }
-                                }, isCompleted: challengeIsComplete,
-                                isLocked: challengeIsLocked)
                         }
                     }
                 }
