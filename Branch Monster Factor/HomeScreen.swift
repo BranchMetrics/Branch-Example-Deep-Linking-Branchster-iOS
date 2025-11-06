@@ -6,18 +6,19 @@
 //
 
 import SwiftUI
+import BranchSDK
 
 /*
     The main screen of the app which provides the monsters and the quests
  */
 
 struct HomeScreen: View {
-    @AppStorage("selectedMonsterName") private var selectedMonsterName: String =
-        ""
+    @AppStorage("selectedMonsterName") private var selectedMonsterName: String = ""
     @Environment(MonsterProgress.self) private var progress: MonsterProgress
     @State private var generatedQRCode: UIImage?
     @State private var showingQRCodePopup: Bool = false
     @State private var showingEventDetailsPopup: Bool = false
+    @State private var eventData: BranchEvent?
 
     let challenges = Challenges.shared.allChallenges
 
@@ -75,7 +76,7 @@ struct HomeScreen: View {
 
                                     switch challenge.title {
                                     case "Trigger Branch Event":
-                                        trackEvent(
+                                        self.eventData = trackEvent(
                                             monsterColor: progress
                                                 .selectedColor,
                                             monsterLevel: progress.monsterLevel,
@@ -142,7 +143,7 @@ struct HomeScreen: View {
         }
         
         if showingEventDetailsPopup {
-            DetailsPopupView()
+            DetailsPopupView(eventData: self.eventData!, monsterName: getDisplayName())
                 .transition(.opacity.combined(with: .scale))
                 .onTapGesture {
                     showingEventDetailsPopup = false
