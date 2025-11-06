@@ -14,9 +14,8 @@ import Foundation
  */
 @main
 struct Branch_Monster_FactorApp: App {
-
+    @UIApplicationDelegateAdaptor(AppDelegateAdapter.self) var appDelegate
     @State private var progress: MonsterProgress
-    
     @AppStorage("persistentMonsterLevel") private var storedMonsterLevel: Int = 1
     @AppStorage("persistentMonsterExp") private var storedMonsterExp: Double = 0
     @AppStorage("persistentMonsterColor") private var storedMonsterColor: String = "yellow"
