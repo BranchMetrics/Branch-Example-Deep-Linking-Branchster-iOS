@@ -14,11 +14,12 @@ import BranchSDK
 
 struct HomeScreen: View {
     @AppStorage("selectedMonsterName") private var selectedMonsterName: String = ""
-    @Environment(MonsterProgress.self) private var nav: MonsterProgress
+    @Environment(MonsterProgress.self) private var progress: MonsterProgress
   
     // 1. State to hold the challenges
     @State private var generatedLink: String?
     @State private var isGeneratingLink: Bool = false
+    @State private var showingLinkPopup: Bool = false
     @State private var generatedQRCode: UIImage?
     @State private var showingQRCodePopup: Bool = false
     @State private var showingEventDetailsPopup: Bool = false
@@ -47,58 +48,61 @@ struct HomeScreen: View {
         return progress.getMonsterAssetName()
     }
   
-    // LOGIC TO GENERATE AND SHARE BRANCH LINKS
+    /*
+     1. Handles the 'Generate Branch Link' Quest.
+        - Creates the link asynchronously and updates the state.
+     */
+    private func handleGenerateLinkQuest(challenge: Challenge) {
+      self.generatedLink = nil
+      self.isGeneratingLink = true
       
-    // Function to generates the link and store it in @State
-    private func generateLink() {
-        generatedLink = nil // Clear any old link
-        isGeneratingLink = true
-          
-        nav.generateMonsterShareLink { url, error in
-            DispatchQueue.main.async {
-                self.isGeneratingLink = false
-                if let urlString = url {
-                    self.generatedLink = urlString // Store the generated link
-                    print("Generated Link: \(urlString)")
-                } else {
-                    print("Error creating Branch link: \(error?.localizedDescription ?? "Unknown error")")
-                    // Handle error (e.g., show an alert)
-                }
-            }
-        }
+      progress.generateMonsterShareLink { url, error in
+          DispatchQueue.main.async {
+              self.isGeneratingLink = false
+              if let urlString = url {
+                  self.generatedLink = urlString
+                  self.showingLinkPopup = true
+                  
+                  print("Created Link: \(urlString)")
+              } else {
+                  print("Error creating Branch link: \(error?.localizedDescription ?? "Unknown error")")
+                  // On failure, do not mark challenge complete
+              }
+          }
+      }
     }
       
-    // Function for Button 2: Opens the Share Sheet using the stored link
-    private func showBranchShareSheet() {
-        // 2a. Get the latest BUO data from the model
-        let buo = nav.createCurrentMonsterBUO()
-          
-        // 2b. Define Link Properties for the share sheet
-        let linkProperties = BranchLinkProperties()
-        linkProperties.feature = "short_link"
-        linkProperties.channel = "branchmonsterfactory2"
-        linkProperties.campaign = "monster_share"
-        // Add control parameters for the link (optional, but good for tracking)
-        linkProperties.controlParams["branch_link_type"] = "short_link"
-          
-        // 2c. Define the message/text that accompanies the link
-        let shareText = "Check out my Level \(nav.monsterLevel) monster, '\(self.getDisplayName())', in the updated Branch Monster Factory!"
-          
-        // 2d. Show the Branch Share Sheet
-        buo.showShareSheet(
-            with: linkProperties,
-            andShareText: shareText,
-            from: nil // Passing 'nil' here will allow the Branch SDK to find the current view controller
-        ) { channel, completed, error in
-            // This is the completion handler for the share activity
-            if completed {
-                print("Shared on \(channel ?? "unknown channel")")
-            } else if let error = error {
-                print("Error presenting or completing share sheet: \(error.localizedDescription)")
-            } else {
-                print("Share sheet dismissed or canceled.")
-            }
-        }
+    /*
+     2. Handles the 'Share Branch Link' Quest.
+        - Creates the BUO and presents the Branch Share Sheet immediately.
+     */
+    private func handleShareLinkQuest(challenge: Challenge) {
+      let buo = progress.createCurrentMonsterBUO()
+      
+      let linkProperties = BranchLinkProperties()
+      linkProperties.feature = "share_link_quest"
+      linkProperties.channel = "branch_sheet"
+      linkProperties.campaign = "monster_share"
+      
+      let shareText = "Check out my Level \(progress.monsterLevel) monster, '\(self.getDisplayName())', in the updated Branch Monster Factory!"
+      
+      buo.showShareSheet(
+          with: linkProperties,
+          andShareText: shareText,
+          from: nil
+      ) { channel, completed, error in
+          if completed {
+              print("Shared successfully via: \(channel ?? "unknown channel")")
+              
+              // Mark quest complete only AFTER the user successfully shares
+              DispatchQueue.main.async {
+                  self.progress.markChallengeAsComplete(challenge)
+                  self.progress.questCompleted()
+              }
+          } else {
+              print("Share failed or was canceled.")
+          }
+      }
     }
 
     var body: some View {
@@ -170,6 +174,14 @@ struct HomeScreen: View {
                                             selectedMonsterName: self
                                                 .selectedMonsterName
                                         )
+                                    case "Create Branch Link":
+                                        handleGenerateLinkQuest(challenge: challenge)
+                                        progress.markChallengeAsUnlocked("Share Branch Link")
+                                        break
+                                                
+                                    case "Share Branch Link":
+                                          handleShareLinkQuest(challenge: challenge)
+                                          break
                                     default:
                                         break
                                     }
@@ -209,6 +221,21 @@ struct HomeScreen: View {
                     }) {
                         progress.markChallengeAsComplete(completedChallenge)
                         progress.questCompleted()
+                    }
+                }
+        }
+        if showingLinkPopup, let link = generatedLink {
+            LinkPopupView(link: link)
+                .transition(.opacity.combined(with: .scale))
+                .onTapGesture {
+                    showingLinkPopup = false
+                    if let completedChallenge = challenges.first(where: {
+                        $0.title == "Create Branch Link"
+                    }) {
+                        // Mark completion and unlock the next quest (Share Branch Link)
+                        progress.markChallengeAsComplete(completedChallenge)
+                        progress.questCompleted()
+                        progress.markChallengeAsUnlocked("Share Branch Link")
                     }
                 }
         }

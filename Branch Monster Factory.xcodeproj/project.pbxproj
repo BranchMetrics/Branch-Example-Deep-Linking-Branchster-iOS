@@ -17,6 +17,7 @@
 		275F8F3D2EBBE666004884BB /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 275F8F3C2EBBE666004884BB /* StoreKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		275F8F3F2EBBE671004884BB /* LinkPresentation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 275F8F3E2EBBE671004884BB /* LinkPresentation.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		275F8F412EBBE69C004884BB /* AppDelegateAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275F8F402EBBE698004884BB /* AppDelegateAdapter.swift */; };
+		27E574572EBD213A00F83BD9 /* LinkPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E574562EBD212F00F83BD9 /* LinkPopupView.swift */; };
 		FCE301162EBAA91E009B2F7A /* Branch_Monster_FactorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE301152EBAA91E009B2F7A /* Branch_Monster_FactorApp.swift */; };
 		FCE3011C2EBAA91F009B2F7A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCE3011B2EBAA91F009B2F7A /* Assets.xcassets */; };
 		FCE3011F2EBAA91F009B2F7A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCE3011E2EBAA91F009B2F7A /* Preview Assets.xcassets */; };
@@ -68,6 +69,7 @@
 		275F8F3C2EBBE666004884BB /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		275F8F3E2EBBE671004884BB /* LinkPresentation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LinkPresentation.framework; path = System/Library/Frameworks/LinkPresentation.framework; sourceTree = SDKROOT; };
 		275F8F402EBBE698004884BB /* AppDelegateAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateAdapter.swift; sourceTree = "<group>"; };
+		27E574562EBD212F00F83BD9 /* LinkPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkPopupView.swift; sourceTree = "<group>"; };
 		FCE301122EBAA91E009B2F7A /* Branch Monster Factor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Branch Monster Factor.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCE301152EBAA91E009B2F7A /* Branch_Monster_FactorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Branch_Monster_FactorApp.swift; sourceTree = "<group>"; };
 		FCE3011B2EBAA91F009B2F7A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 		FCE301142EBAA91E009B2F7A /* Branch Monster Factor */ = {
 			isa = PBXGroup;
 			children = (
+				27E574562EBD212F00F83BD9 /* LinkPopupView.swift */,
 				FF342FF12EBCDECF00DD0764 /* DetailsPopupView.swift */,
 				FF5AAD4C2EBC3CD1002CC015 /* QRCodePopupView.swift */,
 				FF5AAD4A2EBC34A5002CC015 /* BranchUtils.swift */,
@@ -370,6 +373,7 @@
 				FF5AAD4D2EBC3CD3002CC015 /* QRCodePopupView.swift in Sources */,
 				FF72FD7D2EBBE0B8000DE618 /* Challenges.swift in Sources */,
 				FF5AAD3D2EBC2E67002CC015 /* StepCardView.swift in Sources */,
+				27E574572EBD213A00F83BD9 /* LinkPopupView.swift in Sources */,
 				FF5AAD3B2EBC2E49002CC015 /* MonsterSelectionView.swift in Sources */,
 				FCE301162EBAA91E009B2F7A /* Branch_Monster_FactorApp.swift in Sources */,
 				FF5AAD412EBC2E8B002CC015 /* ViewModifiers.swift in Sources */,
