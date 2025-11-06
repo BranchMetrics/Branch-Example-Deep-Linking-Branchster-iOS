@@ -16,7 +16,8 @@ struct HomeScreen: View {
         ""
     @Environment(MonsterProgress.self) private var progress: MonsterProgress
     @State private var generatedQRCode: UIImage?
-    @State private var showingPopup: Bool = false
+    @State private var showingQRCodePopup: Bool = false
+    @State private var showingEventDetailsPopup: Bool = false
 
     let challenges = Challenges.shared.allChallenges
 
@@ -87,6 +88,9 @@ struct HomeScreen: View {
                                         progress.markChallengeAsUnlocked(
                                             "View Branch Event Data")
                                         break
+                                    case "View Branch Event Data":
+                                        self.showingEventDetailsPopup = true
+                                        break
                                     case "Generate Branch QR Code":
                                         createQRCode(
                                             completion: { qrCodeImage in
@@ -94,7 +98,7 @@ struct HomeScreen: View {
                                                     if let image = qrCodeImage {
                                                         self.generatedQRCode =
                                                             image
-                                                        self.showingPopup = true
+                                                        self.showingQRCodePopup = true
                                                     } else {
                                                         print(
                                                             "Failed to generate QR Code Image."
@@ -122,11 +126,11 @@ struct HomeScreen: View {
             Spacer()
         }
 
-        if showingPopup, let image = generatedQRCode {
+        if showingQRCodePopup, let image = generatedQRCode {
             QRCodePopupView(image: image)
                 .transition(.opacity.combined(with: .scale))
                 .onTapGesture {
-                    showingPopup = false
+                    showingQRCodePopup = false
                     if let completedChallenge = challenges.first(where: {
                         $0.title == "Generate Branch QR Code"
                     }) {
@@ -134,6 +138,14 @@ struct HomeScreen: View {
                         progress.questCompleted()
                         progress.markChallengeAsUnlocked("Share Branch QR Code")
                     }
+                }
+        }
+        
+        if showingEventDetailsPopup {
+            DetailsPopupView()
+                .transition(.opacity.combined(with: .scale))
+                .onTapGesture {
+                    showingEventDetailsPopup = false
                 }
         }
     }

@@ -24,6 +24,7 @@
 		FCE301332EBAA91F009B2F7A /* Branch_Monster_FactorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE301322EBAA91F009B2F7A /* Branch_Monster_FactorUITests.swift */; };
 		FCE301352EBAA91F009B2F7A /* Branch_Monster_FactorUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE301342EBAA91F009B2F7A /* Branch_Monster_FactorUITestsLaunchTests.swift */; };
 		FF2765BB2EBBF49000C18CE7 /* MonsterProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2765BA2EBBF48C00C18CE7 /* MonsterProgress.swift */; };
+		FF342FF22EBCDED700DD0764 /* DetailsPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF342FF12EBCDECF00DD0764 /* DetailsPopupView.swift */; };
 		FF5AAD372EBC2E00002CC015 /* DataModules.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5AAD362EBC2DF9002CC015 /* DataModules.swift */; };
 		FF5AAD392EBC2E34002CC015 /* ChallengeRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5AAD382EBC2E30002CC015 /* ChallengeRow.swift */; };
 		FF5AAD3B2EBC2E49002CC015 /* MonsterSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5AAD3A2EBC2E41002CC015 /* MonsterSelectionView.swift */; };
@@ -77,6 +78,7 @@
 		FCE301322EBAA91F009B2F7A /* Branch_Monster_FactorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Branch_Monster_FactorUITests.swift; sourceTree = "<group>"; };
 		FCE301342EBAA91F009B2F7A /* Branch_Monster_FactorUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Branch_Monster_FactorUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		FF2765BA2EBBF48C00C18CE7 /* MonsterProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterProgress.swift; sourceTree = "<group>"; };
+		FF342FF12EBCDECF00DD0764 /* DetailsPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsPopupView.swift; sourceTree = "<group>"; };
 		FF5AAD362EBC2DF9002CC015 /* DataModules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModules.swift; sourceTree = "<group>"; };
 		FF5AAD382EBC2E30002CC015 /* ChallengeRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeRow.swift; sourceTree = "<group>"; };
 		FF5AAD3A2EBC2E41002CC015 /* MonsterSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterSelectionView.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 		FCE301142EBAA91E009B2F7A /* Branch Monster Factor */ = {
 			isa = PBXGroup;
 			children = (
+				FF342FF12EBCDECF00DD0764 /* DetailsPopupView.swift */,
 				FF5AAD4C2EBC3CD1002CC015 /* QRCodePopupView.swift */,
 				FF5AAD4A2EBC34A5002CC015 /* BranchUtils.swift */,
 				FF5AAD402EBC2E86002CC015 /* ViewModifiers.swift */,
@@ -363,6 +366,7 @@
 				FF5AAD392EBC2E34002CC015 /* ChallengeRow.swift in Sources */,
 				FF5AAD3F2EBC2E78002CC015 /* MonsterSelectButton.swift in Sources */,
 				FF72FD732EBBD3F3000DE618 /* MonsterImages.swift in Sources */,
+				FF342FF22EBCDED700DD0764 /* DetailsPopupView.swift in Sources */,
 				FF5AAD4D2EBC3CD3002CC015 /* QRCodePopupView.swift in Sources */,
 				FF72FD7D2EBBE0B8000DE618 /* Challenges.swift in Sources */,
 				FF5AAD3D2EBC2E67002CC015 /* StepCardView.swift in Sources */,
