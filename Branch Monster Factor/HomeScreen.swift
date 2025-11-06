@@ -16,30 +16,35 @@ struct HomeScreen: View {
     @AppStorage("selectedMonsterName") private var selectedMonsterName: String = ""
     @Environment(MonsterProgress.self) private var nav: MonsterProgress
   
-    // 1. State to hold the generated link
+    // 1. State to hold the challenges
     @State private var generatedLink: String?
     @State private var isGeneratingLink: Bool = false
+    @State private var generatedQRCode: UIImage?
+    @State private var showingQRCodePopup: Bool = false
+    @State private var showingEventDetailsPopup: Bool = false
+    @State private var eventData: BranchEvent?
 
     let challenges = Challenges.shared.allChallenges
-    
+
     private var backgroundColor: Color {
         Color(red: 0.165, green: 0.176, blue: 0.196)
     }
-    
+
     private func getDisplayName() -> String {
-        return MonsterImages.shared.monsterNameMap[nav.selectedColor] ?? "Unknown Monster"
+        return MonsterImages.shared.monsterNameMap[progress.selectedColor]
+            ?? "Unknown Monster"
     }
-    
+
     private var xpLabel: String {
-        return "XP: \(Int(nav.currentXP)) / \(Int(nav.requiredXP))"
+        return "XP: \(Int(progress.currentXP)) / \(Int(progress.requiredXP))"
     }
-            
+
     private var progressRatio: Double {
-        return nav.currentXP / nav.requiredXP
+        return progress.currentXP / progress.requiredXP
     }
-    
+
     private var monsterIconName: String {
-        return nav.getMonsterAssetName()
+        return progress.getMonsterAssetName()
     }
   
     // LOGIC TO GENERATE AND SHARE BRANCH LINKS
@@ -112,62 +117,100 @@ struct HomeScreen: View {
                     progressRatio: progressRatio,
                     xpLabel: xpLabel
                 )
-              
-                // Button 1: Generate Link
-                Button(action: generateLink) {
-                    HStack {
-                        if isGeneratingLink {
-                            ProgressView()
-                        } else {
-                            Text("Create Monster Share Link")
-                        }
-                    }
-                    .font(.headline)
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .background(isGeneratingLink ? Color.gray : Color.blue)
-                    .foregroundColor(.white)
-                    .cornerRadius(10)
-                }
-                .disabled(isGeneratingLink)
-                .padding(.horizontal)
-                .padding(.top, 10)
-                              
-                // Display the generated link (optional, good for debugging/copying)
-                if let link = generatedLink {
-                    Text("Link Ready: \(link)")
-                        .font(.caption)
-                        .foregroundColor(.white.opacity(0.8))
-                        .padding(.horizontal)
-                        .onTapGesture {
-                            UIPasteboard.general.string = link // Allows easy copy on tap
-                        }
-                }
-              
-                // Button 2: Share Link (only enabled if a link exists)
-                Button(action: showBranchShareSheet) {
-                    Label("Share Monster", systemImage: "square.and.arrow.up")
-                        .font(.headline)
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background(generatedLink == nil ? Color.gray : Color.green)
-                        .foregroundColor(.white)
-                        .cornerRadius(10)
-                }
-                .disabled(generatedLink == nil) // Disable if no link is generated yet
-                .padding(.horizontal)
-                
                 ScrollView {
                     VStack(spacing: 15) {
                         ForEach(challenges, id: \.title) { challenge in
-                            ChallengeRow(challenge: challenge)
+                            let challengeIsComplete =
+                                progress.isChallengeComplete(
+                                    challenge)
+
+                            let challengeIsLocked = progress.isChallengeLocked(
+                                challenge)
+
+                            ChallengeRow(
+                                challenge: challenge,
+                                action: {
+
+                                    switch challenge.title {
+                                    case "Trigger Branch Event":
+                                        self.eventData = trackEvent(
+                                            monsterColor: progress
+                                                .selectedColor,
+                                            monsterLevel: progress.monsterLevel,
+                                            selectedMonsterName: self
+                                                .selectedMonsterName,
+                                            monsterExp: progress.currentXP)
+                                        progress.markChallengeAsComplete(
+                                            challenge)
+                                        progress.questCompleted()
+                                        progress.markChallengeAsUnlocked(
+                                            "View Branch Event Data")
+                                        break
+                                    case "View Branch Event Data":
+                                        self.showingEventDetailsPopup = true
+                                        break
+                                    case "Generate Branch QR Code":
+                                        createQRCode(
+                                            completion: { qrCodeImage in
+                                                DispatchQueue.main.async {
+                                                    if let image = qrCodeImage {
+                                                        self.generatedQRCode =
+                                                            image
+                                                        self.showingQRCodePopup = true
+                                                    } else {
+                                                        print(
+                                                            "Failed to generate QR Code Image."
+                                                        )
+                                                    }
+                                                }
+                                            },
+                                            monsterColor: progress
+                                                .selectedColor,
+                                            monsterLevel: progress.monsterLevel,
+                                            selectedMonsterName: self
+                                                .selectedMonsterName
+                                        )
+                                    default:
+                                        break
+                                    }
+                                }, isCompleted: challengeIsComplete,
+                                isLocked: challengeIsLocked)
                         }
                     }
-                    .padding(.horizontal)
                 }
-
-                Spacer()
+                .padding(.horizontal)
             }
+
+            Spacer()
+        }
+
+        if showingQRCodePopup, let image = generatedQRCode {
+            QRCodePopupView(image: image)
+                .transition(.opacity.combined(with: .scale))
+                .onTapGesture {
+                    showingQRCodePopup = false
+                    if let completedChallenge = challenges.first(where: {
+                        $0.title == "Generate Branch QR Code"
+                    }) {
+                        progress.markChallengeAsComplete(completedChallenge)
+                        progress.questCompleted()
+                        progress.markChallengeAsUnlocked("Share Branch QR Code")
+                    }
+                }
+        }
+        
+        if showingEventDetailsPopup {
+            DetailsPopupView(eventData: self.eventData!, monsterName: getDisplayName())
+                .transition(.opacity.combined(with: .scale))
+                .onTapGesture {
+                    showingEventDetailsPopup = false
+                    if let completedChallenge = challenges.first(where: {
+                        $0.title == "View Branch Event Data"
+                    }) {
+                        progress.markChallengeAsComplete(completedChallenge)
+                        progress.questCompleted()
+                    }
+                }
         }
     }
 }

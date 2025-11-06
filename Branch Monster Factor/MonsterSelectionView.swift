@@ -16,7 +16,7 @@ struct MonsterView: View {
     let progressRatio: Double
     let xpLabel: String
     
-    @Environment(MonsterProgress.self) private var nav: MonsterProgress
+    @Environment(MonsterProgress.self) private var progress: MonsterProgress
     
     var body: some View {
         VStack {
@@ -27,18 +27,18 @@ struct MonsterView: View {
                 .clipShape(Circle())
                 .shadow(radius: 10)
                 .transition(.rotationFlip)
-                .animation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 0.5), value: nav.monsterLevel)
-                .id(nav.monsterLevel)
+                .animation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 0.5), value: progress.monsterLevel)
+                .id(progress.monsterLevel)
                 .overlay(
                     Circle()
-                        .fill(nav.showEvolutionFlash ? Color.white.opacity(0.8) : Color.clear)
+                        .fill(progress.showEvolutionFlash ? Color.white.opacity(0.8) : Color.clear)
                         .frame(width: 350, height: 350)
-                        .scaleEffect(nav.showEvolutionFlash ? 1.0 : 0.0)
-                        .animation(.easeOut(duration: 0.2), value: nav.showEvolutionFlash)
+                        .scaleEffect(progress.showEvolutionFlash ? 1.0 : 0.0)
+                        .animation(.easeOut(duration: 0.2), value: progress.showEvolutionFlash)
                 )
             
             HStack {
-                ProgressView("Level \(nav.monsterLevel)", value: progressRatio, total: 1.0)
+                ProgressView("Level \(progress.monsterLevel)", value: progressRatio, total: 1.0)
                     .progressViewStyle(.linear)
                     .tint(.pink)
                     .foregroundColor(.white)

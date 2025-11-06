@@ -24,12 +24,15 @@
 		FCE301332EBAA91F009B2F7A /* Branch_Monster_FactorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE301322EBAA91F009B2F7A /* Branch_Monster_FactorUITests.swift */; };
 		FCE301352EBAA91F009B2F7A /* Branch_Monster_FactorUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE301342EBAA91F009B2F7A /* Branch_Monster_FactorUITestsLaunchTests.swift */; };
 		FF2765BB2EBBF49000C18CE7 /* MonsterProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2765BA2EBBF48C00C18CE7 /* MonsterProgress.swift */; };
+		FF342FF22EBCDED700DD0764 /* DetailsPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF342FF12EBCDECF00DD0764 /* DetailsPopupView.swift */; };
 		FF5AAD372EBC2E00002CC015 /* DataModules.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5AAD362EBC2DF9002CC015 /* DataModules.swift */; };
 		FF5AAD392EBC2E34002CC015 /* ChallengeRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5AAD382EBC2E30002CC015 /* ChallengeRow.swift */; };
 		FF5AAD3B2EBC2E49002CC015 /* MonsterSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5AAD3A2EBC2E41002CC015 /* MonsterSelectionView.swift */; };
 		FF5AAD3D2EBC2E67002CC015 /* StepCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5AAD3C2EBC2E61002CC015 /* StepCardView.swift */; };
 		FF5AAD3F2EBC2E78002CC015 /* MonsterSelectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5AAD3E2EBC2E71002CC015 /* MonsterSelectButton.swift */; };
 		FF5AAD412EBC2E8B002CC015 /* ViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5AAD402EBC2E86002CC015 /* ViewModifiers.swift */; };
+		FF5AAD4B2EBC34A9002CC015 /* BranchUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5AAD4A2EBC34A5002CC015 /* BranchUtils.swift */; };
+		FF5AAD4D2EBC3CD3002CC015 /* QRCodePopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5AAD4C2EBC3CD1002CC015 /* QRCodePopupView.swift */; };
 		FF72FD5F2EBB807E000DE618 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF72FD5E2EBB807E000DE618 /* LaunchScreen.storyboard */; };
 		FF72FD642EBB892D000DE618 /* OnboardingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF72FD632EBB892D000DE618 /* OnboardingScreen.swift */; };
 		FF72FD6C2EBBA1A3000DE618 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF72FD6B2EBBA1A3000DE618 /* HomeScreen.swift */; };
@@ -75,12 +78,15 @@
 		FCE301322EBAA91F009B2F7A /* Branch_Monster_FactorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Branch_Monster_FactorUITests.swift; sourceTree = "<group>"; };
 		FCE301342EBAA91F009B2F7A /* Branch_Monster_FactorUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Branch_Monster_FactorUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		FF2765BA2EBBF48C00C18CE7 /* MonsterProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterProgress.swift; sourceTree = "<group>"; };
+		FF342FF12EBCDECF00DD0764 /* DetailsPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsPopupView.swift; sourceTree = "<group>"; };
 		FF5AAD362EBC2DF9002CC015 /* DataModules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModules.swift; sourceTree = "<group>"; };
 		FF5AAD382EBC2E30002CC015 /* ChallengeRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeRow.swift; sourceTree = "<group>"; };
 		FF5AAD3A2EBC2E41002CC015 /* MonsterSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterSelectionView.swift; sourceTree = "<group>"; };
 		FF5AAD3C2EBC2E61002CC015 /* StepCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepCardView.swift; sourceTree = "<group>"; };
 		FF5AAD3E2EBC2E71002CC015 /* MonsterSelectButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterSelectButton.swift; sourceTree = "<group>"; };
 		FF5AAD402EBC2E86002CC015 /* ViewModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModifiers.swift; sourceTree = "<group>"; };
+		FF5AAD4A2EBC34A5002CC015 /* BranchUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchUtils.swift; sourceTree = "<group>"; };
+		FF5AAD4C2EBC3CD1002CC015 /* QRCodePopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodePopupView.swift; sourceTree = "<group>"; };
 		FF72FD5E2EBB807E000DE618 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FF72FD632EBB892D000DE618 /* OnboardingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingScreen.swift; sourceTree = "<group>"; };
 		FF72FD6A2EBB95A5000DE618 /* Branch-Monster-Factor-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Branch-Monster-Factor-Info.plist"; sourceTree = SOURCE_ROOT; };
@@ -166,6 +172,9 @@
 		FCE301142EBAA91E009B2F7A /* Branch Monster Factor */ = {
 			isa = PBXGroup;
 			children = (
+				FF342FF12EBCDECF00DD0764 /* DetailsPopupView.swift */,
+				FF5AAD4C2EBC3CD1002CC015 /* QRCodePopupView.swift */,
+				FF5AAD4A2EBC34A5002CC015 /* BranchUtils.swift */,
 				FF5AAD402EBC2E86002CC015 /* ViewModifiers.swift */,
 				FF5AAD3E2EBC2E71002CC015 /* MonsterSelectButton.swift */,
 				FF5AAD3C2EBC2E61002CC015 /* StepCardView.swift */,
@@ -357,6 +366,8 @@
 				FF5AAD392EBC2E34002CC015 /* ChallengeRow.swift in Sources */,
 				FF5AAD3F2EBC2E78002CC015 /* MonsterSelectButton.swift in Sources */,
 				FF72FD732EBBD3F3000DE618 /* MonsterImages.swift in Sources */,
+				FF342FF22EBCDED700DD0764 /* DetailsPopupView.swift in Sources */,
+				FF5AAD4D2EBC3CD3002CC015 /* QRCodePopupView.swift in Sources */,
 				FF72FD7D2EBBE0B8000DE618 /* Challenges.swift in Sources */,
 				FF5AAD3D2EBC2E67002CC015 /* StepCardView.swift in Sources */,
 				FF5AAD3B2EBC2E49002CC015 /* MonsterSelectionView.swift in Sources */,
@@ -364,6 +375,7 @@
 				FF5AAD412EBC2E8B002CC015 /* ViewModifiers.swift in Sources */,
 				FF2765BB2EBBF49000C18CE7 /* MonsterProgress.swift in Sources */,
 				FF5AAD372EBC2E00002CC015 /* DataModules.swift in Sources */,
+				FF5AAD4B2EBC34A9002CC015 /* BranchUtils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

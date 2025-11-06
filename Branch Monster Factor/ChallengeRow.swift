@@ -13,20 +13,27 @@ import SwiftUI
 
 struct ChallengeRow: View {
     let challenge: Challenge
+    let action: () -> Void
+    let isCompleted: Bool
+    let isLocked: Bool
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Text(challenge.title)
-                .font(.headline)
-                .foregroundColor(.white)
+        Button(action: action) {
+            VStack(alignment: .leading, spacing: 8) {
+                Text(challenge.title)
+                    .font(.headline)
+                    .foregroundColor(.white)
 
-            Text(challenge.description)
-                .font(.subheadline)
-                .foregroundColor(.gray)
-        }
-        .padding()
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .border(Color.white, width: 2)
-        .cornerRadius(5)
+                Text(challenge.description)
+                    .font(.subheadline)
+                    .foregroundColor(.gray)
+            }
+            .padding()
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .border(Color.white, width: 2)
+            .cornerRadius(5)
+        }.buttonStyle(PlainButtonStyle())
+            .disabled(isCompleted || isLocked)
+            .opacity(isCompleted || isLocked ? 0.5 : 1.0)
     }
 }

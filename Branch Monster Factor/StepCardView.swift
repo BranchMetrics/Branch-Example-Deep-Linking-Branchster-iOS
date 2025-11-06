@@ -36,7 +36,7 @@ struct StepCardView: View {
     let step: OnboardingStep
     @Binding var isOnboardingComplete: Bool
     @Binding var selectedMonsterName: String
-    @Environment(MonsterProgress.self) private var nav: MonsterProgress
+    @Environment(MonsterProgress.self) private var progress: MonsterProgress
     
     @StateObject private var viewModel = StepCardViewModel()
 
@@ -58,6 +58,7 @@ struct StepCardView: View {
                 .fontWeight(.heavy)
                 .foregroundColor(.white)
                 .multilineTextAlignment(.leading)
+                .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.horizontal, 10)
 
             if isLastStep {
@@ -73,7 +74,7 @@ struct StepCardView: View {
                                 monsterName: viewModel.getDisplayName(from: monsterAssetName),
                                 action: {
                                     let colorKey = viewModel.getColorKey(from: monsterAssetName)
-                                    nav.selectedColor = colorKey
+                                    progress.selectedColor = colorKey
                                     selectedMonsterName = monsterAssetName
                                     isOnboardingComplete = true
                                 }
@@ -92,6 +93,7 @@ struct StepCardView: View {
                     )
                     .foregroundColor(.white.opacity(0.8))
                     .multilineTextAlignment(.leading)
+                    .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.horizontal, 10)
             }
         }
