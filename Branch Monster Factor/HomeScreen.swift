@@ -61,9 +61,10 @@ struct HomeScreen: View {
                 ScrollView {
                     VStack(spacing: 15) {
                         ForEach(challenges, id: \.title) { challenge in
-                            let challengeIsComplete = progress.isChallengeComplete(
-                                challenge)
-                            
+                            let challengeIsComplete =
+                                progress.isChallengeComplete(
+                                    challenge)
+
                             let challengeIsLocked = progress.isChallengeLocked(
                                 challenge)
 
@@ -72,6 +73,20 @@ struct HomeScreen: View {
                                 action: {
 
                                     switch challenge.title {
+                                    case "Trigger Branch Event":
+                                        trackEvent(
+                                            monsterColor: progress
+                                                .selectedColor,
+                                            monsterLevel: progress.monsterLevel,
+                                            selectedMonsterName: self
+                                                .selectedMonsterName,
+                                            monsterExp: progress.currentXP)
+                                        progress.markChallengeAsComplete(
+                                            challenge)
+                                        progress.questCompleted()
+                                        progress.markChallengeAsUnlocked(
+                                            "View Branch Event Data")
+                                        break
                                     case "Generate Branch QR Code":
                                         createQRCode(
                                             completion: { qrCodeImage in
@@ -87,14 +102,17 @@ struct HomeScreen: View {
                                                     }
                                                 }
                                             },
-                                            monsterColor: progress.selectedColor,
+                                            monsterColor: progress
+                                                .selectedColor,
                                             monsterLevel: progress.monsterLevel,
-                                            selectedMonsterName: self.selectedMonsterName
+                                            selectedMonsterName: self
+                                                .selectedMonsterName
                                         )
                                     default:
                                         break
                                     }
-                                }, isCompleted: challengeIsComplete, isLocked: challengeIsLocked)
+                                }, isCompleted: challengeIsComplete,
+                                isLocked: challengeIsLocked)
                         }
                     }
                 }

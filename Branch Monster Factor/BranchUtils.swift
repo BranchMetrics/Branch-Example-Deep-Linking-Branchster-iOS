@@ -65,3 +65,12 @@ func createQRCode(
         completion(qrCodeImage)
     }
 }
+
+func trackEvent (monsterColor: String, monsterLevel: Int, selectedMonsterName: String, monsterExp: Double) {
+    let event = BranchEvent.customEvent(withName: selectedMonsterName)
+    event.customData["Monster Name"] = selectedMonsterName
+    event.customData["Monster Level"] = "\(monsterLevel)"
+    event.customData["Monster Color"] = monsterColor
+    event.customData["Monster Exp"] = "\(monsterExp)"
+    event.logEvent()
+}
