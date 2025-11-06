@@ -8,13 +8,11 @@
 import SwiftUI
 
 struct LinkPopupView: View {
-    // We pass the generated URL string into the view
     let link: String
 
     var body: some View {
         VStack(spacing: 15) {
             
-            // Replaced the QR Code Image with a visual indicator icon
             Image(systemName: "link.circle.fill")
                 .resizable()
                 .scaledToFit()
@@ -22,10 +20,8 @@ struct LinkPopupView: View {
                 .foregroundColor(.green)
                 .shadow(radius: 10)
             
-            // Display the generated link
             Text(link)
                 .font(.callout)
-                // Restrict the link to a few lines to fit the popup
                 .lineLimit(3)
                 .multilineTextAlignment(.center)
                 .truncationMode(.middle)
@@ -33,7 +29,6 @@ struct LinkPopupView: View {
                 .background(Color.gray.opacity(0.3))
                 .cornerRadius(5)
                 .foregroundColor(.white)
-                // Crucial: Allow the user to long-press and copy the link
                 .textSelection(.enabled)
             
             Text("Link Created! Tap on the link above to copy it.")
@@ -51,7 +46,6 @@ struct LinkPopupView: View {
                 .fill(Color.black.opacity(0.85))
                 .shadow(radius: 20)
         )
-        // Match the width constraint of the QR code view
         .frame(maxWidth: 300)
     }
 }

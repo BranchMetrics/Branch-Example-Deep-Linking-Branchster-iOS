@@ -42,9 +42,8 @@ struct Branch_Monster_FactorApp: App {
             )
         )
         
-        let handler = DeepLinkHandler( /* initializers if needed */ )
+        let handler = DeepLinkHandler()
                 _deepLinkHandler = State(initialValue: handler)
-                // CRITICAL: Pass the created instance to the AppDelegate before the body is called
                 appDelegate.deepLinkHandler = handler
     }
 
@@ -78,7 +77,6 @@ struct Branch_Monster_FactorApp: App {
 
 class AppDelegate: NSObject, UIApplicationDelegate {
     
-    // Store the deepLinkHandler reference
     var deepLinkHandler: DeepLinkHandler?
 
     func application(
@@ -90,14 +88,10 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         Branch.setUseTestBranchKey(true)
         Branch.enableLogging()
         Branch.getInstance().checkPasteboardOnInstall()
-
-        // IMPORTANT: Call initSession, and perform deep link logic in the completion block
         Branch.getInstance().initSession(launchOptions: launchOptions) {
              [weak self] (params, error) in
              
-             // Branch SDK has finished initialization and retrieved deep link params
              DispatchQueue.main.async {
-                 // Pass the parameters directly to the DeepLinkHandler
                  self?.deepLinkHandler?.handleDeepLinkDisplay(sessionParams: params)
              }
         }

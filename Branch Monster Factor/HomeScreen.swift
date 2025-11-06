@@ -14,12 +14,10 @@ import BranchSDK
 
 struct HomeScreen: View {
     @AppStorage("selectedMonsterName") private var selectedMonsterName: String = ""
+    
     @Environment(MonsterProgress.self) private var progress: MonsterProgress
     @Environment(DeepLinkHandler.self) private var deepLinkHandler
     
-    // Existing State
-  
-    // 1. State to hold the challenges
     @State private var generatedLink: String?
     @State private var isGeneratingLink: Bool = false
     @State private var showingLinkPopup: Bool = false
@@ -51,10 +49,6 @@ struct HomeScreen: View {
         return progress.getMonsterAssetName()
     }
   
-    /*
-     1. Handles the 'Generate Branch Link' Quest.
-        - Creates the link asynchronously and updates the state.
-     */
     private func handleGenerateLinkQuest(challenge: Challenge) {
       self.generatedLink = nil
       self.isGeneratingLink = true
@@ -69,16 +63,11 @@ struct HomeScreen: View {
                   print("Created Link: \(urlString)")
               } else {
                   print("Error creating Branch link: \(error?.localizedDescription ?? "Unknown error")")
-                  // On failure, do not mark challenge complete
               }
           }
       }
     }
       
-    /*
-     2. Handles the 'Share Branch Link' Quest.
-        - Creates the BUO and presents the Branch Share Sheet immediately.
-     */
     private func handleShareLinkQuest(challenge: Challenge) {
       let buo = progress.createCurrentMonsterBUO()
       
@@ -97,7 +86,6 @@ struct HomeScreen: View {
           if completed {
               print("Shared successfully via: \(channel ?? "unknown channel")")
               
-              // Mark quest complete only AFTER the user successfully shares
               DispatchQueue.main.async {
                   self.progress.markChallengeAsComplete(challenge)
                   self.progress.questCompleted()
@@ -111,9 +99,7 @@ struct HomeScreen: View {
     // MARK: - View Body
     var body: some View {
         ZStack {
-            // --------------------
-            // 1. Primary Content Layer
-            // --------------------
+
             backgroundColor.edgesIgnoringSafeArea(.all)
 
             VStack {
@@ -187,24 +173,15 @@ struct HomeScreen: View {
             }
             Spacer()
             
-
-
-            // --------------------
-            // 2. Pop-up/Modal Layers
-            // --------------------
-            
-            // Deep Link Detail View (Conditional Rendering Fix)
-            if deepLinkHandler.showingDeepLinkMonsterDetail { // <-- Use handler state
-                        Color.black.opacity(0.4).edgesIgnoringSafeArea(.all) // Dimming background
+            if deepLinkHandler.showingDeepLinkMonsterDetail {
+                        Color.black.opacity(0.4).edgesIgnoringSafeArea(.all)
                         DeepLinkDetailView(
-                            monsterImage: deepLinkHandler.deepLinkMonsterImage, // <-- Use handler state
-                            monsterName: deepLinkHandler.deepLinkMonsterName    // <-- Use handler state
+                            monsterImage: deepLinkHandler.deepLinkMonsterImage,
+                            monsterName: deepLinkHandler.deepLinkMonsterName
                         )
                         .transition(.opacity.combined(with: .scale))
                         .onTapGesture {
-                            // When tapped, dismiss the detail view and mark challenge complete
-                            deepLinkHandler.showingDeepLinkMonsterDetail = false // <-- Update handler state
-                            // ... rest of completion logic (no change)
+                            deepLinkHandler.showingDeepLinkMonsterDetail = false
                         }
                     }
 
@@ -246,7 +223,6 @@ struct HomeScreen: View {
                     if let completedChallenge = challenges.first(where: {
                         $0.title == "Create Branch Link"
                     }) {
-                        // Mark completion and unlock the next quest (Share Branch Link)
                         progress.markChallengeAsComplete(completedChallenge)
                         progress.questCompleted()
                         progress.markChallengeAsUnlocked("Share Branch Link")

@@ -15,7 +15,6 @@ final class Challenges {
 
     private init() {}
 
-    // Refactored to store a tuple: (description, imageName)
     private let rawChallenges: [String: (description: String, imageName: String)] = [
         "Create Branch Link": (
             description: "Generate a link to earn some XP for your monster",
