@@ -57,7 +57,9 @@ struct HomeScreen: View {
                 ScrollView {
                     VStack(spacing: 15) {
                         ForEach(challenges, id: \.title) { challenge in
-                            ChallengeRow(challenge: challenge)
+                            ChallengeRow(challenge: challenge) {
+                                print("Challenge \(challenge.title) was clicked!")
+                            }
                         }
                     }
                     .padding(.horizontal)
