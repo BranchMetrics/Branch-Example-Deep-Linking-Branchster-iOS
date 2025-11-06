@@ -85,7 +85,8 @@ struct HomeScreen: View {
                                                 }
                                             },
                                             monsterColor: nav.selectedColor,
-                                            monsterLevel: nav.monsterLevel
+                                            monsterLevel: nav.monsterLevel,
+                                            selectedMonsterName: self.selectedMonsterName
                                         )
                                     default:
                                         break

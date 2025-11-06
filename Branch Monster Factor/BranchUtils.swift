@@ -7,9 +7,12 @@
 
 import BranchSDK
 
+let baseImageURL = "https://rob-gioia-branch.github.io/"
+let imageURLSuffix = ".png"
+
 func createQRCode(
     completion: @escaping (UIImage?) -> Void, monsterColor: String,
-    monsterLevel: Int
+    monsterLevel: Int, selectedMonsterName: String
 ) {
     let qrCode = BranchQRCode()
 
@@ -47,6 +50,7 @@ func createQRCode(
     qrCode.width = 1024
     qrCode.margin = 1
     qrCode.imageFormat = .PNG
+    qrCode.centerLogo = baseImageURL + selectedMonsterName + imageURLSuffix
 
     let buo = BranchUniversalObject(
         canonicalIdentifier: "\(monsterColor)/\(monsterLevel)")
