@@ -14,6 +14,8 @@ import Foundation
  */
 @main
 struct Branch_Monster_FactorApp: App {
+  
+    @UIApplicationDelegateAdaptor(AppDelegateAdapter.self) var appDelegate
 
     @State private var nav: MonsterProgress
     

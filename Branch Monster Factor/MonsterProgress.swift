@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Foundation
+import BranchSDK
 
 /*
     Keeps track of the monsters EXP progress and level up logic
@@ -101,4 +102,47 @@ class MonsterProgress {
             }
         }
     }
+  
+    // --- BRANCH UNIVERSAL OBJECT (BUO) LOGIC ---
+     
+    /*
+    Creates a fresh Branch Universal Object reflecting the current state of the monster.
+    Since MonsterProgress is @Observable, this will always pull the latest data.
+    */
+    func createCurrentMonsterBUO() -> BranchUniversalObject {
+        // Use a unique ID that reflects the monster's current state/level for deep linking
+        let canonicalID = "monster-\(selectedColor):level-\(monsterLevel)"
+        let monsterName = MonsterImages.shared.monsterNameMap[selectedColor] ?? "New Monster"
+        
+        let buo = BranchUniversalObject(canonicalIdentifier: canonicalID)
+          
+        buo.title = "Check out my Level \(monsterLevel) \(monsterName)!"
+        buo.contentDescription = "My monster is on a quest! Current XP: \(Int(currentXP))/\(Int(requiredXP))."
+          
+        // Add all required data for deep link routing in customMetadata
+        buo.contentMetadata.customMetadata["monster_color"] = selectedColor
+        buo.contentMetadata.customMetadata["monster_level"] = String(monsterLevel)
+          
+        return buo
+    }
+  
+    /**
+     Generates the short URL and calls the completion handler with the result.
+     */
+    func generateMonsterShareLink(completion: @escaping (String?, Error?) -> Void) {
+          
+          let buo = createCurrentMonsterBUO() // Get the latest BUO data
+          
+          let linkProperties = BranchLinkProperties()
+          linkProperties.feature = "short_link"
+          linkProperties.channel = "branchmonsterfactory2"
+          linkProperties.campaign = "monster_share"
+          
+          // Add control parameters for the link (optional, but good for tracking)
+          linkProperties.controlParams["branch_link_type"] = "short_link"
+          
+          buo.getShortUrl(with: linkProperties) { url, error in
+              completion(url, error)
+          }
+      }
 }
