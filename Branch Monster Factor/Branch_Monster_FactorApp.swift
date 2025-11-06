@@ -15,7 +15,7 @@ import Foundation
 @main
 struct Branch_Monster_FactorApp: App {
 
-    @State private var nav: MonsterProgress
+    @State private var progress: MonsterProgress
     
     @AppStorage("persistentMonsterLevel") private var storedMonsterLevel: Int = 1
     @AppStorage("persistentMonsterExp") private var storedMonsterExp: Double = 0
@@ -30,7 +30,7 @@ struct Branch_Monster_FactorApp: App {
 
         let safeLevel = initialLevel == 0 ? 1 : initialLevel
         
-        _nav = State(
+        _progress = State(
             initialValue: MonsterProgress(
                 initialXP: initialExp,
                 initialLevel: safeLevel,
@@ -41,13 +41,13 @@ struct Branch_Monster_FactorApp: App {
 
     var body: some Scene {
         WindowGroup {
-            NavigationStack(path: $nav.path) {
+            NavigationStack(path: $progress.path) {
                 OnboardingScreen()
             }
-            .environment(nav)
-            .onChange(of: nav.monsterLevel) { storedMonsterLevel = nav.monsterLevel }
-            .onChange(of: nav.currentXP) { storedMonsterExp = nav.currentXP }
-            .onChange(of: nav.selectedColor) { storedMonsterColor = nav.selectedColor }
+            .environment(progress)
+            .onChange(of: progress.monsterLevel) { storedMonsterLevel = progress.monsterLevel }
+            .onChange(of: progress.currentXP) { storedMonsterExp = progress.currentXP }
+            .onChange(of: progress.selectedColor) { storedMonsterColor = progress.selectedColor }
         }
     }
 }

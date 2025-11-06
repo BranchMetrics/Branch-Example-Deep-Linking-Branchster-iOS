@@ -36,7 +36,7 @@ struct StepCardView: View {
     let step: OnboardingStep
     @Binding var isOnboardingComplete: Bool
     @Binding var selectedMonsterName: String
-    @Environment(MonsterProgress.self) private var nav: MonsterProgress
+    @Environment(MonsterProgress.self) private var progress: MonsterProgress
     
     @StateObject private var viewModel = StepCardViewModel()
 
@@ -73,7 +73,7 @@ struct StepCardView: View {
                                 monsterName: viewModel.getDisplayName(from: monsterAssetName),
                                 action: {
                                     let colorKey = viewModel.getColorKey(from: monsterAssetName)
-                                    nav.selectedColor = colorKey
+                                    progress.selectedColor = colorKey
                                     selectedMonsterName = monsterAssetName
                                     isOnboardingComplete = true
                                 }

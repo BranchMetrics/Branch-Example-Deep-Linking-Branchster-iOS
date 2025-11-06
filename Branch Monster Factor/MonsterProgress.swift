@@ -22,9 +22,13 @@ class MonsterProgress {
     var showEvolutionFlash: Bool = false
     var selectedColor: String
     private let completedChallengesKey = "completedChallengeTitles"
+    private let lockedChallengesKey = "lockedChallengeTitles"
     var completedChallengeTitles: Set<String> = Set(
         UserDefaults.standard.stringArray(forKey: "completedChallengeTitles")
             ?? [])
+    var lockedChallengeTitles: Set<String> = Set(
+        UserDefaults.standard.stringArray(forKey: "lockedChallengeTitles")
+            ?? ["Share Branch Link", "View Branch Event Data", "Share Branch QR Code"])
 
     init(initialXP: Double, initialLevel: Int, initialColor: String) {
         self.currentXP = initialXP
@@ -57,6 +61,10 @@ class MonsterProgress {
     func isChallengeComplete(_ challenge: Challenge) -> Bool {
         return completedChallengeTitles.contains(challenge.title)
     }
+    
+    func isChallengeLocked(_ challenge: Challenge) -> Bool {
+        return lockedChallengeTitles.contains(challenge.title)
+    }
 
     func markChallengeAsComplete(_ challenge: Challenge) {
         if completedChallengeTitles.insert(challenge.title).inserted {
@@ -67,6 +75,16 @@ class MonsterProgress {
     private func saveCompletedChallenges() {
         let arrayToSave = Array(completedChallengeTitles)
         UserDefaults.standard.set(arrayToSave, forKey: completedChallengesKey)
+    }
+    
+    func markChallengeAsUnlocked(_ challengeTitle: String) {
+        lockedChallengeTitles.remove(challengeTitle)
+        saveCompletedChallenges()
+    }
+    
+    private func saveUnlockedChallenges() {
+        let arrayToSave = Array(lockedChallengeTitles)
+        UserDefaults.standard.set(arrayToSave, forKey: lockedChallengesKey)
     }
 
     func incrementXP(amount: Double, duration: Double) {

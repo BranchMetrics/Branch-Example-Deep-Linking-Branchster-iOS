@@ -14,7 +14,7 @@ import SwiftUI
 struct HomeScreen: View {
     @AppStorage("selectedMonsterName") private var selectedMonsterName: String =
         ""
-    @Environment(MonsterProgress.self) private var nav: MonsterProgress
+    @Environment(MonsterProgress.self) private var progress: MonsterProgress
     @State private var generatedQRCode: UIImage?
     @State private var showingPopup: Bool = false
 
@@ -25,20 +25,20 @@ struct HomeScreen: View {
     }
 
     private func getDisplayName() -> String {
-        return MonsterImages.shared.monsterNameMap[nav.selectedColor]
+        return MonsterImages.shared.monsterNameMap[progress.selectedColor]
             ?? "Unknown Monster"
     }
 
     private var xpLabel: String {
-        return "XP: \(Int(nav.currentXP)) / \(Int(nav.requiredXP))"
+        return "XP: \(Int(progress.currentXP)) / \(Int(progress.requiredXP))"
     }
 
     private var progressRatio: Double {
-        return nav.currentXP / nav.requiredXP
+        return progress.currentXP / progress.requiredXP
     }
 
     private var monsterIconName: String {
-        return nav.getMonsterAssetName()
+        return progress.getMonsterAssetName()
     }
 
     var body: some View {
@@ -61,7 +61,10 @@ struct HomeScreen: View {
                 ScrollView {
                     VStack(spacing: 15) {
                         ForEach(challenges, id: \.title) { challenge in
-                            let challengeIsComplete = nav.isChallengeComplete(
+                            let challengeIsComplete = progress.isChallengeComplete(
+                                challenge)
+                            
+                            let challengeIsLocked = progress.isChallengeLocked(
                                 challenge)
 
                             ChallengeRow(
@@ -84,14 +87,14 @@ struct HomeScreen: View {
                                                     }
                                                 }
                                             },
-                                            monsterColor: nav.selectedColor,
-                                            monsterLevel: nav.monsterLevel,
+                                            monsterColor: progress.selectedColor,
+                                            monsterLevel: progress.monsterLevel,
                                             selectedMonsterName: self.selectedMonsterName
                                         )
                                     default:
                                         break
                                     }
-                                }, isCompleted: challengeIsComplete)
+                                }, isCompleted: challengeIsComplete, isLocked: challengeIsLocked)
                         }
                     }
                 }
@@ -109,8 +112,9 @@ struct HomeScreen: View {
                     if let completedChallenge = challenges.first(where: {
                         $0.title == "Generate Branch QR Code"
                     }) {
-                        nav.markChallengeAsComplete(completedChallenge)
-                        nav.questCompleted()
+                        progress.markChallengeAsComplete(completedChallenge)
+                        progress.questCompleted()
+                        progress.markChallengeAsUnlocked("Share Branch QR Code")
                     }
                 }
         }

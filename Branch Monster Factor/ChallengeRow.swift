@@ -15,6 +15,7 @@ struct ChallengeRow: View {
     let challenge: Challenge
     let action: () -> Void
     let isCompleted: Bool
+    let isLocked: Bool
 
     var body: some View {
         Button(action: action) {
@@ -32,7 +33,7 @@ struct ChallengeRow: View {
             .border(Color.white, width: 2)
             .cornerRadius(5)
         }.buttonStyle(PlainButtonStyle())
-            .disabled(isCompleted)
-            .opacity(isCompleted ? 0.5 : 1.0)
+            .disabled(isCompleted || isLocked)
+            .opacity(isCompleted || isLocked ? 0.5 : 1.0)
     }
 }
