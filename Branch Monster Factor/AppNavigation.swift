@@ -9,10 +9,10 @@ import SwiftUI
 
 @Observable
 class AppNavigation {
+    var monsterLevel: Int = 1
     var path = NavigationPath()
     var currentXP: Double = 0.0
     let requiredXP: Double = 500.0
-    var monsterLevel: Int = 1
     var isAnimatingProgress = false
     var showEvolutionFlash: Bool = false
     
@@ -20,8 +20,11 @@ class AppNavigation {
         "yellow": ["yellow_monster_level_1", "yellow_monster_level_2", "yellow_monster_level_3", "yellow_monster_level_4"]
     ]
     let selectedColor: String = "yellow"
+    
+    init(initialXP: Double) {
+            self.currentXP = initialXP
+    }
 
-    // FIX: This function is essential and ensures dynamic image lookup works.
     func getMonsterAssetName() -> String {
         let levelIndex = self.monsterLevel - 1
         
