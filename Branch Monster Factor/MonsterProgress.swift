@@ -21,7 +21,10 @@ class MonsterProgress {
     var isAnimatingProgress = false
     var showEvolutionFlash: Bool = false
     var selectedColor: String
-    var completedChallengeTitles: Set<String> = []
+    private let completedChallengesKey = "completedChallengeTitles"
+    var completedChallengeTitles: Set<String> = Set(
+        UserDefaults.standard.stringArray(forKey: "completedChallengeTitles")
+            ?? [])
 
     init(initialXP: Double, initialLevel: Int, initialColor: String) {
         self.currentXP = initialXP
@@ -54,9 +57,16 @@ class MonsterProgress {
     func isChallengeComplete(_ challenge: Challenge) -> Bool {
         return completedChallengeTitles.contains(challenge.title)
     }
-    
+
     func markChallengeAsComplete(_ challenge: Challenge) {
-        completedChallengeTitles.insert(challenge.title)
+        if completedChallengeTitles.insert(challenge.title).inserted {
+            saveCompletedChallenges()
+        }
+    }
+
+    private func saveCompletedChallenges() {
+        let arrayToSave = Array(completedChallengeTitles)
+        UserDefaults.standard.set(arrayToSave, forKey: completedChallengesKey)
     }
 
     func incrementXP(amount: Double, duration: Double) {
