@@ -110,43 +110,45 @@ struct HomeScreen: View {
                         ForEach(challenges, id: \.title) { challenge in
                             let challengeIsComplete = progress.isChallengeComplete(challenge)
                             let challengeIsLocked = progress.isChallengeLocked(challenge)
-
-                            ChallengeRow(
-                                challenge: challenge,
-                                action: {
-                                    switch challenge.title {
-                                    case "Trigger Branch Event":
-                                        self.eventData = trackEvent(
-                                            monsterColor: progress.selectedColor,
-                                            monsterLevel: progress.monsterLevel,
-                                            selectedMonsterName: self.selectedMonsterName,
-                                            monsterExp: progress.currentXP)
-                                        progress.markChallengeAsComplete(challenge)
-                                        progress.questCompleted()
-                                        progress.markChallengeAsUnlocked("View Branch Event Data")
-                                    case "View Branch Event Data":
-                                        self.showingEventDetailsPopup = true
-                                    case "Generate Branch QR Code":
-                                        createQRCode(
-                                            completion: { qrCodeImage in
-                                                DispatchQueue.main.async {
-                                                    if let image = qrCodeImage {
-                                                        self.generatedQRCode = image
-                                                        self.showingQRCodePopup = true
-                                                    } else {
-                                                        print("Failed to generate QR Code Image.")
+                            
+                            if(!challengeIsComplete) {
+                                ChallengeRow(
+                                    challenge: challenge,
+                                    action: {
+                                        switch challenge.title {
+                                        case "Trigger Branch Event":
+                                            self.eventData = trackEvent(
+                                                monsterColor: progress.selectedColor,
+                                                monsterLevel: progress.monsterLevel,
+                                                selectedMonsterName: self.selectedMonsterName,
+                                                monsterExp: progress.currentXP)
+                                            progress.markChallengeAsComplete(challenge)
+                                            progress.questCompleted()
+                                            progress.markChallengeAsUnlocked("View Branch Event Data")
+                                        case "View Branch Event Data":
+                                            self.showingEventDetailsPopup = true
+                                        case "Generate Branch QR Code":
+                                            createQRCode(
+                                                completion: { qrCodeImage in
+                                                    DispatchQueue.main.async {
+                                                        if let image = qrCodeImage {
+                                                            self.generatedQRCode = image
+                                                            self.showingQRCodePopup = true
+                                                        } else {
+                                                            print("Failed to generate QR Code Image.")
+                                                        }
                                                     }
-                                                }
-                                            },
-                                            monsterColor: progress.selectedColor,
-                                            monsterLevel: progress.monsterLevel,
-                                            selectedMonsterName: self.selectedMonsterName
-                                        )
-                                    default:
-                                        break
-                                    }
-                                }, isCompleted: challengeIsComplete,
-                                isLocked: challengeIsLocked)
+                                                },
+                                                monsterColor: progress.selectedColor,
+                                                monsterLevel: progress.monsterLevel,
+                                                selectedMonsterName: self.selectedMonsterName
+                                            )
+                                        default:
+                                            break
+                                        }
+                                    }, isCompleted: challengeIsComplete,
+                                    isLocked: challengeIsLocked)
+                            }
                         }
                     }
                 }
