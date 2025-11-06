@@ -15,18 +15,41 @@ final class Challenges {
 
     private init() {}
 
-    private let rawChallenges: [String: String] = [
-        "Create Branch Link": "Generate a link to earn some XP for your monster",
-        "Share Branch Link": "Share a link to earn some XP for your monster",
-        "Trigger Branch Event": "Trigger an event to earn some XP for your monster",
-        "View Branch Event Data": "View event data to earn some XP for your monster",
-        "Generate Branch QR Code": "Generate QR code to earn some XP for your monster",
-        "Share Branch QR Code": "Share QR code to earn some XP for your monster",
+    // Refactored to store a tuple: (description, imageName)
+    private let rawChallenges: [String: (description: String, imageName: String)] = [
+        "Create Branch Link": (
+            description: "Generate a link to earn some XP for your monster",
+            imageName: "link"
+        ),
+        "Share Branch Link": (
+            description: "Share a link to earn some XP for your monster",
+            imageName: "upload"
+        ),
+        "Trigger Branch Event": (
+            description: "Trigger an event to earn some XP for your monster",
+            imageName: "activity"
+        ),
+        "View Branch Event Data": (
+            description: "View event data to earn some XP for your monster",
+            imageName: "braces"
+        ),
+        "Generate Branch QR Code": (
+            description: "Generate QR code to earn some XP for your monster",
+            imageName: "qr-code"
+        ),
+        "Share Branch QR Code": (
+            description: "Share QR code to earn some XP for your monster",
+            imageName: "upload"
+        ),
     ]
 
     var allChallenges: [Challenge] {
         return rawChallenges.map { key, value in
-            Challenge(title: key, description: value)
+            Challenge(
+                title: key,
+                description: value.description,
+                imageName: value.imageName
+            )
         }
         .sorted { $0.title < $1.title }
     }

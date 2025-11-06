@@ -21,4 +21,5 @@ struct OnboardingStep: Identifiable {
 struct Challenge {
     let title: String
     let description: String
+    let imageName: String
 }
