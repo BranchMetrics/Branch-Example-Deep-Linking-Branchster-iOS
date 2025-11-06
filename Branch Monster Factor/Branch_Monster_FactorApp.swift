@@ -8,10 +8,14 @@
 import SwiftUI
 import Foundation
 
+/*
+    Entry point for the app
+    Passed along the persistent data fields at the start of a session
+ */
 @main
 struct Branch_Monster_FactorApp: App {
 
-    @State private var nav: AppNavigation
+    @State private var nav: MonsterProgress
     
     @AppStorage("persistentMonsterLevel") private var storedMonsterLevel: Int = 1
     @AppStorage("persistentMonsterExp") private var storedMonsterExp: Double = 0
@@ -27,7 +31,7 @@ struct Branch_Monster_FactorApp: App {
         let safeLevel = initialLevel == 0 ? 1 : initialLevel
         
         _nav = State(
-            initialValue: AppNavigation(
+            initialValue: MonsterProgress(
                 initialXP: initialExp,
                 initialLevel: safeLevel,
                 initialColor: initialColor

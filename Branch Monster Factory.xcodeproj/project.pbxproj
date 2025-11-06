@@ -23,7 +23,7 @@
 		FCE301292EBAA91F009B2F7A /* Branch_Monster_FactorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE301282EBAA91F009B2F7A /* Branch_Monster_FactorTests.swift */; };
 		FCE301332EBAA91F009B2F7A /* Branch_Monster_FactorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE301322EBAA91F009B2F7A /* Branch_Monster_FactorUITests.swift */; };
 		FCE301352EBAA91F009B2F7A /* Branch_Monster_FactorUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE301342EBAA91F009B2F7A /* Branch_Monster_FactorUITestsLaunchTests.swift */; };
-		FF2765BB2EBBF49000C18CE7 /* AppNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2765BA2EBBF48C00C18CE7 /* AppNavigation.swift */; };
+		FF2765BB2EBBF49000C18CE7 /* MonsterProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2765BA2EBBF48C00C18CE7 /* MonsterProgress.swift */; };
 		FF5AAD372EBC2E00002CC015 /* DataModules.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5AAD362EBC2DF9002CC015 /* DataModules.swift */; };
 		FF5AAD392EBC2E34002CC015 /* ChallengeRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5AAD382EBC2E30002CC015 /* ChallengeRow.swift */; };
 		FF5AAD3B2EBC2E49002CC015 /* MonsterSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5AAD3A2EBC2E41002CC015 /* MonsterSelectionView.swift */; };
@@ -74,7 +74,7 @@
 		FCE3012E2EBAA91F009B2F7A /* Branch Monster FactorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Branch Monster FactorUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCE301322EBAA91F009B2F7A /* Branch_Monster_FactorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Branch_Monster_FactorUITests.swift; sourceTree = "<group>"; };
 		FCE301342EBAA91F009B2F7A /* Branch_Monster_FactorUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Branch_Monster_FactorUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		FF2765BA2EBBF48C00C18CE7 /* AppNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavigation.swift; sourceTree = "<group>"; };
+		FF2765BA2EBBF48C00C18CE7 /* MonsterProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterProgress.swift; sourceTree = "<group>"; };
 		FF5AAD362EBC2DF9002CC015 /* DataModules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModules.swift; sourceTree = "<group>"; };
 		FF5AAD382EBC2E30002CC015 /* ChallengeRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeRow.swift; sourceTree = "<group>"; };
 		FF5AAD3A2EBC2E41002CC015 /* MonsterSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterSelectionView.swift; sourceTree = "<group>"; };
@@ -172,7 +172,7 @@
 				FF5AAD3A2EBC2E41002CC015 /* MonsterSelectionView.swift */,
 				FF5AAD382EBC2E30002CC015 /* ChallengeRow.swift */,
 				FF5AAD362EBC2DF9002CC015 /* DataModules.swift */,
-				FF2765BA2EBBF48C00C18CE7 /* AppNavigation.swift */,
+				FF2765BA2EBBF48C00C18CE7 /* MonsterProgress.swift */,
 				FF72FD7C2EBBE0B5000DE618 /* Challenges.swift */,
 				275F8F402EBBE698004884BB /* AppDelegateAdapter.swift */,
 				FF72FD722EBBD3EE000DE618 /* MonsterImages.swift */,
@@ -362,7 +362,7 @@
 				FF5AAD3B2EBC2E49002CC015 /* MonsterSelectionView.swift in Sources */,
 				FCE301162EBAA91E009B2F7A /* Branch_Monster_FactorApp.swift in Sources */,
 				FF5AAD412EBC2E8B002CC015 /* ViewModifiers.swift in Sources */,
-				FF2765BB2EBBF49000C18CE7 /* AppNavigation.swift in Sources */,
+				FF2765BB2EBBF49000C18CE7 /* MonsterProgress.swift in Sources */,
 				FF5AAD372EBC2E00002CC015 /* DataModules.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

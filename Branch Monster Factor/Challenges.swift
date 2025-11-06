@@ -7,6 +7,9 @@
 
 import Foundation
 
+/*
+    Defines the challenges which allow the user to earn EXP
+ */
 final class Challenges {
     static let shared = Challenges()
 

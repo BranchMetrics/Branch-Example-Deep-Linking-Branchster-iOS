@@ -2,6 +2,11 @@ import SwiftUI
 import SwiftData
 import BranchSDK
 
+/*
+    Using Adapter since it is a Swift UI app
+    Handles the Branch initialization logic
+ */
+
 class AppDelegateAdapter: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         

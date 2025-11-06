@@ -7,6 +7,10 @@
 
 import SwiftUI
 
+/*
+    Content for a challenge/quest
+ */
+
 struct ChallengeRow: View {
     let challenge: Challenge
 

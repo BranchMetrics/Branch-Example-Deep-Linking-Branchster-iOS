@@ -8,8 +8,12 @@
 import SwiftUI
 import Foundation
 
+/*
+    Keeps track of the monsters EXP progress and level up logic
+ */
+
 @Observable
-class AppNavigation {
+class MonsterProgress {
     var monsterLevel: Int = 1
     var path = NavigationPath()
     var currentXP: Double = 0.0

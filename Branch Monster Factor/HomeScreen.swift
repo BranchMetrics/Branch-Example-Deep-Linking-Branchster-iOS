@@ -7,9 +7,13 @@
 
 import SwiftUI
 
+/*
+    The main screen of the app which provides the monsters and the quests
+ */
+
 struct HomeScreen: View {
     @AppStorage("selectedMonsterName") private var selectedMonsterName: String = ""
-    @Environment(AppNavigation.self) private var nav: AppNavigation
+    @Environment(MonsterProgress.self) private var nav: MonsterProgress
 
     let challenges = Challenges.shared.allChallenges
     
@@ -44,7 +48,7 @@ struct HomeScreen: View {
                     .foregroundColor(.white)
                     .padding(.bottom, 20)
 
-                MonsterSectionView(
+                MonsterView(
                     monsterIconName: monsterIconName,
                     progressRatio: progressRatio,
                     xpLabel: xpLabel

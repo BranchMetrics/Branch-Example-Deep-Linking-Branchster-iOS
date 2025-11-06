@@ -7,6 +7,10 @@
 
 import SwiftUI
 
+/*
+    Logic for onboarding
+ */
+
 struct OnboardingScreen: View {
     @State private var currentPage: Int = 0
     @AppStorage("isOnboardingComplete") private var isOnboardingComplete: Bool = false

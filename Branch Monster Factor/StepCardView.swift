@@ -7,9 +7,14 @@
 
 import SwiftUI
 
+/*
+    Steps for onboarding
+ */
+
 final class StepCardViewModel: ObservableObject {
     @Published var randomMonsters: [String] = []
 
+    //pull three random monsters out of the 9 total
     func loadRandomMonsters() {
         guard randomMonsters.isEmpty else { return }
         randomMonsters = MonsterImages.shared.getThreeRandomLevel1Monsters()
@@ -31,7 +36,7 @@ struct StepCardView: View {
     let step: OnboardingStep
     @Binding var isOnboardingComplete: Bool
     @Binding var selectedMonsterName: String
-    @Environment(AppNavigation.self) private var nav: AppNavigation
+    @Environment(MonsterProgress.self) private var nav: MonsterProgress
     
     @StateObject private var viewModel = StepCardViewModel()
 

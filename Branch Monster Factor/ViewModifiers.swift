@@ -7,6 +7,10 @@
 
 import SwiftUI
 
+/*
+    Utilities for the monster level up animation
+ */
+
 struct Rotation3DModifier: ViewModifier {
     let angle: Angle
 

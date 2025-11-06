@@ -7,6 +7,10 @@
 
 import Foundation
 
+/*
+    Contains the names of the monster images and references
+ */
+
 final class MonsterImages {
     static let shared = MonsterImages()
     private init() {}

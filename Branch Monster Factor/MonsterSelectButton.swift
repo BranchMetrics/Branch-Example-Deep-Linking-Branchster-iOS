@@ -7,6 +7,10 @@
 
 import SwiftUI
 
+/*
+    Button to select starter monster during onboarding flow
+ */
+
 struct MonsterSelectButton: View {
     let imageName: String
     let monsterName: String

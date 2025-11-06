@@ -7,12 +7,16 @@
 
 import SwiftUI
 
-struct MonsterSectionView: View {
+/*
+    The view of a monster, its level, and its EXP
+ */
+
+struct MonsterView: View {
     let monsterIconName: String
     let progressRatio: Double
     let xpLabel: String
     
-    @Environment(AppNavigation.self) private var nav: AppNavigation
+    @Environment(MonsterProgress.self) private var nav: MonsterProgress
     
     var body: some View {
         VStack {

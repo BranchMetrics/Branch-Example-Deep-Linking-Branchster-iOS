@@ -7,6 +7,10 @@
 
 import Foundation
 
+/*
+    Structs that hold some data
+ */
+
 struct OnboardingStep: Identifiable {
     let id = UUID()
     let title: String
