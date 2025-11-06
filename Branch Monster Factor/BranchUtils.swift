@@ -46,7 +46,7 @@ func createQRCode(
     default:
         break
     }
-    qrCode.backgroundColor = UIColor.white
+    qrCode.backgroundColor = (qrCode.codeColor == UIColor.white || qrCode.codeColor == UIColor.yellow || qrCode.codeColor == UIColor.systemPink) ? UIColor.black : UIColor.white
     qrCode.width = 1024
     qrCode.margin = 1
     qrCode.imageFormat = .PNG
