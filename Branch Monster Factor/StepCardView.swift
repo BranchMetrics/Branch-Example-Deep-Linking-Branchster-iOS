@@ -58,6 +58,7 @@ struct StepCardView: View {
                 .fontWeight(.heavy)
                 .foregroundColor(.white)
                 .multilineTextAlignment(.leading)
+                .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.horizontal, 10)
 
             if isLastStep {
@@ -92,6 +93,7 @@ struct StepCardView: View {
                     )
                     .foregroundColor(.white.opacity(0.8))
                     .multilineTextAlignment(.leading)
+                    .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.horizontal, 10)
             }
         }
