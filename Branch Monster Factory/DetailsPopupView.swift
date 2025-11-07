@@ -33,7 +33,7 @@ struct DetailsPopupView: View {
                         .foregroundColor(.white)
                         .padding(.top, 5)
                     
-                    Text("Monster Color: \(eventData.customData["Monster Level"] ?? "")")
+                    Text("Monster Color: \(eventData.customData["Monster Color"] ?? "")")
                         .font(.subheadline)
                         .foregroundColor(.white)
                         .padding(.top, 5)

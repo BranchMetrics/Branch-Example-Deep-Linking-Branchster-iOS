@@ -78,6 +78,10 @@ struct HomeScreen: View {
         linkProperties.feature = "share_link_quest"
         linkProperties.channel = "branch_sheet"
         linkProperties.campaign = "monster_share"
+        linkProperties.controlParams["$deeplink_path"] =
+            "/\(progress.selectedColor)/\(progress.monsterLevel)"
+        linkProperties.controlParams["monster_name"] =
+            MonsterImages.shared.monsterNameMap[progress.selectedColor]
 
         let shareText =
             "Check out my Level \(progress.monsterLevel) monster, '\(self.getDisplayName())', in the updated Branch Monster Factory!"
@@ -172,8 +176,8 @@ struct HomeScreen: View {
                                                     .selectedColor,
                                                 monsterLevel: progress
                                                     .monsterLevel,
-                                                selectedMonsterName: self
-                                                    .selectedMonsterName
+                                                selectedMonsterName:
+                                                    progress.getMonsterAssetName()
                                             )
                                         case "Create Branch Link":
                                             handleGenerateLinkQuest(
@@ -197,7 +201,7 @@ struct HomeScreen: View {
                                             {
 
                                                 let shareText =
-                                                    "Scan my QR code to get my Level \(progress.monsterLevel) monster, '\(self.getDisplayName())'!"
+                                                    "Scan my QR code to view my Level \(progress.monsterLevel) monster, '\(self.getDisplayName())'!"
 
                                                 presentShareSheet(
                                                     for: qrImage, and: shareText
