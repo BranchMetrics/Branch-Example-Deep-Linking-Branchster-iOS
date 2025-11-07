@@ -197,7 +197,7 @@ struct HomeScreen: View {
                                             {
 
                                                 let shareText =
-                                                    "Scan my QR code to get my Level \(progress.monsterLevel) monster, '\(self.getDisplayName())'!"
+                                                    "Scan my QR code to view my Level \(progress.monsterLevel) monster, '\(self.getDisplayName())'!"
 
                                                 presentShareSheet(
                                                     for: qrImage, and: shareText
