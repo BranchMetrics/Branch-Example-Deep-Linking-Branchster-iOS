@@ -172,8 +172,7 @@ struct HomeScreen: View {
                                                     .selectedColor,
                                                 monsterLevel: progress
                                                     .monsterLevel,
-                                                selectedMonsterName: self
-                                                    .selectedMonsterName
+                                                selectedMonsterName: progress.getMonsterAssetName()
                                             )
                                         case "Create Branch Link":
                                             handleGenerateLinkQuest(
