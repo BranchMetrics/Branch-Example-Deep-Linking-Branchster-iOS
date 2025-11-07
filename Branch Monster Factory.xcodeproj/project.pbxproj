@@ -40,6 +40,9 @@
 		FF72FD6C2EBBA1A3000DE618 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF72FD6B2EBBA1A3000DE618 /* HomeScreen.swift */; };
 		FF72FD732EBBD3F3000DE618 /* MonsterImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF72FD722EBBD3EE000DE618 /* MonsterImages.swift */; };
 		FF72FD7D2EBBE0B8000DE618 /* Challenges.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF72FD7C2EBBE0B5000DE618 /* Challenges.swift */; };
+		FF9FCB9A2EBD708100EC9FAC /* quest_complete.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FF9FCB992EBD708100EC9FAC /* quest_complete.mp3 */; };
+		FF9FCB9B2EBD708100EC9FAC /* evolving.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FF9FCB982EBD708100EC9FAC /* evolving.mp3 */; };
+		FF9FCB9F2EBD71A500EC9FAC /* AudioPlayerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9FCB9E2EBD718E00EC9FAC /* AudioPlayerHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +100,9 @@
 		FF72FD6B2EBBA1A3000DE618 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		FF72FD722EBBD3EE000DE618 /* MonsterImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterImages.swift; sourceTree = "<group>"; };
 		FF72FD7C2EBBE0B5000DE618 /* Challenges.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenges.swift; sourceTree = "<group>"; };
+		FF9FCB982EBD708100EC9FAC /* evolving.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = evolving.mp3; sourceTree = "<group>"; };
+		FF9FCB992EBD708100EC9FAC /* quest_complete.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = quest_complete.mp3; sourceTree = "<group>"; };
+		FF9FCB9E2EBD718E00EC9FAC /* AudioPlayerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -176,6 +182,7 @@
 		FCE301142EBAA91E009B2F7A /* Branch Monster Factory */ = {
 			isa = PBXGroup;
 			children = (
+				FF9FCB9E2EBD718E00EC9FAC /* AudioPlayerHelper.swift */,
 				FF34302B2EBD4B5F00DD0764 /* DeepLinkHandler.swift */,
 				FF3430092EBD129400DD0764 /* DeepLinkDetailView.swift */,
 				27E574562EBD212F00F83BD9 /* LinkPopupView.swift */,
@@ -200,6 +207,8 @@
 				FF72FD5E2EBB807E000DE618 /* LaunchScreen.storyboard */,
 				FCE3011B2EBAA91F009B2F7A /* Assets.xcassets */,
 				FCE3011D2EBAA91F009B2F7A /* Preview Content */,
+				FF9FCB982EBD708100EC9FAC /* evolving.mp3 */,
+				FF9FCB992EBD708100EC9FAC /* quest_complete.mp3 */,
 			);
 			path = "Branch Monster Factory";
 			sourceTree = "<group>";
@@ -339,6 +348,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF9FCB9A2EBD708100EC9FAC /* quest_complete.mp3 in Resources */,
+				FF9FCB9B2EBD708100EC9FAC /* evolving.mp3 in Resources */,
 				FF72FD5F2EBB807E000DE618 /* LaunchScreen.storyboard in Resources */,
 				FCE3011F2EBAA91F009B2F7A /* Preview Assets.xcassets in Resources */,
 				FCE3011C2EBAA91F009B2F7A /* Assets.xcassets in Resources */,
@@ -380,6 +391,7 @@
 				27E574572EBD213A00F83BD9 /* LinkPopupView.swift in Sources */,
 				FF5AAD3B2EBC2E49002CC015 /* MonsterSelectionView.swift in Sources */,
 				FF5AAD412EBC2E8B002CC015 /* ViewModifiers.swift in Sources */,
+				FF9FCB9F2EBD71A500EC9FAC /* AudioPlayerHelper.swift in Sources */,
 				FF2765BB2EBBF49000C18CE7 /* MonsterProgress.swift in Sources */,
 				FF34300A2EBD129F00DD0764 /* DeepLinkDetailView.swift in Sources */,
 				FF5AAD372EBC2E00002CC015 /* DataModules.swift in Sources */,

@@ -24,6 +24,7 @@ class MonsterProgress {
     var selectedColor: String
     private let completedChallengesKey = "completedChallengeTitles"
     private let lockedChallengesKey = "lockedChallengeTitles"
+    private let audioPlayer = AudioPlayerHelper()
     var completedChallengeTitles: Set<String> = Set(
         UserDefaults.standard.stringArray(forKey: "completedChallengeTitles")
             ?? [])
@@ -54,6 +55,7 @@ class MonsterProgress {
     }
 
     func questCompleted() {
+        self.audioPlayer.playSound(sound: "quest_complete", type: "mp3")
         path = NavigationPath()
         if currentXP >= requiredXP { return }
         incrementXP(amount: 250.0, duration: 1.0)
@@ -126,6 +128,8 @@ class MonsterProgress {
 
     func checkLevelUp() {
         guard currentXP >= requiredXP else { return }
+        
+        self.audioPlayer.playSound(sound: "evolving", type: "mp3")
 
         let flashDuration = 0.2
         let levelUpDelay = 0.2
@@ -172,14 +176,13 @@ class MonsterProgress {
      */
     func generateMonsterShareLink(completion: @escaping (String?, Error?) -> Void) {
           
-          let buo = createCurrentMonsterBUO() // Get the latest BUO data
+          let buo = createCurrentMonsterBUO()
           
           let linkProperties = BranchLinkProperties()
           linkProperties.feature = "short_link"
           linkProperties.channel = "branchmonsterfactory2"
           linkProperties.campaign = "monster_share"
           
-          // Add control parameters for the link (optional, but good for tracking)
           linkProperties.controlParams["branch_link_type"] = "short_link"
           
           buo.getShortUrl(with: linkProperties) { url, error in
