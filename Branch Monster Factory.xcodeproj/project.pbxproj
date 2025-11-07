@@ -17,12 +17,12 @@
 		275F8F3D2EBBE666004884BB /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 275F8F3C2EBBE666004884BB /* StoreKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		275F8F3F2EBBE671004884BB /* LinkPresentation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 275F8F3E2EBBE671004884BB /* LinkPresentation.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		27E574572EBD213A00F83BD9 /* LinkPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E574562EBD212F00F83BD9 /* LinkPopupView.swift */; };
+		FCE301162EBAA91E009B2F7A /* Branch_Monster_FactoryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE301152EBAA91E009B2F7A /* Branch_Monster_FactoryApp.swift */; };
 		FCE3011C2EBAA91F009B2F7A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCE3011B2EBAA91F009B2F7A /* Assets.xcassets */; };
 		FCE3011F2EBAA91F009B2F7A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCE3011E2EBAA91F009B2F7A /* Preview Assets.xcassets */; };
-		FCE301292EBAA91F009B2F7A /* Branch_Monster_FactorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE301282EBAA91F009B2F7A /* Branch_Monster_FactorTests.swift */; };
+		FCE301292EBAA91F009B2F7A /* Branch_Monster_FactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE301282EBAA91F009B2F7A /* Branch_Monster_FactoryTests.swift */; };
 		FCE301332EBAA91F009B2F7A /* Branch_Monster_FactorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE301322EBAA91F009B2F7A /* Branch_Monster_FactorUITests.swift */; };
 		FCE301352EBAA91F009B2F7A /* Branch_Monster_FactorUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE301342EBAA91F009B2F7A /* Branch_Monster_FactorUITestsLaunchTests.swift */; };
-		FF02A6D72EBD6F9D001CB6A0 /* Branch_Monster_FactoryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE301152EBAA91E009B2F7A /* Branch_Monster_FactoryApp.swift */; };
 		FF2765BB2EBBF49000C18CE7 /* MonsterProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2765BA2EBBF48C00C18CE7 /* MonsterProgress.swift */; };
 		FF342FF22EBCDED700DD0764 /* DetailsPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF342FF12EBCDECF00DD0764 /* DetailsPopupView.swift */; };
 		FF34300A2EBD129F00DD0764 /* DeepLinkDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3430092EBD129400DD0764 /* DeepLinkDetailView.swift */; };
@@ -40,9 +40,6 @@
 		FF72FD6C2EBBA1A3000DE618 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF72FD6B2EBBA1A3000DE618 /* HomeScreen.swift */; };
 		FF72FD732EBBD3F3000DE618 /* MonsterImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF72FD722EBBD3EE000DE618 /* MonsterImages.swift */; };
 		FF72FD7D2EBBE0B8000DE618 /* Challenges.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF72FD7C2EBBE0B5000DE618 /* Challenges.swift */; };
-		FF9FCB9A2EBD708100EC9FAC /* quest_complete.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FF9FCB992EBD708100EC9FAC /* quest_complete.mp3 */; };
-		FF9FCB9B2EBD708100EC9FAC /* evolving.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FF9FCB982EBD708100EC9FAC /* evolving.mp3 */; };
-		FF9FCB9F2EBD71A500EC9FAC /* AudioPlayerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9FCB9E2EBD718E00EC9FAC /* AudioPlayerHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,13 +70,13 @@
 		275F8F3C2EBBE666004884BB /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		275F8F3E2EBBE671004884BB /* LinkPresentation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LinkPresentation.framework; path = System/Library/Frameworks/LinkPresentation.framework; sourceTree = SDKROOT; };
 		27E574562EBD212F00F83BD9 /* LinkPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkPopupView.swift; sourceTree = "<group>"; };
-		FCE301122EBAA91E009B2F7A /* Branch Monster Factory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Branch Monster Factory.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FCE301122EBAA91E009B2F7A /* Branch Monster Factor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Branch Monster Factor.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCE301152EBAA91E009B2F7A /* Branch_Monster_FactoryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Branch_Monster_FactoryApp.swift; sourceTree = "<group>"; };
 		FCE3011B2EBAA91F009B2F7A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FCE3011E2EBAA91F009B2F7A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		FCE301242EBAA91F009B2F7A /* Branch Monster FactoryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Branch Monster FactoryTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		FCE301282EBAA91F009B2F7A /* Branch_Monster_FactorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Branch_Monster_FactorTests.swift; sourceTree = "<group>"; };
-		FCE3012E2EBAA91F009B2F7A /* Branch Monster FactoryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Branch Monster FactoryUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FCE301242EBAA91F009B2F7A /* Branch Monster FactorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Branch Monster FactorTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FCE301282EBAA91F009B2F7A /* Branch_Monster_FactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Branch_Monster_FactoryTests.swift; sourceTree = "<group>"; };
+		FCE3012E2EBAA91F009B2F7A /* Branch Monster FactorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Branch Monster FactorUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCE301322EBAA91F009B2F7A /* Branch_Monster_FactorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Branch_Monster_FactorUITests.swift; sourceTree = "<group>"; };
 		FCE301342EBAA91F009B2F7A /* Branch_Monster_FactorUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Branch_Monster_FactorUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		FF2765BA2EBBF48C00C18CE7 /* MonsterProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterProgress.swift; sourceTree = "<group>"; };
@@ -100,9 +97,6 @@
 		FF72FD6B2EBBA1A3000DE618 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		FF72FD722EBBD3EE000DE618 /* MonsterImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterImages.swift; sourceTree = "<group>"; };
 		FF72FD7C2EBBE0B5000DE618 /* Challenges.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenges.swift; sourceTree = "<group>"; };
-		FF9FCB982EBD708100EC9FAC /* evolving.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = evolving.mp3; sourceTree = "<group>"; };
-		FF9FCB992EBD708100EC9FAC /* quest_complete.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = quest_complete.mp3; sourceTree = "<group>"; };
-		FF9FCB9E2EBD718E00EC9FAC /* AudioPlayerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -172,9 +166,9 @@
 		FCE301132EBAA91E009B2F7A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FCE301122EBAA91E009B2F7A /* Branch Monster Factory.app */,
-				FCE301242EBAA91F009B2F7A /* Branch Monster FactoryTests.xctest */,
-				FCE3012E2EBAA91F009B2F7A /* Branch Monster FactoryUITests.xctest */,
+				FCE301122EBAA91E009B2F7A /* Branch Monster Factor.app */,
+				FCE301242EBAA91F009B2F7A /* Branch Monster FactorTests.xctest */,
+				FCE3012E2EBAA91F009B2F7A /* Branch Monster FactorUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -182,7 +176,6 @@
 		FCE301142EBAA91E009B2F7A /* Branch Monster Factory */ = {
 			isa = PBXGroup;
 			children = (
-				FF9FCB9E2EBD718E00EC9FAC /* AudioPlayerHelper.swift */,
 				FF34302B2EBD4B5F00DD0764 /* DeepLinkHandler.swift */,
 				FF3430092EBD129400DD0764 /* DeepLinkDetailView.swift */,
 				27E574562EBD212F00F83BD9 /* LinkPopupView.swift */,
@@ -207,8 +200,6 @@
 				FF72FD5E2EBB807E000DE618 /* LaunchScreen.storyboard */,
 				FCE3011B2EBAA91F009B2F7A /* Assets.xcassets */,
 				FCE3011D2EBAA91F009B2F7A /* Preview Content */,
-				FF9FCB982EBD708100EC9FAC /* evolving.mp3 */,
-				FF9FCB992EBD708100EC9FAC /* quest_complete.mp3 */,
 			);
 			path = "Branch Monster Factory";
 			sourceTree = "<group>";
@@ -224,7 +215,7 @@
 		FCE301272EBAA91F009B2F7A /* Branch Monster FactoryTests */ = {
 			isa = PBXGroup;
 			children = (
-				FCE301282EBAA91F009B2F7A /* Branch_Monster_FactorTests.swift */,
+				FCE301282EBAA91F009B2F7A /* Branch_Monster_FactoryTests.swift */,
 			);
 			path = "Branch Monster FactoryTests";
 			sourceTree = "<group>";
@@ -241,9 +232,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		FCE301112EBAA91E009B2F7A /* Branch Monster Factory */ = {
+		FCE301112EBAA91E009B2F7A /* Branch Monster Factor */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FCE301382EBAA91F009B2F7A /* Build configuration list for PBXNativeTarget "Branch Monster Factory" */;
+			buildConfigurationList = FCE301382EBAA91F009B2F7A /* Build configuration list for PBXNativeTarget "Branch Monster Factor" */;
 			buildPhases = (
 				FCE3010E2EBAA91E009B2F7A /* Sources */,
 				FCE3010F2EBAA91E009B2F7A /* Frameworks */,
@@ -256,14 +247,14 @@
 			fileSystemSynchronizedGroups = (
 				FF72FD692EBB953C000DE618 /* Fonts */,
 			);
-			name = "Branch Monster Factory";
+			name = "Branch Monster Factor";
 			productName = "Branch Monster Factor";
-			productReference = FCE301122EBAA91E009B2F7A /* Branch Monster Factory.app */;
+			productReference = FCE301122EBAA91E009B2F7A /* Branch Monster Factor.app */;
 			productType = "com.apple.product-type.application";
 		};
-		FCE301232EBAA91F009B2F7A /* Branch Monster FactoryTests */ = {
+		FCE301232EBAA91F009B2F7A /* Branch Monster FactorTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FCE3013B2EBAA91F009B2F7A /* Build configuration list for PBXNativeTarget "Branch Monster FactoryTests" */;
+			buildConfigurationList = FCE3013B2EBAA91F009B2F7A /* Build configuration list for PBXNativeTarget "Branch Monster FactorTests" */;
 			buildPhases = (
 				FCE301202EBAA91F009B2F7A /* Sources */,
 				FCE301212EBAA91F009B2F7A /* Frameworks */,
@@ -274,14 +265,14 @@
 			dependencies = (
 				FCE301262EBAA91F009B2F7A /* PBXTargetDependency */,
 			);
-			name = "Branch Monster FactoryTests";
+			name = "Branch Monster FactorTests";
 			productName = "Branch Monster FactorTests";
-			productReference = FCE301242EBAA91F009B2F7A /* Branch Monster FactoryTests.xctest */;
+			productReference = FCE301242EBAA91F009B2F7A /* Branch Monster FactorTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		FCE3012D2EBAA91F009B2F7A /* Branch Monster FactoryUITests */ = {
+		FCE3012D2EBAA91F009B2F7A /* Branch Monster FactorUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FCE3013E2EBAA91F009B2F7A /* Build configuration list for PBXNativeTarget "Branch Monster FactoryUITests" */;
+			buildConfigurationList = FCE3013E2EBAA91F009B2F7A /* Build configuration list for PBXNativeTarget "Branch Monster FactorUITests" */;
 			buildPhases = (
 				FCE3012A2EBAA91F009B2F7A /* Sources */,
 				FCE3012B2EBAA91F009B2F7A /* Frameworks */,
@@ -292,9 +283,9 @@
 			dependencies = (
 				FCE301302EBAA91F009B2F7A /* PBXTargetDependency */,
 			);
-			name = "Branch Monster FactoryUITests";
+			name = "Branch Monster FactorUITests";
 			productName = "Branch Monster FactorUITests";
-			productReference = FCE3012E2EBAA91F009B2F7A /* Branch Monster FactoryUITests.xctest */;
+			productReference = FCE3012E2EBAA91F009B2F7A /* Branch Monster FactorUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -336,9 +327,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				FCE301112EBAA91E009B2F7A /* Branch Monster Factory */,
-				FCE301232EBAA91F009B2F7A /* Branch Monster FactoryTests */,
-				FCE3012D2EBAA91F009B2F7A /* Branch Monster FactoryUITests */,
+				FCE301112EBAA91E009B2F7A /* Branch Monster Factor */,
+				FCE301232EBAA91F009B2F7A /* Branch Monster FactorTests */,
+				FCE3012D2EBAA91F009B2F7A /* Branch Monster FactorUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -348,8 +339,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF9FCB9A2EBD708100EC9FAC /* quest_complete.mp3 in Resources */,
-				FF9FCB9B2EBD708100EC9FAC /* evolving.mp3 in Resources */,
 				FF72FD5F2EBB807E000DE618 /* LaunchScreen.storyboard in Resources */,
 				FCE3011F2EBAA91F009B2F7A /* Preview Assets.xcassets in Resources */,
 				FCE3011C2EBAA91F009B2F7A /* Assets.xcassets in Resources */,
@@ -377,7 +366,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF02A6D72EBD6F9D001CB6A0 /* Branch_Monster_FactoryApp.swift in Sources */,
 				FF34302C2EBD4B6600DD0764 /* DeepLinkHandler.swift in Sources */,
 				FF72FD642EBB892D000DE618 /* OnboardingScreen.swift in Sources */,
 				FF72FD6C2EBBA1A3000DE618 /* HomeScreen.swift in Sources */,
@@ -390,8 +378,8 @@
 				FF5AAD3D2EBC2E67002CC015 /* StepCardView.swift in Sources */,
 				27E574572EBD213A00F83BD9 /* LinkPopupView.swift in Sources */,
 				FF5AAD3B2EBC2E49002CC015 /* MonsterSelectionView.swift in Sources */,
+				FCE301162EBAA91E009B2F7A /* Branch_Monster_FactoryApp.swift in Sources */,
 				FF5AAD412EBC2E8B002CC015 /* ViewModifiers.swift in Sources */,
-				FF9FCB9F2EBD71A500EC9FAC /* AudioPlayerHelper.swift in Sources */,
 				FF2765BB2EBBF49000C18CE7 /* MonsterProgress.swift in Sources */,
 				FF34300A2EBD129F00DD0764 /* DeepLinkDetailView.swift in Sources */,
 				FF5AAD372EBC2E00002CC015 /* DataModules.swift in Sources */,
@@ -403,7 +391,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FCE301292EBAA91F009B2F7A /* Branch_Monster_FactorTests.swift in Sources */,
+				FCE301292EBAA91F009B2F7A /* Branch_Monster_FactoryTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -421,12 +409,12 @@
 /* Begin PBXTargetDependency section */
 		FCE301262EBAA91F009B2F7A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = FCE301112EBAA91E009B2F7A /* Branch Monster Factory */;
+			target = FCE301112EBAA91E009B2F7A /* Branch Monster Factor */;
 			targetProxy = FCE301252EBAA91F009B2F7A /* PBXContainerItemProxy */;
 		};
 		FCE301302EBAA91F009B2F7A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = FCE301112EBAA91E009B2F7A /* Branch Monster Factory */;
+			target = FCE301112EBAA91E009B2F7A /* Branch Monster Factor */;
 			targetProxy = FCE3012F2EBAA91F009B2F7A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -560,11 +548,11 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Branch Monster Factory/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Branch Monster Factor/Preview Content\"";
 				DEVELOPMENT_TEAM = R63EM248DP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Branch-Monster-Factory-Info.plist";
+				INFOPLIST_FILE = "Branch-Monster-Factor-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -594,11 +582,11 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Branch Monster Factory/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Branch Monster Factor/Preview Content\"";
 				DEVELOPMENT_TEAM = R63EM248DP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Branch-Monster-Factory-Info.plist";
+				INFOPLIST_FILE = "Branch-Monster-Factor-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -707,7 +695,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FCE301382EBAA91F009B2F7A /* Build configuration list for PBXNativeTarget "Branch Monster Factory" */ = {
+		FCE301382EBAA91F009B2F7A /* Build configuration list for PBXNativeTarget "Branch Monster Factor" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FCE301392EBAA91F009B2F7A /* Debug */,
@@ -716,7 +704,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FCE3013B2EBAA91F009B2F7A /* Build configuration list for PBXNativeTarget "Branch Monster FactoryTests" */ = {
+		FCE3013B2EBAA91F009B2F7A /* Build configuration list for PBXNativeTarget "Branch Monster FactorTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FCE3013C2EBAA91F009B2F7A /* Debug */,
@@ -725,7 +713,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FCE3013E2EBAA91F009B2F7A /* Build configuration list for PBXNativeTarget "Branch Monster FactoryUITests" */ = {
+		FCE3013E2EBAA91F009B2F7A /* Build configuration list for PBXNativeTarget "Branch Monster FactorUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FCE3013F2EBAA91F009B2F7A /* Debug */,
