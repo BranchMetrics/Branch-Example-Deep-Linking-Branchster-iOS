@@ -46,7 +46,10 @@ func createQRCode(
     default:
         break
     }
-    qrCode.backgroundColor = (qrCode.codeColor == UIColor.white || qrCode.codeColor == UIColor.yellow || qrCode.codeColor == UIColor.systemPink) ? UIColor.black : UIColor.white
+    qrCode.backgroundColor =
+        (qrCode.codeColor == UIColor.white || qrCode.codeColor == UIColor.yellow
+            || qrCode.codeColor == UIColor.systemPink)
+        ? UIColor.black : UIColor.white
     qrCode.width = 1024
     qrCode.margin = 1
     qrCode.imageFormat = .PNG
@@ -54,7 +57,13 @@ func createQRCode(
 
     let buo = BranchUniversalObject(
         canonicalIdentifier: "\(monsterColor)/\(monsterLevel)")
+    buo.contentMetadata.customMetadata["monster_name"] = MonsterImages.shared.monsterNameMap[monsterColor]
+    buo.contentMetadata.customMetadata["$deeplink_path"] = "/\(monsterColor)/\(monsterLevel)"
     let lp = BranchLinkProperties()
+    lp.controlParams["$deeplink_path"] =
+        "/\(monsterColor)/\(monsterLevel)"
+    lp.controlParams["monster_name"] =
+        MonsterImages.shared.monsterNameMap[monsterColor]
 
     qrCode.getAsImage(buo, linkProperties: lp) { qrCodeImage, error in
         if let error = error {
@@ -66,7 +75,10 @@ func createQRCode(
     }
 }
 
-func trackEvent (monsterColor: String, monsterLevel: Int, selectedMonsterName: String, monsterExp: Double) -> BranchEvent {
+func trackEvent(
+    monsterColor: String, monsterLevel: Int, selectedMonsterName: String,
+    monsterExp: Double
+) -> BranchEvent {
     let event = BranchEvent.customEvent(withName: selectedMonsterName)
     event.customData["Monster Name"] = selectedMonsterName
     event.customData["Monster Level"] = "\(monsterLevel)"
