@@ -5,8 +5,8 @@
 //  Created by Robert Gioia on 11/5/25.
 //
 
-import Foundation
 import BranchSDK
+import Foundation
 import SwiftUI
 
 /*
@@ -30,7 +30,10 @@ class MonsterProgress {
             ?? [])
     var lockedChallengeTitles: Set<String> = Set(
         UserDefaults.standard.stringArray(forKey: "lockedChallengeTitles")
-            ?? ["Share Branch Link", "View Branch Event Data", "Share Branch QR Code"])
+            ?? [
+                "Share Branch Link", "View Branch Event Data",
+                "Share Branch QR Code",
+            ])
 
     init(initialXP: Double, initialLevel: Int, initialColor: String) {
         self.currentXP = initialXP
@@ -64,7 +67,7 @@ class MonsterProgress {
     func isChallengeComplete(_ challenge: Challenge) -> Bool {
         return completedChallengeTitles.contains(challenge.title)
     }
-    
+
     func isChallengeLocked(_ challenge: Challenge) -> Bool {
         return lockedChallengeTitles.contains(challenge.title)
     }
@@ -79,12 +82,12 @@ class MonsterProgress {
         let arrayToSave = Array(completedChallengeTitles)
         UserDefaults.standard.set(arrayToSave, forKey: completedChallengesKey)
     }
-    
+
     func markChallengeAsUnlocked(_ challengeTitle: String) {
         lockedChallengeTitles.remove(challengeTitle)
         saveCompletedChallenges()
     }
-    
+
     private func saveUnlockedChallenges() {
         let arrayToSave = Array(lockedChallengeTitles)
         UserDefaults.standard.set(arrayToSave, forKey: lockedChallengesKey)
@@ -128,7 +131,7 @@ class MonsterProgress {
 
     func checkLevelUp() {
         guard currentXP >= requiredXP else { return }
-        
+
         self.audioPlayer.playSound(sound: "evolving", type: "mp3")
 
         let flashDuration = 0.2
@@ -147,9 +150,9 @@ class MonsterProgress {
             }
         }
     }
-  
+
     // --- BRANCH UNIVERSAL OBJECT (BUO) LOGIC ---
-     
+
     /*
     Creates a fresh Branch Universal Object reflecting the current state of the monster.
     Since MonsterProgress is @Observable, this will always pull the latest data.
@@ -157,36 +160,45 @@ class MonsterProgress {
     func createCurrentMonsterBUO() -> BranchUniversalObject {
         // Use a unique ID that reflects the monster's current state/level for deep linking
         let canonicalID = "monster-\(selectedColor):level-\(monsterLevel)"
-        let monsterName = MonsterImages.shared.monsterNameMap[selectedColor] ?? "New Monster"
-        
+        let monsterName =
+            MonsterImages.shared.monsterNameMap[selectedColor] ?? "New Monster"
+
         let buo = BranchUniversalObject(canonicalIdentifier: canonicalID)
-          
+
         buo.title = "Check out my Level \(monsterLevel) \(monsterName)!"
-        buo.contentDescription = "My monster is on a quest! Current XP: \(Int(currentXP))/\(Int(requiredXP))."
-          
+        buo.contentDescription =
+            "My monster is on a quest! Current XP: \(Int(currentXP))/\(Int(requiredXP))."
+
         // Add all required data for deep link routing in customMetadata
         buo.contentMetadata.customMetadata["monster_color"] = selectedColor
-        buo.contentMetadata.customMetadata["monster_level"] = String(monsterLevel)
-          
+        buo.contentMetadata.customMetadata["monster_level"] = String(
+            monsterLevel)
+
         return buo
     }
-  
+
     /**
      Generates the short URL and calls the completion handler with the result.
      */
-    func generateMonsterShareLink(completion: @escaping (String?, Error?) -> Void) {
-          
-          let buo = createCurrentMonsterBUO()
-          
-          let linkProperties = BranchLinkProperties()
-          linkProperties.feature = "short_link"
-          linkProperties.channel = "branchmonsterfactory2"
-          linkProperties.campaign = "monster_share"
-          
-          linkProperties.controlParams["branch_link_type"] = "short_link"
-          
-          buo.getShortUrl(with: linkProperties) { url, error in
-              completion(url, error)
-          }
-      }
+    func generateMonsterShareLink(
+        completion: @escaping (String?, Error?) -> Void
+    ) {
+
+        let buo = createCurrentMonsterBUO()
+
+        let linkProperties = BranchLinkProperties()
+        linkProperties.feature = "short_link"
+        linkProperties.channel = "branchmonsterfactory2"
+        linkProperties.campaign = "monster_share"
+
+        linkProperties.controlParams["branch_link_type"] = "short_link"
+        linkProperties.controlParams["$deeplink_path"] =
+            "/\(selectedColor)/\(monsterLevel)"
+        linkProperties.controlParams["monster_name"] =
+            MonsterImages.shared.monsterNameMap[selectedColor]
+
+        buo.getShortUrl(with: linkProperties) { url, error in
+            completion(url, error)
+        }
+    }
 }
