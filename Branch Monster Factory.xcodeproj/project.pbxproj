@@ -17,6 +17,12 @@
 		275F8F3D2EBBE666004884BB /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 275F8F3C2EBBE666004884BB /* StoreKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		275F8F3F2EBBE671004884BB /* LinkPresentation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 275F8F3E2EBBE671004884BB /* LinkPresentation.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		27E574572EBD213A00F83BD9 /* LinkPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E574562EBD212F00F83BD9 /* LinkPopupView.swift */; };
+		27EAE9372EBDA53600607557 /* evolving.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 27EAE9352EBDA53600607557 /* evolving.mp3 */; };
+		27EAE9382EBDA53600607557 /* quest_complete.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 27EAE9362EBDA53600607557 /* quest_complete.mp3 */; };
+		27EAE9392EBDA53600607557 /* AudioPlayerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EAE9342EBDA53600607557 /* AudioPlayerHelper.swift */; };
+		27EAE93F2EBDA58F00607557 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27EAE93D2EBDA58F00607557 /* Preview Assets.xcassets */; };
+		27EAE9402EBDA58F00607557 /* IBMPlexMono-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 27EAE93A2EBDA58F00607557 /* IBMPlexMono-Bold.ttf */; };
+		27EAE9412EBDA58F00607557 /* IBMPlexSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 27EAE93B2EBDA58F00607557 /* IBMPlexSans-Regular.ttf */; };
 		FCE301162EBAA91E009B2F7A /* Branch_Monster_FactoryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE301152EBAA91E009B2F7A /* Branch_Monster_FactoryApp.swift */; };
 		FCE3011C2EBAA91F009B2F7A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCE3011B2EBAA91F009B2F7A /* Assets.xcassets */; };
 		FCE3011F2EBAA91F009B2F7A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCE3011E2EBAA91F009B2F7A /* Preview Assets.xcassets */; };
@@ -70,6 +76,12 @@
 		275F8F3C2EBBE666004884BB /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		275F8F3E2EBBE671004884BB /* LinkPresentation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LinkPresentation.framework; path = System/Library/Frameworks/LinkPresentation.framework; sourceTree = SDKROOT; };
 		27E574562EBD212F00F83BD9 /* LinkPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkPopupView.swift; sourceTree = "<group>"; };
+		27EAE9342EBDA53600607557 /* AudioPlayerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerHelper.swift; sourceTree = "<group>"; };
+		27EAE9352EBDA53600607557 /* evolving.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = evolving.mp3; sourceTree = "<group>"; };
+		27EAE9362EBDA53600607557 /* quest_complete.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = quest_complete.mp3; sourceTree = "<group>"; };
+		27EAE93A2EBDA58F00607557 /* IBMPlexMono-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexMono-Bold.ttf"; sourceTree = "<group>"; };
+		27EAE93B2EBDA58F00607557 /* IBMPlexSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Regular.ttf"; sourceTree = "<group>"; };
+		27EAE93D2EBDA58F00607557 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		FCE301122EBAA91E009B2F7A /* Branch Monster Factor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Branch Monster Factor.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCE301152EBAA91E009B2F7A /* Branch_Monster_FactoryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Branch_Monster_FactoryApp.swift; sourceTree = "<group>"; };
 		FCE3011B2EBAA91F009B2F7A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -152,6 +164,23 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		27EAE93C2EBDA58F00607557 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				27EAE93A2EBDA58F00607557 /* IBMPlexMono-Bold.ttf */,
+				27EAE93B2EBDA58F00607557 /* IBMPlexSans-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		27EAE93E2EBDA58F00607557 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				27EAE93D2EBDA58F00607557 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
 		FCE301092EBAA91E009B2F7A = {
 			isa = PBXGroup;
 			children = (
@@ -176,6 +205,11 @@
 		FCE301142EBAA91E009B2F7A /* Branch Monster Factory */ = {
 			isa = PBXGroup;
 			children = (
+				27EAE93C2EBDA58F00607557 /* Fonts */,
+				27EAE93E2EBDA58F00607557 /* Preview Content */,
+				27EAE9342EBDA53600607557 /* AudioPlayerHelper.swift */,
+				27EAE9352EBDA53600607557 /* evolving.mp3 */,
+				27EAE9362EBDA53600607557 /* quest_complete.mp3 */,
 				FF34302B2EBD4B5F00DD0764 /* DeepLinkHandler.swift */,
 				FF3430092EBD129400DD0764 /* DeepLinkDetailView.swift */,
 				27E574562EBD212F00F83BD9 /* LinkPopupView.swift */,
@@ -339,6 +373,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27EAE93F2EBDA58F00607557 /* Preview Assets.xcassets in Resources */,
+				27EAE9402EBDA58F00607557 /* IBMPlexMono-Bold.ttf in Resources */,
+				27EAE9412EBDA58F00607557 /* IBMPlexSans-Regular.ttf in Resources */,
+				27EAE9372EBDA53600607557 /* evolving.mp3 in Resources */,
+				27EAE9382EBDA53600607557 /* quest_complete.mp3 in Resources */,
 				FF72FD5F2EBB807E000DE618 /* LaunchScreen.storyboard in Resources */,
 				FCE3011F2EBAA91F009B2F7A /* Preview Assets.xcassets in Resources */,
 				FCE3011C2EBAA91F009B2F7A /* Assets.xcassets in Resources */,
@@ -380,6 +419,7 @@
 				FF5AAD3B2EBC2E49002CC015 /* MonsterSelectionView.swift in Sources */,
 				FCE301162EBAA91E009B2F7A /* Branch_Monster_FactoryApp.swift in Sources */,
 				FF5AAD412EBC2E8B002CC015 /* ViewModifiers.swift in Sources */,
+				27EAE9392EBDA53600607557 /* AudioPlayerHelper.swift in Sources */,
 				FF2765BB2EBBF49000C18CE7 /* MonsterProgress.swift in Sources */,
 				FF34300A2EBD129F00DD0764 /* DeepLinkDetailView.swift in Sources */,
 				FF5AAD372EBC2E00002CC015 /* DataModules.swift in Sources */,
@@ -548,11 +588,11 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Branch Monster Factor/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Branch Monster Factory/Preview Content\"";
 				DEVELOPMENT_TEAM = R63EM248DP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Branch-Monster-Factor-Info.plist";
+				INFOPLIST_FILE = "Branch-Monster-Factory-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -582,11 +622,11 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Branch Monster Factor/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Branch Monster Factory/Preview Content\"";
 				DEVELOPMENT_TEAM = R63EM248DP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Branch-Monster-Factor-Info.plist";
+				INFOPLIST_FILE = "Branch-Monster-Factory-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
