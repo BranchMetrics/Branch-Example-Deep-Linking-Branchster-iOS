@@ -2,8 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSUserTrackingUsageDescription</key>
-	<string>Share device IDFA for Ads Attribution</string>
+	<key>AdNetworkIdentifiers</key>
+	<array>
+		<string>https://branch-skan.com/.well-known/appattribution/report-attribution/</string>
+	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
@@ -24,12 +26,6 @@
 	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
-    <key>branch_universal_link_domains</key>
-    <array>
-        <string>monster-factory.app.link</string>
-        <string>monster-factory-alternate.app.link</string>
-        <string>monster-factory.test.app.link</string>
-    </array>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -50,6 +46,10 @@
 	<false/>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSAdvertisingAttributionReportEndpoint</key>
+	<string>https://branch-skan.com</string>
+	<key>NSUserTrackingUsageDescription</key>
+	<string>Share device IDFA for Ads Attribution</string>
 	<key>SKAdNetworkItems</key>
 	<dict>
 		<key>SKAdNetworkIdentifier</key>
@@ -76,5 +76,11 @@
 	</array>
 	<key>branch_key</key>
 	<string>key_live_mbErCMtrzeheAWS0Xagg7hjbwDkaZ6SP</string>
+	<key>branch_universal_link_domains</key>
+	<array>
+		<string>monster-factory.app.link</string>
+		<string>monster-factory-alternate.app.link</string>
+		<string>monster-factory.test.app.link</string>
+	</array>
 </dict>
 </plist>
