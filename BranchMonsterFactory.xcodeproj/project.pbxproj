@@ -1183,7 +1183,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.8.0;
+				MARKETING_VERSION = 1.9.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "io.branch.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Branchsters;
 				PROVISIONING_PROFILE = "";
@@ -1215,7 +1215,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.8.0;
+				MARKETING_VERSION = 1.9.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "io.branch.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Branchsters;
 				PROVISIONING_PROFILE = "";

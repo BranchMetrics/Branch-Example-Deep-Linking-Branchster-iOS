@@ -141,14 +141,14 @@ static CGFloat MONSTER_HEIGHT = 0.4f;
     BranchUniversalObject *buo = [[BranchUniversalObject alloc] initWithCanonicalIdentifier:@"monster"];
     buo.contentMetadata = branchester;
     
-    BranchEvent *commerceEvent = [BranchEvent standardEvent:BNCAddToCartEvent withContentItem:buo];
+    BranchEvent *commerceEvent = [BranchEvent standardEvent:BranchStandardEventAddToCart withContentItem:buo];
     commerceEvent.revenue = self.price;
     commerceEvent.currency = @"USD";
     [commerceEvent logEvent];
     
     [self.viewingMonster showShareSheetWithShareText:@"Share Your Monster!" completion:^(NSString * _Nullable activityType, BOOL completed, NSError * _Nullable error) {
         if (completed) {
-            [[BranchEvent standardEvent:BNCAddToCartEvent] logEvent];
+            [[BranchEvent standardEvent:BranchStandardEventAddToCart] logEvent];
 
         }
     }];

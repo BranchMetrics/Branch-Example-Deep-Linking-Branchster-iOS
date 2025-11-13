@@ -1,4 +1,5 @@
 {
+  "originHash" : "d0f54b6b7b29790d01af9b5c627c9499fe0ecc5ec27f84bf629ba21c84d41b88",
   "pins" : [
     {
       "identity" : "facebook-ios-sdk",
@@ -14,10 +15,10 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/BranchMetrics/ios-branch-sdk-spm",
       "state" : {
-        "revision" : "37d0fb8ff04098807957b1d387812ed8f96fbdc7",
-        "version" : "3.8.0"
+        "revision" : "0fc0c3e8df1e175e7d049b4497bed18cae0ffc24",
+        "version" : "3.13.3"
       }
     }
   ],
-  "version" : 2
+  "version" : 3
 }

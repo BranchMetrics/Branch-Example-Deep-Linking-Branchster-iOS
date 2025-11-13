@@ -26,7 +26,9 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [FBSDKApplicationDelegate.sharedInstance application:application didFinishLaunchingWithOptions:launchOptions];
     
     Branch *branch = [Branch getInstance];
-    [Branch enableLogging];
+    [Branch enableLoggingAtLevel:BranchLogLevelVerbose withCallback:^(NSString * _Nonnull message, BranchLogLevel logLevel, NSError * _Nullable error) {
+        NSLog(@"%@", message);
+    }];
     [branch checkPasteboardOnInstall];
     [branch setAppClipAppGroup:@"group.io.branch"];
 
