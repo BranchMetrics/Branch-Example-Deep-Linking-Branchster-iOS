@@ -6,6 +6,8 @@
 	<array>
 		<string>applinks:monster-factory.test-app.link</string>
 		<string>applinks:monster-factory-alternate.test-app.link</string>
+		<string>applinks:monster-factory.app.link</string>
+		<string>applinks:monster-factory-alternate.app.link</string>
 	</array>
 </dict>
 </plist>
