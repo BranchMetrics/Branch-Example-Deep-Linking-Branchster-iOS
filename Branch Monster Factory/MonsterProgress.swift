@@ -85,7 +85,7 @@ class MonsterProgress {
 
     func markChallengeAsUnlocked(_ challengeTitle: String) {
         lockedChallengeTitles.remove(challengeTitle)
-        saveCompletedChallenges()
+        saveUnlockedChallenges()
     }
 
     private func saveUnlockedChallenges() {
