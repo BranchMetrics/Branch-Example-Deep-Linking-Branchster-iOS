@@ -20,6 +20,9 @@ struct DeepLinkDetailView: View {
                     .font(.largeTitle)
                     .fontWeight(.bold)
                     .foregroundColor(.white)
+                    .font(
+                        Font.custom("IBMPlexSans-Regular", size: 18, relativeTo: .body)
+                    )
 
                 Image(monsterImage)
                     .resizable()
@@ -30,6 +33,9 @@ struct DeepLinkDetailView: View {
                 Text("Tap anywhere to close")
                     .font(.caption)
                     .foregroundColor(.gray)
+                    .font(
+                        Font.custom("IBMPlexSans-Regular", size: 18, relativeTo: .body)
+                    )
             }
             .padding(30)
             .frame(maxWidth: 300)

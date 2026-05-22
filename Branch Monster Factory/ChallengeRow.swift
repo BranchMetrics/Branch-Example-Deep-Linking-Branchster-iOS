@@ -26,10 +26,16 @@ struct ChallengeRow: View {
                     Text(challenge.title)
                         .font(.headline)
                         .foregroundColor(.white)
+                        .font(
+                            Font.custom("IBMPlexSans-Bold", size: 18, relativeTo: .body)
+                        )
                     
                     Text(challenge.description)
                         .font(.subheadline)
                         .foregroundColor(.gray)
+                        .font(
+                            Font.custom("IBMPlexSans-Regular", size: 18, relativeTo: .body)
+                        )
                 }
             }
             .padding()

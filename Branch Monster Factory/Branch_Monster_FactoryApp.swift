@@ -85,7 +85,6 @@ class AppDelegate: NSObject, UIApplicationDelegate {
             .LaunchOptionsKey: Any]?
     ) -> Bool {
 
-        Branch.setUseTestBranchKey(true)
         Branch.enableLogging()
         Branch.getInstance().checkPasteboardOnInstall()
         Branch.getInstance().initSession(launchOptions: launchOptions) {

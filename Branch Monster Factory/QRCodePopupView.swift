@@ -23,10 +23,16 @@ struct QRCodePopupView: View {
                 .font(.headline)
                 .foregroundColor(.white)
                 .padding(.top, 5)
+                .font(
+                    Font.custom("IBMPlexSans-Regular", size: 18, relativeTo: .body)
+                )
             
             Text("Tap anywhere to close")
                 .font(.caption)
                 .foregroundColor(.gray)
+                .font(
+                    Font.custom("IBMPlexSans-Regular", size: 18, relativeTo: .body)
+                )
         }
         .padding(30)
         .background(

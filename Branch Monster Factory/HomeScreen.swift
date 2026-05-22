@@ -117,6 +117,9 @@ struct HomeScreen: View {
                     .fontWeight(.bold)
                     .foregroundColor(.white)
                     .padding(.bottom, 20)
+                    .font(
+                        Font.custom("IBMPlexSans-Bold", size: 18, relativeTo: .body)
+                    )
 
                 MonsterView(
                     monsterIconName: monsterIconName,
