@@ -35,6 +35,9 @@ struct MonsterSelectButton: View {
                     .foregroundColor(primaryColor)
                     .padding(.vertical, 10)
                     .padding(.horizontal, 8)
+                    .font(
+                        Font.custom("IBMPlexSans-Regular", size: 18, relativeTo: .body)
+                    )
 
                 Spacer()
             }

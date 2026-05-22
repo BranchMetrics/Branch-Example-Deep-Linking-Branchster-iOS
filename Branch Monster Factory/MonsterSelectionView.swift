@@ -46,6 +46,9 @@ struct MonsterView: View {
                 Text(xpLabel)
                     .foregroundColor(.white)
                     .font(.caption)
+                    .font(
+                        Font.custom("IBMPlexSans-Regular", size: 18, relativeTo: .body)
+                    )
             }
             .padding()
         }
