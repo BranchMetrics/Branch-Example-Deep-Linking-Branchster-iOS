@@ -40,7 +40,7 @@ struct MonsterView: View {
             HStack {
                 ProgressView("Level \(progress.monsterLevel)", value: progressRatio, total: 1.0)
                     .progressViewStyle(.linear)
-                    .tint(.pink)
+                    .tint(.purple)
                     .foregroundColor(.white)
                 
                 Text(xpLabel)
