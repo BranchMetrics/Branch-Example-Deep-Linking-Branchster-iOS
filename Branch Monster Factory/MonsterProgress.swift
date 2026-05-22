@@ -151,14 +151,7 @@ class MonsterProgress {
         }
     }
 
-    // --- BRANCH UNIVERSAL OBJECT (BUO) LOGIC ---
-
-    /*
-    Creates a fresh Branch Universal Object reflecting the current state of the monster.
-    Since MonsterProgress is @Observable, this will always pull the latest data.
-    */
     func createCurrentMonsterBUO() -> BranchUniversalObject {
-        // Use a unique ID that reflects the monster's current state/level for deep linking
         let canonicalID = "monster-\(selectedColor):level-\(monsterLevel)"
         let monsterName =
             MonsterImages.shared.monsterNameMap[selectedColor] ?? "New Monster"
@@ -169,7 +162,6 @@ class MonsterProgress {
         buo.contentDescription =
             "My monster is on a quest! Current XP: \(Int(currentXP))/\(Int(requiredXP))."
 
-        // Add all required data for deep link routing in customMetadata
         buo.contentMetadata.customMetadata["monster_color"] = selectedColor
         buo.contentMetadata.customMetadata["monster_level"] = String(
             monsterLevel)
