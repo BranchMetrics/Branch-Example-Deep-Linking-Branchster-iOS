@@ -46,6 +46,7 @@
 		FF72FD6C2EBBA1A3000DE618 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF72FD6B2EBBA1A3000DE618 /* HomeScreen.swift */; };
 		FF72FD732EBBD3F3000DE618 /* MonsterImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF72FD722EBBD3EE000DE618 /* MonsterImages.swift */; };
 		FF72FD7D2EBBE0B8000DE618 /* Challenges.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF72FD7C2EBBE0B5000DE618 /* Challenges.swift */; };
+		FFF82EA32FC8CDD400F5EEAB /* Branch-Monster-Factory-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FFF82EA22FC8CDD400F5EEAB /* Branch-Monster-Factory-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,10 +106,10 @@
 		FF5AAD4C2EBC3CD1002CC015 /* QRCodePopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodePopupView.swift; sourceTree = "<group>"; };
 		FF72FD5E2EBB807E000DE618 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FF72FD632EBB892D000DE618 /* OnboardingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingScreen.swift; sourceTree = "<group>"; };
-		FF72FD6A2EBB95A5000DE618 /* Branch-Monster-Factory-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Branch-Monster-Factory-Info.plist"; sourceTree = SOURCE_ROOT; };
 		FF72FD6B2EBBA1A3000DE618 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		FF72FD722EBBD3EE000DE618 /* MonsterImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterImages.swift; sourceTree = "<group>"; };
 		FF72FD7C2EBBE0B5000DE618 /* Challenges.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenges.swift; sourceTree = "<group>"; };
+		FFF82EA22FC8CDD400F5EEAB /* Branch-Monster-Factory-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Branch-Monster-Factory-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -229,7 +230,7 @@
 				FF72FD632EBB892D000DE618 /* OnboardingScreen.swift */,
 				FF72FD6B2EBBA1A3000DE618 /* HomeScreen.swift */,
 				275F8F232EBBE475004884BB /* Branch Monster Factory.entitlements */,
-				FF72FD6A2EBB95A5000DE618 /* Branch-Monster-Factory-Info.plist */,
+				FFF82EA22FC8CDD400F5EEAB /* Branch-Monster-Factory-Info.plist */,
 				FF72FD692EBB953C000DE618 /* Fonts */,
 				FF72FD5E2EBB807E000DE618 /* LaunchScreen.storyboard */,
 				FCE3011B2EBAA91F009B2F7A /* Assets.xcassets */,
@@ -374,6 +375,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				27EAE93F2EBDA58F00607557 /* Preview Assets.xcassets in Resources */,
+				FFF82EA32FC8CDD400F5EEAB /* Branch-Monster-Factory-Info.plist in Resources */,
 				27EAE9402EBDA58F00607557 /* IBMPlexMono-Bold.ttf in Resources */,
 				27EAE9412EBDA58F00607557 /* IBMPlexSans-Regular.ttf in Resources */,
 				27EAE9372EBDA53600607557 /* evolving.mp3 in Resources */,
@@ -592,7 +594,7 @@
 				DEVELOPMENT_TEAM = R63EM248DP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Branch-Monster-Factory-Info.plist";
+				INFOPLIST_FILE = "Branch Monster Factory/Branch-Monster-Factory-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -626,7 +628,7 @@
 				DEVELOPMENT_TEAM = R63EM248DP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Branch-Monster-Factory-Info.plist";
+				INFOPLIST_FILE = "Branch Monster Factory/Branch-Monster-Factory-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
