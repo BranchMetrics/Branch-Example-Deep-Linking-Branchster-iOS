@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>io.branch.branchmonsterfactory</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>branchsters</string>
+			</array>
+		</dict>
+	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>IBMPlexSans-Regular.ttf</string>
+		<string>IBMPlexMono-Bold.ttf</string>
+	</array>
+	<key>branch_key</key>
+	<dict>
+		<key>live</key>
+		<string>key_live_mbErCMtrzeheAWS0Xagg7hjbwDkaZ6SP</string>
+		<key>test</key>
+		<string>key_test_jpAAsHxzDjint6I30mkBZjeewAki21R7</string>
+	</dict>
+	<key>branch_universal_link_domains</key>
+	<array>
+		<string>monster-factory.app.link</string>
+		<string>monster-factory-alternate.app.link</string>
+		<string>monster-factory.test-app.link</string>
+		<string>monster-factory-alternate.test-app.link</string>
+	</array>
+</dict>
+</plist>
