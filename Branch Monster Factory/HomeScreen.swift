@@ -1,6 +1,6 @@
 //
 //  HomeScreen.swift
-//  Branch Monster Factor
+//  Branch Monster Factory
 //
 //  Created by Robert Gioia on 11/5/25.
 //
@@ -13,8 +13,8 @@ import SwiftUI
  */
 
 struct HomeScreen: View {
-    @AppStorage("selectedMonsterName") private var selectedMonsterName: String =
-        ""
+    @AppStorage("selectedMonsterName") private var selectedMonsterName: String = ""
+    @AppStorage("lastTrackedEventData") private var savedEventData: Data?
 
     @Environment(MonsterProgress.self) private var progress: MonsterProgress
     @Environment(DeepLinkHandler.self) private var deepLinkHandler
@@ -25,7 +25,6 @@ struct HomeScreen: View {
     @State private var generatedQRCode: UIImage?
     @State private var showingQRCodePopup: Bool = false
     @State private var showingEventDetailsPopup: Bool = false
-    @State private var eventData: BranchEvent?
 
     let challenges = Challenges.shared.allChallenges
 
@@ -108,7 +107,6 @@ struct HomeScreen: View {
     // MARK: - View Body
     var body: some View {
         ZStack {
-
             backgroundColor.edgesIgnoringSafeArea(.all)
 
             VStack {
@@ -140,64 +138,63 @@ struct HomeScreen: View {
                                     action: {
                                         switch challenge.title {
                                         case "Trigger Branch Event":
-                                            self.eventData = trackEvent(
-                                                monsterColor: progress
-                                                    .selectedColor,
-                                                monsterLevel: progress
-                                                    .monsterLevel,
-                                                selectedMonsterName: self
-                                                    .selectedMonsterName,
-                                                monsterExp: progress.currentXP)
-                                            progress.markChallengeAsComplete(
-                                                challenge)
+                                            let _ = trackEvent(
+                                                monsterColor: progress.selectedColor,
+                                                monsterLevel: progress.monsterLevel,
+                                                selectedMonsterName: getDisplayName(),
+                                                monsterExp: progress.currentXP
+                                            )
+                                            
+                                            let localEvent = PersistedEventData(
+                                                monsterName: getDisplayName(),
+                                                monsterColor: progress.selectedColor,
+                                                monsterLevel: progress.monsterLevel,
+                                                monsterExp: progress.currentXP,
+                                                timestamp: Date()
+                                            )
+                                            
+                                            if let encoded = try? JSONEncoder().encode(localEvent) {
+                                                self.savedEventData = encoded
+                                            }
+
+                                            progress.markChallengeAsComplete(challenge)
                                             progress.questCompleted()
-                                            progress.markChallengeAsUnlocked(
-                                                "View Branch Event Data")
+                                            progress.markChallengeAsUnlocked("View Branch Event Data")
                                         case "View Branch Event Data":
-                                            self.showingEventDetailsPopup = true
+                                            if self.savedEventData != nil {
+                                                self.showingEventDetailsPopup = true
+                                            } else {
+                                                print("No event data from this or previous sessions available.")
+                                            }
                                         case "Generate Branch QR Code":
                                             createQRCode(
                                                 completion: { qrCodeImage in
                                                     DispatchQueue.main.async {
-                                                        if let image =
-                                                            qrCodeImage
-                                                        {
-                                                            self
-                                                                .generatedQRCode =
-                                                                image
-                                                            self
-                                                                .showingQRCodePopup =
-                                                                true
+                                                        if let image = qrCodeImage {
+                                                            self.generatedQRCode = image
+                                                            self.showingQRCodePopup = true
                                                         } else {
-                                                            print(
-                                                                "Failed to generate QR Code Image."
-                                                            )
+                                                            print("Failed to generate QR Code Image.")
                                                         }
                                                     }
                                                 },
-                                                monsterColor: progress
-                                                    .selectedColor,
-                                                monsterLevel: progress
-                                                    .monsterLevel,
-                                                selectedMonsterName:
-                                                    progress.getMonsterAssetName()
+                                                monsterColor: progress.selectedColor,
+                                                monsterLevel: progress.monsterLevel,
+                                                selectedMonsterName: progress.getMonsterAssetName()
                                             )
                                         case "Create Branch Link":
-                                            handleGenerateLinkQuest(
-                                                challenge: challenge)
-                                            progress.markChallengeAsUnlocked(
-                                                "Share Branch Link")
+                                            handleGenerateLinkQuest(challenge: challenge)
+                                            progress.markChallengeAsUnlocked("Share Branch Link")
                                             break
 
                                         case "Share Branch Link":
-                                            handleShareLinkQuest(
-                                                challenge: challenge)
+                                            handleShareLinkQuest(challenge: challenge)
                                             break
+                                            
                                         case "Share Branch QR Code":
                                             if let shareChallenge = challenges.first(where: { $0.title == "Share Branch QR Code" }) {
                                                 let shareText = "Scan my QR code to view my Level \(progress.monsterLevel) monster, '\(self.getDisplayName())'!"
                                                 
-                                                // Helper closure so we don't duplicate the share sheet presentation logic
                                                 let performShare: (UIImage) -> Void = { qrImage in
                                                     presentShareSheet(for: qrImage, and: shareText) { completed in
                                                         if completed {
@@ -211,11 +208,9 @@ struct HomeScreen: View {
                                                     }
                                                 }
                                                 
-                                                // Check if we already have the QR code in memory
                                                 if let qrImage = self.generatedQRCode {
                                                     performShare(qrImage)
                                                 } else {
-                                                    // It's a new session and the image is nil! Let's auto-generate it on the fly.
                                                     print("QR code missing for this session. Regenerating...")
                                                     createQRCode(
                                                         completion: { qrCodeImage in
@@ -270,42 +265,84 @@ struct HomeScreen: View {
                         }) {
                             progress.markChallengeAsComplete(completedChallenge)
                             progress.questCompleted()
-                            progress.markChallengeAsUnlocked(
-                                "Share Branch QR Code")
+                            progress.markChallengeAsUnlocked("Share Branch QR Code")
                         }
                     }
             }
 
-            if showingEventDetailsPopup {
-                DetailsPopupView(
-                    eventData: self.eventData!, monsterName: getDisplayName()
-                )
-                .transition(.opacity.combined(with: .scale))
-                .onTapGesture {
-                    showingEventDetailsPopup = false
-                    if let completedChallenge = challenges.first(where: {
-                        $0.title == "View Branch Event Data"
-                    }) {
-                        progress.markChallengeAsComplete(completedChallenge)
-                        progress.questCompleted()
+            if showingEventDetailsPopup,
+               let data = savedEventData,
+               let decodedEvent = try? JSONDecoder().decode(PersistedEventData.self, from: data) {
+                
+                buildDetailsPopupView(for: decodedEvent)
+                    .transition(.opacity.combined(with: .scale))
+                    .onTapGesture {
+                        showingEventDetailsPopup = false
+                        if let completedChallenge = challenges.first(where: {
+                            $0.title == "View Branch Event Data"
+                        }) {
+                            progress.markChallengeAsComplete(completedChallenge)
+                            progress.questCompleted()
+                        }
                     }
-                }
+            }
+            
+            if showingLinkPopup, let link = generatedLink {
+                LinkPopupView(link: link)
+                    .transition(.opacity.combined(with: .scale))
+                    .onTapGesture {
+                        showingLinkPopup = false
+                        if let completedChallenge = challenges.first(where: {
+                            $0.title == "Create Branch Link"
+                        }) {
+                            progress.markChallengeAsComplete(completedChallenge)
+                            progress.questCompleted()
+                            progress.markChallengeAsUnlocked("Share Branch Link")
+                        }
+                    }
             }
         }
-        if showingLinkPopup, let link = generatedLink {
-            LinkPopupView(link: link)
-                .transition(.opacity.combined(with: .scale))
-                .onTapGesture {
-                    showingLinkPopup = false
-                    if let completedChallenge = challenges.first(where: {
-                        $0.title == "Create Branch Link"
-                    }) {
-                        progress.markChallengeAsComplete(completedChallenge)
-                        progress.questCompleted()
-                        progress.markChallengeAsUnlocked("Share Branch Link")
-                    }
-                }
-        }
+    }
+    
+    @ViewBuilder
+    private func buildDetailsPopupView(for decodedEvent: PersistedEventData) -> some View {
+        let displayEvent = BranchEvent.customEvent(withName: "Monster Event")
+        
+        // Safety Fallback pipeline: handles any unexpected zeroing properties out of serialization bounds
+        let expString = decodedEvent.monsterExp > 0 ? String(Int(decodedEvent.monsterExp)) : String(Int(progress.currentXP))
+        
+        displayEvent.eventDescription = "Level: \(decodedEvent.monsterLevel) | Color: \(decodedEvent.monsterColor) | XP: \(expString)"
+        displayEvent.transactionID = String(decodedEvent.monsterLevel)
+        displayEvent.alias = decodedEvent.monsterColor
+        displayEvent.searchQuery = expString
+        
+        displayEvent.customData = [
+            "Monster Name": decodedEvent.monsterName,
+            "Monster Color": decodedEvent.monsterColor,
+            "Monster Level": String(decodedEvent.monsterLevel),
+            "Monster Exp": expString,
+            
+            "monstername": decodedEvent.monsterName,
+            "monstercolor": decodedEvent.monsterColor,
+            "monsterlevel": String(decodedEvent.monsterLevel),
+            "monsterexp": expString,
+            
+            "monster_name": decodedEvent.monsterName,
+            "color": decodedEvent.monsterColor,
+            "monster_color": decodedEvent.monsterColor,
+            "monster_level": String(decodedEvent.monsterLevel),
+            "monster_xp": expString,
+            "monster_exp": expString,
+            
+            "level": String(decodedEvent.monsterLevel),
+            "xp": expString,
+            "exp": expString
+        ]
+        
+        return DetailsPopupView(
+            eventData: displayEvent,
+            monsterName: decodedEvent.monsterName
+        )
     }
 }
 
@@ -319,37 +356,36 @@ func presentShareSheet(
         applicationActivities: nil
     )
 
-    // Set the completion handler
-    activityViewController.completionWithItemsHandler = {
-        (activityType, completed, returnedItems, error) in
+    activityViewController.completionWithItemsHandler = { (activityType, completed, returnedItems, error) in
         completion(completed)
     }
 
-    // Get the root view controller to present from
-    // This is a common way to bridge SwiftUI to UIKit's presentation logic
     guard
         let window = UIApplication.shared.connectedScenes
-            .filter({ $0.activationState == .foregroundActive })
-            .compactMap({ $0 as? UIWindowScene })
-            .first?.windows
-            .filter({ $0.isKeyWindow }).first
+        .filter({ $0.activationState == .foregroundActive })
+        .compactMap({ $0 as? UIWindowScene })
+        .first?.windows
+        .filter({ $0.isKeyWindow }).first
     else {
         completion(false)
         return
     }
 
-    // Handle iPad popover presentation
     if UIDevice.current.userInterfaceIdiom == .pad {
-        if let popoverController = activityViewController
-            .popoverPresentationController
-        {
-            // Present from the center of the screen or an actual view if you have one readily available
+        if let popoverController = activityViewController.popoverPresentationController {
             popoverController.sourceView = window.rootViewController?.view
-            popoverController.sourceRect = CGRect(
-                x: window.frame.midX, y: window.frame.midY, width: 0, height: 0)
-            popoverController.permittedArrowDirections = []  // No arrow needed if presenting from center
+            popoverController.sourceRect = CGRect(x: window.frame.midX, y: window.frame.midY, width: 0, height: 0)
+            popoverController.permittedArrowDirections = []
         }
     }
 
     window.rootViewController?.present(activityViewController, animated: true)
+}
+
+struct PersistedEventData: Codable {
+    let monsterName: String
+    let monsterColor: String
+    let monsterLevel: Int
+    let monsterExp: Double
+    let timestamp: Date
 }
