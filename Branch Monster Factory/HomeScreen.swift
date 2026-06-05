@@ -194,42 +194,45 @@ struct HomeScreen: View {
                                                 challenge: challenge)
                                             break
                                         case "Share Branch QR Code":
-                                            if let qrImage = self
-                                                .generatedQRCode,
-                                                let shareChallenge =
-                                                    challenges.first(where: {
-                                                        $0.title
-                                                            == "Share Branch QR Code"
-                                                    })
-                                            {
-
-                                                let shareText =
-                                                    "Scan my QR code to view my Level \(progress.monsterLevel) monster, '\(self.getDisplayName())'!"
-
-                                                presentShareSheet(
-                                                    for: qrImage, and: shareText
-                                                ) { completed in
-                                                    if completed {
-                                                        // Mark challenge as complete only if the user actually shared
-                                                        DispatchQueue.main.async
-                                                        {
-                                                            self.progress
-                                                                .markChallengeAsComplete(
-                                                                    shareChallenge
-                                                                )
-                                                            self.progress
-                                                                .questCompleted()
+                                            if let shareChallenge = challenges.first(where: { $0.title == "Share Branch QR Code" }) {
+                                                let shareText = "Scan my QR code to view my Level \(progress.monsterLevel) monster, '\(self.getDisplayName())'!"
+                                                
+                                                // Helper closure so we don't duplicate the share sheet presentation logic
+                                                let performShare: (UIImage) -> Void = { qrImage in
+                                                    presentShareSheet(for: qrImage, and: shareText) { completed in
+                                                        if completed {
+                                                            DispatchQueue.main.async {
+                                                                self.progress.markChallengeAsComplete(shareChallenge)
+                                                                self.progress.questCompleted()
+                                                            }
+                                                        } else {
+                                                            print("QR Code share failed or was canceled.")
                                                         }
-                                                    } else {
-                                                        print(
-                                                            "QR Code share failed or was canceled."
-                                                        )
                                                     }
                                                 }
-                                            } else {
-                                                print(
-                                                    "QR code not generated or available to share."
-                                                )
+                                                
+                                                // Check if we already have the QR code in memory
+                                                if let qrImage = self.generatedQRCode {
+                                                    performShare(qrImage)
+                                                } else {
+                                                    // It's a new session and the image is nil! Let's auto-generate it on the fly.
+                                                    print("QR code missing for this session. Regenerating...")
+                                                    createQRCode(
+                                                        completion: { qrCodeImage in
+                                                            DispatchQueue.main.async {
+                                                                if let image = qrCodeImage {
+                                                                    self.generatedQRCode = image
+                                                                    performShare(image)
+                                                                } else {
+                                                                    print("Failed to auto-regenerate QR Code Image.")
+                                                                }
+                                                            }
+                                                        },
+                                                        monsterColor: progress.selectedColor,
+                                                        monsterLevel: progress.monsterLevel,
+                                                        selectedMonsterName: progress.getMonsterAssetName()
+                                                    )
+                                                }
                                             }
                                             break
                                         default:
