@@ -1,5 +1,5 @@
 //
-//  Untitled.swift
+//  QRCodePopupView.swift
 //  Branch Monster Factory
 //
 //  Created by Robert Gioia on 11/5/25.
