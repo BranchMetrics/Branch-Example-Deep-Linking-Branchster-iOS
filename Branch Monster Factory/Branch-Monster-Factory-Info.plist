@@ -53,8 +53,6 @@
 		<key>SKAdNetworkIdentifier</key>
 		<string>R63EM248DP.skadnetwork</string>
 	</dict>
-	<key>UIMainStoryboardFile</key>
-	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
