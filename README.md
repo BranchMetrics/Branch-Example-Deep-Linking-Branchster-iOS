@@ -48,3 +48,8 @@
 4. Tap the link - you will get redirected to the web page
 5. Install the app on the device via Xcode
 6. Tapping on the link should now open the app directly
+
+<img width="200" height="480" alt="Android_1" src="https://github.com/user-attachments/assets/a6233f3e-79e8-417a-8e51-00ece8bcbb56" />
+<img width="200" height="480" alt="Android_2" src="https://github.com/user-attachments/assets/54eaecbf-7fef-4709-9fc0-bfac68aec7c5" />
+<img width="200" height="480" alt="Android_3" src="https://github.com/user-attachments/assets/53340ec8-6411-49ce-b8f7-65a197ed2e94" />
+<img width="200" height="480" alt="Android_4" src="https://github.com/user-attachments/assets/ac465707-2462-4acc-a639-c09b606fe321" />
