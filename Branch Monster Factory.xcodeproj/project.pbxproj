@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		275F8F2E2EBBE607004884BB /* BranchSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 275F8F2D2EBBE607004884BB /* BranchSDK */; };
 		275F8F312EBBE632004884BB /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 275F8F302EBBE632004884BB /* CoreServices.framework */; };
 		275F8F332EBBE63A004884BB /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 275F8F322EBBE63A004884BB /* SystemConfiguration.framework */; };
 		275F8F352EBBE641004884BB /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 275F8F342EBBE641004884BB /* WebKit.framework */; };
@@ -33,6 +32,7 @@
 		FF342FF22EBCDED700DD0764 /* DetailsPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF342FF12EBCDECF00DD0764 /* DetailsPopupView.swift */; };
 		FF34300A2EBD129F00DD0764 /* DeepLinkDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3430092EBD129400DD0764 /* DeepLinkDetailView.swift */; };
 		FF34302C2EBD4B6600DD0764 /* DeepLinkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF34302B2EBD4B5F00DD0764 /* DeepLinkHandler.swift */; };
+		FF3F1B23306E9AC800F3DF87 /* BranchSDK in Frameworks */ = {isa = PBXBuildFile; productRef = FF3F1B22306E9AC800F3DF87 /* BranchSDK */; };
 		FF5AAD372EBC2E00002CC015 /* DataModules.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5AAD362EBC2DF9002CC015 /* DataModules.swift */; };
 		FF5AAD392EBC2E34002CC015 /* ChallengeRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5AAD382EBC2E30002CC015 /* ChallengeRow.swift */; };
 		FF5AAD3B2EBC2E49002CC015 /* MonsterSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5AAD3A2EBC2E41002CC015 /* MonsterSelectionView.swift */; };
@@ -96,6 +96,7 @@
 		FF342FF12EBCDECF00DD0764 /* DetailsPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsPopupView.swift; sourceTree = "<group>"; };
 		FF3430092EBD129400DD0764 /* DeepLinkDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinkDetailView.swift; sourceTree = "<group>"; };
 		FF34302B2EBD4B5F00DD0764 /* DeepLinkHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinkHandler.swift; sourceTree = "<group>"; };
+		FF3F1B21306E9A8A00F3DF87 /* ios-branch-deep-linking-attribution */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "ios-branch-deep-linking-attribution"; path = "../ios-branch-deep-linking-attribution"; sourceTree = SOURCE_ROOT; };
 		FF5AAD362EBC2DF9002CC015 /* DataModules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModules.swift; sourceTree = "<group>"; };
 		FF5AAD382EBC2E30002CC015 /* ChallengeRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeRow.swift; sourceTree = "<group>"; };
 		FF5AAD3A2EBC2E41002CC015 /* MonsterSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterSelectionView.swift; sourceTree = "<group>"; };
@@ -121,6 +122,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF3F1B23306E9AC800F3DF87 /* BranchSDK in Frameworks */,
 				275F8F3F2EBBE671004884BB /* LinkPresentation.framework in Frameworks */,
 				275F8F3D2EBBE666004884BB /* StoreKit.framework in Frameworks */,
 				275F8F3B2EBBE65A004884BB /* AdSupport.framework in Frameworks */,
@@ -129,7 +131,6 @@
 				275F8F352EBBE641004884BB /* WebKit.framework in Frameworks */,
 				275F8F332EBBE63A004884BB /* SystemConfiguration.framework in Frameworks */,
 				275F8F312EBBE632004884BB /* CoreServices.framework in Frameworks */,
-				275F8F2E2EBBE607004884BB /* BranchSDK in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -190,6 +191,7 @@
 				FCE301312EBAA91F009B2F7A /* Branch Monster FactoryUITests */,
 				275F8F2F2EBBE632004884BB /* Frameworks */,
 				FCE301132EBAA91E009B2F7A /* Products */,
+				FF3F1B21306E9A8A00F3DF87 /* ios-branch-deep-linking-attribution */,
 			);
 			sourceTree = "<group>";
 		};
@@ -356,7 +358,6 @@
 			);
 			mainGroup = FCE301092EBAA91E009B2F7A;
 			packageReferences = (
-				275F8F2C2EBBE607004884BB /* XCRemoteSwiftPackageReference "ios-branch-sdk-spm" */,
 			);
 			productRefGroup = FCE301132EBAA91E009B2F7A /* Products */;
 			projectDirPath = "";
@@ -766,21 +767,9 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		275F8F2C2EBBE607004884BB /* XCRemoteSwiftPackageReference "ios-branch-sdk-spm" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/BranchMetrics/ios-branch-sdk-spm";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 3.13.3;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
 /* Begin XCSwiftPackageProductDependency section */
-		275F8F2D2EBBE607004884BB /* BranchSDK */ = {
+		FF3F1B22306E9AC800F3DF87 /* BranchSDK */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 275F8F2C2EBBE607004884BB /* XCRemoteSwiftPackageReference "ios-branch-sdk-spm" */;
 			productName = BranchSDK;
 		};
 /* End XCSwiftPackageProductDependency section */

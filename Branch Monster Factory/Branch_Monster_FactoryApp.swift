@@ -66,10 +66,10 @@ struct Branch_Monster_FactorApp: App {
             }
             
             .onContinueUserActivity(NSUserActivityTypeBrowsingWeb) { activity in
-                Branch.getInstance().continue(activity)
+                //Branch.getInstance().continue(activity)
             }
             .onOpenURL { url in
-                Branch.getInstance().handleDeepLink(url)
+                //Branch.getInstance().handleDeepLink(url)
             }
         }
     }
@@ -86,14 +86,35 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     ) -> Bool {
 
         Branch.enableLogging()
-        Branch.getInstance().checkPasteboardOnInstall()
-        Branch.getInstance().initSession(launchOptions: launchOptions) {
-             [weak self] (params, error) in
-             
-             DispatchQueue.main.async {
-                 self?.deepLinkHandler?.handleDeepLinkDisplay(sessionParams: params)
-             }
-        }
+        
+        let buo = BranchUniversalObject(canonicalIdentifier: "Example")
+        buo.contentMetadata.customMetadata["monster_name"] = "Example Monster"
+        buo.contentMetadata.customMetadata["$deeplink_path"] = "yellow/1"
+        let lp = BranchLinkProperties()
+        lp.controlParams["$deeplink_path"] = "yellow/1"
+        lp.controlParams["monster_name"] = "Example Monster"
+
+        let builder = BranchLinkBuilder()
+        let longUrl = builder.getLongURL(
+            withLinkProperties: lp, // BranchLinkProperties instance
+            useAppLinkDomain: true // or false
+        )
+
+        print(longUrl ?? "Failed to generate URL")
+        
+        
+//        var branchConfig:BranchConfiguration = BranchConfiguration(key: "key_live_mbErCMtrzeheAWS0Xagg7hjbwDkaZ6SP")
+//        branchConfig.logLevel = BranchLogLevel.verbose
+//        
+//        Branch.initialize(branchConfig)
+        //Branch.getInstance().checkPasteboardOnInstall()
+//        Branch.getInstance().initSession(launchOptions: launchOptions) {
+//             [weak self] (params, error) in
+//             
+//             DispatchQueue.main.async {
+//                 self?.deepLinkHandler?.handleDeepLinkDisplay(sessionParams: params)
+//             }
+//        }
         return true
     }
 }
