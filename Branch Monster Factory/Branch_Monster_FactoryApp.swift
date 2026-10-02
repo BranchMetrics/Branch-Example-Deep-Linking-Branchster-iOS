@@ -66,10 +66,10 @@ struct Branch_Monster_FactorApp: App {
             }
             
             .onContinueUserActivity(NSUserActivityTypeBrowsingWeb) { activity in
-                //Branch.getInstance().continue(activity)
+                Branch.sharedInstance()?.requestDeepLinkData(userActivity: activity)
             }
             .onOpenURL { url in
-                //Branch.getInstance().handleDeepLink(url)
+                Branch.sharedInstance()?.requestDeepLinkData(openURL: url)
             }
         }
     }
@@ -84,37 +84,25 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         didFinishLaunchingWithOptions launchOptions: [UIApplication
             .LaunchOptionsKey: Any]?
     ) -> Bool {
-
-        Branch.enableLogging()
+        var branchConfig:BranchConfiguration = BranchConfiguration(key: "key_live_mbErCMtrzeheAWS0Xagg7hjbwDkaZ6SP")
+        branchConfig.logLevel = BranchLogLevel.verbose
         
-        let buo = BranchUniversalObject(canonicalIdentifier: "Example")
-        buo.contentMetadata.customMetadata["monster_name"] = "Example Monster"
-        buo.contentMetadata.customMetadata["$deeplink_path"] = "yellow/1"
-        let lp = BranchLinkProperties()
-        lp.controlParams["$deeplink_path"] = "yellow/1"
-        lp.controlParams["monster_name"] = "Example Monster"
-
-        let builder = BranchLinkBuilder()
-        let longUrl = builder.getLongURL(
-            withLinkProperties: lp, // BranchLinkProperties instance
-            useAppLinkDomain: true // or false
-        )
-
-        print(longUrl ?? "Failed to generate URL")
+        var branch = Branch.initialize(branchConfig)
         
+        branch?.requestDeepLinkData(launchOptions: launchOptions) { params, error in
+            if error != nil { return }
+            
+            guard let params = params as? [String: Any],
+                  let isBranchLink = params[BRANCH_INIT_KEY_CLICKED_BRANCH_LINK] as? Bool,
+                  isBranchLink else {
+                return // organic
+            }
+            
+            DispatchQueue.main.async {
+                self.deepLinkHandler?.handleDeepLinkDisplay(sessionParams: params)
+            }
+        }
         
-//        var branchConfig:BranchConfiguration = BranchConfiguration(key: "key_live_mbErCMtrzeheAWS0Xagg7hjbwDkaZ6SP")
-//        branchConfig.logLevel = BranchLogLevel.verbose
-//        
-//        Branch.initialize(branchConfig)
-        //Branch.getInstance().checkPasteboardOnInstall()
-//        Branch.getInstance().initSession(launchOptions: launchOptions) {
-//             [weak self] (params, error) in
-//             
-//             DispatchQueue.main.async {
-//                 self?.deepLinkHandler?.handleDeepLinkDisplay(sessionParams: params)
-//             }
-//        }
         return true
     }
 }
